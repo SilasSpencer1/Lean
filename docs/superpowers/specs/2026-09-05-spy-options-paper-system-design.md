@@ -22,6 +22,7 @@ The system is an experiment platform, not a claim of profitability. Its first jo
 - Research decision cadence: every five minutes.
 - Nominal holding horizon: 30 minutes.
 - Hard liquidation deadline: 15:40 America/New_York.
+- Version one opens no position on holidays or early-close sessions. Adapters supply an authoritative XNYS session; if an existing position is discovered on an early-close day, its liquidation window advances with that close.
 - Initial paper size: one contract, subject to all tighter risk limits.
 - Cost target: zero-cost software and data tiers for the prototype.
 - Python version: 3.11, matching the current LEAN Python runtime requirement.
@@ -223,7 +224,7 @@ Primary research metrics are trade count, coverage, net expectancy, median trade
 
 ## Observability and Audit Trail
 
-Each decision record includes event time, source timestamps, raw-data manifest, feature values, eligible and rejected candidates with reasons, predictions, selected action, risk checks, order IDs, fills, exit reason, realized P&L, model hash, and code commit.
+The append-only audit trail is keyed by decision ID. Each immutable DecisionRecord includes event time, source timestamps, raw-data manifest, effective configuration and hash, feature values, eligible and rejected candidates with reasons, predictions, proposed/final action, portfolio state, risk checks, model metadata, and code commit. Later OrderEventRecord and FillEventRecord entries carry broker order IDs, replacements, fills, exit reason, and realized P&L under the same decision ID; broker facts are never fabricated in or retroactively written into the earlier decision record.
 
 Secrets are read only from environment variables or the operating-system credential store. They are never logged, stored in TOML, committed, or accepted as command-line arguments. Tests use fake clients and inert credentials.
 
@@ -261,4 +262,3 @@ The direct Alpaca runner is paper-only and uses Alpaca's official Python SDK. It
 - Ait-Sahalia et al., How and When Are High-Frequency Stock Returns Predictable?: https://www.nber.org/papers/w30366
 - Tan et al., Deep Learning for Options Trading: https://arxiv.org/abs/2407.21791
 - Bayer et al., Signature Methods in Finance: https://doi.org/10.1007/978-3-031-97239-3
-
