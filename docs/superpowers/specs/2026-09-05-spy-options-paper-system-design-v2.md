@@ -23,7 +23,7 @@ Build a reproducible experimental research and paper platform for intraday long 
 - Every configuration preserves or tightens these limits. The 30-minute holding period is fixed in version one. Changing it requires a design/target revision and new experiment/artifact; a smaller number is not automatically a scientifically interchangeable target.
 - Prototype software/data budget remains zero. Genuine historical quote data is a separate, explicit licensed-data prerequisite for economic claims.
 - Phase 1 targets Python 3.11. Integration pins and tests the actual LEAN image/Python environment, core wheel and SDK; do not infer runtime compatibility from an unbounded `>=3.11` declaration.
-- Initial virtual equity must be explicitly recorded before any order-enabled experiment. Missing capital means cash. Test fixtures may use large balances but cannot select the experimental capital implicitly.
+- Initial virtual equity is explicitly declared as USD 150,000 in the prerequisite record after the user delegated its selection. This simulation balance does not establish broker cash or actual contract affordability. Missing capital at a decision still means cash. Test fixtures may use large balances but cannot select the experimental capital implicitly.
 
 ## Architecture decision
 

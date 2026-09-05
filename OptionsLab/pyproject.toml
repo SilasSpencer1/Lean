@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "options-lab"
+version = "0.1.0"
+description = "Pure policy calculations for SPY options research."
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+
+[project.optional-dependencies]
+test = ["pytest==9.0.2"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -8,7 +8,7 @@ Recorded 2026-09-05 after the user approved the research review and requested im
 | Required features and Greeks | Retain exact completed-bar calculations, separate Greek provenance/availability, cash on missing inputs, and all reviewed candidate limits | Semantics fixed; real provider readiness unverified |
 | Target and selection | Attempted policy return on decision ask capital K; ask-to-bid execution, explicit costs, no-fill/censoring distinction; conservative expected dollars for one contract; ties/unknown uncertainty choose cash | Fixed in adopted spec |
 | Exits and risk | Preserve one contract, 0.5% premium plus costs, 1% daily loss, 5% drawdown, three entries, fixed hold and liquidation rules; entry rejection cannot suppress recovery | Fixed; implementation pending |
-| Initial virtual equity | **Undeclared**; user was asked. Large test balances are synthetic examples only | Must be declared before order-enabled experiments |
+| Initial virtual equity | **USD 150,000**, selected on 2026-09-05 after the user delegated the choice. This is a declared simulation balance, separate from broker cash and test fixtures | Capital declared; actual eligible-contract affordability remains unmeasured |
 | Prototype budget | USD 0; no paid data purchase authorized or made | Fixed |
 | Initial data admission | Self-generated synthetic fixtures only, explicitly identified as such; no external source admitted | Core tests permitted |
 | Bundled LEAN data | Paths include SPY minute quote/trade files for 2023-08-03 and eight daily universe dates from 2023-12-28 through 2024-01-09 | Not admitted; presence proves neither rights nor required coverage |
@@ -25,3 +25,5 @@ To admit an external source, record product/endpoint/feed, sample and coverage d
 Each synthetic fixture records its generator/version in its test or fixture manifest. When fixtures cross a replay/artifact boundary, their canonical content hash and synthetic provenance travel with them. The initial unit tests generate values directly; no downloaded market dataset or pricing history enters the package.
 
 No account-wide authorization follows from `PremiumBudget.affordable`. The later authorization transaction must bind current observations, session, model/configuration, account revision and durable reservation, and revalidate at submission. Complete actual endpoint restrictions and independent exit/recovery checks before any paper runner exists.
+
+The initial USD 150,000 virtual balance gives a USD 750 premium-plus-cost ceiling, USD 1,500 session loss threshold and USD 7,500 initial drawdown threshold. Subsequent thresholds follow the reviewed current-equity, session-start-equity and persistent-high-watermark rules. The choice is a round simulation balance that accommodates the known synthetic example; it is not a claim about current option prices or a recommendation to fund a real account. No implicit default capital is added to the policy function.
