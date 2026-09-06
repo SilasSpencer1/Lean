@@ -21,7 +21,7 @@ from .greeks import FIXTURE_GREEK_METHOD, GreekMethodSpec
 
 
 FixtureKind = Literal[
-    "option_quote", "underlying_quote", "greek_observation", "quote_coherence",
+    "option_quote", "underlying_quote", "greek_observation", "quote_coherence", "tick_rule",
 ]
 FixtureRejectionCode = Literal[
     "catalog_unavailable", "catalog_invalid", "catalog_resource_limit",
@@ -60,8 +60,9 @@ _DESCRIPTOR_FIELDS = (
     "normalization_version", "expected_payload_sha256",
 )
 _KINDS = (
-    "option_quote", "underlying_quote", "greek_observation", "quote_coherence",
+    "option_quote", "underlying_quote", "greek_observation", "quote_coherence", "tick_rule",
 )
+_TICK_DEFINITIONS = (("fixture-usd-premium-tick-v1", "1"),)
 _COHERENCE_PROTOCOLS = (
     ("joint_snapshot", "fixture-joint-book-snapshot-v1"),
     ("side_validity_overlap", "fixture-side-validity-overlap-v1"),
@@ -87,6 +88,7 @@ _UNITS = {
         "dividend": "continuous_annual_fraction",
     },
     "quote_coherence": {},
+    "tick_rule": {"price": "USD_per_share"},
 }
 
 
@@ -400,7 +402,7 @@ def _build_manifest_checked(
         root["generator_source_ref"], "generator_source_ref"
     )
     profiles, profiles_by_id = _profiles(root["modeled_source_profiles"])
-    coherence_protocol_ids = _definitions(root["definitions"])
+    coherence_protocol_ids, tick_definition_ids = _definitions(root["definitions"])
     members = _members(root["members"], profiles_by_id)
     manifest = object.__new__(VerifiedFixtureManifest)
     values = {
@@ -423,7 +425,7 @@ def _build_manifest_checked(
         ),
         "greek_method": FIXTURE_GREEK_METHOD,
         "coherence_protocol_ids": coherence_protocol_ids,
-        "tick_definition_ids": (),
+        "tick_definition_ids": tick_definition_ids,
         "origin": "synthetic",
         "fidelity_tier": 0,
         "permitted_use": "core_fixture",
@@ -484,8 +486,8 @@ def _profiles(
     return profiles, by_id
 
 
-def _definitions(raw: object) -> tuple[str, ...]:
-    """Validate definitions and return retained coherence protocol IDs."""
+def _definitions(raw: object) -> tuple[tuple[str, ...], tuple[str, ...]]:
+    """Validate definitions and return retained protocol and tick IDs."""
     _require_shape(raw, "definitions", _DEFINITION_FIELDS)
     definitions = raw
     _require_shape(
@@ -516,9 +518,14 @@ def _definitions(raw: object) -> tuple[str, ...]:
         or any(protocol not in allowed_protocols for protocol in protocols)
     ):
         _fail("definitions.coherence_protocol_ids", "invalid_value")
-    if _list(definitions["tick_definition_ids"], "definitions.tick_definition_ids"):
+    tick_ids = _list(definitions["tick_definition_ids"], "definitions.tick_definition_ids")
+    if (
+        any(type(identifier) is not str for identifier in tick_ids)
+        or len(set(tick_ids)) != len(tick_ids)
+        or any(identifier not in {item[0] for item in _TICK_DEFINITIONS} for identifier in tick_ids)
+    ):
         _fail("definitions.tick_definition_ids", "invalid_value")
-    return tuple(protocols)
+    return tuple(protocols), tuple(tick_ids)
 
 
 def _members(
@@ -586,7 +593,7 @@ def _envelope(
     supersedes = envelope["supersedes_record_id"]
     if supersedes is not None:
         _parse_string(supersedes, f"{path}.supersedes_record_id")
-    if kind == "quote_coherence":
+    if kind in ("quote_coherence", "tick_rule"):
         for name in ("contract", "metadata"):
             if envelope[name] is not None:
                 _fail(f"{path}.{name}", "invalid_value")
