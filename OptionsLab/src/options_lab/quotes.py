@@ -200,6 +200,40 @@ def assess_quote_premium_budget(
     )
 
 
+def _assess_quote_only(
+    quote: QuoteObservation,
+    *,
+    decision_at: datetime,
+    max_quote_age: timedelta = _MAX_QUOTE_AGE,
+) -> tuple[ObservationAssessment, tuple[str, ...]]:
+    """Assess current option quote evidence without account or premium inputs."""
+    decision_at = _trusted_datetime("decision_at", decision_at)
+    observation = assess_observation(
+        quote.meta,
+        decision_at=decision_at,
+        max_quote_age=max_quote_age,
+    )
+    arithmetic_context = _bounded_context(
+        value
+        for value in (
+            quote.bid,
+            quote.ask,
+            _MAXIMUM_SPREAD_FRACTION,
+            _MINIMUM_SPREAD,
+            _MIDPOINT_DIVISOR,
+        )
+        if value is not None
+    )
+    return observation, _quote_reasons(
+        quote,
+        decision_at,
+        max_quote_age,
+        _MAXIMUM_SPREAD_FRACTION,
+        _MINIMUM_SPREAD,
+        arithmetic_context,
+    )
+
+
 def _derive_evidence(
     assessment: QuotePremiumAssessment, decision_at: datetime
 ) -> tuple[ObservationAssessment, tuple[str, ...], PremiumBudget | None]:
