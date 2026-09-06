@@ -1,5 +1,7 @@
 # Phase 1: OptionsLab Decision and Risk Core Implementation Plan
 
+> **Superseded:** Historical document. Use the [adopted revision](2026-09-05-options-lab-core-v2.md) and its implementation increments; do not execute this archived version.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Build the dependency-light, broker-neutral Python core that validates option observations, creates executable-return labels and features, selects a call/put/cash action, enforces deterministic risk, tracks order lifecycle, and emits an audit record.

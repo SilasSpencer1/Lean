@@ -1,5 +1,7 @@
 # SPY Intraday Long-Options Paper System Design
 
+> **Superseded:** Historical document. Use the [adopted revision](2026-09-05-spy-options-paper-system-design-v2.md) and its implementation increments; do not execute this archived version.
+
 **Status:** Approved for implementation on 2026-09-05
 
 **Repository:** SilasSpencer1/Lean, forked from QuantConnect/Lean
