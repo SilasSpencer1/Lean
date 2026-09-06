@@ -3,6 +3,8 @@
 from dataclasses import dataclass, field
 from datetime import datetime, time, timedelta
 from decimal import Decimal
+import hashlib
+import json
 
 from .quotes import (
     QuoteObservation,
@@ -330,3 +332,205 @@ def _duration_microseconds(value: timedelta) -> int:
 def _time_microseconds(value: time) -> int:
     """Return exact integer microseconds since local midnight."""
     return ((value.hour * 60 + value.minute) * 60 + value.second) * 1_000_000 + value.microsecond
+
+
+def config_snapshot(config: StrategyConfig) -> dict[str, object]:
+    """
+    Build the complete canonical configuration snapshot.
+
+    :param    config:     Exact trusted strategy configuration.
+    :returns:            Fresh canonical configuration snapshot.
+    :raises   TypeError: If config is not an exact StrategyConfig.
+    """
+    _require_strategy_config(config)
+    return {
+        "record_kind": "options_lab.config",
+        "config_snapshot_schema_version": 1,
+        "config_schema_version": config.config_schema_version,
+        "paper_only": config.paper_only,
+        "policy": _policy_snapshot(config),
+        "risk": {
+            "initial_virtual_equity": (
+                None
+                if config.initial_virtual_equity is None
+                else _decimal_string(config.initial_virtual_equity)
+            ),
+            "premium_fraction": _decimal_string(config.premium_fraction),
+            "daily_loss_fraction": _decimal_string(config.daily_loss_fraction),
+            "drawdown_fraction": _decimal_string(config.drawdown_fraction),
+            "max_entries_per_session": config.max_entries_per_session,
+        },
+        "account": {
+            "max_account_age": _duration_snapshot(config.max_account_age),
+            "max_reconciliation_age": _duration_snapshot(
+                config.max_reconciliation_age
+            ),
+        },
+    }
+
+
+def config_hash(config: StrategyConfig) -> str:
+    """
+    Return the SHA-256 identity of the canonical configuration snapshot.
+
+    :param    config:     Exact trusted strategy configuration.
+    :returns:            Lowercase hexadecimal SHA-256 configuration identity.
+    :raises   TypeError: If config is not an exact StrategyConfig.
+    """
+    return _snapshot_hash(config_snapshot(config))
+
+
+def policy_hash(config: StrategyConfig) -> str:
+    """
+    Return the SHA-256 identity of the canonical policy snapshot.
+
+    :param    config:     Exact trusted strategy configuration.
+    :returns:            Lowercase hexadecimal SHA-256 policy identity.
+    :raises   TypeError: If config is not an exact StrategyConfig.
+    """
+    _require_strategy_config(config)
+    return _snapshot_hash(_policy_snapshot(config))
+
+
+def _policy_snapshot(config: StrategyConfig) -> dict[str, object]:
+    """Build a fresh explicit snapshot of policy-affecting semantics."""
+    execution = config.execution
+    return {
+        "record_kind": "options_lab.policy",
+        "policy_snapshot_schema_version": 1,
+        "config_snapshot_schema_version": 1,
+        "config_schema_version": config.config_schema_version,
+        "policy_definition_version": config.policy_definition_version,
+        "scope": {
+            "underlying": config.underlying,
+            "paper_only": config.paper_only,
+            "max_contracts": config.max_contracts,
+            "contract_rule": config.contract_rule,
+            "strategy_calendar": config.strategy_calendar,
+            "strategy_timezone": config.strategy_timezone,
+        },
+        "semantics": {
+            "target_definition": execution.target_definition,
+            "quote_diagnostic_definition": execution.quote_diagnostic_definition,
+            "selection_rule": config.selection_rule,
+            "feature_definition": config.feature_definition,
+        },
+        "selection": {
+            "min_dte": config.min_dte,
+            "max_dte": config.max_dte,
+            "min_abs_delta": _decimal_string(config.min_abs_delta),
+            "max_abs_delta": _decimal_string(config.max_abs_delta),
+        },
+        "quote_costs": {
+            "max_spread_fraction": _decimal_string(config.max_spread_fraction),
+            "spread_floor": _decimal_string(config.spread_floor),
+            "round_trip_fee_floor": _decimal_string(config.round_trip_fee_floor),
+            "estimated_round_trip_cost": _decimal_string(
+                config.estimated_round_trip_cost
+            ),
+        },
+        "session": {
+            "entry_start": config.entry_start.isoformat(),
+            "entry_end": config.entry_end.isoformat(),
+            "liquidation_start": config.liquidation_start.isoformat(),
+            "liquidation_deadline": config.liquidation_deadline.isoformat(),
+            "clock_timezone": config.strategy_timezone,
+            "early_close_liquidation_start_formula": (
+                "min(configured_liquidation_start,common_close-25minutes)"
+            ),
+            "early_close_liquidation_deadline_formula": (
+                "min(configured_liquidation_deadline,common_close-20minutes)"
+            ),
+            "liquidation_escalation_formula": (
+                "effective_liquidation_deadline-1minute"
+            ),
+            "normal_path_fit_formula": (
+                "entry_end+entry_lifetime+holding_period+adverse_exit_latency"
+                "<=liquidation_start"
+            ),
+        },
+        "execution": {
+            "version": execution.version,
+            "entry_lifetime": _duration_snapshot(execution.entry_lifetime),
+            "max_quote_age": _duration_snapshot(execution.max_quote_age),
+            "label_exit_lateness": _duration_snapshot(
+                execution.label_exit_lateness
+            ),
+            "max_exit_replacements": execution.max_exit_replacements,
+            "holding_period": _duration_snapshot(execution.holding_period),
+            "decision_cadence": _duration_snapshot(execution.decision_cadence),
+            "base_entry_latency": _duration_snapshot(
+                execution.base_entry_latency
+            ),
+            "base_exit_latency": _duration_snapshot(execution.base_exit_latency),
+            "adverse_entry_latency": _duration_snapshot(
+                execution.adverse_entry_latency
+            ),
+            "adverse_exit_latency": _duration_snapshot(
+                execution.adverse_exit_latency
+            ),
+            "severe_stall": _duration_snapshot(execution.severe_stall),
+            "exit_reconciliation_interval": _duration_snapshot(
+                execution.exit_reconciliation_interval
+            ),
+            "adverse_return_floor": _decimal_string(
+                execution.adverse_return_floor
+            ),
+            "severe_charge_multiplier": execution.severe_charge_multiplier,
+            "entry_limit_rule": execution.entry_limit_rule,
+            "entry_expiry_rule": execution.entry_expiry_rule,
+            "exit_rule": execution.exit_rule,
+            "entry_expiry_equality": "cancel",
+            "upward_repricing": "forbidden",
+            "exit_replacement_requires_acknowledgement": True,
+            "causal_adverse_cost_formula": (
+                "max(0.005*original_ask_capital,100*decision_spread)"
+            ),
+            "ex_post_adverse_cost_formula": (
+                "max(0.005*original_ask_capital,"
+                "100*0.5*(actual_entry_spread+actual_exit_spread))"
+            ),
+            "severe_adverse_cost_formula": "2*ex_post_adverse_cost",
+        },
+    }
+
+
+def _require_strategy_config(config: object) -> None:
+    """Require an exact trusted StrategyConfig for identity generation."""
+    if type(config) is not StrategyConfig:
+        raise TypeError("config must be a StrategyConfig")
+
+
+def _decimal_string(value: Decimal) -> str:
+    """Return a context-independent normalized fixed-point decimal string."""
+    if not value:
+        return "0"
+    sign, digits, exponent = value.as_tuple()
+    coefficient = "".join(str(digit) for digit in digits)
+    if exponent >= 0:
+        rendered = coefficient + ("0" * exponent)
+    else:
+        split = len(coefficient) + exponent
+        if split > 0:
+            rendered = coefficient[:split] + "." + coefficient[split:]
+        else:
+            rendered = "0." + ("0" * -split) + coefficient
+        rendered = rendered.rstrip("0").rstrip(".")
+    return ("-" if sign else "") + rendered
+
+
+def _duration_snapshot(value: timedelta) -> dict[str, object]:
+    """Return a fresh exact integer-microsecond duration snapshot."""
+    return {"value": _duration_microseconds(value), "unit": "microseconds"}
+
+
+def _snapshot_hash(snapshot: dict[str, object]) -> str:
+    """Hash one owned snapshot through compact sorted ASCII JSON."""
+    payload = json.dumps(
+        snapshot,
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=True,
+        allow_nan=False,
+    ).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
