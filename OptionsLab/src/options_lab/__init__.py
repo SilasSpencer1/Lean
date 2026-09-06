@@ -38,6 +38,12 @@ from .config_inputs import (
     load_config,
     normalize_config,
 )
+from .context_inputs import (
+    ContextInputRejection,
+    ContextRequest,
+    ContextRequestValidation,
+    normalize_context_request,
+)
 from .contract_inputs import (
     ContractReferenceRejection,
     ContractReferenceValidation,
@@ -122,6 +128,9 @@ __all__ = [
     "CoherenceValidation",
     "ConfigInputRejection",
     "ConfigValidation",
+    "ContextInputRejection",
+    "ContextRequest",
+    "ContextRequestValidation",
     "ContractId",
     "ContractReference",
     "ContractReferenceAssessment",
@@ -194,6 +203,7 @@ __all__ = [
     "identify_quote_content",
     "load_config",
     "normalize_config",
+    "normalize_context_request",
     "normalize_contract_reference",
     "normalize_exchange_session",
     "normalize_greek_observation",
