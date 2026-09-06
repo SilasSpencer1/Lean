@@ -58,6 +58,13 @@ from .sessions import (
     assess_submission_time,
 )
 
+from .underlying import UnderlyingQuote, UnderlyingQuoteAssessment, assess_underlying_quote
+from .underlying_inputs import (
+    UnderlyingQuoteInputRejection,
+    UnderlyingQuoteValidation,
+    normalize_underlying_quote,
+)
+
 __all__ = [
     "ConfigInputRejection",
     "ConfigValidation",
@@ -88,6 +95,10 @@ __all__ = [
     "SessionAssessment",
     "SessionInputRejection",
     "SessionValidation",
+    "UnderlyingQuote",
+    "UnderlyingQuoteAssessment",
+    "UnderlyingQuoteInputRejection",
+    "UnderlyingQuoteValidation",
     "assess_configured_quote_budget",
     "assess_contract_reference",
     "assess_decision_slot",
@@ -96,6 +107,7 @@ __all__ = [
     "assess_quote_premium_budget",
     "assess_session",
     "assess_submission_time",
+    "assess_underlying_quote",
     "config_hash",
     "config_snapshot",
     "load_config",
@@ -106,5 +118,6 @@ __all__ = [
     "normalize_observation_meta",
     "normalize_provider_contract_mapping",
     "normalize_quote_observation",
+    "normalize_underlying_quote",
     "policy_hash",
 ]
