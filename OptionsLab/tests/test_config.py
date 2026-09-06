@@ -389,3 +389,192 @@ def test_configured_wrapper_rejects_invalid_trusted_inputs(changes, error) -> No
     config = changes.pop("config", api.StrategyConfig())
     with pytest.raises(error):
         assess(config, **changes)
+
+
+def test_canonical_snapshot_is_explicit_exact_and_detached() -> None:
+    config = api.StrategyConfig(
+        initial_virtual_equity=Decimal("150000.00"),
+        execution=api.ExecutionPolicy(entry_lifetime=timedelta(microseconds=1_500_000)),
+    )
+    snapshot = api.config_snapshot(config)
+
+    assert snapshot["record_kind"] == "options_lab.config"
+    assert snapshot["config_snapshot_schema_version"] == 1
+    assert snapshot["risk"] == {
+        "initial_virtual_equity": "150000",
+        "premium_fraction": "0.005",
+        "daily_loss_fraction": "0.01",
+        "drawdown_fraction": "0.05",
+        "max_entries_per_session": 3,
+    }
+    assert snapshot["account"] == {
+        "max_account_age": {"value": 5_000_000, "unit": "microseconds"},
+        "max_reconciliation_age": {"value": 5_000_000, "unit": "microseconds"},
+    }
+    policy = snapshot["policy"]
+    assert policy["record_kind"] == "options_lab.policy"
+    assert policy["scope"] == {
+        "underlying": "SPY",
+        "paper_only": True,
+        "max_contracts": 1,
+        "contract_rule": "standard-unadjusted-100-spy-shares-v1",
+        "strategy_calendar": "XNYS",
+        "strategy_timezone": "America/New_York",
+    }
+    assert policy["execution"]["entry_lifetime"] == {
+        "value": 1_500_000,
+        "unit": "microseconds",
+    }
+    assert policy["execution"]["entry_expiry_equality"] == "cancel"
+    assert policy["execution"]["upward_repricing"] == "forbidden"
+    assert policy["execution"]["exit_replacement_requires_acknowledgement"] is True
+    assert policy["execution"]["causal_adverse_cost_formula"] == (
+        "max(0.005*original_ask_capital,100*decision_spread)"
+    )
+    assert policy["execution"]["ex_post_adverse_cost_formula"] == (
+        "max(0.005*original_ask_capital,100*0.5*(actual_entry_spread+actual_exit_spread))"
+    )
+    assert policy["session"]["entry_start"] == "10:00:00"
+    assert policy["session"]["clock_timezone"] == "America/New_York"
+    assert policy["session"]["early_close_liquidation_start_formula"] == (
+        "min(configured_liquidation_start,common_close-25minutes)"
+    )
+    assert policy["session"]["early_close_liquidation_deadline_formula"] == (
+        "min(configured_liquidation_deadline,common_close-20minutes)"
+    )
+    original_hash = api.config_hash(config)
+    snapshot["risk"]["premium_fraction"] = "1"
+    snapshot["policy"]["execution"]["entry_lifetime"]["value"] = 9
+    assert api.config_snapshot(config)["risk"]["premium_fraction"] == "0.005"
+    assert api.config_hash(config) == original_hash
+
+
+def test_decimal_canonicalization_is_context_independent() -> None:
+    configs = [
+        api.StrategyConfig(round_trip_fee_floor=value)
+        for value in (Decimal("1"), Decimal("1.00"), Decimal("1.000"))
+    ]
+    signed_zero = api.StrategyConfig(initial_virtual_equity=None)
+    with localcontext() as context:
+        context.prec = 4
+        context.traps[Inexact] = True
+        snapshots = [api.config_snapshot(config) for config in configs]
+        hashes = [api.config_hash(config) for config in configs]
+
+    assert [item["policy"]["quote_costs"]["round_trip_fee_floor"] for item in snapshots] == ["1", "1", "1"]
+    assert len(set(hashes)) == 1
+    assert api.config_snapshot(signed_zero)["risk"]["initial_virtual_equity"] is None
+
+
+def test_fixed_point_rendering_preserves_integer_zeros_and_collapses_signed_zero() -> None:
+    assert api._decimal_string(Decimal("1000.000")) == "1000"
+    assert api._decimal_string(Decimal("-0.000")) == "0"
+    assert api._decimal_string(Decimal("-0.0012300")) == "-0.00123"
+
+
+def test_default_canonical_identity_digests_are_locked() -> None:
+    config = api.StrategyConfig()
+    assert api.config_hash(config) == (
+        "8ef0583fa6e6ec352140691e78b38172f1801b56be2e22f02423300b241542a8"
+    )
+    assert api.policy_hash(config) == (
+        "735503cf8fd690c7d4893893b49a74dbf6494eacb3d36119a5c849896dacc95b"
+    )
+
+
+@pytest.mark.parametrize(
+    "changed",
+    [
+        api.StrategyConfig(min_dte=8),
+        api.StrategyConfig(max_dte=20),
+        api.StrategyConfig(min_abs_delta=Decimal("0.41")),
+        api.StrategyConfig(max_abs_delta=Decimal("0.59")),
+        api.StrategyConfig(max_spread_fraction=Decimal("0.07")),
+        api.StrategyConfig(spread_floor=Decimal("0.04")),
+        api.StrategyConfig(round_trip_fee_floor=Decimal("2")),
+        api.StrategyConfig(estimated_round_trip_cost=Decimal("2")),
+        api.StrategyConfig(entry_start=time(10, 5)),
+        api.StrategyConfig(entry_end=time(14, 55)),
+        api.StrategyConfig(liquidation_start=time(15, 34)),
+        api.StrategyConfig(liquidation_deadline=time(15, 39)),
+        api.StrategyConfig(execution=api.ExecutionPolicy(max_quote_age=timedelta(seconds=4))),
+        api.StrategyConfig(execution=api.ExecutionPolicy(entry_lifetime=timedelta(seconds=4))),
+        api.StrategyConfig(execution=api.ExecutionPolicy(label_exit_lateness=timedelta(seconds=30))),
+        api.StrategyConfig(execution=api.ExecutionPolicy(max_exit_replacements=2)),
+    ],
+)
+def test_policy_changes_affect_both_identities(changed) -> None:
+    default = api.StrategyConfig()
+    assert api.policy_hash(changed) != api.policy_hash(default)
+    assert api.config_hash(changed) != api.config_hash(default)
+
+
+@pytest.mark.parametrize(
+    ("owner", "field", "changed"),
+    [
+        (api.StrategyConfig, "config_schema_version", 2),
+        (api.StrategyConfig, "policy_definition_version", "spy-intraday-long-options-v2"),
+        (api.StrategyConfig, "strategy_timezone", "America/Chicago"),
+        (api.StrategyConfig, "strategy_calendar", "XNAS"),
+        (api.StrategyConfig, "contract_rule", "standard-unadjusted-100-spy-shares-v2"),
+        (api.StrategyConfig, "selection_rule", "abs-delta-distance-spread-expiry-contract-v2"),
+        (api.StrategyConfig, "feature_definition", "spy-completed-minute-minimal-v3"),
+        (api.ExecutionPolicy, "version", "spy-one-contract-execution-v2"),
+        (api.ExecutionPolicy, "holding_period", timedelta(minutes=29)),
+        (api.ExecutionPolicy, "decision_cadence", timedelta(minutes=4)),
+        (api.ExecutionPolicy, "base_entry_latency", timedelta(seconds=2)),
+        (api.ExecutionPolicy, "base_exit_latency", timedelta(seconds=2)),
+        (api.ExecutionPolicy, "adverse_entry_latency", timedelta(seconds=4)),
+        (api.ExecutionPolicy, "adverse_exit_latency", timedelta(seconds=4)),
+        (api.ExecutionPolicy, "severe_stall", timedelta(seconds=11)),
+        (api.ExecutionPolicy, "exit_reconciliation_interval", timedelta(seconds=3)),
+        (api.ExecutionPolicy, "adverse_return_floor", Decimal("0.006")),
+        (api.ExecutionPolicy, "severe_charge_multiplier", 3),
+        (api.ExecutionPolicy, "entry_limit_rule", "original-decision-ask-cap-no-upward-reprice-v2"),
+        (api.ExecutionPolicy, "entry_expiry_rule", "cancel-at-original-decision-expiry-v2"),
+        (api.ExecutionPolicy, "exit_rule", "confirmed-long-bid-limit-acknowledged-replacement-v2"),
+        (api.ExecutionPolicy, "target_definition", "attempt-net-pnl-over-original-ask-capital-v2"),
+        (api.ExecutionPolicy, "quote_diagnostic_definition", "decision-plus-30m-first-quote-v2"),
+    ],
+)
+def test_registered_fixed_definition_changes_both_identities(
+    monkeypatch, owner, field, changed
+) -> None:
+    config = api.StrategyConfig()
+    default_policy_hash = api.policy_hash(config)
+    default_config_hash = api.config_hash(config)
+
+    monkeypatch.setattr(owner, field, changed)
+
+    assert api.policy_hash(config) != default_policy_hash
+    assert api.config_hash(config) != default_config_hash
+
+
+@pytest.mark.parametrize(
+    "changed",
+    [
+        api.StrategyConfig(initial_virtual_equity=Decimal("150000")),
+        api.StrategyConfig(premium_fraction=Decimal("0.004")),
+        api.StrategyConfig(daily_loss_fraction=Decimal("0.005")),
+        api.StrategyConfig(drawdown_fraction=Decimal("0.04")),
+        api.StrategyConfig(max_entries_per_session=2),
+        api.StrategyConfig(max_account_age=timedelta(seconds=4)),
+        api.StrategyConfig(max_reconciliation_age=timedelta(seconds=4)),
+    ],
+)
+def test_operational_and_risk_changes_affect_only_config_identity(changed) -> None:
+    default = api.StrategyConfig()
+    assert api.policy_hash(changed) == api.policy_hash(default)
+    assert api.config_hash(changed) != api.config_hash(default)
+
+
+def test_identity_requires_exact_strategy_config() -> None:
+    class StrategyConfigSubclass(api.StrategyConfig):
+        pass
+
+    with pytest.raises(TypeError):
+        api.config_snapshot(object())
+    with pytest.raises(TypeError):
+        api.config_hash(StrategyConfigSubclass())
+    with pytest.raises(TypeError):
+        api.policy_hash(object())
