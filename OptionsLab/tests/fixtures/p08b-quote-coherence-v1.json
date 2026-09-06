@@ -1,0 +1,2043 @@
+{
+  "assembled_at": "2026-09-06T22:49:15.725744+00:00",
+  "definitions": {
+    "coherence_protocol_ids": [
+      "fixture-joint-book-snapshot-v1",
+      "fixture-side-validity-overlap-v1"
+    ],
+    "greek_method": {
+      "assumptions_id": "fixture-flat-rates-v1",
+      "method_id": "fixture-greek-values",
+      "method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+      "method_version": "1"
+    },
+    "tick_definition_ids": []
+  },
+  "fixture_id": "p08b-quote-coherence-v1",
+  "generator_id": "optionslab-coherence-fixture-builder",
+  "generator_source_ref": "OptionsLab/tests/build_coherence_fixture.py",
+  "generator_version": "1",
+  "members": [
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "malformed-proof",
+        "metadata": null,
+        "raw_ref": "synthetic://malformed-proof",
+        "receive_sequence": 0,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "coherent_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "joint",
+        "method": "joint_snapshot",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-joint-book-snapshot-v1",
+        "sides": [],
+        "snapshot_id": "joint-book-1",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "441bba80647e2f2501c36925747d4bab48c3f2100955d12e4efcea85ca35cfd4",
+      "record_id": "malformed-coherence"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "not-a-decimal",
+          "underlying": "SPY"
+        },
+        "event_id": "option-event-1",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:59+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "malformed-option-source",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://option/1",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "option-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "option-profile-1",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "malformed-option"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "option-event-1",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:59+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "option-provider-1",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://option/1",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "option-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "option-profile-1",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "option-member-1"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "underlying-event-1",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/underlying-provider-1",
+          "available_at": "2026-09-05T14:29:59+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "underlying-provider-1",
+          "quality_flags": [],
+          "source": "synthetic-sip-underlying"
+        },
+        "raw_ref": "synthetic://underlying/1",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "underlying-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_quote",
+      "profile_id": "underlying-profile-1",
+      "raw_body": {
+        "ask": "650.02",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 900,
+        "bid": "650.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 700,
+        "symbol": "SPY"
+      },
+      "raw_hash": "0144f763fe13671e714c2864337e088175fd15a44b00e4d5e988a68b241ebb07",
+      "record_id": "underlying-member-1"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "greek-event-1",
+        "metadata": null,
+        "raw_ref": "synthetic://greek/1",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "greek-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "greek_observation",
+      "profile_id": "greek-profile-1",
+      "raw_body": {
+        "as_of": "2026-09-05T14:29:58+00:00",
+        "availability_basis": "measured",
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "delta": "0.50",
+        "delta_unit": "signed_option_price_per_underlying_price",
+        "input_hash": "7e3855d0dfb072da3bce8c6c7a9df4814d2d6eef1881a11807ef3f6f36cd5af7",
+        "inputs": {
+          "assumptions_id": "fixture-flat-rates-v1",
+          "dividend_unit": "continuous_annual_fraction",
+          "dividend_yield": "0.0125",
+          "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+          "rate": "-0.01",
+          "rate_unit": "continuous_annual_fraction",
+          "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+        },
+        "iv": "0.20",
+        "iv_unit": "annualized_volatility_fraction",
+        "method_id": "fixture-greek-values",
+        "method_version": "1",
+        "provider_record_id": "greek-provider-1",
+        "source": "synthetic-greek-method"
+      },
+      "raw_hash": "ad43f66dd39bdb2767655149661d82841ee3476e3298376b3038d8681c5c998f",
+      "record_id": "greek-member-1"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "crossed-option-event",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:59+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "crossed-option-source",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://option/crossed",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "option-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "option-profile-1",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.20",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "d2e3a03b4886928bf4c9e6ccc3e9a28960112d8be67ef1b600d8afe26c6b7579",
+      "record_id": "crossed-option"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-joint",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/joint",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "coherent_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "joint",
+        "method": "joint_snapshot",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-joint-book-snapshot-v1",
+        "sides": [],
+        "snapshot_id": "joint-book-1",
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "b77359ae82745de10bef6c0840a901f1fd0fcd465ed07bceba9a26a4ba5c2255",
+      "record_id": "joint"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-overlap",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/overlap",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:30:00+00:00",
+        "coherent_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "overlap",
+        "method": "side_validity_overlap",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-side-validity-overlap-v1",
+        "sides": [
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          }
+        ],
+        "snapshot_id": null,
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "7536e57ef66c149d77e5c86ef13e203688e2e0cbc435860c9af04f83011ee91e",
+      "record_id": "overlap"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-joint_missing_snapshot",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/joint_missing_snapshot",
+        "receive_sequence": 3,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "coherent_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "joint_missing_snapshot",
+        "method": "joint_snapshot",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-joint-book-snapshot-v1",
+        "sides": [],
+        "snapshot_id": null,
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "bc499c80883e7d74e6ef6d1fe32d416b8fe99e221fa192a94a1cb421a243b1bc",
+      "record_id": "joint_missing_snapshot"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-joint_with_sides",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/joint_with_sides",
+        "receive_sequence": 4,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "coherent_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "joint_with_sides",
+        "method": "joint_snapshot",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-joint-book-snapshot-v1",
+        "sides": [
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          }
+        ],
+        "snapshot_id": "joint-book-1",
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "49296144c1050f6ce54d42049fd7acb8f481c51f73fdc21054d7c412430140c4",
+      "record_id": "joint_with_sides"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-joint_wrong_protocol",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/joint_wrong_protocol",
+        "receive_sequence": 5,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "coherent_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "joint_wrong_protocol",
+        "method": "joint_snapshot",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-side-validity-overlap-v1",
+        "sides": [],
+        "snapshot_id": "joint-book-1",
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "cdb5630c1205a9f577ea937cc596c7baa193097bbba0d686053e1e118ce2ddf2",
+      "record_id": "joint_wrong_protocol"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-joint_unknown_protocol",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/joint_unknown_protocol",
+        "receive_sequence": 6,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "coherent_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "joint_unknown_protocol",
+        "method": "joint_snapshot",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "unknown-fixture-protocol",
+        "sides": [],
+        "snapshot_id": "joint-book-1",
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "7ed599cfa784d0bf98afc234eaf958686f125cb8ebda746df0bd4686e1fc82a3",
+      "record_id": "joint_unknown_protocol"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-joint_missing_point",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/joint_missing_point",
+        "receive_sequence": 7,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "coherent_at": null,
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "joint_missing_point",
+        "method": "joint_snapshot",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-joint-book-snapshot-v1",
+        "sides": [],
+        "snapshot_id": "joint-book-1",
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "c352c651842283bde85930097663eb0c9e5ffc96e016cd85fec7516388a9bb4e",
+      "record_id": "joint_missing_point"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-joint_missing_available",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/joint_missing_available",
+        "receive_sequence": 8,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": null,
+        "coherent_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "joint_missing_available",
+        "method": "joint_snapshot",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-joint-book-snapshot-v1",
+        "sides": [],
+        "snapshot_id": "joint-book-1",
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "ec45daf9d644e637afce29153bcbc0c3ebfba6987bdd0e5a0ff8a0093097e6cf",
+      "record_id": "joint_missing_available"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-joint_future_point",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/joint_future_point",
+        "receive_sequence": 9,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:30:01+00:00",
+        "coherent_at": "2026-09-05T14:30:01+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "joint_future_point",
+        "method": "joint_snapshot",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-joint-book-snapshot-v1",
+        "sides": [],
+        "snapshot_id": "joint-book-1",
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "07d62c695defcd5a70c26a262131913237e8741716bdf00810244bcb9ba81607",
+      "record_id": "joint_future_point"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-joint_point_after_available",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/joint_point_after_available",
+        "receive_sequence": 10,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:57+00:00",
+        "coherent_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "joint_point_after_available",
+        "method": "joint_snapshot",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-joint-book-snapshot-v1",
+        "sides": [],
+        "snapshot_id": "joint-book-1",
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "e06f4395c38d8fd18aa7953c74b71e31b759f3c6f827d4a633038cbf498ab4b4",
+      "record_id": "joint_point_after_available"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-joint_source_after_point",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/joint_source_after_point",
+        "receive_sequence": 11,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "coherent_at": "2026-09-05T14:29:57+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "joint_source_after_point",
+        "method": "joint_snapshot",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-joint-book-snapshot-v1",
+        "sides": [],
+        "snapshot_id": "joint-book-1",
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "404b9d3b1c87f3237ad95314b89d227ed8f6d6fb55c85972453915869b4f989e",
+      "record_id": "joint_source_after_point"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-joint_profile_mismatch",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/joint_profile_mismatch",
+        "receive_sequence": 12,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "coherent_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "joint_profile_mismatch",
+        "method": "joint_snapshot",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-joint-book-snapshot-v1",
+        "sides": [],
+        "snapshot_id": "joint-book-1",
+        "source": "different-raw-source",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "cc5081647d524298b8adc56fec52c6e2405000030883b1382254760d8f1f9d81",
+      "record_id": "joint_profile_mismatch"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-joint_hash_mismatch",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/joint_hash_mismatch",
+        "receive_sequence": 13,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "coherent_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "joint_hash_mismatch",
+        "method": "joint_snapshot",
+        "option_quote_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "protocol_id": "fixture-joint-book-snapshot-v1",
+        "sides": [],
+        "snapshot_id": "joint-book-1",
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "f683303ae8b86d935c82f77010dfe248dc2d7af8f2cea46c7f63e60844a7b6a3",
+      "record_id": "joint_hash_mismatch"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-joint_future_available",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/joint_future_available",
+        "receive_sequence": 14,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:30:01+00:00",
+        "coherent_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "joint_future_available",
+        "method": "joint_snapshot",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-joint-book-snapshot-v1",
+        "sides": [],
+        "snapshot_id": "joint-book-1",
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "2d2544233af4edfcb2c6c2cd79397ea2c24002e712641c8abfef2cff49327cb4",
+      "record_id": "joint_future_available"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-overlap_snapshot_present",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/overlap_snapshot_present",
+        "receive_sequence": 15,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:30:00+00:00",
+        "coherent_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "overlap_snapshot_present",
+        "method": "side_validity_overlap",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-side-validity-overlap-v1",
+        "sides": [
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          }
+        ],
+        "snapshot_id": "incompatible-snapshot",
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "4c2fb33b31b24c71bfeda949640f0d03acac3bf04ecf7c36fc7ff8220ebab514",
+      "record_id": "overlap_snapshot_present"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-overlap_missing_role",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/overlap_missing_role",
+        "receive_sequence": 16,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:30:00+00:00",
+        "coherent_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "overlap_missing_role",
+        "method": "side_validity_overlap",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-side-validity-overlap-v1",
+        "sides": [
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          }
+        ],
+        "snapshot_id": null,
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "b622b12e1db36cf62c967245adf7fad01f1a8129bda884807570de0105c23a77",
+      "record_id": "overlap_missing_role"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-overlap_duplicate_role",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/overlap_duplicate_role",
+        "receive_sequence": 17,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:30:00+00:00",
+        "coherent_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "overlap_duplicate_role",
+        "method": "side_validity_overlap",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-side-validity-overlap-v1",
+        "sides": [
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          }
+        ],
+        "snapshot_id": null,
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "f47861facf81fc3cdcc1c5b166e8e7cb93697c50ca54d1c529067078b4dc948c",
+      "record_id": "overlap_duplicate_role"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-overlap_wrong_hash",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/overlap_wrong_hash",
+        "receive_sequence": 18,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:30:00+00:00",
+        "coherent_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "overlap_wrong_hash",
+        "method": "side_validity_overlap",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-side-validity-overlap-v1",
+        "sides": [
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+            "role": "option_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          }
+        ],
+        "snapshot_id": null,
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "22923fa1129d1758cd9526434469bc69de0fef5b1f3f7b2346cb164646c8bf36",
+      "record_id": "overlap_wrong_hash"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-overlap_missing_start",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/overlap_missing_start",
+        "receive_sequence": 19,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:30:00+00:00",
+        "coherent_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "overlap_missing_start",
+        "method": "side_validity_overlap",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-side-validity-overlap-v1",
+        "sides": [
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_bid",
+            "valid_from": null
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          }
+        ],
+        "snapshot_id": null,
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "a742c0a826b09f9a333275d62ca64fc36f1c32af5f9b0abb8997c95b7a5efb66",
+      "record_id": "overlap_missing_start"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-overlap_missing_watermark",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/overlap_missing_watermark",
+        "receive_sequence": 20,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:30:00+00:00",
+        "coherent_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "overlap_missing_watermark",
+        "method": "side_validity_overlap",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-side-validity-overlap-v1",
+        "sides": [
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": null,
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          }
+        ],
+        "snapshot_id": null,
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "bb65423c1208eb251f6eadf5262ce7302f243701b66e391770818fe223108402",
+      "record_id": "overlap_missing_watermark"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-overlap_early_watermark",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/overlap_early_watermark",
+        "receive_sequence": 21,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:30:00+00:00",
+        "coherent_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "overlap_early_watermark",
+        "method": "side_validity_overlap",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-side-validity-overlap-v1",
+        "sides": [
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:58+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          }
+        ],
+        "snapshot_id": null,
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "ac6be959be573f39e511758f1afe0adf2ce1a6ef4d99c109502c530da6830c8a",
+      "record_id": "overlap_early_watermark"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-overlap_invalidated_at_point",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/overlap_invalidated_at_point",
+        "receive_sequence": 22,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:30:00+00:00",
+        "coherent_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "overlap_invalidated_at_point",
+        "method": "side_validity_overlap",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-side-validity-overlap-v1",
+        "sides": [
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": "2026-09-05T14:29:59+00:00",
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          }
+        ],
+        "snapshot_id": null,
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "c04c0d92bd01bb7a9dfa9fe2f7dee516f1ed850df97424495d43cac9a4b8f820",
+      "record_id": "overlap_invalidated_at_point"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-overlap_reversed_end",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/overlap_reversed_end",
+        "receive_sequence": 23,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:30:00+00:00",
+        "coherent_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "overlap_reversed_end",
+        "method": "side_validity_overlap",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-side-validity-overlap-v1",
+        "sides": [
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": "2026-09-05T14:29:58+00:00",
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          }
+        ],
+        "snapshot_id": null,
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "28e645822fc7666acd634228630e276ae83ecd563255f57ad86a892327a2aa10",
+      "record_id": "overlap_reversed_end"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-overlap_reversed_watermark",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/overlap_reversed_watermark",
+        "receive_sequence": 24,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:30:00+00:00",
+        "coherent_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "overlap_reversed_watermark",
+        "method": "side_validity_overlap",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-side-validity-overlap-v1",
+        "sides": [
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_bid",
+            "valid_from": "2026-09-05T14:30:00+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          }
+        ],
+        "snapshot_id": null,
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "903914856e7b45d245e83e98b71de9728f5b74729ad08c4f759c84fb52aee2ac",
+      "record_id": "overlap_reversed_watermark"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-overlap_future_watermark",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/overlap_future_watermark",
+        "receive_sequence": 25,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:30:00+00:00",
+        "coherent_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "overlap_future_watermark",
+        "method": "side_validity_overlap",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-side-validity-overlap-v1",
+        "sides": [
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:30:01+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          }
+        ],
+        "snapshot_id": null,
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "79d3983cfc52e4d1a1f723cee5420957a8c123e42691fd1cfa0689a6181b6696",
+      "record_id": "overlap_future_watermark"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-overlap_future_invalidation",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/overlap_future_invalidation",
+        "receive_sequence": 26,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:30:00+00:00",
+        "coherent_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "overlap_future_invalidation",
+        "method": "side_validity_overlap",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-side-validity-overlap-v1",
+        "sides": [
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": "2026-09-05T14:30:01+00:00",
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          }
+        ],
+        "snapshot_id": null,
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "d9e61d531850ce359d62d94d9b8fa5335d0fe42128499b5584209a628ce407e8",
+      "record_id": "overlap_future_invalidation"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-overlap_source_after_start",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/overlap_source_after_start",
+        "receive_sequence": 27,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:30:00+00:00",
+        "coherent_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "overlap_source_after_start",
+        "method": "side_validity_overlap",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-side-validity-overlap-v1",
+        "sides": [
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_bid",
+            "valid_from": "2026-09-05T14:29:57+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          }
+        ],
+        "snapshot_id": null,
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "80e24c59b69b2049f15176d7a90e6b66d48eb13cc9979566e0ca19dafcd6bd47",
+      "record_id": "overlap_source_after_start"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-overlap_disjoint",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/overlap_disjoint",
+        "receive_sequence": 28,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:30:00+00:00",
+        "coherent_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "overlap_disjoint",
+        "method": "side_validity_overlap",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-side-validity-overlap-v1",
+        "sides": [
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:30:00+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_bid",
+            "valid_from": "2026-09-05T14:29:59.500000+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": null,
+            "observed_through": "2026-09-05T14:29:59+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          }
+        ],
+        "snapshot_id": null,
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "ed97736bdb2c1dc12f0280acbb542bc4e2109c5561076bd427ac230bf1adc989",
+      "record_id": "overlap_disjoint"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-overlap_known_end",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/overlap_known_end",
+        "receive_sequence": 29,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:30:00+00:00",
+        "coherent_at": "2026-09-05T14:29:58.500000+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "overlap_known_end",
+        "method": "side_validity_overlap",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-side-validity-overlap-v1",
+        "sides": [
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": "2026-09-05T14:29:59+00:00",
+            "observed_through": "2026-09-05T14:30:00+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": "2026-09-05T14:29:59+00:00",
+            "observed_through": "2026-09-05T14:30:00+00:00",
+            "quote_content_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+            "role": "option_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": "2026-09-05T14:29:59+00:00",
+            "observed_through": "2026-09-05T14:30:00+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_bid",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          },
+          {
+            "evidence_record_id": "complete-stream-record-1",
+            "invalidated_at": "2026-09-05T14:29:59+00:00",
+            "observed_through": "2026-09-05T14:30:00+00:00",
+            "quote_content_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880",
+            "role": "underlying_ask",
+            "valid_from": "2026-09-05T14:29:58+00:00"
+          }
+        ],
+        "snapshot_id": null,
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "8cbf670c9964ff1cfa245b7048765ef34c331a1404029f6f2e590fa0f05b4959",
+      "record_id": "overlap_known_end"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-joint_ambiguous",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/joint_ambiguous",
+        "receive_sequence": 30,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "coherent_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "joint_ambiguous",
+        "method": "joint_snapshot",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-joint-book-snapshot-v1",
+        "sides": [],
+        "snapshot_id": "joint-book-1",
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "29b968d1cda83611019ba480c2c1861587328a88d9cecdc5c3d9d691088b9c40",
+      "record_id": "joint_ambiguous"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-joint_crossed_option",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/joint_crossed_option",
+        "receive_sequence": 31,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "coherent_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "joint_crossed_option",
+        "method": "joint_snapshot",
+        "option_quote_hash": "2a48d0620930f09bffe440061fd5e27e66cb20f1e931ddd29ad53f55f97a077a",
+        "protocol_id": "fixture-joint-book-snapshot-v1",
+        "sides": [],
+        "snapshot_id": "joint-book-1",
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "81009e039d400201e15c0c2bbb3d92daae1d66f85a0778ad8a2fbf51c5e10af5",
+      "record_id": "joint_crossed_option"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "coherence-joint_ambiguous",
+        "metadata": null,
+        "raw_ref": "synthetic://coherence/joint_ambiguous",
+        "receive_sequence": 30,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "isolated-proof-scenarios",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "coherent_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "joint_ambiguous",
+        "method": "joint_snapshot",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-joint-book-snapshot-v1",
+        "sides": [],
+        "snapshot_id": "joint-book-1",
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "29b968d1cda83611019ba480c2c1861587328a88d9cecdc5c3d9d691088b9c40",
+      "record_id": "joint-ambiguous-second-occurrence"
+    }
+  ],
+  "modeled_source_profiles": [
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "option-profile-1",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "option-stream-1",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_quote",
+      "profile_id": "underlying-profile-1",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-underlying",
+      "stream_id": "underlying-stream-1",
+      "units": {
+        "price": "USD_per_share",
+        "size": "shares"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "greek_observation",
+      "profile_id": "greek-profile-1",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-greek-method",
+      "stream_id": "greek-stream-1",
+      "units": {
+        "delta": "signed_option_price_per_underlying_price",
+        "dividend": "continuous_annual_fraction",
+        "iv": "annualized_volatility_fraction",
+        "rate": "continuous_annual_fraction"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "quote_coherence",
+      "profile_id": "coherence-scenarios",
+      "record_identity_rule": "new_evidence_id_per_update",
+      "source": "synthetic-coherence",
+      "stream_id": "isolated-proof-scenarios",
+      "units": {}
+    }
+  ],
+  "normalization_version": 1,
+  "origin": "synthetic",
+  "permitted_use": "core_fixture",
+  "schema_version": 1
+}

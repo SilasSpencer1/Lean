@@ -20,7 +20,9 @@ from ._validation import _require_nonempty_string, _trusted_datetime
 from .greeks import FIXTURE_GREEK_METHOD, GreekMethodSpec
 
 
-FixtureKind = Literal["option_quote", "underlying_quote", "greek_observation"]
+FixtureKind = Literal[
+    "option_quote", "underlying_quote", "greek_observation", "quote_coherence",
+]
 FixtureRejectionCode = Literal[
     "catalog_unavailable", "catalog_invalid", "catalog_resource_limit",
     "unknown_fixture", "hash_mismatch", "invalid_utf8", "duplicate_key",
@@ -57,7 +59,13 @@ _DESCRIPTOR_FIELDS = (
     "fixture_id", "generator_id", "generator_version", "payload_schema_version",
     "normalization_version", "expected_payload_sha256",
 )
-_KINDS = ("option_quote", "underlying_quote", "greek_observation")
+_KINDS = (
+    "option_quote", "underlying_quote", "greek_observation", "quote_coherence",
+)
+_COHERENCE_PROTOCOLS = (
+    ("joint_snapshot", "fixture-joint-book-snapshot-v1"),
+    ("side_validity_overlap", "fixture-side-validity-overlap-v1"),
+)
 _HASH_DIGITS = frozenset("0123456789abcdef")
 _REJECTION_CODES = (
     "catalog_unavailable", "catalog_invalid", "catalog_resource_limit",
@@ -78,6 +86,7 @@ _UNITS = {
         "rate": "continuous_annual_fraction",
         "dividend": "continuous_annual_fraction",
     },
+    "quote_coherence": {},
 }
 
 
@@ -391,7 +400,7 @@ def _build_manifest_checked(
         root["generator_source_ref"], "generator_source_ref"
     )
     profiles, profiles_by_id = _profiles(root["modeled_source_profiles"])
-    _definitions(root["definitions"])
+    coherence_protocol_ids = _definitions(root["definitions"])
     members = _members(root["members"], profiles_by_id)
     manifest = object.__new__(VerifiedFixtureManifest)
     values = {
@@ -413,7 +422,7 @@ def _build_manifest_checked(
             profiles, "modeled_source_profiles"
         ),
         "greek_method": FIXTURE_GREEK_METHOD,
-        "coherence_protocol_ids": (),
+        "coherence_protocol_ids": coherence_protocol_ids,
         "tick_definition_ids": (),
         "origin": "synthetic",
         "fidelity_tier": 0,
@@ -443,7 +452,7 @@ def _profiles(
         kind = _parse_token(profile["kind"], f"{path}.kind", _KINDS)
         _parse_string(profile["source"], f"{path}.source")
         _parse_string(profile["stream_id"], f"{path}.stream_id")
-        quote = kind != "greek_observation"
+        quote = kind in ("option_quote", "underlying_quote")
         for name, expected in (
             ("feed_class", "realtime"), ("fidelity", "genuine")
         ):
@@ -453,9 +462,14 @@ def _profiles(
                     _fail(f"{path}.{name}", "invalid_value")
             elif value is not None:
                 _fail(f"{path}.{name}", "invalid_value")
+        identity_rule = (
+            "new_evidence_id_per_update"
+            if kind == "quote_coherence"
+            else "new_provider_record_id_per_update"
+        )
         for name, expected in (
             ("availability_basis", "measured"),
-            ("record_identity_rule", "new_provider_record_id_per_update"),
+            ("record_identity_rule", identity_rule),
         ):
             if _parse_string(profile[name], f"{path}.{name}") != expected:
                 _fail(f"{path}.{name}", "invalid_value")
@@ -470,8 +484,8 @@ def _profiles(
     return profiles, by_id
 
 
-def _definitions(raw: object) -> None:
-    """Validate exact implemented and explicitly absent definition references."""
+def _definitions(raw: object) -> tuple[str, ...]:
+    """Validate definitions and return retained coherence protocol IDs."""
     _require_shape(raw, "definitions", _DEFINITION_FIELDS)
     definitions = raw
     _require_shape(
@@ -491,9 +505,20 @@ def _definitions(raw: object) -> None:
     )
     if method != expected:
         _fail("definitions.greek_method", "invalid_value")
-    for name in ("coherence_protocol_ids", "tick_definition_ids"):
-        if _list(definitions[name], f"definitions.{name}") != []:
-            _fail(f"definitions.{name}", "invalid_value")
+    protocols = _list(
+        definitions["coherence_protocol_ids"],
+        "definitions.coherence_protocol_ids",
+    )
+    allowed_protocols = tuple(protocol for _, protocol in _COHERENCE_PROTOCOLS)
+    if (
+        any(type(protocol) is not str for protocol in protocols)
+        or len(set(protocols)) != len(protocols)
+        or any(protocol not in allowed_protocols for protocol in protocols)
+    ):
+        _fail("definitions.coherence_protocol_ids", "invalid_value")
+    if _list(definitions["tick_definition_ids"], "definitions.tick_definition_ids"):
+        _fail("definitions.tick_definition_ids", "invalid_value")
+    return tuple(protocols)
 
 
 def _members(
@@ -561,7 +586,11 @@ def _envelope(
     supersedes = envelope["supersedes_record_id"]
     if supersedes is not None:
         _parse_string(supersedes, f"{path}.supersedes_record_id")
-    if kind == "underlying_quote":
+    if kind == "quote_coherence":
+        for name in ("contract", "metadata"):
+            if envelope[name] is not None:
+                _fail(f"{path}.{name}", "invalid_value")
+    elif kind == "underlying_quote":
         if envelope["contract"] is not None:
             _fail(f"{path}.contract", "invalid_value")
         if type(envelope["metadata"]) is not dict:
