@@ -42,6 +42,12 @@ from .observations import (
 from .premium import PremiumBudget, assess_premium_budget
 from .quote_inputs import QuoteInputRejection, QuoteValidation, normalize_quote_observation
 from .quotes import QuoteObservation, QuotePremiumAssessment, assess_quote_premium_budget
+from .sessions import (
+    ExchangeSession,
+    InstrumentTradability,
+    SessionAssessment,
+    assess_session,
+)
 
 __all__ = [
     "ConfigInputRejection",
@@ -53,8 +59,10 @@ __all__ = [
     "ContractReferenceValidation",
     "DeliverableComponent",
     "ExecutionPolicy",
+    "ExchangeSession",
     "FieldDiagnostic",
     "InputRejection",
+    "InstrumentTradability",
     "ObservationAssessment",
     "ObservationMeta",
     "ProviderContractMapping",
@@ -67,11 +75,13 @@ __all__ = [
     "QuoteValidation",
     "ObservationValidation",
     "StrategyConfig",
+    "SessionAssessment",
     "assess_configured_quote_budget",
     "assess_contract_reference",
     "assess_observation",
     "assess_premium_budget",
     "assess_quote_premium_budget",
+    "assess_session",
     "config_hash",
     "config_snapshot",
     "load_config",
