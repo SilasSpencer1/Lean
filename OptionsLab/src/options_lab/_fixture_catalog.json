@@ -16,6 +16,14 @@
       "generator_version": "1",
       "normalization_version": 1,
       "payload_schema_version": 1
+    },
+    {
+      "expected_payload_sha256": "aa2eeace708428c39ad95c13788941c814acdeaf8b0fdaf48df78a5a384ba3da",
+      "fixture_id": "p08c-tick-evidence-v1",
+      "generator_id": "optionslab-tick-fixture-builder",
+      "generator_version": "1",
+      "normalization_version": 1,
+      "payload_schema_version": 1
     }
   ]
 }

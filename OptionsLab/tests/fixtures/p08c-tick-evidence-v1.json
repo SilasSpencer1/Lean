@@ -1,0 +1,964 @@
+{
+  "assembled_at": "2026-09-06T23:17:41.884998+00:00",
+  "definitions": {
+    "coherence_protocol_ids": [],
+    "greek_method": {
+      "assumptions_id": "fixture-flat-rates-v1",
+      "method_id": "fixture-greek-values",
+      "method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+      "method_version": "1"
+    },
+    "tick_definition_ids": [
+      "fixture-usd-premium-tick-v1"
+    ]
+  },
+  "fixture_id": "p08c-tick-evidence-v1",
+  "generator_id": "optionslab-tick-fixture-builder",
+  "generator_source_ref": "OptionsLab/tests/build_tick_fixture.py",
+  "generator_version": "1",
+  "members": [
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "tick-event-1",
+        "metadata": null,
+        "raw_ref": "synthetic://tick/1",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:59+00:00",
+        "effective_until": "2026-09-05T14:30:08+00:00",
+        "increment": "0.01",
+        "price_from": "5.00",
+        "price_until": "10.00",
+        "provider_record_id": "tick-provider-1",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "b947348365d18fa411a22ef3432bd3c87220bcf2a1b8a2d0e28e983315bec441",
+      "record_id": "tick-malformed-unrelated"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "tick-event-1",
+        "metadata": null,
+        "raw_ref": "synthetic://tick/1",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:59+00:00",
+        "effective_until": "2026-09-05T14:30:08+00:00",
+        "increment": "0.01",
+        "price_from": "5.00",
+        "price_until": "10.00",
+        "provider_record_id": "tick-provider-1",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "a966335338f7c175386e4b6d6ffd21f0b8ba74593eeb3be1087b11229fadb4ae",
+      "record_id": "tick-good"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "tick-event-2",
+        "metadata": null,
+        "raw_ref": "synthetic://tick/2",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:59+00:00",
+        "effective_until": "2026-09-05T14:30:08+00:00",
+        "increment": null,
+        "price_from": "5.00",
+        "price_until": "10.00",
+        "provider_record_id": "tick-provider-2",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "a5a72790d32a4fa2e16c85918fd88f5930f2e17a791bc3d14611341736ea9338",
+      "record_id": "tick-missing-increment"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "tick-event-3",
+        "metadata": null,
+        "raw_ref": "synthetic://tick/3",
+        "receive_sequence": 3,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:59+00:00",
+        "effective_until": "2026-09-05T14:30:08+00:00",
+        "increment": "0",
+        "price_from": "5.00",
+        "price_until": "10.00",
+        "provider_record_id": "tick-provider-3",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "c58476e99b66fbd2e62da8a189ee3b6aa047b4810735ece03d10bba224a688de",
+      "record_id": "tick-zero-increment"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "tick-event-4",
+        "metadata": null,
+        "raw_ref": "synthetic://tick/4",
+        "receive_sequence": 4,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:59+00:00",
+        "effective_until": "2026-09-05T14:30:08+00:00",
+        "increment": "-0.01",
+        "price_from": "5.00",
+        "price_until": "10.00",
+        "provider_record_id": "tick-provider-4",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "b7a2adc20daa040994ea2129fa4f8595181a02702381f5a9e0a7a2de612987da",
+      "record_id": "tick-negative-increment"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "tick-event-5",
+        "metadata": null,
+        "raw_ref": "synthetic://tick/5",
+        "receive_sequence": 5,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:59+00:00",
+        "effective_until": "2026-09-05T14:30:08+00:00",
+        "increment": "0.01",
+        "price_from": "5.00",
+        "price_until": "10.00",
+        "provider_record_id": "tick-provider-5",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_contract"
+      },
+      "raw_hash": "af569c12d099f73a8fafbdeb5d6dad7e1b08b3aff5a4834aedd4772860416c28",
+      "record_id": "tick-wrong-units"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "tick-event-6",
+        "metadata": null,
+        "raw_ref": "synthetic://tick/6",
+        "receive_sequence": 6,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:59+00:00",
+        "effective_until": "2026-09-05T14:30:08+00:00",
+        "increment": "0.01",
+        "price_from": "5.00",
+        "price_until": "10.00",
+        "provider_record_id": "tick-provider-6",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "2",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "9bf0dd5c6057f90989ec3251b0424e63a79510ffff92a275696931969b290824",
+      "record_id": "tick-wrong-version"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "tick-event-7",
+        "metadata": null,
+        "raw_ref": "synthetic://tick/7",
+        "receive_sequence": 7,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:59+00:00",
+        "effective_until": null,
+        "increment": "0.01",
+        "price_from": "5.00",
+        "price_until": "10.00",
+        "provider_record_id": "tick-provider-7",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "1c10b2e985bc083839d2c50c24e7d4189ff431f418d5df4643ca0150e7e172d4",
+      "record_id": "tick-unknown-end"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "tick-event-8",
+        "metadata": null,
+        "raw_ref": "synthetic://tick/8",
+        "receive_sequence": 8,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:59+00:00",
+        "effective_until": "2026-09-05T14:30:08+00:00",
+        "increment": "0.01",
+        "price_from": "-1",
+        "price_until": "10.00",
+        "provider_record_id": "tick-provider-8",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "ff1ff6cd0b0a3bf3ec01216d5eeb8d2a773e62187aa5ac70cdc751d0984116e6",
+      "record_id": "tick-negative-band"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "tick-event-9",
+        "metadata": null,
+        "raw_ref": "synthetic://tick/9",
+        "receive_sequence": 9,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:59+00:00",
+        "effective_until": "2026-09-05T14:30:08+00:00",
+        "increment": "0.01",
+        "price_from": "5.00",
+        "price_until": "4.99",
+        "provider_record_id": "tick-provider-9",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "8670772a22ab8229d9f293330cbe2543904dadc6751c4d5005b47ebb8448aad8",
+      "record_id": "tick-reversed-band"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "tick-event-10",
+        "metadata": null,
+        "raw_ref": "synthetic://tick/10",
+        "receive_sequence": 10,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:59+00:00",
+        "effective_until": "2026-09-05T14:30:08+00:00",
+        "increment": "0.01",
+        "price_from": "5.00",
+        "price_until": null,
+        "provider_record_id": "tick-provider-10",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "1856113494ccae7dec065ea9560697e6af4e267484b757a4627561d60b82b5ef",
+      "record_id": "tick-unbounded"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "tick-event-11",
+        "metadata": null,
+        "raw_ref": "synthetic://tick/11",
+        "receive_sequence": 11,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "raw_body": {
+        "available_at": "2026-09-05T14:30:01+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:59+00:00",
+        "effective_until": "2026-09-05T14:30:08+00:00",
+        "increment": "0.01",
+        "price_from": "5.00",
+        "price_until": "10.00",
+        "provider_record_id": "tick-provider-11",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "aacd845c39c1ba637f9af76e54a4cde1d7c07a686e4d182e1411bbd6eb14c803",
+      "record_id": "tick-late-available"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "tick-event-12",
+        "metadata": null,
+        "raw_ref": "synthetic://tick/12",
+        "receive_sequence": 12,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:59+00:00",
+        "effective_until": "2026-09-05T14:30:08+00:00",
+        "increment": "0.01",
+        "price_from": "5.005",
+        "price_until": "10.005",
+        "provider_record_id": "tick-provider-12",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "64813dfbd1a2a3d7a51eb63a7ff2f9ccd5bca06d90ca35af67c637b7af306891",
+      "record_id": "tick-non-grid-lower"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "tick-event-13",
+        "metadata": null,
+        "raw_ref": "synthetic://tick/13",
+        "receive_sequence": 13,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": null,
+        "effective_until": "2026-09-05T14:30:08+00:00",
+        "increment": "0.01",
+        "price_from": "5.00",
+        "price_until": "10.00",
+        "provider_record_id": "tick-provider-13",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "ef497a39e6d0e36ec832bbabc3737f8aaef7101d9ffef83209e637a4a684bc34",
+      "record_id": "tick-unknown-start"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "tick-event-14",
+        "metadata": null,
+        "raw_ref": "synthetic://tick/14",
+        "receive_sequence": 14,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:59+00:00",
+        "effective_until": "2026-09-05T14:29:58+00:00",
+        "increment": "0.01",
+        "price_from": "5.00",
+        "price_until": "10.00",
+        "provider_record_id": "tick-provider-14",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "3465560c8e0e8b172be172dbe2947678519a39d4c3eb156680cd8a27efa32d75",
+      "record_id": "tick-reversed-effective"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "tick-event-15",
+        "metadata": null,
+        "raw_ref": "synthetic://tick/15",
+        "receive_sequence": 15,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "raw_body": {
+        "available_at": null,
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:59+00:00",
+        "effective_until": "2026-09-05T14:30:08+00:00",
+        "increment": "0.01",
+        "price_from": "5.00",
+        "price_until": "10.00",
+        "provider_record_id": "tick-provider-15",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "806c9c4f76b7b5c26d601c7469ff3795122fcf12f80b7cb07b66b556d8d439e6",
+      "record_id": "tick-unknown-available"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "tick-event-16",
+        "metadata": null,
+        "raw_ref": "synthetic://tick/16",
+        "receive_sequence": 16,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:59+00:00",
+        "effective_until": "2026-09-05T14:30:08+00:00",
+        "increment": "0.01",
+        "price_from": "5.00",
+        "price_until": "10.00",
+        "provider_record_id": "tick-provider-16",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "other-tick-source",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "d91d64ebf88d52d94ac8c54b5b93ffaacf66d69eefbcdaa23b41e5875059748f",
+      "record_id": "tick-wrong-source"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "tick-event-17",
+        "metadata": null,
+        "raw_ref": "synthetic://tick/17",
+        "receive_sequence": 17,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:59+00:00",
+        "effective_until": "2026-09-05T14:30:08+00:00",
+        "increment": "0.01",
+        "price_from": "5.00",
+        "price_until": "10.00",
+        "provider_record_id": "tick-provider-17",
+        "rule_id": "unknown-tick-definition",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "d2e86fb43beaf681be8e003504a93b5f3940c79f81da9b3e4325b76ad8687227",
+      "record_id": "tick-unknown-definition"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "tick-event-18",
+        "metadata": null,
+        "raw_ref": "synthetic://tick/18",
+        "receive_sequence": 18,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:59+00:00",
+        "effective_until": "2026-09-05T14:30:08+00:00",
+        "increment": "0.01",
+        "price_from": "5.00",
+        "price_until": "10.00",
+        "provider_record_id": "tick-provider-18",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "3cb330af70ed4611c8a1388a9c4420e53513651c68462964b7e2f4964eaabed7",
+      "record_id": "tick-ambiguous"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "tick-event-19",
+        "metadata": null,
+        "raw_ref": "synthetic://tick/19",
+        "receive_sequence": 19,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:59+00:00",
+        "effective_until": "2026-09-05T14:30:08+00:00",
+        "increment": "0.01",
+        "price_from": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "price_until": null,
+        "provider_record_id": "tick-provider-19",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "309550e19a238c634388f3c93153312f05569c2ebd5aea9f9e82c3753c08313b",
+      "record_id": "tick-extreme-band"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "tick-event-20",
+        "metadata": null,
+        "raw_ref": "synthetic://tick/20",
+        "receive_sequence": 20,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:59+00:00",
+        "effective_until": "2026-09-05T14:30:08+00:00",
+        "increment": "0.01",
+        "price_from": "5.00",
+        "price_until": "5.00",
+        "provider_record_id": "tick-provider-20",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "df42cc44bb47e003ab2bd75d1ad1c9a0e91441fca0025cf4de6f8efe66d4085f",
+      "record_id": "tick-equal-band"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "tick-event-21",
+        "metadata": null,
+        "raw_ref": "synthetic://tick/21",
+        "receive_sequence": 21,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:59+00:00",
+        "effective_until": "2026-09-05T14:29:59+00:00",
+        "increment": "0.01",
+        "price_from": "5.00",
+        "price_until": "10.00",
+        "provider_record_id": "tick-provider-21",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "aff09d8a46fe4d4acb67f169218c2c2578764bac19476943ebf3ec8ad1130341",
+      "record_id": "tick-equal-effective"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "tick-event-22",
+        "metadata": null,
+        "raw_ref": "synthetic://tick/22",
+        "receive_sequence": 22,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "raw_body": {
+        "available_at": "2026-09-05T14:30:00+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:59+00:00",
+        "effective_until": "2026-09-05T14:30:08+00:00",
+        "increment": "0.01",
+        "price_from": "5.00",
+        "price_until": "10.00",
+        "provider_record_id": "tick-provider-22",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "df089a4b38fc2169d3f7f934fe36760adf3b3efd5ab7085e64e1f6faeaa7ab4a",
+      "record_id": "tick-available-boundary"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "tick-event-23",
+        "metadata": null,
+        "raw_ref": "synthetic://tick/23",
+        "receive_sequence": 23,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:59+00:00",
+        "effective_until": "2026-09-05T14:30:08+00:00",
+        "increment": "0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+        "price_from": "0",
+        "price_until": null,
+        "provider_record_id": "tick-provider-23",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "d117d5605cb4218c2b761a05464ef6aa45e41ebe2ef60c742a5609c818d53311",
+      "record_id": "tick-tiny-grid"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "tick-ambiguous-duplicate-event",
+        "metadata": null,
+        "raw_ref": "synthetic://tick/18",
+        "receive_sequence": 18,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:59+00:00",
+        "effective_until": "2026-09-05T14:30:08+00:00",
+        "increment": "0.01",
+        "price_from": "5.00",
+        "price_until": "10.00",
+        "provider_record_id": "tick-provider-18",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "3cb330af70ed4611c8a1388a9c4420e53513651c68462964b7e2f4964eaabed7",
+      "record_id": "tick-ambiguous-duplicate"
+    }
+  ],
+  "modeled_source_profiles": [
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "tick_rule",
+      "profile_id": "tick-profile-1",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-tick-reference",
+      "stream_id": "tick-stream-1",
+      "units": {
+        "price": "USD_per_share"
+      }
+    }
+  ],
+  "normalization_version": 1,
+  "origin": "synthetic",
+  "permitted_use": "core_fixture",
+  "schema_version": 1
+}
