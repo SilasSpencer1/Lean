@@ -1,5 +1,6 @@
 """Public package for OptionsLab policy calculations."""
 
+from .bars import BarAssessment, UnderlyingBar, assess_underlying_bar
 from .config import (
     ExecutionPolicy,
     StrategyConfig,
@@ -66,6 +67,7 @@ from .underlying_inputs import (
 )
 
 __all__ = [
+    "BarAssessment",
     "ConfigInputRejection",
     "ConfigValidation",
     "ContractId",
@@ -95,6 +97,7 @@ __all__ = [
     "SessionAssessment",
     "SessionInputRejection",
     "SessionValidation",
+    "UnderlyingBar",
     "UnderlyingQuote",
     "UnderlyingQuoteAssessment",
     "UnderlyingQuoteInputRejection",
@@ -107,6 +110,7 @@ __all__ = [
     "assess_quote_premium_budget",
     "assess_session",
     "assess_submission_time",
+    "assess_underlying_bar",
     "assess_underlying_quote",
     "config_hash",
     "config_snapshot",

@@ -475,6 +475,16 @@ def test_strategy_date_uses_new_york_date_at_utc_midnight() -> None:
     assert result.configured_entry_start.date() == date(2026, 9, 4)
 
 
+def test_live_session_assessment_still_requires_current_new_york_date() -> None:
+    next_day = datetime(2026, 9, 5, 14, tzinfo=UTC)
+    result = assess_session(
+        session(), tradability(), config=StrategyConfig(), now=next_day
+    )
+    assert "session_wrong_date" in result.session_reasons
+    assert "instrument_wrong_date" in result.instrument_hours_reasons
+    assert not result.entry_timing_suitable
+
+
 def test_entry_policy_uses_current_decision_remaining_time() -> None:
     short_close = datetime(2026, 9, 4, 19, 55, tzinfo=UTC)
     result = assess(
