@@ -218,6 +218,13 @@ csx/
 AppPackages/
 
 # Others
+
+# OptionsLab local Python artifacts
+/OptionsLab/.venv/
+/OptionsLab/.pytest_cache/
+/OptionsLab/**/__pycache__/
+/OptionsLab/src/*.egg-info/
+/OptionsLab/dist/
 *.Cache
 ClientBin/
 [Ss]tyle[Cc]op.*

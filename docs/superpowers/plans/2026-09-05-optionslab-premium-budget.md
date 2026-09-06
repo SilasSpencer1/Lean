@@ -22,18 +22,19 @@
 - The frozen result exposes premium, fees, adverse reserve, required cash, equity limit when known, and one explicit reason (or no reason when affordable); `affordable` derives from that reason. It contains no order, intent, approval token, mutable account or side effect.
 - Rejection order after boundary/config validation: non-one quantity; undeclared capital; nonpositive equity; premium cap; unavailable cash; insufficient cash. Costs are still useful diagnostics on valid quotes. This local order does not replace the full later risk precedence.
 - No rounding may turn a cost above a cap into an affordable result. Arithmetic must not depend on a caller lowering Decimal context precision. Prefer ordinary standard-library arithmetic with a small explicit precision policy over a general money framework.
+- Bound required working precision to 1,000 decimal digits and reject larger arithmetic with descriptive ValueError before allocating a Decimal context/result. This is an input-resource limit, not a relaxation of the financial cap. Zero values retain their meaning regardless of exponent spelling. Package metadata admits the Python 3.11 series; the tested interpreter remains exactly 3.11.11.
 
 ## Task 1: Implement the affordability behavior and its executable examples
 
 **Files:** `OptionsLab/pyproject.toml`, `OptionsLab/src/options_lab/__init__.py`, `OptionsLab/src/options_lab/premium.py`, `OptionsLab/tests/test_premium.py`, `OptionsLab/README.md`; scoped Python cache ignores in the repository `.gitignore` only if needed.
 
-- [ ] Add package/test configuration and the first consumer test. Keep production behavior absent until the test demonstrates the missing capability.
-- [ ] Verify RED with the real pytest runner; fix test mistakes rather than accepting an unrelated import/path failure as the only evidence.
-- [ ] Implement the minimum named calculation and frozen result. Public docs distinguish budget evidence from authorization and describe invalid input.
-- [ ] Grow tests before behavior for exact risk/cash boundaries, unknown capital, fees, quantities, invalid inputs and deterministic arithmetic.
-- [ ] Verify GREEN on Python 3.11.11, run the whole new package suite, build/install a wheel and exercise its public import outside the source tree.
-- [ ] Have an independent reviewer examine the production diff and tests for risk weakening, hidden approval semantics, precision loss and unnecessary abstractions. Resolve findings and rerun affected checks.
-- [ ] Record implementation and test line counts separately. Keep this implementation increment below 1,000 changed lines; aim for a few hundred. Do not create empty future files merely to satisfy the roadmap.
+- [x] Add package/test configuration and the first consumer test. Keep production behavior absent until the test demonstrates the missing capability.
+- [x] Verify RED with the real pytest runner; fix test mistakes rather than accepting an unrelated import/path failure as the only evidence.
+- [x] Implement the minimum named calculation and frozen result. Public docs distinguish budget evidence from authorization and describe invalid input.
+- [x] Grow tests before behavior for exact risk/cash boundaries, unknown capital, fees, quantities, invalid inputs and deterministic arithmetic.
+- [x] Verify GREEN on Python 3.11.11, run the whole new package suite, build/install a wheel and exercise its public import outside the source tree.
+- [x] Have an independent reviewer examine the production diff and tests for risk weakening, hidden approval semantics, precision loss and unnecessary abstractions. Resolve findings and rerun affected checks.
+- [x] Record implementation and test line counts separately. Keep this implementation increment below 1,000 changed lines; aim for a few hundred. Do not create empty future files merely to satisfy the roadmap.
 
 Hand-checked acceptance cases (synthetic fixtures, not market data or declared experiment capital):
 
@@ -60,3 +61,7 @@ Test quantities 0, 2 and negative as unsuccessful, Boolean quantity and float mo
 7. Data/training, LEAN, shadow and paper phases only after their separate prerequisites pass.
 
 These are dependency boundaries, not permission to merge an unfinished Phase 1 as order-ready. Each unit should carry a domain behavior, its tests and necessary vocabulary updates. Review units approaching 1,000 changed lines should be split by behavior; any larger exception must be predominantly meaningful tests and explain why the boundary remains cohesive.
+
+## First increment verification
+
+Completed locally on 2026-09-05: CPython 3.11.11, pytest 9.0.2, 48 passing cases; compile and wheel installation/public import checks passed. Independent review found and verified the correction for unbounded Decimal precision. Production Python is 166 lines; tests are 275 lines. This completes only the premium-budget increment, not Phase 1 or any economic/paper release gate. Published as [PR #3](https://github.com/SilasSpencer1/Lean/pull/3) after explicit user approval; the user also authorized merging it into `master`.
