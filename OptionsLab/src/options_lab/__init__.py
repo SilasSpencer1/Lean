@@ -1,5 +1,12 @@
 """Public package for OptionsLab policy calculations."""
 
+from .bar_inputs import (
+    BarContentIdentity,
+    BarInputRejection,
+    BarValidation,
+    identify_underlying_bar,
+    normalize_underlying_bar,
+)
 from .bars import BarAssessment, UnderlyingBar, assess_underlying_bar
 from .config import (
     ExecutionPolicy,
@@ -68,6 +75,9 @@ from .underlying_inputs import (
 
 __all__ = [
     "BarAssessment",
+    "BarContentIdentity",
+    "BarInputRejection",
+    "BarValidation",
     "ConfigInputRejection",
     "ConfigValidation",
     "ContractId",
@@ -114,6 +124,7 @@ __all__ = [
     "assess_underlying_quote",
     "config_hash",
     "config_snapshot",
+    "identify_underlying_bar",
     "load_config",
     "normalize_config",
     "normalize_contract_reference",
@@ -122,6 +133,7 @@ __all__ = [
     "normalize_observation_meta",
     "normalize_provider_contract_mapping",
     "normalize_quote_observation",
+    "normalize_underlying_bar",
     "normalize_underlying_quote",
     "policy_hash",
 ]
