@@ -38,6 +38,13 @@ from .config_inputs import (
     load_config,
     normalize_config,
 )
+from .context import (
+    ContextBuildResult,
+    ContextComponent,
+    ContextMemberRejection,
+    DecisionContext,
+    build_decision_context,
+)
 from .context_inputs import (
     ContextInputRejection,
     ContextRequest,
@@ -128,7 +135,10 @@ __all__ = [
     "CoherenceValidation",
     "ConfigInputRejection",
     "ConfigValidation",
+    "ContextBuildResult",
+    "ContextComponent",
     "ContextInputRejection",
+    "ContextMemberRejection",
     "ContextRequest",
     "ContextRequestValidation",
     "ContractId",
@@ -136,6 +146,7 @@ __all__ = [
     "ContractReferenceAssessment",
     "ContractReferenceRejection",
     "ContractReferenceValidation",
+    "DecisionContext",
     "DeliverableComponent",
     "EntryTimingAssessment",
     "ExecutionPolicy",
@@ -196,6 +207,7 @@ __all__ = [
     "assess_submission_time",
     "assess_underlying_bar",
     "assess_underlying_quote",
+    "build_decision_context",
     "config_hash",
     "config_snapshot",
     "greek_input_hash",

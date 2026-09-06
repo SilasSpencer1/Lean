@@ -24,6 +24,14 @@
       "generator_version": "1",
       "normalization_version": 1,
       "payload_schema_version": 1
+    },
+    {
+      "expected_payload_sha256": "784029292102802c64ac17b9155af34ae8105a0a58c1cad037fcd29da2470ae0",
+      "fixture_id": "p08d-current-market-v1",
+      "generator_id": "optionslab-context-fixture-builder",
+      "generator_version": "1",
+      "normalization_version": 1,
+      "payload_schema_version": 1
     }
   ]
 }
