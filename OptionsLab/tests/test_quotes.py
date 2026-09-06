@@ -452,6 +452,18 @@ def test_excessive_finite_arithmetic_range_returns_bounded_reason() -> None:
     assert result.budget is None
 
 
+def test_quote_only_policy_is_independent_of_extreme_fee_precision() -> None:
+    observed = quote()
+
+    observation, reasons = api._assess_quote_only(observed, decision_at=DECISION)
+    premium = assess(observed, round_trip_fees=Decimal("1e1000"))
+
+    assert observation.live_quote_time_suitable is True
+    assert reasons == ()
+    assert premium.quote_reasons == ("arithmetic_precision_unsupported",)
+    assert premium.budget is None
+
+
 def test_unrelated_precision_planning_error_is_not_swallowed(monkeypatch) -> None:
     def broken_precision(values):
         raise ValueError("programming defect")
