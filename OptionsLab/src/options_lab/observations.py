@@ -258,12 +258,16 @@ def normalize_observation_meta(
         diagnostics.append(FieldDiagnostic("$", "expected_exact_dict"))
     else:
         allowed = set(_REQUIRED_FIELDS + _OPTIONAL_FIELDS)
-        if any(type(key) is not str or key not in allowed for key in raw):
+        exact_string_fields = {key for key in raw if type(key) is str}
+        if len(exact_string_fields) != len(raw) or not exact_string_fields <= allowed:
             diagnostics.append(FieldDiagnostic("$", "unknown_fields"))
         for field in _REQUIRED_FIELDS:
-            if field not in raw:
+            if field not in exact_string_fields:
                 diagnostics.append(FieldDiagnostic(field, "missing"))
         if not diagnostics:
+            raw = dict(raw)
+            if type(raw["quality_flags"]) is list:
+                raw["quality_flags"] = list(raw["quality_flags"])
             parsed = _parse_external_fields(raw, diagnostics)
             if not diagnostics:
                 return ObservationValidation(
