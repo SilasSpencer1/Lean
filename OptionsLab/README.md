@@ -25,6 +25,26 @@ This assessment only reports declared metadata and time suitability. It does
 not verify external provenance claims or establish the prices, contract,
 Greeks, account state, session controls, or other evidence required for entry.
 
+Contract-reference assessment reconciles an already typed provider mapping
+with a separately supplied reference at an explicit decision time:
+
+```python
+from options_lab import assess_contract_reference
+
+evidence = assess_contract_reference(mapping, reference, decision_at=now)
+if not evidence.reference_suitable:
+    print(evidence.reasons)
+```
+
+The assessment checks full identity agreement, independent measured
+availability, listing/effective times, and a complete deliverable consisting
+of exactly one component: 100 SPY shares. Extra cash/assets, unknown contents,
+and split/duplicate components fail. Unsupported facts stay in the result.
+Provider symbols are opaque; the adapter supplies their mapped identity.
+This checks supplied claims, not source authenticity, DTE/market eligibility,
+or order authorization. Total safe parsing of raw provider dictionaries is
+a subsequent increment; invalid typed arguments raise TypeError/ValueError.
+
 Run from the `OptionsLab` directory:
 
 ```shell
