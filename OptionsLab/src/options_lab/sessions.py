@@ -542,15 +542,30 @@ def _append_reason(reasons: list[str], reason: str) -> None:
 
 def _session_evidence(result: SessionAssessment, strategy_date: date) -> tuple[list[str], bool]:
     """Return ordered calendar reasons and whether its hours are usable."""
-    value = result.session
+    return _calendar_facts(
+        result.session,
+        expected_calendar=result.config.strategy_calendar,
+        expected_session_date=strategy_date,
+        cutoff=result.now,
+    )
+
+
+def _calendar_facts(
+    value: ExchangeSession | None,
+    *,
+    expected_calendar: str,
+    expected_session_date: date,
+    cutoff: datetime,
+) -> tuple[list[str], bool]:
+    """Return calendar facts for an explicit session date and availability cutoff."""
     if value is None:
         return ["session_missing"], False
     reasons: list[str] = []
     checks = (
-        (value.calendar != result.config.strategy_calendar, "calendar_unsupported"),
-        (value.session_date != strategy_date, "session_wrong_date"),
+        (value.calendar != expected_calendar, "calendar_unsupported"),
+        (value.session_date != expected_session_date, "session_wrong_date"),
         (value.available_at is None, "session_availability_unknown"),
-        (value.available_at is not None and value.available_at > result.now, "session_available_after_now"),
+        (value.available_at is not None and value.available_at > cutoff, "session_available_after_now"),
         (value.availability_basis != "measured", "session_availability_not_measured"),
         (value.kind == "closed", "session_closed"),
         (value.kind == "unknown", "session_unknown"),
