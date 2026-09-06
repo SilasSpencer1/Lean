@@ -64,4 +64,4 @@ These are dependency boundaries, not permission to merge an unfinished Phase 1 a
 
 ## First increment verification
 
-Completed locally on 2026-09-05: CPython 3.11.11, pytest 9.0.2, 48 passing cases; compile and wheel installation/public import checks passed. Independent review found and verified the correction for unbounded Decimal precision. Production Python is 166 lines; tests are 275 lines. This completes only the premium-budget increment, not Phase 1 or any economic/paper release gate. Publication awaits explicit approval after automatic review rejected the branch push.
+Completed locally on 2026-09-05: CPython 3.11.11, pytest 9.0.2, 48 passing cases; compile and wheel installation/public import checks passed. Independent review found and verified the correction for unbounded Decimal precision. Production Python is 166 lines; tests are 275 lines. This completes only the premium-budget increment, not Phase 1 or any economic/paper release gate. Published as [PR #3](https://github.com/SilasSpencer1/Lean/pull/3) after explicit user approval; the user also authorized merging it into `master`.
