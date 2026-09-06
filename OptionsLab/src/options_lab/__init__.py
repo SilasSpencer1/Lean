@@ -8,6 +8,12 @@ from .config import (
     config_snapshot,
     policy_hash,
 )
+from .config_inputs import (
+    ConfigInputRejection,
+    ConfigValidation,
+    load_config,
+    normalize_config,
+)
 from .contract_inputs import (
     ContractReferenceRejection,
     ContractReferenceValidation,
@@ -38,6 +44,8 @@ from .quote_inputs import QuoteInputRejection, QuoteValidation, normalize_quote_
 from .quotes import QuoteObservation, QuotePremiumAssessment, assess_quote_premium_budget
 
 __all__ = [
+    "ConfigInputRejection",
+    "ConfigValidation",
     "ContractId",
     "ContractReference",
     "ContractReferenceAssessment",
@@ -66,6 +74,8 @@ __all__ = [
     "assess_quote_premium_budget",
     "config_hash",
     "config_snapshot",
+    "load_config",
+    "normalize_config",
     "normalize_contract_reference",
     "normalize_observation_meta",
     "normalize_provider_contract_mapping",
