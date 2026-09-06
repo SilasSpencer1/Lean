@@ -8,7 +8,7 @@ from ._input_parsing import (
     RejectionCode,
     _InvalidInput,
     _fail,
-    _parse_date,
+    _parse_contract_id,
     _parse_decimal,
     _parse_string,
     _parse_timestamp,
@@ -17,7 +17,6 @@ from ._input_parsing import (
 )
 from ._validation import _require_nonempty_string, _trusted_datetime
 from .contracts import (
-    ContractId,
     ContractReference,
     DeliverableComponent,
     ProviderContractMapping,
@@ -31,9 +30,6 @@ _ROOT_FIELDS = (
 _MAPPING_ROOT_FIELDS = (
     "provider", "symbol", "contract", "available_at", "availability_basis",
     "availability_evidence_ref",
-)
-_CONTRACT_FIELDS = (
-    "underlying", "expiry", "right", "strike", "multiplier", "deliverable_id",
 )
 _COMPONENT_FIELDS = ("kind", "asset", "quantity")
 
@@ -217,7 +213,7 @@ def normalize_provider_contract_mapping(
         root = raw
         provider = _parse_string(root["provider"], "provider")
         symbol = _parse_string(root["symbol"], "symbol")
-        contract = _parse_contract(root["contract"])
+        contract = _parse_contract_id(root["contract"])
         available_at = _parse_timestamp(root["available_at"], "available_at")
         availability_basis = _parse_token(
             root["availability_basis"], "availability_basis", ("measured", "assumed")
@@ -274,7 +270,7 @@ def normalize_contract_reference(
     try:
         _require_shape(raw, "$", _ROOT_FIELDS)
         root = raw
-        contract = _parse_contract(root["contract"])
+        contract = _parse_contract_id(root["contract"])
         components = _parse_components(root["components"])
         source = _parse_string(root["source"], "source")
         provider_record_id = _parse_string(root["provider_record_id"], "provider_record_id")
@@ -302,21 +298,6 @@ def normalize_contract_reference(
         field, code = failure.args
         return _rejected(event_id, received_at, raw_ref, field, code)
     return ContractReferenceValidation(value=reference)
-
-
-def _parse_contract(raw: object) -> ContractId:
-    """Parse one concrete contract identity for this and provider inputs."""
-    _require_shape(raw, "contract", _CONTRACT_FIELDS)
-    contract = raw
-    underlying = _parse_string(contract["underlying"], "contract.underlying")
-    expiry = _parse_date(contract["expiry"], "contract.expiry")
-    right = _parse_token(contract["right"], "contract.right", ("call", "put"))
-    strike = _parse_decimal(contract["strike"], "contract.strike")
-    multiplier = contract["multiplier"]
-    if type(multiplier) is not int:
-        _fail("contract.multiplier", "invalid_type")
-    deliverable_id = _parse_string(contract["deliverable_id"], "contract.deliverable_id")
-    return ContractId(underlying, expiry, right, strike, multiplier, deliverable_id)
 
 
 def _parse_components(raw: object) -> tuple[DeliverableComponent, ...] | None:

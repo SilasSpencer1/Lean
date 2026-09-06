@@ -42,6 +42,12 @@ from .observations import (
 from .premium import PremiumBudget, assess_premium_budget
 from .quote_inputs import QuoteInputRejection, QuoteValidation, normalize_quote_observation
 from .quotes import QuoteObservation, QuotePremiumAssessment, assess_quote_premium_budget
+from .session_inputs import (
+    SessionInputRejection,
+    SessionValidation,
+    normalize_exchange_session,
+    normalize_instrument_tradability,
+)
 from .sessions import (
     EntryTimingAssessment,
     ExchangeSession,
@@ -80,6 +86,8 @@ __all__ = [
     "ObservationValidation",
     "StrategyConfig",
     "SessionAssessment",
+    "SessionInputRejection",
+    "SessionValidation",
     "assess_configured_quote_budget",
     "assess_contract_reference",
     "assess_decision_slot",
@@ -93,6 +101,8 @@ __all__ = [
     "load_config",
     "normalize_config",
     "normalize_contract_reference",
+    "normalize_exchange_session",
+    "normalize_instrument_tradability",
     "normalize_observation_meta",
     "normalize_provider_contract_mapping",
     "normalize_quote_observation",
