@@ -26,6 +26,7 @@ from .observations import (
     normalize_observation_meta,
 )
 from .premium import PremiumBudget, assess_premium_budget
+from .quote_inputs import QuoteInputRejection, QuoteValidation, normalize_quote_observation
 from .quotes import QuoteObservation, QuotePremiumAssessment, assess_quote_premium_budget
 
 __all__ = [
@@ -43,8 +44,10 @@ __all__ = [
     "ProviderContractMappingRejection",
     "ProviderContractMappingValidation",
     "PremiumBudget",
+    "QuoteInputRejection",
     "QuoteObservation",
     "QuotePremiumAssessment",
+    "QuoteValidation",
     "ObservationValidation",
     "assess_contract_reference",
     "assess_observation",
@@ -53,4 +56,5 @@ __all__ = [
     "normalize_contract_reference",
     "normalize_observation_meta",
     "normalize_provider_contract_mapping",
+    "normalize_quote_observation",
 ]
