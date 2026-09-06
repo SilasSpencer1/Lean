@@ -39,6 +39,7 @@ from .contracts import (
     assess_contract_reference,
 )
 from .features import FeatureState, FeatureUpdate, update_features
+from .greeks import FIXTURE_GREEK_METHOD, GreekInputs, GreekMethodSpec, greek_input_hash
 from .observations import (
     FieldDiagnostic,
     InputRejection,
@@ -91,9 +92,12 @@ __all__ = [
     "EntryTimingAssessment",
     "ExecutionPolicy",
     "ExchangeSession",
+    "FIXTURE_GREEK_METHOD",
     "FeatureState",
     "FeatureUpdate",
     "FieldDiagnostic",
+    "GreekInputs",
+    "GreekMethodSpec",
     "InputRejection",
     "InstrumentTradability",
     "ObservationAssessment",
@@ -129,6 +133,7 @@ __all__ = [
     "assess_underlying_quote",
     "config_hash",
     "config_snapshot",
+    "greek_input_hash",
     "identify_underlying_bar",
     "identify_quote_content",
     "load_config",
