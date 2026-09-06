@@ -15,6 +15,15 @@ from .bar_inputs import (
     normalize_underlying_bar,
 )
 from .bars import BarAssessment, UnderlyingBar, assess_underlying_bar
+from .coherence import (
+    CoherenceAssessment,
+    CoherenceInputRejection,
+    CoherenceValidation,
+    QuoteCoherenceEvidence,
+    SideValidity,
+    assess_quote_coherence,
+    normalize_quote_coherence,
+)
 from .config import (
     ExecutionPolicy,
     StrategyConfig,
@@ -101,6 +110,9 @@ __all__ = [
     "BarContentIdentity",
     "BarInputRejection",
     "BarValidation",
+    "CoherenceAssessment",
+    "CoherenceInputRejection",
+    "CoherenceValidation",
     "ConfigInputRejection",
     "ConfigValidation",
     "ContractId",
@@ -133,6 +145,7 @@ __all__ = [
     "ProviderContractMappingValidation",
     "PremiumBudget",
     "QuoteContentIdentity",
+    "QuoteCoherenceEvidence",
     "QuoteInputRejection",
     "QuoteObservation",
     "QuotePremiumAssessment",
@@ -142,6 +155,7 @@ __all__ = [
     "SessionAssessment",
     "SessionInputRejection",
     "SessionValidation",
+    "SideValidity",
     "UnderlyingBar",
     "UnderlyingQuote",
     "UnderlyingQuoteAssessment",
@@ -156,6 +170,7 @@ __all__ = [
     "assess_observation",
     "assess_premium_budget",
     "assess_quote_premium_budget",
+    "assess_quote_coherence",
     "assess_session",
     "assess_submission_time",
     "assess_underlying_bar",
@@ -174,6 +189,7 @@ __all__ = [
     "normalize_observation_meta",
     "normalize_provider_contract_mapping",
     "normalize_quote_observation",
+    "normalize_quote_coherence",
     "normalize_underlying_bar",
     "normalize_underlying_quote",
     "policy_hash",

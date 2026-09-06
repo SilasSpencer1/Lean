@@ -2,12 +2,20 @@
   "catalog_schema_version": 1,
   "fixtures": [
     {
+      "expected_payload_sha256": "6a40fe628066a6f73c6c0b6599ef9ddaf94c213fdf0e1adf589e5333ac5f7c04",
       "fixture_id": "p08a-greek-ready-v1",
       "generator_id": "optionslab-test-fixture-builder",
       "generator_version": "1",
-      "payload_schema_version": 1,
       "normalization_version": 1,
-      "expected_payload_sha256": "6a40fe628066a6f73c6c0b6599ef9ddaf94c213fdf0e1adf589e5333ac5f7c04"
+      "payload_schema_version": 1
+    },
+    {
+      "expected_payload_sha256": "3fd4b403dea1e0e234159c8655f820fef194e17ced6e84026e82d4684aafd52f",
+      "fixture_id": "p08b-quote-coherence-v1",
+      "generator_id": "optionslab-coherence-fixture-builder",
+      "generator_version": "1",
+      "normalization_version": 1,
+      "payload_schema_version": 1
     }
   ]
 }
