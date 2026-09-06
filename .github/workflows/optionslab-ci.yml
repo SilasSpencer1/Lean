@@ -1,0 +1,43 @@
+name: OptionsLab CI
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - "OptionsLab/**"
+      - ".github/workflows/optionslab-ci.yml"
+  push:
+    branches: [master]
+    paths:
+      - "OptionsLab/**"
+      - ".github/workflows/optionslab-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: OptionsLab
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: "3.11.11"
+
+      - name: Install test dependencies
+        run: python -m pip install '.[test]'
+
+      - name: Run tests
+        run: python -m pytest
