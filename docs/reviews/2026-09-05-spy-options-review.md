@@ -2,7 +2,7 @@
 
 Reviewed 2026-09-05 against repository commit `3c6ef2e7c1ad90948a3b41aac5a98839e2cd4308`, branch `design/spy-options-paper-v1`.
 
-Both original documents were read completely: [system design](../superpowers/specs/2026-09-05-spy-options-paper-system-design.md), 264 lines, and [Phase 1 plan](../superpowers/plans/2026-09-05-options-lab-core.md), 1,572 lines. This review treats Phase 1 as the first part of a larger platform. It neither implements trading nor claims that future tests have passed. Findings refer to the original documents at commit `3c6ef2e7c1ad90948a3b41aac5a98839e2cd4308`. After user approval, the originals were marked historical and the reviewed replacements were adopted as v2 documents; implementation proceeds in separate increments.
+Both original documents were read completely: [system design](../superpowers/specs/2026-09-05-spy-options-paper-system-design.md), 264 lines, and [Phase 1 plan](../superpowers/plans/2026-09-05-options-lab-core.md), 1,572 lines. This review treats Phase 1 as the first part of a larger platform. It neither implements trading nor claims that future tests have passed. Findings refer to the original documents at commit `3c6ef2e7c1ad90948a3b41aac5a98839e2cd4308`. This evidence-only revision records the review; the reviewed v2 documents, historical notices and implementation increments are proposed separately in [companion PR #2](https://github.com/SilasSpencer1/Lean/pull/2).
 
 ## 1. Executive verdict
 
@@ -72,7 +72,7 @@ These are specification defects and risks, not assertions that an existing tradi
 
 ## 4. Recommended design: six falsifiable choices
 
-The [adopted system design](../superpowers/specs/2026-09-05-spy-options-paper-system-design-v2.md) is the complete normative replacement. The following states the research decisions and why they matter.
+The complete normative replacement is the forthcoming `docs/superpowers/specs/2026-09-05-spy-options-paper-system-design-v2.md` in [companion PR #2](https://github.com/SilasSpencer1/Lean/pull/2). The following states the research decisions and why they matter.
 
 **Information.** Require completed causal SPY bars, fresh SPY/option quotes, independently timed delta/IV, standard-contract reference history, versioned sessions and current account/order facts. Quotes are immutable price observations, not objects that require valid Greeks merely to exist. Data about operational state enforce controls but do not enter the alpha vector. Optional skew, term structure, IV/realized-volatility comparison, extra Greeks and order flow receive separate schema/ablation trials. News/social remain shadow-only; revised macro values, hindsight-adjusted strike comparisons, future completeness and untimestamped derived values are excluded.
 
@@ -136,13 +136,13 @@ Only transport, data acquisition, calendar acquisition, vendor identifiers and b
 
 ## 6. Concrete proposed document changes
 
-The two reviewed replacements are now adopted, with a separate execution plan for small increments:
+This evidence-only revision does not adopt or add the reviewed replacements. [Companion PR #2](https://github.com/SilasSpencer1/Lean/pull/2) proposes the v2 documents and small implementation increments at these paths:
 
-1. [Adopted system design](../superpowers/specs/2026-09-05-spy-options-paper-system-design-v2.md).
-2. [Adopted Phase 1 roadmap](../superpowers/plans/2026-09-05-options-lab-core-v2.md).
-3. [Small implementation increments](../superpowers/plans/2026-09-05-optionslab-premium-budget.md) and [prerequisite status](../superpowers/plans/2026-09-05-optionslab-prerequisites.md). The original replacement patch is retained locally as a historical review artifact; it targets the original commit, not the subsequently marked archival documents.
+1. `docs/superpowers/specs/2026-09-05-spy-options-paper-system-design-v2.md`.
+2. `docs/superpowers/plans/2026-09-05-options-lab-core-v2.md`.
+3. `docs/superpowers/plans/2026-09-05-optionslab-premium-budget.md` and `docs/superpowers/plans/2026-09-05-optionslab-prerequisites.md`.
 
-The original bodies remain historical, with superseded notices. The adopted replacements preserve sound decisions and make these material changes:
+When that adoption PR is merged, it marks the original bodies historical with superseded notices. Its reviewed replacements preserve sound decisions and make these material changes:
 
 | Change | Reason | Preserved decision |
 |---|---|---|
