@@ -1,7 +1,7 @@
 """Typed option quote and joined premium-budget evidence."""
 
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timedelta
 from decimal import MAX_EMAX, MIN_EMIN, Context, Decimal, localcontext
 
 from ._validation import _trusted_datetime
@@ -83,6 +83,9 @@ class QuotePremiumAssessment:
     available_cash: Decimal | None
     round_trip_fees: Decimal = Decimal("1")
     premium_fraction: Decimal = Decimal("0.005")
+    max_quote_age: timedelta = _MAX_QUOTE_AGE
+    max_spread_fraction: Decimal = _MAXIMUM_SPREAD_FRACTION
+    spread_floor: Decimal = _MINIMUM_SPREAD
     observation: ObservationAssessment = field(init=False)
     quote_reasons: tuple[str, ...] = field(init=False)
     budget: PremiumBudget | None = field(init=False)
@@ -106,12 +109,28 @@ class QuotePremiumAssessment:
                 _require_exact_decimal(name, value, nullable=True)
         _require_exact_decimal("round_trip_fees", self.round_trip_fees)
         _require_exact_decimal("premium_fraction", self.premium_fraction)
+        if type(self.max_quote_age) is not timedelta:
+            raise TypeError("max_quote_age must be a timedelta")
+        _require_exact_decimal("max_spread_fraction", self.max_spread_fraction)
+        _require_exact_decimal("spread_floor", self.spread_floor)
         if self.round_trip_fees < 0:
             raise ValueError("round_trip_fees cannot be negative")
         if self.premium_fraction <= 0:
             raise ValueError("premium_fraction must be greater than zero")
         if self.premium_fraction > _MAXIMUM_PREMIUM_FRACTION:
             raise ValueError("premium_fraction cannot exceed 0.005")
+        if self.max_quote_age <= timedelta(0):
+            raise ValueError("max_quote_age must be positive")
+        if self.max_quote_age > _MAX_QUOTE_AGE:
+            raise ValueError("max_quote_age cannot exceed five seconds")
+        if self.max_spread_fraction <= 0:
+            raise ValueError("max_spread_fraction must be greater than zero")
+        if self.max_spread_fraction > _MAXIMUM_SPREAD_FRACTION:
+            raise ValueError("max_spread_fraction cannot exceed 0.08")
+        if self.spread_floor <= 0:
+            raise ValueError("spread_floor must be greater than zero")
+        if self.spread_floor > _MINIMUM_SPREAD:
+            raise ValueError("spread_floor cannot exceed 0.05")
 
         observation, quote_reasons, budget = _derive_evidence(self, decision_at)
         object.__setattr__(self, "observation", observation)
@@ -143,6 +162,9 @@ def assess_quote_premium_budget(
     available_cash: Decimal | None,
     round_trip_fees: Decimal = Decimal("1"),
     premium_fraction: Decimal = Decimal("0.005"),
+    max_quote_age: timedelta = _MAX_QUOTE_AGE,
+    max_spread_fraction: Decimal = _MAXIMUM_SPREAD_FRACTION,
+    spread_floor: Decimal = _MINIMUM_SPREAD,
 ) -> QuotePremiumAssessment:
     """
     Assess a typed quote and one-contract premium budget at a decision time.
@@ -157,6 +179,9 @@ def assess_quote_premium_budget(
     :param    available_cash:    Unencumbered settled cash, or None when absent.
     :param    round_trip_fees:   Estimated fees, subject to a one-dollar floor.
     :param    premium_fraction:  Maximum share of virtual equity, at most 0.005.
+    :param    max_quote_age:     Positive quote age limit, at most five seconds.
+    :param    max_spread_fraction: Positive midpoint spread fraction, at most 0.08.
+    :param    spread_floor:      Positive absolute spread floor, at most 0.05.
     :returns:                    Immutable quote and premium-budget evidence.
     :raises   TypeError:         If a trusted input has the wrong exact type.
     :raises   ValueError:        If a trusted timestamp, money value, fee, or
@@ -169,6 +194,9 @@ def assess_quote_premium_budget(
         available_cash,
         round_trip_fees,
         premium_fraction,
+        max_quote_age,
+        max_spread_fraction,
+        spread_floor,
     )
 
 
@@ -177,7 +205,11 @@ def _derive_evidence(
 ) -> tuple[ObservationAssessment, tuple[str, ...], PremiumBudget | None]:
     """Derive canonical observation, quote, and budget evidence."""
     quote = assessment.quote
-    observation = assess_observation(quote.meta, decision_at=decision_at)
+    observation = assess_observation(
+        quote.meta,
+        decision_at=decision_at,
+        max_quote_age=assessment.max_quote_age,
+    )
     arithmetic_context = _bounded_context(
         value
         for value in (
@@ -187,8 +219,8 @@ def _derive_evidence(
             assessment.available_cash,
             assessment.round_trip_fees,
             assessment.premium_fraction,
-            _MINIMUM_SPREAD,
-            _MAXIMUM_SPREAD_FRACTION,
+            assessment.max_spread_fraction,
+            assessment.spread_floor,
             _MIDPOINT_DIVISOR,
             _CONTRACT_MULTIPLIER,
             _MINIMUM_FEE,
@@ -196,7 +228,14 @@ def _derive_evidence(
         )
         if value is not None
     )
-    reasons = _quote_reasons(quote, decision_at, arithmetic_context)
+    reasons = _quote_reasons(
+        quote,
+        decision_at,
+        assessment.max_quote_age,
+        assessment.max_spread_fraction,
+        assessment.spread_floor,
+        arithmetic_context,
+    )
 
     if not observation.live_quote_time_suitable or reasons:
         return observation, reasons, None
@@ -231,6 +270,9 @@ def _bounded_context(values) -> Context | None:
 def _quote_reasons(
     quote: QuoteObservation,
     decision_at: datetime,
+    max_quote_age: timedelta,
+    max_spread_fraction: Decimal,
+    spread_floor: Decimal,
     arithmetic_context: Context | None,
 ) -> tuple[str, ...]:
     """Return quote failures in fixed policy order."""
@@ -268,7 +310,7 @@ def _quote_reasons(
                 reasons.append(f"{side}_time_after_decision")
             if side_at > quote.meta.available_at:
                 reasons.append(f"{side}_time_after_available")
-            if decision_at - side_at > _MAX_QUOTE_AGE:
+            if decision_at - side_at > max_quote_age:
                 reasons.append(f"{side}_too_old")
 
     for side in ("bid", "ask"):
@@ -289,8 +331,8 @@ def _quote_reasons(
         with localcontext(arithmetic_context):
             midpoint = (quote.bid + quote.ask) / _MIDPOINT_DIVISOR
             spread_limit = max(
-                _MINIMUM_SPREAD,
-                _MAXIMUM_SPREAD_FRACTION * midpoint,
+                spread_floor,
+                max_spread_fraction * midpoint,
             )
             if quote.ask - quote.bid > spread_limit:
                 reasons.append("spread_too_wide")
