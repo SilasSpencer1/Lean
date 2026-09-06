@@ -1,0 +1,4985 @@
+{
+  "assembled_at": "2026-09-06T23:40:31.800512+00:00",
+  "definitions": {
+    "coherence_protocol_ids": [
+      "fixture-joint-book-snapshot-v1",
+      "fixture-side-validity-overlap-v1"
+    ],
+    "greek_method": {
+      "assumptions_id": "fixture-flat-rates-v1",
+      "method_id": "fixture-greek-values",
+      "method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+      "method_version": "1"
+    },
+    "tick_definition_ids": [
+      "fixture-usd-premium-tick-v1"
+    ]
+  },
+  "fixture_id": "p08d-current-market-v1",
+  "generator_id": "optionslab-context-fixture-builder",
+  "generator_source_ref": "OptionsLab/tests/build_context_fixture.py",
+  "generator_version": "1",
+  "members": [
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-market-option_quote",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:59+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "option-provider-1",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/market-option_quote",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "market-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "market-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "market-option_quote"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-market-underlying_quote",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/underlying-provider-1",
+          "available_at": "2026-09-05T14:29:59+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "underlying-provider-1",
+          "quality_flags": [],
+          "source": "synthetic-sip-underlying"
+        },
+        "raw_ref": "synthetic://context/market-underlying_quote",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "market-underlying_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_quote",
+      "profile_id": "market-underlying_quote",
+      "raw_body": {
+        "ask": "650.02",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 900,
+        "bid": "650.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 700,
+        "symbol": "SPY"
+      },
+      "raw_hash": "0144f763fe13671e714c2864337e088175fd15a44b00e4d5e988a68b241ebb07",
+      "record_id": "market-underlying_quote"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-market-greek_observation",
+        "metadata": null,
+        "raw_ref": "synthetic://context/market-greek_observation",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "market-greek_observation",
+        "supersedes_record_id": null
+      },
+      "kind": "greek_observation",
+      "profile_id": "market-greek_observation",
+      "raw_body": {
+        "as_of": "2026-09-05T14:29:58+00:00",
+        "availability_basis": "measured",
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "delta": "0.50",
+        "delta_unit": "signed_option_price_per_underlying_price",
+        "input_hash": "7e3855d0dfb072da3bce8c6c7a9df4814d2d6eef1881a11807ef3f6f36cd5af7",
+        "inputs": {
+          "assumptions_id": "fixture-flat-rates-v1",
+          "dividend_unit": "continuous_annual_fraction",
+          "dividend_yield": "0.0125",
+          "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+          "rate": "-0.01",
+          "rate_unit": "continuous_annual_fraction",
+          "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+        },
+        "iv": "0.20",
+        "iv_unit": "annualized_volatility_fraction",
+        "method_id": "fixture-greek-values",
+        "method_version": "1",
+        "provider_record_id": "provider-market-greek_observation",
+        "source": "synthetic-greek-method"
+      },
+      "raw_hash": "8ec12f149d776e6818226cdff4474845f5483e35a079a5c591dfbbd5aa2b8bc2",
+      "record_id": "market-greek_observation"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-market-quote_coherence",
+        "metadata": null,
+        "raw_ref": "synthetic://context/market-quote_coherence",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "market-quote_coherence",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "market-quote_coherence",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "coherent_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "provider-market-quote_coherence",
+        "method": "joint_snapshot",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-joint-book-snapshot-v1",
+        "sides": [],
+        "snapshot_id": "joint-book-1",
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "5e5275a99808eb47de3d3f2950935d663b83effbaff6916fb4a97c4d54a4d559",
+      "record_id": "market-quote_coherence"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-market-tick_rule",
+        "metadata": null,
+        "raw_ref": "synthetic://context/market-tick_rule",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "market-tick_rule",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "market-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0.01",
+        "price_from": "0",
+        "price_until": null,
+        "provider_record_id": "provider-market-tick_rule",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "1a9185e3f79ea6ce54bc1816bc5be4cbb3126e4608ff9a120bad32dad64707b3",
+      "record_id": "market-tick_rule"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-crossed-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-crossed-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/crossed-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "crossed-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "crossed-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "crossed-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-crossed-B",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-crossed-B",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/crossed-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "crossed-option_quote",
+        "supersedes_record_id": "crossed-A"
+      },
+      "kind": "option_quote",
+      "profile_id": "crossed-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "6",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "2a7a36d227b2be8c5651f062e8f05072e2a26c575e72b67cd3a71cd8e359cfe4",
+      "record_id": "crossed-B"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-malformed-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-malformed-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/malformed-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "malformed-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "malformed-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "malformed-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-malformed-B",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-malformed-B",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/malformed-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "malformed-option_quote",
+        "supersedes_record_id": "malformed-A"
+      },
+      "kind": "option_quote",
+      "profile_id": "malformed-option_quote",
+      "raw_body": {
+        "ask": true,
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "22d04889fc802a0c8537c49ce8158d94765203737b941511538ace5c348b49db",
+      "record_id": "malformed-B"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-unknown-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-unknown-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/unknown-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "unknown-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "unknown-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "unknown-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-unknown-B",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": null,
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-unknown-B",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/unknown-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "unknown-option_quote",
+        "supersedes_record_id": "unknown-A"
+      },
+      "kind": "option_quote",
+      "profile_id": "unknown-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "unknown-B"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-both-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-both-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/both-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "both-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "both-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "both-A"
+    },
+    {
+      "envelope": {
+        "contract": {},
+        "event_id": "event-both-B",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-both-B",
+          "quality_flags": [],
+          "source": null
+        },
+        "raw_ref": "synthetic://context/both-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "both-option_quote",
+        "supersedes_record_id": "both-A"
+      },
+      "kind": "option_quote",
+      "profile_id": "both-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "both-B"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-source-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-source-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/source-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "source-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "source-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "source-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-source-B",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-source-B",
+          "quality_flags": [],
+          "source": "wrong"
+        },
+        "raw_ref": "synthetic://context/source-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "source-option_quote",
+        "supersedes_record_id": "source-A"
+      },
+      "kind": "option_quote",
+      "profile_id": "source-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "source-B"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-profile-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-profile-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/profile-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "profile-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "profile-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "profile-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-profile-B",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "delayed",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-profile-B",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/profile-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "profile-option_quote",
+        "supersedes_record_id": "profile-A"
+      },
+      "kind": "option_quote",
+      "profile_id": "profile-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "profile-B"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-event-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-event-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/event-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "event-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "event-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "event-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-event-B",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:30:03+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-event-B",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/event-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "event-option_quote",
+        "supersedes_record_id": "event-A"
+      },
+      "kind": "option_quote",
+      "profile_id": "event-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "event-B"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-future-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-future-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/future-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "future-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "future-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "future-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-future-B",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:30:01+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-future-B",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/future-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "future-option_quote",
+        "supersedes_record_id": "future-A"
+      },
+      "kind": "option_quote",
+      "profile_id": "future-option_quote",
+      "raw_body": {
+        "ask": true,
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "22d04889fc802a0c8537c49ce8158d94765203737b941511538ace5c348b49db",
+      "record_id": "future-B"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-tie-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-tie-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/tie-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "tie-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "tie-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "tie-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-tie-B",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-tie-B",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/tie-B",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "tie-option_quote",
+        "supersedes_record_id": "tie-A"
+      },
+      "kind": "option_quote",
+      "profile_id": "tie-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "tie-B"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-missing-sequence-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-missing-sequence-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/missing-sequence-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "missing-sequence-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "missing-sequence-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "missing-sequence-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-missing-sequence-B",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-missing-sequence-B",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/missing-sequence-B",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "missing-sequence-option_quote",
+        "supersedes_record_id": "missing-sequence-A"
+      },
+      "kind": "option_quote",
+      "profile_id": "missing-sequence-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "missing-sequence-B"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-linear-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-linear-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/linear-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "linear-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "linear-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "linear-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-linear-B",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-linear-B",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/linear-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "linear-option_quote",
+        "supersedes_record_id": "linear-A"
+      },
+      "kind": "option_quote",
+      "profile_id": "linear-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "linear-B"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-orphan-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-orphan-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/orphan-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "orphan-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "orphan-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "orphan-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-orphan-B",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-orphan-B",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/orphan-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "orphan-option_quote",
+        "supersedes_record_id": "absent"
+      },
+      "kind": "option_quote",
+      "profile_id": "orphan-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "orphan-B"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-cycle-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-cycle-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/cycle-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "cycle-option_quote",
+        "supersedes_record_id": "cycle-B"
+      },
+      "kind": "option_quote",
+      "profile_id": "cycle-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "cycle-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-cycle-B",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-cycle-B",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/cycle-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "cycle-option_quote",
+        "supersedes_record_id": "cycle-A"
+      },
+      "kind": "option_quote",
+      "profile_id": "cycle-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "cycle-B"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-fork-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-fork-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/fork-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "fork-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "fork-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "fork-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-fork-B",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-fork-B",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/fork-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "fork-option_quote",
+        "supersedes_record_id": "fork-A"
+      },
+      "kind": "option_quote",
+      "profile_id": "fork-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "fork-B"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-fork-C",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-fork-C",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/fork-C",
+        "receive_sequence": 3,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "fork-option_quote",
+        "supersedes_record_id": "fork-A"
+      },
+      "kind": "option_quote",
+      "profile_id": "fork-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "fork-C"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-conflict-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "shared",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/conflict-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "conflict-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "conflict-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "conflict-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-conflict-B",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "shared",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/conflict-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "conflict-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "conflict-option_quote",
+      "raw_body": {
+        "ask": "5.20",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "2f3be499a3b35ea24e90bfd0ca79d24b54af9eb89a5225d15487c261eb11136a",
+      "record_id": "conflict-B"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-duplicate-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "shared",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/duplicate-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "duplicate-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "duplicate-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "duplicate-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-duplicate-B",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "shared",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/duplicate-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "duplicate-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "duplicate-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "duplicate-B"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-duplicate-C",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "shared",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/duplicate-C",
+        "receive_sequence": 3,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "duplicate-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "duplicate-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "duplicate-C"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-unlinked-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-unlinked-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/unlinked-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "unlinked-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "unlinked-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "unlinked-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-unlinked-B",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-unlinked-B",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/unlinked-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "unlinked-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "unlinked-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "unlinked-B"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-bands-A",
+        "metadata": null,
+        "raw_ref": "synthetic://context/bands-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "bands-tick_rule",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "bands-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0.01",
+        "price_from": "0",
+        "price_until": "3",
+        "provider_record_id": "provider-bands-A",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "bb4c134b7918a05f8dc4c339acb508988d924a1e95aa2469f7a9dc5f7194f9be",
+      "record_id": "bands-A"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-bands-B",
+        "metadata": null,
+        "raw_ref": "synthetic://context/bands-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "bands-tick_rule",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "bands-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0.05",
+        "price_from": "3",
+        "price_until": null,
+        "provider_record_id": "provider-bands-B",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "91b719ca2492aab223382bb52880e883ce41bb6e6affa4d9f3d6d8939834509f",
+      "record_id": "bands-B"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-schedule-A",
+        "metadata": null,
+        "raw_ref": "synthetic://context/schedule-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "schedule-tick_rule",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "schedule-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T16:29:58+00:00",
+        "increment": "0.01",
+        "price_from": "0",
+        "price_until": "3",
+        "provider_record_id": "provider-schedule-A",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "e8044c7b309f58ff2f4182012221a1db40d38c00f0ac5265fb512cc34d78f86b",
+      "record_id": "schedule-A"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-schedule-B",
+        "metadata": null,
+        "raw_ref": "synthetic://context/schedule-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "schedule-tick_rule",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "schedule-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T16:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0.05",
+        "price_from": "0",
+        "price_until": null,
+        "provider_record_id": "provider-schedule-B",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "199f43383f6b8e92ed62c530f490206dd12a6eb9be3c4214b371509ea5245f54",
+      "record_id": "schedule-B"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-bad-band-A",
+        "metadata": null,
+        "raw_ref": "synthetic://context/bad-band-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "bad-band-tick_rule",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "bad-band-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0.01",
+        "price_from": "0",
+        "price_until": "3",
+        "provider_record_id": "provider-bad-band-A",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "0816641b00fbb8273a84f05f70168f392222a4a5679c8b561996df4957dff74d",
+      "record_id": "bad-band-A"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-bad-band-B",
+        "metadata": null,
+        "raw_ref": "synthetic://context/bad-band-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "bad-band-tick_rule",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "bad-band-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0.05",
+        "price_from": "4",
+        "price_until": null,
+        "provider_record_id": "provider-bad-band-B",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "1b4c4a11f7d5b46067b5a21052da78569a3afd0b624e7acb6bda0acabb6f2bc9",
+      "record_id": "bad-band-B"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-bad-band-A2",
+        "metadata": null,
+        "raw_ref": "synthetic://context/bad-band-A2",
+        "receive_sequence": 3,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "bad-band-tick_rule",
+        "supersedes_record_id": "bad-band-A"
+      },
+      "kind": "tick_rule",
+      "profile_id": "bad-band-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0",
+        "price_from": "0",
+        "price_until": "4",
+        "provider_record_id": "provider-bad-band-A2",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "f1145c5254c43b24990db3e73e7ad57b133edd167e0556bb141cf02e5623c424",
+      "record_id": "bad-band-A2"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-raw-band-A",
+        "metadata": null,
+        "raw_ref": "synthetic://context/raw-band-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "raw-band-tick_rule",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "raw-band-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0.01",
+        "price_from": "0",
+        "price_until": "3",
+        "provider_record_id": "provider-raw-band-A",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "4ebc0946a5dcfd667f19fe376aee3cdf732f789f46a40ac8847b0324ad70548d",
+      "record_id": "raw-band-A"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-raw-band-B",
+        "metadata": null,
+        "raw_ref": "synthetic://context/raw-band-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "raw-band-tick_rule",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "raw-band-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0.05",
+        "price_from": "4",
+        "price_until": null,
+        "provider_record_id": "provider-raw-band-B",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "c621f25729a75a7248302889d1caab5cbc8d35f8429a820ea2392760a0490605",
+      "record_id": "raw-band-B"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-raw-band-A2",
+        "metadata": null,
+        "raw_ref": "synthetic://context/raw-band-A2",
+        "receive_sequence": 3,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "raw-band-tick_rule",
+        "supersedes_record_id": "raw-band-A"
+      },
+      "kind": "tick_rule",
+      "profile_id": "raw-band-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": true,
+        "price_from": "0",
+        "price_until": "4",
+        "provider_record_id": "provider-raw-band-A2",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "166af93e8c8cd72f38d71a1d335f81cf24acbe815447c842fa9876f9a56b57bc",
+      "record_id": "raw-band-A2"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-overlap-A",
+        "metadata": null,
+        "raw_ref": "synthetic://context/overlap-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "overlap-tick_rule",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "overlap-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0.01",
+        "price_from": "0",
+        "price_until": "4",
+        "provider_record_id": "provider-overlap-A",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "d421fe076c7b061253c68cfb6024db23714acdee665f304111f0a3f05391ae93",
+      "record_id": "overlap-A"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-overlap-B",
+        "metadata": null,
+        "raw_ref": "synthetic://context/overlap-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "overlap-tick_rule",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "overlap-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0.05",
+        "price_from": "3",
+        "price_until": null,
+        "provider_record_id": "provider-overlap-B",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "1a96f536f62f2268b72a8ecd1948cc5c4ef1aecc2b17d50d7c8b70b7c85a89f9",
+      "record_id": "overlap-B"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-tick-future-A",
+        "metadata": null,
+        "raw_ref": "synthetic://context/tick-future-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-future-tick_rule",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-future-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0.01",
+        "price_from": "0",
+        "price_until": "3",
+        "provider_record_id": "provider-tick-future-A",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "24cee02c8880f4359c4e143443eead9fe2b74f6f148b443580653d8eeb305fc4",
+      "record_id": "tick-future-A"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-tick-future-A2",
+        "metadata": null,
+        "raw_ref": "synthetic://context/tick-future-A2",
+        "receive_sequence": 3,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-future-tick_rule",
+        "supersedes_record_id": "tick-future-A"
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-future-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:30:01+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0",
+        "price_from": "0",
+        "price_until": "4",
+        "provider_record_id": "provider-tick-future-A2",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "3e2c2eaa7496be4c4ab8f8b7365a72ad2db9f445eb8cca601c0ef489fec86986",
+      "record_id": "tick-future-A2"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-tick-fork-A",
+        "metadata": null,
+        "raw_ref": "synthetic://context/tick-fork-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-fork-tick_rule",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-fork-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0.01",
+        "price_from": "0",
+        "price_until": "3",
+        "provider_record_id": "provider-tick-fork-A",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "b0596a0388b191019da99e8d7280b8ef1805c8b9a43f37e9cc85e0623bc4805d",
+      "record_id": "tick-fork-A"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-tick-fork-A2",
+        "metadata": null,
+        "raw_ref": "synthetic://context/tick-fork-A2",
+        "receive_sequence": 3,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-fork-tick_rule",
+        "supersedes_record_id": "tick-fork-A"
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-fork-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0",
+        "price_from": "0",
+        "price_until": "4",
+        "provider_record_id": "provider-tick-fork-A2",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "8e800e492a1bce1a0559329e2f14e1f3c3af37e1d82378d4139393ef35638d36",
+      "record_id": "tick-fork-A2"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-tick-fork-A3",
+        "metadata": null,
+        "raw_ref": "synthetic://context/tick-fork-A3",
+        "receive_sequence": 4,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-fork-tick_rule",
+        "supersedes_record_id": "tick-fork-A"
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-fork-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0.01",
+        "price_from": "0",
+        "price_until": null,
+        "provider_record_id": "provider-tick-fork-A3",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "d77393f3e1da2753c15c24b651adcba1e9ce4ab022d1549035e5e920525813fb",
+      "record_id": "tick-fork-A3"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-tick-linear-A",
+        "metadata": null,
+        "raw_ref": "synthetic://context/tick-linear-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-linear-tick_rule",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-linear-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0.01",
+        "price_from": "0",
+        "price_until": "3",
+        "provider_record_id": "provider-tick-linear-A",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "111ce0195c777415df1e0f1a49ac119adc6f6283b77acfc0dce134f3f674167b",
+      "record_id": "tick-linear-A"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-tick-linear-A2",
+        "metadata": null,
+        "raw_ref": "synthetic://context/tick-linear-A2",
+        "receive_sequence": 3,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-linear-tick_rule",
+        "supersedes_record_id": "tick-linear-A"
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-linear-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0",
+        "price_from": "0",
+        "price_until": "4",
+        "provider_record_id": "provider-tick-linear-A2",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "5ab14127bcdf0940f8b31844afd4b2b2cfef74d075c878b1ab3f6feebb0d4fb6",
+      "record_id": "tick-linear-A2"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-tick-linear-A3",
+        "metadata": null,
+        "raw_ref": "synthetic://context/tick-linear-A3",
+        "receive_sequence": 4,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-linear-tick_rule",
+        "supersedes_record_id": "tick-linear-A2"
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-linear-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0.01",
+        "price_from": "0",
+        "price_until": null,
+        "provider_record_id": "provider-tick-linear-A3",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "27c3d5a6e61b188421899fd3e14abfbe9bcd0f4524a76160802a3de83e1b37e6",
+      "record_id": "tick-linear-A3"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-tick-tie-A",
+        "metadata": null,
+        "raw_ref": "synthetic://context/tick-tie-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-tie-tick_rule",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-tie-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0.01",
+        "price_from": "0",
+        "price_until": "3",
+        "provider_record_id": "provider-tick-tie-A",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "c453bfdb40ee2cb6c0faa95f8e78dc7d3651b45e35d8f93f54785faa5cc7f83c",
+      "record_id": "tick-tie-A"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-tick-tie-A2",
+        "metadata": null,
+        "raw_ref": "synthetic://context/tick-tie-A2",
+        "receive_sequence": 3,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-tie-tick_rule",
+        "supersedes_record_id": "tick-tie-A"
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-tie-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0",
+        "price_from": "0",
+        "price_until": "4",
+        "provider_record_id": "provider-tick-tie-A2",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "8297c084773c9624f85c01236d472f184e8aae257ef010ade59bcd8c9f313454",
+      "record_id": "tick-tie-A2"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-tick-tie-A3",
+        "metadata": null,
+        "raw_ref": "synthetic://context/tick-tie-A3",
+        "receive_sequence": 3,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-tie-tick_rule",
+        "supersedes_record_id": "tick-tie-A2"
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-tie-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0.01",
+        "price_from": "0",
+        "price_until": null,
+        "provider_record_id": "provider-tick-tie-A3",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "b918cedb803c770f6c4f430b0858e8236df0dd659fcc817c6e0dcdc3bb0cc306",
+      "record_id": "tick-tie-A3"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-tick-null-A",
+        "metadata": null,
+        "raw_ref": "synthetic://context/tick-null-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-null-tick_rule",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-null-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0.01",
+        "price_from": "0",
+        "price_until": "3",
+        "provider_record_id": "provider-tick-null-A",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "0c1a330b165bd89eded4abc32701dfc08fec2a1acc67edb51544bc5b75eb92c7",
+      "record_id": "tick-null-A"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-tick-null-A2",
+        "metadata": null,
+        "raw_ref": "synthetic://context/tick-null-A2",
+        "receive_sequence": 3,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-null-tick_rule",
+        "supersedes_record_id": "tick-null-A"
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-null-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0",
+        "price_from": "0",
+        "price_until": "4",
+        "provider_record_id": "provider-tick-null-A2",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "b0cdf7b9057eaf8caa7979d8067adee95de13aaff45d5abdca4891b5b43b1506",
+      "record_id": "tick-null-A2"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-tick-null-A3",
+        "metadata": null,
+        "raw_ref": "synthetic://context/tick-null-A3",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "tick-null-tick_rule",
+        "supersedes_record_id": "tick-null-A2"
+      },
+      "kind": "tick_rule",
+      "profile_id": "tick-null-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0.01",
+        "price_from": "0",
+        "price_until": null,
+        "provider_record_id": "provider-tick-null-A3",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "a2e89f35add4bbc99dd13517d8a8bbc1e5c74ac229f4a420af5efac19d3d1b76",
+      "record_id": "tick-null-A3"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-scheduled-revision-A",
+        "metadata": null,
+        "raw_ref": "synthetic://context/scheduled-revision-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "scheduled-revision-tick_rule",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "scheduled-revision-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0.01",
+        "price_from": "0",
+        "price_until": "3",
+        "provider_record_id": "provider-scheduled-revision-A",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "049e6210d7f7fb1429984a452817ff8073ca7bae5e49bbecdff0d873dc10412c",
+      "record_id": "scheduled-revision-A"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-scheduled-revision-A2",
+        "metadata": null,
+        "raw_ref": "synthetic://context/scheduled-revision-A2",
+        "receive_sequence": 3,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "scheduled-revision-tick_rule",
+        "supersedes_record_id": "scheduled-revision-A"
+      },
+      "kind": "tick_rule",
+      "profile_id": "scheduled-revision-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T16:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0",
+        "price_from": "0",
+        "price_until": "4",
+        "provider_record_id": "provider-scheduled-revision-A2",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "5078b081bdd169785295f0ac9884b6ab991b3c505d0718d53edd1442f0b3c87f",
+      "record_id": "scheduled-revision-A2"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-identity-option_quote-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-identity-option_quote-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/identity-option_quote-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "identity-option_quote-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "identity-option_quote-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "identity-option_quote-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-identity-option_quote-B",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-identity-option_quote-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/identity-option_quote-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "identity-option_quote-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "identity-option_quote-option_quote",
+      "raw_body": {
+        "ask": "5.20",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "2f3be499a3b35ea24e90bfd0ca79d24b54af9eb89a5225d15487c261eb11136a",
+      "record_id": "identity-option_quote-B"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-identity-underlying_quote-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/underlying-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-identity-underlying_quote-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-underlying"
+        },
+        "raw_ref": "synthetic://context/identity-underlying_quote-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "identity-underlying_quote-underlying_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_quote",
+      "profile_id": "identity-underlying_quote-underlying_quote",
+      "raw_body": {
+        "ask": "650.02",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 900,
+        "bid": "650.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 700,
+        "symbol": "SPY"
+      },
+      "raw_hash": "0144f763fe13671e714c2864337e088175fd15a44b00e4d5e988a68b241ebb07",
+      "record_id": "identity-underlying_quote-A"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-identity-underlying_quote-B",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/underlying-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-identity-underlying_quote-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-underlying"
+        },
+        "raw_ref": "synthetic://context/identity-underlying_quote-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "identity-underlying_quote-underlying_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_quote",
+      "profile_id": "identity-underlying_quote-underlying_quote",
+      "raw_body": {
+        "ask": "5.20",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 900,
+        "bid": "650.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 700,
+        "symbol": "SPY"
+      },
+      "raw_hash": "20a99392d50607d9e0d4a8f12f81cbbae45e6e17405eb0171cd9d88d56125df2",
+      "record_id": "identity-underlying_quote-B"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-identity-greek_observation-A",
+        "metadata": null,
+        "raw_ref": "synthetic://context/identity-greek_observation-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "identity-greek_observation-greek_observation",
+        "supersedes_record_id": null
+      },
+      "kind": "greek_observation",
+      "profile_id": "identity-greek_observation-greek_observation",
+      "raw_body": {
+        "as_of": "2026-09-05T14:29:58+00:00",
+        "availability_basis": "measured",
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "delta": "0.50",
+        "delta_unit": "signed_option_price_per_underlying_price",
+        "input_hash": "7e3855d0dfb072da3bce8c6c7a9df4814d2d6eef1881a11807ef3f6f36cd5af7",
+        "inputs": {
+          "assumptions_id": "fixture-flat-rates-v1",
+          "dividend_unit": "continuous_annual_fraction",
+          "dividend_yield": "0.0125",
+          "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+          "rate": "-0.01",
+          "rate_unit": "continuous_annual_fraction",
+          "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+        },
+        "iv": "0.20",
+        "iv_unit": "annualized_volatility_fraction",
+        "method_id": "fixture-greek-values",
+        "method_version": "1",
+        "provider_record_id": "provider-identity-greek_observation-A",
+        "source": "synthetic-greek-method"
+      },
+      "raw_hash": "94a1fbc0b351e6fbd9a090ddbd8379913d74b83d79b8e30715cd32070e66f55b",
+      "record_id": "identity-greek_observation-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-identity-greek_observation-B",
+        "metadata": null,
+        "raw_ref": "synthetic://context/identity-greek_observation-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "identity-greek_observation-greek_observation",
+        "supersedes_record_id": null
+      },
+      "kind": "greek_observation",
+      "profile_id": "identity-greek_observation-greek_observation",
+      "raw_body": {
+        "as_of": "2026-09-05T14:29:58+00:00",
+        "availability_basis": "measured",
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "delta": "0.55",
+        "delta_unit": "signed_option_price_per_underlying_price",
+        "input_hash": "7e3855d0dfb072da3bce8c6c7a9df4814d2d6eef1881a11807ef3f6f36cd5af7",
+        "inputs": {
+          "assumptions_id": "fixture-flat-rates-v1",
+          "dividend_unit": "continuous_annual_fraction",
+          "dividend_yield": "0.0125",
+          "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+          "rate": "-0.01",
+          "rate_unit": "continuous_annual_fraction",
+          "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+        },
+        "iv": "0.20",
+        "iv_unit": "annualized_volatility_fraction",
+        "method_id": "fixture-greek-values",
+        "method_version": "1",
+        "provider_record_id": "provider-identity-greek_observation-A",
+        "source": "synthetic-greek-method"
+      },
+      "raw_hash": "b1736b8053b62a6c56aeb3db8ec27b3a1deb05410e39b6618d674d1598d8ca05",
+      "record_id": "identity-greek_observation-B"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-identity-quote_coherence-A",
+        "metadata": null,
+        "raw_ref": "synthetic://context/identity-quote_coherence-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "identity-quote_coherence-quote_coherence",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "identity-quote_coherence-quote_coherence",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "coherent_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "provider-identity-quote_coherence-A",
+        "method": "joint_snapshot",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-joint-book-snapshot-v1",
+        "sides": [],
+        "snapshot_id": "joint-book-1",
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "40407a9b8b9642a539689bad3e39b1b9950b7ab922b2b502e0c1b3083e097780",
+      "record_id": "identity-quote_coherence-A"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-identity-quote_coherence-B",
+        "metadata": null,
+        "raw_ref": "synthetic://context/identity-quote_coherence-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "identity-quote_coherence-quote_coherence",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "identity-quote_coherence-quote_coherence",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "coherent_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "provider-identity-quote_coherence-A",
+        "method": "joint_snapshot",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-joint-book-snapshot-v1",
+        "sides": [],
+        "snapshot_id": "changed",
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "0a93f853b833606baf1b9b26d7c568e57c338efde976eac56881b42ef920589c",
+      "record_id": "identity-quote_coherence-B"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-identity-tick_rule-A",
+        "metadata": null,
+        "raw_ref": "synthetic://context/identity-tick_rule-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "identity-tick_rule-tick_rule",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "identity-tick_rule-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0.01",
+        "price_from": "0",
+        "price_until": null,
+        "provider_record_id": "provider-identity-tick_rule-A",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "280b29e59de874a5c43025c98a5587b8a3c7805769788bba497e54c9af3f21dd",
+      "record_id": "identity-tick_rule-A"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-identity-tick_rule-B",
+        "metadata": null,
+        "raw_ref": "synthetic://context/identity-tick_rule-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "identity-tick_rule-tick_rule",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "identity-tick_rule-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0.05",
+        "price_from": "0",
+        "price_until": null,
+        "provider_record_id": "provider-identity-tick_rule-A",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "9abf2e00a40d3df77ce4e704238078bd946e5865eaf8bf32e8c7669069cbf77c",
+      "record_id": "identity-tick_rule-B"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-future-identity-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-future-identity-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/future-identity-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "future-identity-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "future-identity-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "future-identity-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-future-identity-00-future",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:30:01+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-future-identity-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/future-identity-00-future",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "future-identity-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "future-identity-option_quote",
+      "raw_body": {
+        "ask": "5.20",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "2f3be499a3b35ea24e90bfd0ca79d24b54af9eb89a5225d15487c261eb11136a",
+      "record_id": "future-identity-00-future"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-future-meta-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-future-meta-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/future-meta-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "future-meta-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "future-meta-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "future-meta-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-future-meta-B",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:30:01+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-future-meta-B",
+          "quality_flags": [],
+          "source": null
+        },
+        "raw_ref": "synthetic://context/future-meta-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "future-meta-option_quote",
+        "supersedes_record_id": "future-meta-A"
+      },
+      "kind": "option_quote",
+      "profile_id": "future-meta-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "future-meta-B"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-giant-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-giant-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/giant-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "giant-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "giant-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+      },
+      "raw_hash": "17db16798ab73486e902461460be6dbd4bb9ffa02e00d3c7d4213b9110af3718",
+      "record_id": "giant-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-unknown-key-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-unknown-key-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/unknown-key-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "unknown-key-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "unknown-key-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "unknown-key-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-unknown-key-B",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-unknown-key-B",
+          "quality_flags": [],
+          "source": null
+        },
+        "raw_ref": "synthetic://context/unknown-key-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "unknown-key-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "unknown-key-option_quote",
+      "raw_body": {
+        "ask": true,
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "22d04889fc802a0c8537c49ce8158d94765203737b941511538ace5c348b49db",
+      "record_id": "unknown-key-B"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-cross-stream-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-cross-stream-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/cross-stream-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "cross-stream-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "cross-stream-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "cross-stream-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-other-stream-B",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:59+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-other-stream-B",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/other-stream-B",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "other-stream-option_quote",
+        "supersedes_record_id": "cross-stream-A"
+      },
+      "kind": "option_quote",
+      "profile_id": "other-stream-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "other-stream-B"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-future-link-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-future-link-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/future-link-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "future-link-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "future-link-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "future-link-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-future-link-F",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:30:01+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-future-link-F",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/future-link-F",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "future-link-option_quote",
+        "supersedes_record_id": "malformed-A"
+      },
+      "kind": "option_quote",
+      "profile_id": "future-link-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "future-link-F"
+    },
+    {
+      "envelope": {
+        "contract": {},
+        "event_id": "event-unknown-contract-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-unknown-contract-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/unknown-contract-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "unknown-contract-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "unknown-contract-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "unknown-contract-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-alias-conflict-A",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-alias-conflict-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/alias-conflict-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "alias-conflict-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "alias-conflict-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "alias-conflict-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "put",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-alias-conflict-B",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-alias-conflict-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/alias-conflict-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "alias-conflict-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "alias-conflict-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "alias-conflict-B"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-alias-conflict-C",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:58+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "provider-alias-conflict-A",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://context/alias-conflict-C",
+        "receive_sequence": 3,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "alias-conflict-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "alias-conflict-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "alias-conflict-C"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-bad-method-A",
+        "metadata": null,
+        "raw_ref": "synthetic://context/bad-method-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "bad-method-greek_observation",
+        "supersedes_record_id": null
+      },
+      "kind": "greek_observation",
+      "profile_id": "bad-method-greek_observation",
+      "raw_body": {
+        "as_of": "2026-09-05T14:29:58+00:00",
+        "availability_basis": "measured",
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "delta": "0.50",
+        "delta_unit": "signed_option_price_per_underlying_price",
+        "input_hash": "7e3855d0dfb072da3bce8c6c7a9df4814d2d6eef1881a11807ef3f6f36cd5af7",
+        "inputs": {
+          "assumptions_id": "fixture-flat-rates-v1",
+          "dividend_unit": "continuous_annual_fraction",
+          "dividend_yield": "0.0125",
+          "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+          "rate": "-0.01",
+          "rate_unit": "continuous_annual_fraction",
+          "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+        },
+        "iv": "0.20",
+        "iv_unit": "annualized_volatility_fraction",
+        "method_id": "fixture-greek-values",
+        "method_version": "1",
+        "provider_record_id": "provider-bad-method-A",
+        "source": "synthetic-greek-method"
+      },
+      "raw_hash": "76c1b71df665bdfe3202bb36ff09ba9540f584d258e9eaf3757928ebc4c41a38",
+      "record_id": "bad-method-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-bad-method-B",
+        "metadata": null,
+        "raw_ref": "synthetic://context/bad-method-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "bad-method-greek_observation",
+        "supersedes_record_id": "bad-method-A"
+      },
+      "kind": "greek_observation",
+      "profile_id": "bad-method-greek_observation",
+      "raw_body": {
+        "as_of": "2026-09-05T14:29:58+00:00",
+        "availability_basis": "measured",
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "delta": "0.50",
+        "delta_unit": "signed_option_price_per_underlying_price",
+        "input_hash": "7e3855d0dfb072da3bce8c6c7a9df4814d2d6eef1881a11807ef3f6f36cd5af7",
+        "inputs": {
+          "assumptions_id": "fixture-flat-rates-v1",
+          "dividend_unit": "continuous_annual_fraction",
+          "dividend_yield": "0.0125",
+          "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+          "rate": "-0.01",
+          "rate_unit": "continuous_annual_fraction",
+          "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+        },
+        "iv": "0.20",
+        "iv_unit": "annualized_volatility_fraction",
+        "method_id": "wrong",
+        "method_version": "1",
+        "provider_record_id": "provider-bad-method-B",
+        "source": "synthetic-greek-method"
+      },
+      "raw_hash": "5d5f0ed320fbdf607955eb125746ea5be4f6299dd2a9a6953214b51e1568669f",
+      "record_id": "bad-method-B"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-bad-protocol-A",
+        "metadata": null,
+        "raw_ref": "synthetic://context/bad-protocol-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "bad-protocol-quote_coherence",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "bad-protocol-quote_coherence",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "coherent_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "provider-bad-protocol-A",
+        "method": "joint_snapshot",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-joint-book-snapshot-v1",
+        "sides": [],
+        "snapshot_id": "joint-book-1",
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "224572f0fbb5a986d0b7a1cd610b8806c76c0b0cbd3d7403883217c4f5ef0b71",
+      "record_id": "bad-protocol-A"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-bad-protocol-B",
+        "metadata": null,
+        "raw_ref": "synthetic://context/bad-protocol-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "bad-protocol-quote_coherence",
+        "supersedes_record_id": "bad-protocol-A"
+      },
+      "kind": "quote_coherence",
+      "profile_id": "bad-protocol-quote_coherence",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "coherent_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "provider-bad-protocol-B",
+        "method": "joint_snapshot",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "wrong",
+        "sides": [],
+        "snapshot_id": "joint-book-1",
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "fbe7d201f807c0526ba9dabd1d56cd26c5994ecd4705237705783c0d0e877fd3",
+      "record_id": "bad-protocol-B"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-bad-definition-A",
+        "metadata": null,
+        "raw_ref": "synthetic://context/bad-definition-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "bad-definition-tick_rule",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "bad-definition-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0.01",
+        "price_from": "0",
+        "price_until": null,
+        "provider_record_id": "provider-bad-definition-A",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "2230376cca55db0df1548ec7c1bd000b7195a293c7058e08f9db6e3b2d28e510",
+      "record_id": "bad-definition-A"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-bad-definition-B",
+        "metadata": null,
+        "raw_ref": "synthetic://context/bad-definition-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "bad-definition-tick_rule",
+        "supersedes_record_id": "bad-definition-A"
+      },
+      "kind": "tick_rule",
+      "profile_id": "bad-definition-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0.01",
+        "price_from": "0",
+        "price_until": null,
+        "provider_record_id": "provider-bad-definition-B",
+        "rule_id": "wrong",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "6c81a69e1182333025d359b510cb78bc1ff7b4e6dc51c6b0220e4ab08d28f61f",
+      "record_id": "bad-definition-B"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-wrong-asof-A",
+        "metadata": null,
+        "raw_ref": "synthetic://context/wrong-asof-A",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "wrong-asof-greek_observation",
+        "supersedes_record_id": null
+      },
+      "kind": "greek_observation",
+      "profile_id": "wrong-asof-greek_observation",
+      "raw_body": {
+        "as_of": "2026-09-05T14:29:58+00:00",
+        "availability_basis": "measured",
+        "available_at": "2026-09-05T14:29:58+00:00",
+        "delta": "0.50",
+        "delta_unit": "signed_option_price_per_underlying_price",
+        "input_hash": "7e3855d0dfb072da3bce8c6c7a9df4814d2d6eef1881a11807ef3f6f36cd5af7",
+        "inputs": {
+          "assumptions_id": "fixture-flat-rates-v1",
+          "dividend_unit": "continuous_annual_fraction",
+          "dividend_yield": "0.0125",
+          "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+          "rate": "-0.01",
+          "rate_unit": "continuous_annual_fraction",
+          "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+        },
+        "iv": "0.20",
+        "iv_unit": "annualized_volatility_fraction",
+        "method_id": "fixture-greek-values",
+        "method_version": "1",
+        "provider_record_id": "provider-wrong-asof-A",
+        "source": "synthetic-greek-method"
+      },
+      "raw_hash": "cff5200d1e13f2ad6ccf2754b9ea0d64cf214f6664663e2bcab44e64273c59b7",
+      "record_id": "wrong-asof-A"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-wrong-asof-B",
+        "metadata": null,
+        "raw_ref": "synthetic://context/wrong-asof-B",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "wrong-asof-greek_observation",
+        "supersedes_record_id": "wrong-asof-A"
+      },
+      "kind": "greek_observation",
+      "profile_id": "wrong-asof-greek_observation",
+      "raw_body": {
+        "as_of": "2026-09-05T14:29:59+00:00",
+        "availability_basis": "measured",
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "delta": "0.50",
+        "delta_unit": "signed_option_price_per_underlying_price",
+        "input_hash": "7e3855d0dfb072da3bce8c6c7a9df4814d2d6eef1881a11807ef3f6f36cd5af7",
+        "inputs": {
+          "assumptions_id": "fixture-flat-rates-v1",
+          "dividend_unit": "continuous_annual_fraction",
+          "dividend_yield": "0.0125",
+          "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+          "rate": "-0.01",
+          "rate_unit": "continuous_annual_fraction",
+          "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+        },
+        "iv": "0.20",
+        "iv_unit": "annualized_volatility_fraction",
+        "method_id": "fixture-greek-values",
+        "method_version": "1",
+        "provider_record_id": "provider-wrong-asof-B",
+        "source": "synthetic-greek-method"
+      },
+      "raw_hash": "e6e1fd44f8f88718f0f31196240c830b1cc226b3a9e689a9e06a68f4867c7250",
+      "record_id": "wrong-asof-B"
+    }
+  ],
+  "modeled_source_profiles": [
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "market-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "market-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_quote",
+      "profile_id": "market-underlying_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-underlying",
+      "stream_id": "market-underlying_quote",
+      "units": {
+        "price": "USD_per_share",
+        "size": "shares"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "greek_observation",
+      "profile_id": "market-greek_observation",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-greek-method",
+      "stream_id": "market-greek_observation",
+      "units": {
+        "delta": "signed_option_price_per_underlying_price",
+        "dividend": "continuous_annual_fraction",
+        "iv": "annualized_volatility_fraction",
+        "rate": "continuous_annual_fraction"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "quote_coherence",
+      "profile_id": "market-quote_coherence",
+      "record_identity_rule": "new_evidence_id_per_update",
+      "source": "synthetic-coherence",
+      "stream_id": "market-quote_coherence",
+      "units": {}
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "tick_rule",
+      "profile_id": "market-tick_rule",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-tick-reference",
+      "stream_id": "market-tick_rule",
+      "units": {
+        "price": "USD_per_share"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "crossed-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "crossed-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "malformed-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "malformed-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "unknown-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "unknown-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "both-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "both-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "source-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "source-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "profile-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "profile-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "event-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "event-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "future-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "future-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "tie-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "tie-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "missing-sequence-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "missing-sequence-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "linear-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "linear-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "orphan-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "orphan-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "cycle-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "cycle-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "fork-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "fork-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "conflict-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "conflict-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "duplicate-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "duplicate-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "unlinked-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "unlinked-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "tick_rule",
+      "profile_id": "bands-tick_rule",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-tick-reference",
+      "stream_id": "bands-tick_rule",
+      "units": {
+        "price": "USD_per_share"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "tick_rule",
+      "profile_id": "schedule-tick_rule",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-tick-reference",
+      "stream_id": "schedule-tick_rule",
+      "units": {
+        "price": "USD_per_share"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "tick_rule",
+      "profile_id": "bad-band-tick_rule",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-tick-reference",
+      "stream_id": "bad-band-tick_rule",
+      "units": {
+        "price": "USD_per_share"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "tick_rule",
+      "profile_id": "raw-band-tick_rule",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-tick-reference",
+      "stream_id": "raw-band-tick_rule",
+      "units": {
+        "price": "USD_per_share"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "tick_rule",
+      "profile_id": "overlap-tick_rule",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-tick-reference",
+      "stream_id": "overlap-tick_rule",
+      "units": {
+        "price": "USD_per_share"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "tick_rule",
+      "profile_id": "tick-future-tick_rule",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-tick-reference",
+      "stream_id": "tick-future-tick_rule",
+      "units": {
+        "price": "USD_per_share"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "tick_rule",
+      "profile_id": "tick-fork-tick_rule",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-tick-reference",
+      "stream_id": "tick-fork-tick_rule",
+      "units": {
+        "price": "USD_per_share"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "tick_rule",
+      "profile_id": "tick-linear-tick_rule",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-tick-reference",
+      "stream_id": "tick-linear-tick_rule",
+      "units": {
+        "price": "USD_per_share"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "tick_rule",
+      "profile_id": "tick-tie-tick_rule",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-tick-reference",
+      "stream_id": "tick-tie-tick_rule",
+      "units": {
+        "price": "USD_per_share"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "tick_rule",
+      "profile_id": "tick-null-tick_rule",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-tick-reference",
+      "stream_id": "tick-null-tick_rule",
+      "units": {
+        "price": "USD_per_share"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "tick_rule",
+      "profile_id": "scheduled-revision-tick_rule",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-tick-reference",
+      "stream_id": "scheduled-revision-tick_rule",
+      "units": {
+        "price": "USD_per_share"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "identity-option_quote-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "identity-option_quote-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_quote",
+      "profile_id": "identity-underlying_quote-underlying_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-underlying",
+      "stream_id": "identity-underlying_quote-underlying_quote",
+      "units": {
+        "price": "USD_per_share",
+        "size": "shares"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "greek_observation",
+      "profile_id": "identity-greek_observation-greek_observation",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-greek-method",
+      "stream_id": "identity-greek_observation-greek_observation",
+      "units": {
+        "delta": "signed_option_price_per_underlying_price",
+        "dividend": "continuous_annual_fraction",
+        "iv": "annualized_volatility_fraction",
+        "rate": "continuous_annual_fraction"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "quote_coherence",
+      "profile_id": "identity-quote_coherence-quote_coherence",
+      "record_identity_rule": "new_evidence_id_per_update",
+      "source": "synthetic-coherence",
+      "stream_id": "identity-quote_coherence-quote_coherence",
+      "units": {}
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "tick_rule",
+      "profile_id": "identity-tick_rule-tick_rule",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-tick-reference",
+      "stream_id": "identity-tick_rule-tick_rule",
+      "units": {
+        "price": "USD_per_share"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "future-identity-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "future-identity-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "future-meta-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "future-meta-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "giant-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "giant-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "unknown-key-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "unknown-key-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "cross-stream-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "cross-stream-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "other-stream-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "other-stream-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "future-link-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "future-link-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "unknown-contract-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "unknown-contract-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "alias-conflict-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "alias-conflict-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "greek_observation",
+      "profile_id": "bad-method-greek_observation",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-greek-method",
+      "stream_id": "bad-method-greek_observation",
+      "units": {
+        "delta": "signed_option_price_per_underlying_price",
+        "dividend": "continuous_annual_fraction",
+        "iv": "annualized_volatility_fraction",
+        "rate": "continuous_annual_fraction"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "quote_coherence",
+      "profile_id": "bad-protocol-quote_coherence",
+      "record_identity_rule": "new_evidence_id_per_update",
+      "source": "synthetic-coherence",
+      "stream_id": "bad-protocol-quote_coherence",
+      "units": {}
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "tick_rule",
+      "profile_id": "bad-definition-tick_rule",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-tick-reference",
+      "stream_id": "bad-definition-tick_rule",
+      "units": {
+        "price": "USD_per_share"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "greek_observation",
+      "profile_id": "wrong-asof-greek_observation",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-greek-method",
+      "stream_id": "wrong-asof-greek_observation",
+      "units": {
+        "delta": "signed_option_price_per_underlying_price",
+        "dividend": "continuous_annual_fraction",
+        "iv": "annualized_volatility_fraction",
+        "rate": "continuous_annual_fraction"
+      }
+    }
+  ],
+  "normalization_version": 1,
+  "origin": "synthetic",
+  "permitted_use": "core_fixture",
+  "schema_version": 1
+}
