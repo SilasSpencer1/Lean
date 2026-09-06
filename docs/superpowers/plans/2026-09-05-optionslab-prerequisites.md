@@ -7,7 +7,7 @@ Recorded 2026-09-05 after the user approved the research review and requested im
 | Core contracts | Adopted reviewed design and amended seven-task roadmap; small behavior increments supersede the large types-first delivery task | Core work authorized |
 | Required features and Greeks | Retain exact completed-bar calculations, separate Greek provenance/availability, cash on missing inputs, and all reviewed candidate limits | Semantics fixed; real provider readiness unverified |
 | Target and selection | Attempted policy return on decision ask capital K; ask-to-bid execution, explicit costs, no-fill/censoring distinction; conservative expected dollars for one contract; ties/unknown uncertainty choose cash | Fixed in adopted spec |
-| Exits and risk | Preserve one contract, 0.5% premium plus costs, 1% daily loss, 5% drawdown, three entries, fixed hold and liquidation rules; entry rejection cannot suppress recovery | Fixed; implementation pending |
+| Exits and risk | Preserve one contract and require `K + max($1.00, configured round-trip fee floor, applicable round-trip fee estimate) + max(0.005 × K, 100 × current option spread) <= 0.005 × virtual equity`. Preserve the 1% daily loss, 5% drawdown, three entries, fixed hold and liquidation rules; entry rejection cannot suppress recovery | Fixed; implementation pending |
 | Initial virtual equity | **Undeclared**; user was asked. Large test balances are synthetic examples only | Must be declared before order-enabled experiments |
 | Prototype budget | USD 0; no paid data purchase authorized or made | Fixed |
 | Initial data admission | Self-generated synthetic fixtures only, explicitly identified as such; no external source admitted | Core tests permitted |
