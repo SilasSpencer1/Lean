@@ -85,6 +85,9 @@ def test_standard_quote_retains_evidence_and_exact_budget(right) -> None:
     assert result.available_cash == Decimal("521")
     assert result.round_trip_fees == Decimal("1")
     assert result.premium_fraction == Decimal("0.005")
+    assert result.max_quote_age == timedelta(seconds=5)
+    assert result.max_spread_fraction == Decimal("0.08")
+    assert result.spread_floor == Decimal("0.05")
     assert result.quote_reasons == ()
     assert result.budget is not None
     assert result.budget.premium == Decimal("510.00")
@@ -287,6 +290,93 @@ def test_fresh_metadata_does_not_refresh_stale_quote_sides() -> None:
 
 
 @pytest.mark.parametrize(
+    ("observed", "expected_observation", "expected_quote"),
+    [
+        (
+            quote(
+                meta=meta(event_at=DECISION - timedelta(seconds=4)),
+                bid_at=DECISION,
+                ask_at=DECISION,
+            ),
+            (),
+            (),
+        ),
+        (
+            quote(
+                meta=meta(event_at=DECISION - timedelta(seconds=4, microseconds=1)),
+                bid_at=DECISION,
+                ask_at=DECISION,
+            ),
+            ("quote_too_old",),
+            (),
+        ),
+        (
+            quote(
+                meta=meta(event_at=DECISION),
+                bid_at=DECISION - timedelta(seconds=4, microseconds=1),
+                ask_at=DECISION,
+            ),
+            (),
+            ("bid_too_old",),
+        ),
+        (
+            quote(
+                meta=meta(event_at=DECISION),
+                bid_at=DECISION,
+                ask_at=DECISION - timedelta(seconds=4, microseconds=1),
+            ),
+            (),
+            ("ask_too_old",),
+        ),
+    ],
+)
+def test_tighter_quote_age_applies_to_metadata_and_each_side(
+    observed, expected_observation, expected_quote
+) -> None:
+    result = assess(observed, max_quote_age=timedelta(seconds=4))
+
+    assert result.max_quote_age == timedelta(seconds=4)
+    assert result.observation.live_quote_reasons == expected_observation
+    assert result.quote_reasons == expected_quote
+
+
+@pytest.mark.parametrize(
+    ("observed", "changes"),
+    [
+        (
+            quote(bid=Decimal("0.93"), ask=Decimal("1.00")),
+            {"max_spread_fraction": Decimal("0.06")},
+        ),
+        (
+            quote(bid=Decimal("0.04"), ask=Decimal("0.09")),
+            {"spread_floor": Decimal("0.04")},
+        ),
+    ],
+)
+def test_tighter_spread_settings_can_reject_default_acceptable_quotes(
+    observed, changes
+) -> None:
+    default = assess(
+        observed,
+        virtual_equity=Decimal("1000000"),
+        available_cash=Decimal("1000000"),
+    )
+    tighter = assess(
+        observed,
+        virtual_equity=Decimal("1000000"),
+        available_cash=Decimal("1000000"),
+        **changes,
+    )
+
+    assert default.quote_reasons == ()
+    assert tighter.quote_reasons == ("spread_too_wide",)
+    assert tighter.max_spread_fraction == changes.get(
+        "max_spread_fraction", Decimal("0.08")
+    )
+    assert tighter.spread_floor == changes.get("spread_floor", Decimal("0.05"))
+
+
+@pytest.mark.parametrize(
     ("bid", "ask", "suitable"),
     [
         ("0.540", "0.590", True),
@@ -327,6 +417,21 @@ def test_decimal_context_does_not_change_results_flags_or_traps() -> None:
         assert context.traps[Inexact] is True
         assert context.flags[Inexact] is True
 
+    assert result.quote_budget_suitable is True
+
+
+@pytest.mark.parametrize(
+    "virtual_equity",
+    [Decimal("1e941"), Decimal("104200." + "0" * 466)],
+)
+def test_default_spread_settings_do_not_double_charge_precision_budget(
+    virtual_equity,
+) -> None:
+    result = assess(virtual_equity=virtual_equity)
+
+    assert result.quote_reasons == ()
+    assert result.budget is not None
+    assert result.budget.required_cash == Decimal("521.00")
     assert result.quote_budget_suitable is True
 
 
@@ -439,6 +544,15 @@ def test_timezone_callback_failure_is_a_safe_validation_error() -> None:
         ({"round_trip_fees": Decimal("-0.01")}, ValueError, "round_trip_fees cannot be negative"),
         ({"premium_fraction": Decimal("0")}, ValueError, "premium_fraction must be greater than zero"),
         ({"premium_fraction": Decimal("0.0051")}, ValueError, "premium_fraction cannot exceed 0.005"),
+        ({"max_quote_age": 5}, TypeError, "max_quote_age must be a timedelta"),
+        ({"max_quote_age": timedelta(0)}, ValueError, "max_quote_age must be positive"),
+        ({"max_quote_age": timedelta(seconds=5, microseconds=1)}, ValueError, "max_quote_age cannot exceed five seconds"),
+        ({"max_spread_fraction": 0.08}, TypeError, "max_spread_fraction must be a Decimal"),
+        ({"max_spread_fraction": Decimal("0")}, ValueError, "max_spread_fraction must be greater than zero"),
+        ({"max_spread_fraction": Decimal("0.081")}, ValueError, "max_spread_fraction cannot exceed 0.08"),
+        ({"spread_floor": Decimal("NaN")}, ValueError, "spread_floor must be finite"),
+        ({"spread_floor": Decimal("0")}, ValueError, "spread_floor must be greater than zero"),
+        ({"spread_floor": Decimal("0.051")}, ValueError, "spread_floor cannot exceed 0.05"),
     ],
 )
 def test_trusted_assessment_misuse_raises_even_when_quote_is_bad(
