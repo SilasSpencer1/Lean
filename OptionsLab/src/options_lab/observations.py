@@ -1,8 +1,10 @@
 """Observation metadata normalization and time-suitability evidence."""
 
 from dataclasses import dataclass
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta
 from typing import Literal
+
+from ._validation import _require_nonempty_string, _require_token, _trusted_datetime
 
 FeedClass = Literal["realtime", "indicative", "delayed", "unknown"]
 Fidelity = Literal["genuine", "synthetic", "unknown"]
@@ -402,42 +404,6 @@ def _external_datetime(value: object) -> datetime:
     if type(value) is not datetime:
         raise TypeError("timestamp must be a datetime or ISO string")
     return _trusted_datetime("timestamp", value)
-
-
-def _trusted_datetime(name: str, value: object) -> datetime:
-    """Validate a trusted aware datetime and normalize it to UTC."""
-    if type(value) is not datetime:
-        raise TypeError(f"{name} must be a datetime")
-    if value.tzinfo is None:
-        raise ValueError(f"{name} must be timezone-aware")
-    try:
-        offset = value.utcoffset()
-    except Exception:
-        raise ValueError(f"{name} timezone evaluation failed") from None
-    if offset is None:
-        raise ValueError(f"{name} must be timezone-aware")
-    try:
-        return value.astimezone(timezone.utc)
-    except OverflowError:
-        raise ValueError(f"{name} cannot be represented in UTC") from None
-    except Exception:
-        raise ValueError(f"{name} timezone conversion failed") from None
-
-
-def _require_nonempty_string(name: str, value: object) -> None:
-    """Validate an exact, non-empty trusted string."""
-    if type(value) is not str:
-        raise TypeError(f"{name} must be a string")
-    if not value:
-        raise ValueError(f"{name} must not be empty")
-
-
-def _require_token(name: str, value: object, allowed: tuple[str, ...]) -> None:
-    """Validate an exact string from one fixed vocabulary."""
-    if type(value) is not str:
-        raise TypeError(f"{name} must be a string")
-    if value not in allowed:
-        raise ValueError(f"{name} is not supported")
 
 
 def _require_string_tuple(name: str, value: object) -> None:
