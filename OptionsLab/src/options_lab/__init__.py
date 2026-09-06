@@ -1,5 +1,10 @@
 """Public package for OptionsLab policy calculations."""
 
+from .contract_inputs import (
+    ContractReferenceRejection,
+    ContractReferenceValidation,
+    normalize_contract_reference,
+)
 from .contracts import (
     ContractId,
     ContractReference,
@@ -23,6 +28,8 @@ __all__ = [
     "ContractId",
     "ContractReference",
     "ContractReferenceAssessment",
+    "ContractReferenceRejection",
+    "ContractReferenceValidation",
     "DeliverableComponent",
     "FieldDiagnostic",
     "InputRejection",
@@ -34,5 +41,6 @@ __all__ = [
     "assess_contract_reference",
     "assess_observation",
     "assess_premium_budget",
+    "normalize_contract_reference",
     "normalize_observation_meta",
 ]
