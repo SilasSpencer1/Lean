@@ -1,5 +1,12 @@
 """Public package for OptionsLab policy calculations."""
 
+from .admission import (
+    FixtureInputRejection,
+    FixtureVerification,
+    VerifiedFixtureManifest,
+    VerifiedFixtureMember,
+    verify_fixture_bundle,
+)
 from .bar_inputs import (
     BarContentIdentity,
     BarInputRejection,
@@ -109,6 +116,8 @@ __all__ = [
     "FeatureState",
     "FeatureUpdate",
     "FieldDiagnostic",
+    "FixtureInputRejection",
+    "FixtureVerification",
     "GreekInputs",
     "GreekInputRejection",
     "GreekMethodSpec",
@@ -138,6 +147,8 @@ __all__ = [
     "UnderlyingQuoteAssessment",
     "UnderlyingQuoteInputRejection",
     "UnderlyingQuoteValidation",
+    "VerifiedFixtureManifest",
+    "VerifiedFixtureMember",
     "assess_configured_quote_budget",
     "assess_contract_reference",
     "assess_decision_slot",
@@ -167,4 +178,5 @@ __all__ = [
     "normalize_underlying_quote",
     "policy_hash",
     "update_features",
+    "verify_fixture_bundle",
 ]
