@@ -49,6 +49,7 @@ from .observations import (
     normalize_observation_meta,
 )
 from .premium import PremiumBudget, assess_premium_budget
+from .quote_content import QuoteContentIdentity, identify_quote_content
 from .quote_inputs import QuoteInputRejection, QuoteValidation, normalize_quote_observation
 from .quotes import QuoteObservation, QuotePremiumAssessment, assess_quote_premium_budget
 from .session_inputs import (
@@ -101,6 +102,7 @@ __all__ = [
     "ProviderContractMappingRejection",
     "ProviderContractMappingValidation",
     "PremiumBudget",
+    "QuoteContentIdentity",
     "QuoteInputRejection",
     "QuoteObservation",
     "QuotePremiumAssessment",
@@ -128,6 +130,7 @@ __all__ = [
     "config_hash",
     "config_snapshot",
     "identify_underlying_bar",
+    "identify_quote_content",
     "load_config",
     "normalize_config",
     "normalize_contract_reference",
