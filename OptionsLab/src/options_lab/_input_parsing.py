@@ -6,6 +6,7 @@ import re
 from typing import Literal, Never
 
 from ._validation import _trusted_datetime
+from .contracts import ContractId
 
 RejectionCode = Literal[
     "expected_exact_dict", "unknown_fields", "missing", "invalid_type",
@@ -13,6 +14,9 @@ RejectionCode = Literal[
 ]
 
 _MONEY_PATTERN = re.compile(r"[+-]?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)")
+_CONTRACT_FIELDS = (
+    "underlying", "expiry", "right", "strike", "multiplier", "deliverable_id",
+)
 
 
 class _InvalidInput(Exception):
@@ -85,6 +89,23 @@ def _parse_timestamp(value: object, field: str, *, nullable: bool = False) -> da
         return _trusted_datetime("timestamp", datetime.fromisoformat(value))
     except ValueError:
         _fail(field, "invalid_timestamp")
+
+
+def _parse_contract_id(raw: object) -> ContractId:
+    """Parse one exact six-field option contract identity."""
+    _require_shape(raw, "contract", _CONTRACT_FIELDS)
+    contract = raw
+    underlying = _parse_string(contract["underlying"], "contract.underlying")
+    expiry = _parse_date(contract["expiry"], "contract.expiry")
+    right = _parse_token(contract["right"], "contract.right", ("call", "put"))
+    strike = _parse_decimal(contract["strike"], "contract.strike")
+    multiplier = contract["multiplier"]
+    if type(multiplier) is not int:
+        _fail("contract.multiplier", "invalid_type")
+    deliverable_id = _parse_string(
+        contract["deliverable_id"], "contract.deliverable_id"
+    )
+    return ContractId(underlying, expiry, right, strike, multiplier, deliverable_id)
 
 
 def _fail(field: str, code: RejectionCode) -> Never:
