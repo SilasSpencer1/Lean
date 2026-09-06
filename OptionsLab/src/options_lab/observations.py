@@ -28,6 +28,20 @@ _REQUIRED_FIELDS = (
     "quality_flags",
 )
 _OPTIONAL_FIELDS = ("interval_start", "interval_end")
+_STRING_FIELDS = ("source", "provider_record_id", "availability_evidence_ref")
+_TOKEN_FIELDS = ("feed_class", "fidelity", "kind", "availability_basis")
+_TIMESTAMP_FIELDS = ("event_at", "available_at", "interval_start", "interval_end")
+_PARSE_FIELDS = _STRING_FIELDS + _TOKEN_FIELDS + _TIMESTAMP_FIELDS + ("is_fill_forward", "quality_flags")
+_AVAILABILITY_REASONS = (
+    "available_after_decision", "event_after_decision", "event_after_available",
+    "interval_bounds_missing", "interval_order_invalid", "interval_after_decision",
+    "interval_published_before_end",
+)
+_LIVE_REASONS = _AVAILABILITY_REASONS + (
+    "not_quote", "fidelity_not_genuine", "feed_not_realtime",
+    "availability_not_measured", "event_time_missing", "fill_forward",
+    "quality_flags_present", "quote_too_old",
+)
 
 
 @dataclass(frozen=True)
@@ -43,10 +57,23 @@ class FieldDiagnostic:
 
         :returns:             None.
         :raises   TypeError:  If a field is not a string.
-        :raises   ValueError: If a field is empty.
+        :raises   ValueError: If a field is empty or incompatible with its code.
         """
         _require_nonempty_string("field", self.field)
         _require_nonempty_string("code", self.code)
+        allowed: tuple[str, ...] = ()
+        if self.field == "$":
+            allowed = ("expected_exact_dict", "unknown_fields")
+        elif self.field in _REQUIRED_FIELDS:
+            allowed = ("missing",)
+        if self.field in _STRING_FIELDS + _TOKEN_FIELDS:
+            allowed += ("invalid_type", "invalid_value")
+        elif self.field in _TIMESTAMP_FIELDS:
+            allowed += ("invalid_timestamp",)
+        elif self.field in ("is_fill_forward", "quality_flags"):
+            allowed += ("invalid_type",)
+        if self.code not in allowed:
+            raise ValueError("diagnostic field and code are incompatible")
 
 
 @dataclass(frozen=True)
@@ -121,6 +148,10 @@ class InputRejection:
         _require_string_tuple("reasons", self.reasons)
         if type(self.diagnostics) is not tuple or any(type(item) is not FieldDiagnostic for item in self.diagnostics):
             raise TypeError("diagnostics must be a tuple of FieldDiagnostic values")
+        _validate_diagnostics(self.diagnostics)
+        expected_reasons = tuple(dict.fromkeys(item.code for item in self.diagnostics))
+        if not self.reasons or self.reasons != expected_reasons:
+            raise ValueError("reasons must match diagnostic codes in first-occurrence order")
 
 
 @dataclass(frozen=True)
@@ -160,14 +191,19 @@ class ObservationAssessment:
 
         :returns:            None.
         :raises   TypeError: If metadata or reason collections have the wrong type.
-        :raises   ValueError: If live reasons omit an availability failure.
+        :raises   ValueError: If reasons violate vocabulary, order, or prefix rules.
         """
         if type(self.meta) is not ObservationMeta:
             raise TypeError("meta must be an ObservationMeta")
         _require_string_tuple("availability_reasons", self.availability_reasons)
         _require_string_tuple("live_quote_reasons", self.live_quote_reasons)
-        if any(reason not in self.live_quote_reasons for reason in self.availability_reasons):
-            raise ValueError("live_quote_reasons must include every availability reason")
+        canonical_availability = tuple(reason for reason in _AVAILABILITY_REASONS if reason in self.availability_reasons)
+        canonical_live = tuple(reason for reason in _LIVE_REASONS if reason in self.live_quote_reasons)
+        live_availability = tuple(reason for reason in self.live_quote_reasons if reason in _AVAILABILITY_REASONS)
+        if self.availability_reasons != canonical_availability or self.live_quote_reasons != canonical_live:
+            raise ValueError("assessment reasons must be unique canonical vocabulary subsets")
+        if live_availability != self.availability_reasons:
+            raise ValueError("live_quote_reasons must include the exact availability reason prefix")
 
     @property
     def available(self) -> bool:
@@ -316,8 +352,7 @@ def _parse_external_fields(
 ) -> dict[str, object]:
     """Parse external fields while collecting only safe diagnostics."""
     parsed: dict[str, object] = {}
-    string_fields = ("source", "provider_record_id", "availability_evidence_ref")
-    for field in string_fields:
+    for field in _STRING_FIELDS:
         value = raw[field]
         if type(value) is not str:
             diagnostics.append(FieldDiagnostic(field, "invalid_type"))
@@ -338,7 +373,7 @@ def _parse_external_fields(
             diagnostics.append(FieldDiagnostic(field, "invalid_value"))
         else:
             parsed[field] = value
-    for field in ("event_at", "available_at", "interval_start", "interval_end"):
+    for field in _TIMESTAMP_FIELDS:
         value = raw.get(field)
         if value is None and field != "available_at":
             parsed[field] = None
@@ -373,12 +408,20 @@ def _trusted_datetime(name: str, value: object) -> datetime:
     """Validate a trusted aware datetime and normalize it to UTC."""
     if type(value) is not datetime:
         raise TypeError(f"{name} must be a datetime")
-    if value.tzinfo is None or value.utcoffset() is None:
+    if value.tzinfo is None:
+        raise ValueError(f"{name} must be timezone-aware")
+    try:
+        offset = value.utcoffset()
+    except Exception:
+        raise ValueError(f"{name} timezone evaluation failed") from None
+    if offset is None:
         raise ValueError(f"{name} must be timezone-aware")
     try:
         return value.astimezone(timezone.utc)
     except OverflowError:
         raise ValueError(f"{name} cannot be represented in UTC") from None
+    except Exception:
+        raise ValueError(f"{name} timezone conversion failed") from None
 
 
 def _require_nonempty_string(name: str, value: object) -> None:
@@ -401,3 +444,23 @@ def _require_string_tuple(name: str, value: object) -> None:
     """Validate an immutable collection of non-empty exact strings."""
     if type(value) is not tuple or any(type(item) is not str or not item for item in value):
         raise TypeError(f"{name} must be a tuple of non-empty strings")
+
+
+def _validate_diagnostics(diagnostics: tuple[FieldDiagnostic, ...]) -> None:
+    """Require one valid normalization phase in its canonical emission order."""
+    if not diagnostics:
+        raise ValueError("diagnostics must not be empty")
+    if diagnostics[0].code == "expected_exact_dict":
+        if diagnostics != (FieldDiagnostic("$", "expected_exact_dict"),):
+            raise ValueError("expected_exact_dict must be the only diagnostic")
+        return
+    schema_phase = any(item.code in ("unknown_fields", "missing") for item in diagnostics)
+    if schema_phase:
+        expected = (() if FieldDiagnostic("$", "unknown_fields") not in diagnostics else (FieldDiagnostic("$", "unknown_fields"),))
+        expected += tuple(FieldDiagnostic(field, "missing") for field in _REQUIRED_FIELDS if FieldDiagnostic(field, "missing") in diagnostics)
+    else:
+        if len({item.field for item in diagnostics}) != len(diagnostics):
+            raise ValueError("parsed diagnostics must not repeat fields")
+        expected = tuple(item for field in _PARSE_FIELDS for item in diagnostics if item.field == field)
+    if diagnostics != expected:
+        raise ValueError("diagnostics must follow one canonical normalization phase")

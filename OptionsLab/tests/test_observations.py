@@ -1,5 +1,5 @@
 from dataclasses import FrozenInstanceError
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta, timezone, tzinfo
 
 import pytest
 
@@ -258,3 +258,106 @@ def test_invalid_normalization_envelope_is_a_programming_error(changes, error) -
     kwargs.update(changes)
     with pytest.raises(error):
         normalize_observation_meta(quote_raw(), **kwargs)
+
+
+class CallbackTimezone(tzinfo):
+    def __init__(self, fail_after: int, error: BaseException = RuntimeError("secret")):
+        self.calls = 0
+        self.fail_after = fail_after
+        self.error = error
+
+    def utcoffset(self, dt):
+        self.calls += 1
+        if self.calls > self.fail_after:
+            raise self.error
+        return timedelta(0)
+
+    def dst(self, dt):
+        return timedelta(0)
+
+
+@pytest.mark.parametrize("fail_after", [0, 1])
+def test_external_timezone_callback_failures_are_safe_rejections(fail_after) -> None:
+    raw = quote_raw(event_at=datetime(2026, 9, 5, tzinfo=CallbackTimezone(fail_after)))
+
+    result = normalize_observation_meta(raw, raw_ref="raw://bad", event_id="safe", received_at=DECISION)
+
+    assert result.rejection is not None
+    assert result.rejection.diagnostics == (FieldDiagnostic("event_at", "invalid_timestamp"),)
+    assert "secret" not in repr(result)
+
+
+def test_external_timezone_process_control_signal_propagates() -> None:
+    raw = quote_raw(event_at=datetime(2026, 9, 5, tzinfo=CallbackTimezone(0, KeyboardInterrupt())))
+    with pytest.raises(KeyboardInterrupt):
+        normalize_observation_meta(raw, raw_ref="raw://bad", event_id="safe", received_at=DECISION)
+
+
+def test_trusted_timezone_callback_failure_is_a_descriptive_programming_error() -> None:
+    received_at = datetime(2026, 9, 5, tzinfo=CallbackTimezone(0))
+    with pytest.raises(ValueError, match="received_at timezone evaluation failed"):
+        normalize_observation_meta(quote_raw(), raw_ref="raw", event_id="event", received_at=received_at)
+
+
+def test_valid_custom_timezone_is_normalized() -> None:
+    raw = quote_raw(event_at=datetime(2026, 9, 5, 14, 29, 55, tzinfo=CallbackTimezone(99)))
+    result = normalize_observation_meta(raw, raw_ref="raw://ok", event_id="safe", received_at=DECISION)
+    assert result.value is not None
+    assert result.value.event_at == DECISION - timedelta(seconds=5)
+
+
+@pytest.mark.parametrize(
+    ("field", "code"),
+    [("secret", "invalid_type"), ("$", "missing"), ("event_at", "invalid_type"),
+     ("interval_start", "missing"), ("quality_flags", "invalid_value")],
+)
+def test_diagnostic_rejects_unknown_or_incompatible_field_code_pairs(field, code) -> None:
+    with pytest.raises(ValueError):
+        FieldDiagnostic(field, code)
+
+
+@pytest.mark.parametrize(
+    ("reasons", "diagnostics"),
+    [
+        ((), ()),
+        (("missing",), (FieldDiagnostic("source", "invalid_type"),)),
+        (("invalid_type", "invalid_type"), (FieldDiagnostic("source", "invalid_type"),)),
+        (("invalid_type",), (FieldDiagnostic("feed_class", "invalid_type"), FieldDiagnostic("source", "invalid_type"))),
+        (("missing", "unknown_fields"), (FieldDiagnostic("source", "missing"), FieldDiagnostic("$", "unknown_fields"))),
+        (("missing",), (FieldDiagnostic("source", "missing"), FieldDiagnostic("source", "missing"))),
+        (("missing", "invalid_type"), (FieldDiagnostic("source", "missing"), FieldDiagnostic("feed_class", "invalid_type"))),
+    ],
+)
+def test_rejection_requires_canonical_related_reasons_and_diagnostics(reasons, diagnostics) -> None:
+    with pytest.raises(ValueError):
+        InputRejection("event", DECISION, "raw", "observation_normalization", reasons, diagnostics)
+
+
+@pytest.mark.parametrize(
+    ("availability", "live"),
+    [
+        (("made_up",), ("made_up",)),
+        (("event_after_decision", "available_after_decision"), ("event_after_decision", "available_after_decision")),
+        ((), ("made_up",)),
+        ((), ("not_quote", "not_quote")),
+        ((), ("quote_too_old", "not_quote")),
+        ((), ("available_after_decision",)),
+        (("available_after_decision",), ("not_quote", "available_after_decision")),
+        (("available_after_decision",), ("not_quote",)),
+    ],
+)
+def test_assessment_requires_canonical_reason_vocabulary_order_and_prefix(availability, live) -> None:
+    with pytest.raises(ValueError):
+        ObservationAssessment(admitted(), availability, live)
+
+
+def test_emitters_preserve_canonical_multifailure_and_first_occurrence_orders() -> None:
+    first = normalize_observation_meta(quote_raw(source="", provider_record_id=1), raw_ref="r", event_id="e", received_at=DECISION)
+    second = normalize_observation_meta(quote_raw(source=1, provider_record_id=""), raw_ref="r", event_id="e", received_at=DECISION)
+    assert first.rejection is not None and first.rejection.reasons == ("invalid_value", "invalid_type")
+    assert second.rejection is not None and second.rejection.reasons == ("invalid_type", "invalid_value")
+
+    assessment = assess_observation(admitted(event_at=DECISION + timedelta(seconds=2), available_at=DECISION + timedelta(seconds=1), fidelity="synthetic", feed_class="delayed", is_fill_forward=True), decision_at=DECISION)
+    assert assessment.availability_reasons == ("available_after_decision", "event_after_decision", "event_after_available")
+    assert assessment.live_quote_reasons == ("available_after_decision", "event_after_decision", "event_after_available", "fidelity_not_genuine", "feed_not_realtime", "fill_forward")
+    assert ObservationAssessment(assessment.meta, assessment.availability_reasons, assessment.live_quote_reasons) == assessment

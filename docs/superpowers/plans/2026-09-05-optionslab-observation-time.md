@@ -10,13 +10,15 @@ Keep types with behavior in `OptionsLab/src/options_lab/observations.py`, export
 
 ## Contracts
 
-- `normalize_observation_meta(raw, *, raw_ref, event_id, received_at)` returns exactly one admitted metadata value or an `InputRejection`. An exact dictionary is the external JSON-style boundary; accept aware datetime objects and documented ISO strings for timestamps. Invalid trusted envelope arguments remain programming errors.
+- `normalize_observation_meta(raw, *, raw_ref, event_id, received_at)` returns exactly one admitted metadata value or an `InputRejection`. An exact dictionary is the external JSON-style boundary; accept aware datetime objects and documented ISO strings for timestamps. Ordinary failures from supplied timezone callbacks become safe `invalid_timestamp` diagnostics; the exception guard covers only timezone evaluation/conversion. Invalid trusted envelope arguments remain programming errors, and process-control signals propagate.
 - Metadata retains source and provider record identity, raw reference, feed class, fidelity, kind, optional source event time, availability time, current ingestion time, measured/assumed availability basis and evidence reference, optional interval bounds, fill-forward status, and immutable quality flags.
 - Explicit vocabularies distinguish quote/interval, genuine/synthetic/unknown fidelity, realtime/indicative/delayed/unknown feeds, and measured/assumed availability. Reject unknown keys and tokens. Normalize aware times to UTC. Do not invent missing times or provenance.
-- Rejections retain the trusted event ID, ingestion time, raw reference, normalization stage, ordered reason codes and safe field diagnostics. Do not echo raw values, unrecognized key names, exception messages or arbitrary object representations.
+- Rejections retain the trusted event ID, ingestion time, raw reference, normalization stage and nonempty, valid field/code diagnostics in emission order. Reasons equal the first-occurrence deduplicated diagnostic codes. Do not echo raw values, unrecognized key names, exception messages or arbitrary object representations.
 - `assess_observation(meta, *, decision_at, max_quote_age=timedelta(seconds=5))` returns the original metadata and separate ordered availability and live-quote-time reasons. Boolean properties derive from the reason tuples. Trusted arguments must be well typed; the maximum quote age must be positive and at most five seconds.
 
 All public records are frozen and validate their fields, including exact scalar types. The concrete `ObservationValidation` result implements the roadmap's logical `ValidationResult[ObservationMeta]` contract without introducing a generic validation framework. Document public Python APIs using the repository's Javadoc-inspired conventions.
+
+Assessment reasons are unique ordered subsets of the fixed domain vocabulary. Live reasons begin with exactly the availability reasons. Constructors reject invalid or inconsistent sequences rather than silently sorting or dropping evidence; they do not prove assertions against unavailable raw data or infer temporal truth without the evaluation time.
 
 ## Invariants
 
@@ -39,4 +41,4 @@ Passing synthetic tests establishes only this metadata behavior. It does not sat
 
 ## Verification record
 
-Python 3.11.11 / pytest 9.0.2: 48 observation tests and 96 total tests pass. Test-first failures covered the absent module, UTC overflow and public-record invariants. Compilation, wheel build, separate installation and public API checks pass. Independent review findings were fixed and re-reviewed; the result remains metadata evidence only. The CI workflow is a separate PR, so no hosted observation-suite run is claimed here.
+Python 3.11.11 / pytest 9.0.2: 74 observation tests and 122 total tests pass. Test-first failures covered the absent module, UTC overflow, supplied timezone callback failures and canonical public-record evidence invariants. Compilation, wheel build, separate installation and public API checks pass. Independent review findings were fixed and re-reviewed; the result remains metadata evidence only. The CI workflow is a separate PR, so no hosted observation-suite run is claimed here.
