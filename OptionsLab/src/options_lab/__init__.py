@@ -38,6 +38,7 @@ from .contracts import (
     ProviderContractMapping,
     assess_contract_reference,
 )
+from .features import FeatureState, FeatureUpdate, update_features
 from .observations import (
     FieldDiagnostic,
     InputRejection,
@@ -89,6 +90,8 @@ __all__ = [
     "EntryTimingAssessment",
     "ExecutionPolicy",
     "ExchangeSession",
+    "FeatureState",
+    "FeatureUpdate",
     "FieldDiagnostic",
     "InputRejection",
     "InstrumentTradability",
@@ -136,4 +139,5 @@ __all__ = [
     "normalize_underlying_bar",
     "normalize_underlying_quote",
     "policy_hash",
+    "update_features",
 ]
