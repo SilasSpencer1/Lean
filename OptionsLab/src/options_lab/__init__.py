@@ -3,7 +3,10 @@
 from .contract_inputs import (
     ContractReferenceRejection,
     ContractReferenceValidation,
+    ProviderContractMappingRejection,
+    ProviderContractMappingValidation,
     normalize_contract_reference,
+    normalize_provider_contract_mapping,
 )
 from .contracts import (
     ContractId,
@@ -36,6 +39,8 @@ __all__ = [
     "ObservationAssessment",
     "ObservationMeta",
     "ProviderContractMapping",
+    "ProviderContractMappingRejection",
+    "ProviderContractMappingValidation",
     "PremiumBudget",
     "ObservationValidation",
     "assess_contract_reference",
@@ -43,4 +48,5 @@ __all__ = [
     "assess_premium_budget",
     "normalize_contract_reference",
     "normalize_observation_meta",
+    "normalize_provider_contract_mapping",
 ]
