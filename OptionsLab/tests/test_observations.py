@@ -160,6 +160,44 @@ def test_malformed_external_data_returns_safe_rejection(raw) -> None:
     assert "secret_key" not in repr(result)
 
 
+def test_unknown_key_cannot_run_equality_during_schema_rejection() -> None:
+    class CollidingKey:
+        def __init__(self) -> None:
+            self.comparisons = 0
+            self.explode = False
+
+        def __hash__(self) -> int:
+            return hash("source")
+
+        def __eq__(self, other: object) -> bool:
+            self.comparisons += 1
+            if self.explode:
+                raise RuntimeError("secret")
+            return False
+
+        def __repr__(self) -> str:
+            raise AssertionError("untrusted key was represented")
+
+        def __str__(self) -> str:
+            raise AssertionError("untrusted key was stringified")
+
+    key = CollidingKey()
+    raw = quote_raw()
+    del raw["source"]
+    raw[key] = "secret"
+    key.explode = True
+    comparisons = key.comparisons
+
+    result = normalize_observation_meta(raw, raw_ref="raw://bad", event_id="safe", received_at=DECISION)
+
+    assert key.comparisons == comparisons
+    assert result.rejection is not None
+    assert result.rejection.diagnostics == (
+        FieldDiagnostic("$", "unknown_fields"),
+        FieldDiagnostic("source", "missing"),
+    )
+
+
 def test_normalized_records_and_collections_are_immutable() -> None:
     meta = admitted(quality_flags=["stale"])
     result = ObservationValidation(value=meta)
@@ -274,6 +312,46 @@ class CallbackTimezone(tzinfo):
 
     def dst(self, dt):
         return timedelta(0)
+
+
+class MutatingTimezone(tzinfo):
+    def __init__(self, callback):
+        self.callback = callback
+
+    def utcoffset(self, dt):
+        self.callback()
+        return timedelta(0)
+
+    def dst(self, dt):
+        return timedelta(0)
+
+
+def test_timezone_callback_cannot_delete_unparsed_fields() -> None:
+    raw = quote_raw()
+    raw["event_at"] = datetime(
+        2026, 9, 5, 14, 29, 55,
+        tzinfo=MutatingTimezone(lambda: raw.pop("is_fill_forward", None)),
+    )
+
+    result = normalize_observation_meta(raw, raw_ref="raw://ok", event_id="safe", received_at=DECISION)
+
+    assert result.value is not None
+    assert result.value.is_fill_forward is False
+
+
+def test_timezone_callback_cannot_erase_original_quality_flags() -> None:
+    flags = ["crossed"]
+    raw = quote_raw(quality_flags=flags)
+    raw["event_at"] = datetime(
+        2026, 9, 5, 14, 29, 55,
+        tzinfo=MutatingTimezone(flags.clear),
+    )
+
+    result = normalize_observation_meta(raw, raw_ref="raw://ok", event_id="safe", received_at=DECISION)
+
+    assert result.value is not None
+    assert result.value.quality_flags == ("crossed",)
+    assert "quality_flags_present" in assess_observation(result.value, decision_at=DECISION).live_quote_reasons
 
 
 @pytest.mark.parametrize("fail_after", [0, 1])
