@@ -5,6 +5,7 @@ from zoneinfo import ZoneInfo
 
 import pytest
 
+from options_lab import sessions as session_policy
 from options_lab.config import StrategyConfig
 from options_lab.contracts import ContractId
 from options_lab.sessions import (
@@ -90,6 +91,34 @@ def assess(at: datetime = NOW, **changes: object) -> SessionAssessment:
     }
     values.update(changes)
     return assess_session(**values)
+
+
+def assess_decision(
+    *, decision_at: datetime = NOW, now: datetime | None = None, config: StrategyConfig | None = None
+):
+    """Assess one synthetic decision with the local P04 factory evidence."""
+    return session_policy.assess_decision_slot(
+        session(), tradability(), config=config or StrategyConfig(),
+        decision_at=decision_at, now=decision_at if now is None else now,
+    )
+
+
+def assess_submission(
+    *,
+    decision_at: datetime = NOW,
+    expires_at: datetime | None = None,
+    now: datetime | None = None,
+    calendar: ExchangeSession | None = None,
+    instrument: InstrumentTradability | None = None,
+    config: StrategyConfig | None = None,
+):
+    """Assess one synthetic submission with the local P04 factory evidence."""
+    return session_policy.assess_submission_time(
+        calendar or session(), instrument or tradability(), config=config or StrategyConfig(),
+        decision_at=decision_at,
+        original_expires_at=expires_at or decision_at + timedelta(seconds=5),
+        now=now or decision_at + timedelta(seconds=2),
+    )
 
 
 def test_regular_session_derives_common_hours_policy_and_actual_config_hash() -> None:
@@ -534,3 +563,237 @@ def test_same_inputs_are_deterministic_and_have_no_operational_outputs() -> None
     assert not hasattr(first, "order")
     assert not hasattr(first, "sell")
     assert replace(first) == first
+
+
+def test_exact_decision_slot_derives_stable_identity_and_original_expiry() -> None:
+    result = assess_decision()
+    offset_result = assess_decision(
+        decision_at=datetime(2026, 9, 4, 10, tzinfo=NY),
+        now=datetime(2026, 9, 4, 10, tzinfo=NY),
+    )
+
+    assert result.operation == "decision"
+    assert result.decision_at == NOW
+    assert result.now == NOW
+    assert result.original_expires_at == datetime(2026, 9, 4, 14, 0, 5, tzinfo=UTC)
+    assert result.slot_key == "XNYS/2026-09-04/10:00"
+    assert result.reasons == ()
+    assert result.timing_suitable
+    assert offset_result == result
+    assert result.config_hash == result.session_assessment.config_hash
+    assert replace(result) == result
+    with pytest.raises(FrozenInstanceError):
+        result.reasons = ()
+
+
+@pytest.mark.parametrize(
+    ("decision_at", "now", "reason"),
+    [
+        (NOW + timedelta(microseconds=1), NOW + timedelta(microseconds=1), "decision_off_grid"),
+        (NOW, NOW + timedelta(seconds=1), "missed_decision"),
+        (NOW, NOW - timedelta(microseconds=1), "decision_in_future"),
+        (
+            datetime(2026, 9, 4, 13, 59, 59, tzinfo=UTC),
+            datetime(2026, 9, 4, 13, 59, 59, tzinfo=UTC),
+            "decision_off_grid",
+        ),
+        (
+            datetime(2026, 9, 4, 19, 0, 0, 1, tzinfo=UTC),
+            datetime(2026, 9, 4, 19, 0, 0, 1, tzinfo=UTC),
+            "decision_outside_configured_entry_window",
+        ),
+    ],
+)
+def test_decision_requires_exact_now_grid_and_original_window(decision_at, now, reason) -> None:
+    result = assess_decision(decision_at=decision_at, now=now)
+    assert reason in result.reasons
+    assert not result.timing_suitable
+    if reason == "decision_off_grid":
+        assert result.slot_key is None
+
+
+@pytest.mark.parametrize("at", [NOW, datetime(2026, 9, 4, 19, tzinfo=UTC)])
+def test_decision_accepts_inclusive_window_boundaries(at) -> None:
+    assert assess_decision(decision_at=at).timing_suitable
+
+
+def test_equal_configured_window_is_one_exact_slot() -> None:
+    config = StrategyConfig(
+        entry_start=time(10), entry_end=time(10),
+        liquidation_start=time(10, 35), liquidation_deadline=time(10, 40),
+    )
+    assert assess_decision(config=config).timing_suitable
+    assert "decision_outside_configured_entry_window" in assess_decision(
+        config=config, decision_at=NOW + timedelta(minutes=5),
+    ).reasons
+
+
+def test_submission_is_continuous_but_cancel_wins_at_original_expiry() -> None:
+    inside = assess_submission(now=NOW + timedelta(seconds=2, microseconds=1))
+    equality = assess_submission(now=NOW + timedelta(seconds=5))
+    after = assess_submission(now=NOW + timedelta(seconds=5, microseconds=1))
+
+    assert inside.operation == "submission"
+    assert inside.slot_key == "XNYS/2026-09-04/10:00"
+    assert inside.reasons == () and inside.timing_suitable
+    assert "original_intent_expired" in equality.reasons
+    assert "original_intent_expired" in after.reasons
+
+
+def test_submission_at_entry_end_requires_exact_window_equality() -> None:
+    end = datetime(2026, 9, 4, 19, tzinfo=UTC)
+    exact = assess_submission(decision_at=end, expires_at=end + timedelta(seconds=5), now=end)
+    after = assess_submission(
+        decision_at=end,
+        expires_at=end + timedelta(seconds=5),
+        now=end + timedelta(microseconds=1),
+    )
+    assert exact.timing_suitable
+    assert after.reasons == ("outside_configured_entry_window",)
+
+
+def test_submission_rejects_before_decision_wrong_expiry_and_off_grid_origin() -> None:
+    before = assess_submission(now=NOW - timedelta(microseconds=1))
+    wrong_expiry = assess_submission(expires_at=NOW + timedelta(seconds=4))
+    off_grid = assess_submission(
+        decision_at=datetime(2026, 9, 4, 18, 59, 59, tzinfo=UTC),
+        expires_at=datetime(2026, 9, 4, 19, 0, 4, tzinfo=UTC),
+        now=datetime(2026, 9, 4, 19, tzinfo=UTC),
+    )
+
+    assert "submission_before_decision" in before.reasons
+    assert "original_expiry_mismatch" in wrong_expiry.reasons
+    assert "decision_off_grid" in off_grid.reasons
+    assert "decision_outside_configured_entry_window" not in off_grid.reasons
+    assert not off_grid.timing_suitable
+
+
+def test_submission_rechecks_current_evidence_without_requiring_old_availability() -> None:
+    refreshed_at = NOW + timedelta(seconds=1)
+    result = assess_submission(
+        calendar=session(available_at=refreshed_at),
+        instrument=tradability(available_at=refreshed_at, effective_from=refreshed_at),
+    )
+    assert result.reasons == ()
+    assert result.session_assessment.session.available_at > result.decision_at
+    assert result.session_assessment.tradability.available_at > result.decision_at
+
+
+def test_submission_uses_original_expiry_for_tight_close_planning() -> None:
+    close = datetime(2026, 9, 4, 14, 55, 8, tzinfo=UTC)
+    calendar = session(closes_at=close)
+    instrument = tradability(closes_at=close, effective_until=close)
+    result = assess_submission(calendar=calendar, instrument=instrument)
+
+    assert result.session_assessment.entry_reasons == ("insufficient_time_before_liquidation",)
+    assert result.session_assessment.effective_liquidation_start == datetime(
+        2026, 9, 4, 14, 30, 8, tzinfo=UTC
+    )
+    assert result.reasons == ()
+
+    one_microsecond_shorter = assess_submission(
+        calendar=replace(calendar, closes_at=close - timedelta(microseconds=1)),
+        instrument=replace(
+            instrument,
+            closes_at=close - timedelta(microseconds=1),
+            effective_until=close - timedelta(microseconds=1),
+        ),
+    )
+    assert one_microsecond_shorter.reasons == ("insufficient_time_before_liquidation",)
+
+
+def test_submission_enforces_current_window_date_and_operability() -> None:
+    after_window = assess_submission(
+        decision_at=datetime(2026, 9, 4, 19, tzinfo=UTC),
+        expires_at=datetime(2026, 9, 4, 19, 0, 5, tzinfo=UTC),
+        now=datetime(2026, 9, 4, 19, 0, 0, 1, tzinfo=UTC),
+    )
+    tomorrow = assess_submission(
+        calendar=session(session_date=date(2026, 9, 5)),
+        instrument=tradability(session_date=date(2026, 9, 5)),
+    )
+    expired = assess_submission(instrument=tradability(effective_until=NOW + timedelta(seconds=1)))
+
+    assert "outside_configured_entry_window" in after_window.reasons
+    assert "session_wrong_date" in tomorrow.reasons
+    assert "instrument_wrong_date" in tomorrow.reasons
+    assert "operability_expired" in expired.reasons
+
+
+@pytest.mark.parametrize(
+    ("day", "open_utc", "decision_at", "slot_key"),
+    [
+        (
+            date(2026, 3, 6),
+            datetime(2026, 3, 6, 14, 30, tzinfo=UTC),
+            datetime(2026, 3, 6, 15, tzinfo=UTC),
+            "XNYS/2026-03-06/10:00",
+        ),
+        (
+            date(2026, 3, 9),
+            datetime(2026, 3, 9, 13, 30, tzinfo=UTC),
+            datetime(2026, 3, 9, 14, tzinfo=UTC),
+            "XNYS/2026-03-09/10:00",
+        ),
+    ],
+)
+def test_decision_slot_identity_uses_new_york_dst_rules(day, open_utc, decision_at, slot_key) -> None:
+    close_utc = open_utc + timedelta(hours=6, minutes=30)
+    result = session_policy.assess_decision_slot(
+        session(
+            session_date=day, opens_at=open_utc, closes_at=close_utc,
+            available_at=open_utc,
+        ),
+        tradability(
+            session_date=day, opens_at=open_utc, closes_at=close_utc,
+            effective_from=open_utc, effective_until=close_utc, available_at=open_utc,
+        ),
+        config=StrategyConfig(), decision_at=decision_at, now=decision_at,
+    )
+    assert result.timing_suitable
+    assert result.slot_key == slot_key
+
+
+def test_timing_reason_order_is_fixed_and_has_no_order_authority() -> None:
+    result = assess_submission(
+        decision_at=NOW + timedelta(microseconds=1),
+        expires_at=NOW + timedelta(seconds=4),
+        now=NOW,
+        calendar=session(kind="early_close"),
+        instrument=tradability(status="halted"),
+    )
+    assert result.reasons == (
+        "submission_before_decision",
+        "decision_off_grid",
+        "original_expiry_mismatch",
+        "session_not_regular",
+        "instrument_halted",
+    )
+    assert not hasattr(result, "order")
+    assert not hasattr(result, "source_admitted")
+
+
+def test_timing_rejects_untrusted_arguments_and_bounds_expiry_overflow() -> None:
+    with pytest.raises(ValueError):
+        assess_decision(decision_at=NOW.replace(tzinfo=None))
+    with pytest.raises(ValueError):
+        assess_submission(expires_at=NOW.replace(tzinfo=None))
+
+    at = datetime.max.replace(tzinfo=UTC)
+    result = session_policy.assess_decision_slot(
+        None, None, config=StrategyConfig(), decision_at=at, now=at,
+    )
+    assert result.original_expires_at is None
+    assert "time_arithmetic_unsupported" in result.reasons
+
+
+def test_current_time_conversion_failure_is_bounded_when_decision_converts() -> None:
+    result = session_policy.assess_decision_slot(
+        None,
+        None,
+        config=StrategyConfig(),
+        decision_at=NOW,
+        now=datetime.min.replace(tzinfo=UTC),
+    )
+    assert "time_conversion_unsupported" in result.reasons
+    assert not result.timing_suitable
