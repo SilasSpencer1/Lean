@@ -15,11 +15,13 @@ InstrumentStatus = Literal["tradable", "closed", "halted", "unknown"]
 AvailabilityBasis = Literal["measured", "assumed"]
 Fidelity = Literal["genuine", "synthetic", "unknown"]
 RecoveryBasis = Literal["common_hours", "instrument_hours_only", "unknown"]
+EntryTimingOperation = Literal["decision", "submission"]
 
 _SESSION_KINDS = ("regular", "early_close", "closed", "unknown")
 _INSTRUMENT_STATUSES = ("tradable", "closed", "halted", "unknown")
 _AVAILABILITY_BASES = ("measured", "assumed")
 _FIDELITIES = ("genuine", "synthetic", "unknown")
+_ENTRY_TIMING_OPERATIONS = ("decision", "submission")
 _NY = ZoneInfo("America/New_York")
 _UTC = timezone.utc
 
@@ -196,6 +198,58 @@ class SessionAssessment:
         return self.effective_liquidation_deadline is not None and self.now >= self.effective_liquidation_deadline
 
 
+@dataclass(frozen=True)
+class EntryTimingAssessment:
+    """This class represents bounded decision or submission timing evidence."""
+
+    operation: EntryTimingOperation
+    session_assessment: SessionAssessment
+    decision_at: datetime
+    now: datetime
+    original_expires_at: datetime | None = None
+    config_hash: str = field(init=False)
+    slot_key: str | None = field(init=False)
+    reasons: tuple[str, ...] = field(init=False)
+
+    def __post_init__(self) -> None:
+        """
+        Validate retained inputs and derive exact entry-timing evidence.
+
+        :returns:             None.
+        :raises   TypeError:  If an input has the wrong exact trusted type.
+        :raises   ValueError: If an instant is naive or the operation is unsupported.
+        """
+        _require_token("operation", self.operation, _ENTRY_TIMING_OPERATIONS)
+        if type(self.session_assessment) is not SessionAssessment:
+            raise TypeError("session_assessment must be a SessionAssessment")
+        object.__setattr__(self, "decision_at", _trusted_datetime("decision_at", self.decision_at))
+        object.__setattr__(self, "now", _trusted_datetime("now", self.now))
+        if self.now != self.session_assessment.now:
+            raise ValueError("now must equal session_assessment.now")
+        if self.original_expires_at is not None:
+            object.__setattr__(
+                self,
+                "original_expires_at",
+                _trusted_datetime("original_expires_at", self.original_expires_at),
+            )
+        elif self.operation == "submission":
+            raise TypeError("original_expires_at must be a datetime for submission")
+        object.__setattr__(self, "config_hash", self.session_assessment.config_hash)
+        _derive_entry_timing(self)
+
+    @property
+    def timing_suitable(self) -> bool:
+        """
+        Return whether the bounded timing checks passed.
+
+        This property does not establish source admission, strategy approval,
+        account readiness, or authority to submit an order.
+
+        :returns: True only when ``reasons`` is empty.
+        """
+        return not self.reasons
+
+
 def assess_session(
     session: ExchangeSession | None,
     tradability: InstrumentTradability | None,
@@ -218,6 +272,61 @@ def assess_session(
     :raises   ValueError:  If ``now`` is not an aware representable instant.
     """
     return SessionAssessment(session, tradability, config, now)
+
+
+def assess_decision_slot(
+    session: ExchangeSession | None,
+    tradability: InstrumentTradability | None,
+    *,
+    config: StrategyConfig,
+    decision_at: datetime,
+    now: datetime,
+) -> EntryTimingAssessment:
+    """
+    Assess one exact scheduled initial-decision timestamp.
+
+    :param    session:      Current calendar evidence, or None when unavailable.
+    :param    tradability: Current instrument evidence, or None when unavailable.
+    :param    config:      Exact trusted strategy configuration.
+    :param    decision_at: Original aware scheduled decision timestamp.
+    :param    now:         Explicit aware current timestamp, which must equal the decision.
+    :returns:              Immutable bounded decision-slot evidence.
+    :raises   TypeError:   If a trusted argument has the wrong exact type.
+    :raises   ValueError:  If an instant is not aware and representable in UTC.
+    """
+    assessment = assess_session(session, tradability, config=config, now=now)
+    return EntryTimingAssessment("decision", assessment, decision_at, now)
+
+
+def assess_submission_time(
+    session: ExchangeSession | None,
+    tradability: InstrumentTradability | None,
+    *,
+    config: StrategyConfig,
+    decision_at: datetime,
+    original_expires_at: datetime,
+    now: datetime,
+) -> EntryTimingAssessment:
+    """
+    Assess continuous submission against one original decision and expiry.
+
+    Current session evidence is assessed at ``now``. The original absolute
+    expiry remains the latest-fill bound and is never refreshed from ``now``.
+
+    :param    session:              Current calendar evidence, or None.
+    :param    tradability:         Current instrument evidence, or None.
+    :param    config:              Exact trusted strategy configuration.
+    :param    decision_at:         Original aware decision timestamp.
+    :param    original_expires_at: Original aware absolute intent expiry.
+    :param    now:                 Explicit aware current submission timestamp.
+    :returns:                      Immutable bounded submission-timing evidence.
+    :raises   TypeError:           If a trusted argument has the wrong exact type.
+    :raises   ValueError:          If an instant is not aware and representable in UTC.
+    """
+    assessment = assess_session(session, tradability, config=config, now=now)
+    return EntryTimingAssessment(
+        "submission", assessment, decision_at, now, original_expires_at
+    )
 
 
 def _normalize_optional_datetimes(owner: object, *names: str) -> None:
@@ -291,16 +400,15 @@ def _derive_assessment(result: SessionAssessment) -> None:
         entry_reasons.append("time_arithmetic_unsupported")
     elif common_usable and effective_start is not None:
         try:
-            required_until = result.now + (
-                result.config.execution.entry_lifetime
-                + result.config.execution.holding_period
-                + result.config.execution.adverse_exit_latency
-            )
+            latest_fill = result.now + result.config.execution.entry_lifetime
         except OverflowError:
             entry_reasons.append("time_arithmetic_unsupported")
         else:
-            if required_until > effective_start:
-                entry_reasons.append("insufficient_time_before_liquidation")
+            planning_reason = _latest_fill_planning_reason(
+                result, latest_fill, effective_start
+            )
+            if planning_reason is not None:
+                entry_reasons.append(planning_reason)
 
     _set_fields(
         result,
@@ -317,6 +425,119 @@ def _derive_assessment(result: SessionAssessment) -> None:
         effective_liquidation_deadline=effective_deadline,
         recovery_basis=recovery_basis,
     )
+
+
+def _derive_entry_timing(result: EntryTimingAssessment) -> None:
+    """Derive ordered exact-slot or original-intent timing reasons."""
+    assessment = result.session_assessment
+    config = assessment.config
+    reasons: list[str] = []
+
+    if result.operation == "decision":
+        if result.now > result.decision_at:
+            reasons.append("missed_decision")
+        elif result.now < result.decision_at:
+            reasons.append("decision_in_future")
+    elif result.now < result.decision_at:
+        reasons.append("submission_before_decision")
+
+    decision_local = None
+    current_date = None
+    try:
+        decision_local = result.decision_at.astimezone(_NY)
+    except (OverflowError, ValueError):
+        reasons.append("time_conversion_unsupported")
+    try:
+        current_date = result.now.astimezone(_NY).date()
+    except (OverflowError, ValueError):
+        _append_reason(reasons, "time_conversion_unsupported")
+
+    slot_key = None
+    if decision_local is not None:
+        on_grid = (
+            decision_local.minute % 5 == 0
+            and decision_local.second == 0
+            and decision_local.microsecond == 0
+        )
+        if not on_grid:
+            reasons.append("decision_off_grid")
+        else:
+            slot_key = (
+                f"{config.strategy_calendar}/{decision_local.date().isoformat()}/"
+                f"{decision_local:%H:%M}"
+            )
+        if current_date is not None and decision_local.date() != current_date:
+            reasons.append("decision_wrong_strategy_date")
+        try:
+            original_start = _dated_utc(decision_local.date(), config.entry_start)
+            original_end = _dated_utc(decision_local.date(), config.entry_end)
+        except (OverflowError, ValueError):
+            _append_reason(reasons, "time_conversion_unsupported")
+        else:
+            if not original_start <= result.decision_at <= original_end:
+                reasons.append("decision_outside_configured_entry_window")
+
+    expected_expiry = None
+    try:
+        expected_expiry = result.decision_at + config.execution.entry_lifetime
+    except OverflowError:
+        _append_reason(reasons, "time_arithmetic_unsupported")
+
+    if result.operation == "decision":
+        object.__setattr__(result, "original_expires_at", expected_expiry)
+    else:
+        assert result.original_expires_at is not None
+        if expected_expiry is None or result.original_expires_at != expected_expiry:
+            reasons.append("original_expiry_mismatch")
+        if result.now >= result.original_expires_at:
+            reasons.append("original_intent_expired")
+
+    current_reasons = assessment.entry_reasons
+    if result.operation == "submission":
+        current_reasons = tuple(
+            reason for reason in current_reasons
+            if reason != "insufficient_time_before_liquidation"
+        )
+    for reason in current_reasons:
+        _append_reason(reasons, reason)
+
+    if result.operation == "submission" and result.original_expires_at is not None:
+        planning_reason = _latest_fill_planning_reason(
+            assessment,
+            result.original_expires_at,
+            assessment.effective_liquidation_start,
+        )
+        if planning_reason is not None:
+            _append_reason(reasons, planning_reason)
+
+    object.__setattr__(result, "slot_key", slot_key)
+    object.__setattr__(result, "reasons", tuple(reasons))
+
+
+def _latest_fill_planning_reason(
+    assessment: SessionAssessment,
+    latest_fill: datetime,
+    liquidation_start: datetime | None,
+) -> str | None:
+    """Return bounded feasibility evidence for one absolute latest-fill time."""
+    if liquidation_start is None:
+        return None
+    try:
+        required_until = latest_fill + (
+            assessment.config.execution.holding_period
+            + assessment.config.execution.adverse_exit_latency
+        )
+    except OverflowError:
+        return "time_arithmetic_unsupported"
+    if required_until > liquidation_start:
+        return "insufficient_time_before_liquidation"
+    return None
+
+
+def _append_reason(reasons: list[str], reason: str) -> None:
+    """Append one reason once while retaining deterministic first occurrence."""
+    if reason not in reasons:
+        reasons.append(reason)
 
 
 def _session_evidence(result: SessionAssessment, strategy_date: date) -> tuple[list[str], bool]:
