@@ -1,0 +1,199 @@
+{
+  "assembled_at": "2026-09-06T16:02:23.153414+00:00",
+  "definitions": {
+    "coherence_protocol_ids": [],
+    "greek_method": {
+      "assumptions_id": "fixture-flat-rates-v1",
+      "method_id": "fixture-greek-values",
+      "method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+      "method_version": "1"
+    },
+    "tick_definition_ids": []
+  },
+  "fixture_id": "p08a-greek-ready-v1",
+  "generator_id": "optionslab-test-fixture-builder",
+  "generator_source_ref": "OptionsLab/tests/build_fixture.py",
+  "generator_version": "1",
+  "members": [
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "option-event-1",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:59+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "option-provider-1",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://option/1",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "option-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "option-profile-1",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "option-member-1"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "underlying-event-1",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/underlying-provider-1",
+          "available_at": "2026-09-05T14:29:59+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "underlying-provider-1",
+          "quality_flags": [],
+          "source": "synthetic-sip-underlying"
+        },
+        "raw_ref": "synthetic://underlying/1",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "underlying-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_quote",
+      "profile_id": "underlying-profile-1",
+      "raw_body": {
+        "ask": "650.02",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 900,
+        "bid": "650.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 700,
+        "symbol": "SPY"
+      },
+      "raw_hash": "0144f763fe13671e714c2864337e088175fd15a44b00e4d5e988a68b241ebb07",
+      "record_id": "underlying-member-1"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "greek-event-1",
+        "metadata": null,
+        "raw_ref": "synthetic://greek/1",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "greek-stream-1",
+        "supersedes_record_id": null
+      },
+      "kind": "greek_observation",
+      "profile_id": "greek-profile-1",
+      "raw_body": {
+        "as_of": "2026-09-05T14:29:58+00:00",
+        "availability_basis": "measured",
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "delta": "0.50",
+        "delta_unit": "signed_option_price_per_underlying_price",
+        "input_hash": "7e3855d0dfb072da3bce8c6c7a9df4814d2d6eef1881a11807ef3f6f36cd5af7",
+        "inputs": {
+          "assumptions_id": "fixture-flat-rates-v1",
+          "dividend_unit": "continuous_annual_fraction",
+          "dividend_yield": "0.0125",
+          "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+          "rate": "-0.01",
+          "rate_unit": "continuous_annual_fraction",
+          "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+        },
+        "iv": "0.20",
+        "iv_unit": "annualized_volatility_fraction",
+        "method_id": "fixture-greek-values",
+        "method_version": "1",
+        "provider_record_id": "greek-provider-1",
+        "source": "synthetic-greek-method"
+      },
+      "raw_hash": "ad43f66dd39bdb2767655149661d82841ee3476e3298376b3038d8681c5c998f",
+      "record_id": "greek-member-1"
+    }
+  ],
+  "modeled_source_profiles": [
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "option-profile-1",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "option-stream-1",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_quote",
+      "profile_id": "underlying-profile-1",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-underlying",
+      "stream_id": "underlying-stream-1",
+      "units": {
+        "price": "USD_per_share",
+        "size": "shares"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "greek_observation",
+      "profile_id": "greek-profile-1",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-greek-method",
+      "stream_id": "greek-stream-1",
+      "units": {
+        "delta": "signed_option_price_per_underlying_price",
+        "dividend": "continuous_annual_fraction",
+        "iv": "annualized_volatility_fraction",
+        "rate": "continuous_annual_fraction"
+      }
+    }
+  ],
+  "normalization_version": 1,
+  "origin": "synthetic",
+  "permitted_use": "core_fixture",
+  "schema_version": 1
+}
