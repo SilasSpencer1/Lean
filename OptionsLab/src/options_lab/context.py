@@ -6,7 +6,7 @@ import hashlib
 import json
 from typing import Literal
 
-from ._input_parsing import _InvalidInput, _parse_contract_id, _parse_string, _parse_timestamp
+from ._input_parsing import _InvalidInput, _parse_contract_id, _parse_date, _parse_string, _parse_timestamp
 from ._validation import _require_nonempty_string, _trusted_datetime
 from .admission import VerifiedFixtureManifest, VerifiedFixtureMember
 from .coherence import (
@@ -15,7 +15,14 @@ from .coherence import (
 )
 from .config import StrategyConfig, config_hash, policy_hash
 from .context_inputs import ContextInputRejection, ContextRequestValidation
-from .contracts import ContractId
+from .contract_inputs import (
+    ContractReferenceRejection, ProviderContractMappingRejection,
+    normalize_contract_reference, normalize_provider_contract_mapping,
+)
+from .contracts import (
+    ContractId, ContractReference, ContractReferenceAssessment, ProviderContractMapping,
+    assess_contract_reference,
+)
 from .features import FeatureState, FeatureUpdate
 from .greek_inputs import GreekInputRejection, normalize_greek_observation
 from .greeks import GreekObservation, GreekReadiness, assess_greek_readiness
@@ -23,7 +30,13 @@ from .observations import InputRejection, ObservationMeta, normalize_observation
 from .quote_content import QuoteContentIdentity, identify_quote_content
 from .quote_inputs import QuoteInputRejection, normalize_quote_observation
 from .quotes import QuoteObservation, _assess_quote_only
-from .sessions import EntryTimingAssessment, assess_decision_slot
+from .session_inputs import (
+    SessionInputRejection, normalize_exchange_session, normalize_instrument_tradability,
+)
+from .sessions import (
+    EntryTimingAssessment, ExchangeSession, InstrumentTradability, SessionAssessment,
+    assess_decision_slot, assess_session,
+)
 from .ticks import TickInputRejection, TickRule, normalize_tick_rule
 from .underlying import UnderlyingQuote, assess_underlying_quote
 from .underlying_inputs import UnderlyingQuoteInputRejection, normalize_underlying_quote
@@ -92,11 +105,13 @@ class ContextMemberRejection:
 
 MarketValue = (
     QuoteObservation | UnderlyingQuote | GreekObservation | QuoteCoherenceEvidence | TickRule
+    | ExchangeSession | InstrumentTradability | ProviderContractMapping | ContractReference
 )
 ContextRejection = (
     ContextInputRejection | ContextMemberRejection | InputRejection | QuoteInputRejection
     | UnderlyingQuoteInputRejection | GreekInputRejection | CoherenceInputRejection
-    | TickInputRejection
+    | TickInputRejection | SessionInputRejection | ProviderContractMappingRejection
+    | ContractReferenceRejection
 )
 
 
@@ -132,7 +147,8 @@ class DecisionContext:
     Tick rules are complete known lineage tips, including adverse rules and advance
     schedules; applicability requires an actual-price consumer. The digest is absent
     when a supplied prior feature state cannot be rebound to admitted history.
-    Session, status, reference, and history inputs are explicitly absent here.
+    Status/reference tuples retain complete known tips and separate owner assessments,
+    including schedules and adverse applicability. History remains explicitly absent.
     """
 
     decision_id: str
@@ -148,10 +164,12 @@ class DecisionContext:
     tick_rules: tuple[TickRule, ...]
     greek_readiness: tuple[GreekReadiness, ...]
     coherence_assessments: tuple[CoherenceAssessment, ...]
-    session: None
-    tradability: tuple[()]
-    provider_mappings: tuple[()]
-    contract_references: tuple[()]
+    session: ExchangeSession | None
+    tradability: tuple[InstrumentTradability, ...]
+    provider_mappings: tuple[ProviderContractMapping, ...]
+    contract_references: tuple[ContractReference, ...]
+    session_assessments: tuple[SessionAssessment, ...]
+    reference_assessments: tuple[ContractReferenceAssessment, ...]
     feature_state: None
     bars: tuple[()]
     rejections: tuple[ContextRejection, ...]
@@ -272,6 +290,13 @@ def build_decision_context(
     if request.value is not None:
         _select(rows, request.value.decision_at)
         _quote_evidence(rows, request.value.decision_at, config)
+        for row in rows:
+            if row.disposition == "selected" and type(row.value) is ExchangeSession:
+                assessment = assess_session(row.value, None, config=config, now=request.value.decision_at)
+                if any(reason in assessment.session_reasons for reason in (
+                    "calendar_unsupported", "session_wrong_date",
+                )) or "time_conversion_unsupported" in assessment.entry_reasons:
+                    row.disposition = "audit"
     components = []
     causal_rejections = list(rejections)
     for row in rows:
@@ -345,7 +370,7 @@ def _normalize(row: _Row, profile: dict) -> None:
         event_id=env["event_id"], raw_ref=env["raw_ref"],
         received_at=_parse_timestamp(env["simulated_received_at"], "received_at"),
     )
-    if kind != "underlying_quote":
+    if kind not in ("underlying_quote", "exchange_session"):
         try:
             row.contract = _parse_contract_id(
                 env["contract"] if env["contract"] is not None else raw.get("contract")
@@ -372,15 +397,36 @@ def _normalize(row: _Row, profile: dict) -> None:
         result = normalize_quote_coherence(raw, **kwargs)
     elif kind == "tick_rule":
         result = normalize_tick_rule(raw, **kwargs)
+    elif kind == "exchange_session":
+        result = normalize_exchange_session(raw, **kwargs)
+    elif kind == "instrument_tradability":
+        result = normalize_instrument_tradability(raw, **kwargs)
+    elif kind == "provider_contract_mapping":
+        result = normalize_provider_contract_mapping(raw, **kwargs)
+    elif kind == "contract_reference":
+        result = normalize_contract_reference(raw, **kwargs)
     if result is not None:
         row.value = result.value
         if result.rejection is not None:
             row.failures.append(result.rejection)
     facts = env["metadata"] if kind in ("option_quote", "underlying_quote") else raw
     row.available_at = _available(env, raw)
-    row.source = _string(facts.get("source"))
+    row.source = _string(facts.get("provider" if kind == "provider_contract_mapping" else "source"))
     row.source_id = _string(facts.get("evidence_id" if kind == "quote_coherence" else "provider_record_id"))
-    if kind == "underlying_quote":
+    if kind == "provider_contract_mapping":
+        row.source_id = env["event_id"]
+        symbol = _string(raw.get("symbol"))
+        row.target = (kind, row.source, symbol) if row.source and symbol else None
+    elif kind in ("exchange_session", "instrument_tradability"):
+        try:
+            day = _parse_date(raw.get("session_date"), "session_date")
+        except _InvalidInput:
+            day = None
+        identity = _string(raw.get("calendar")) if kind == "exchange_session" else (
+            row.contract if raw.get("contract", {}) is not None else _string(raw.get("instrument_ref"))
+        )
+        row.target = (kind, identity, day) if identity is not None and day is not None else None
+    elif kind == "underlying_quote":
         symbol = _string(raw.get("symbol"))
         row.target = (kind, symbol) if symbol is not None else None
     elif row.contract is not None:
@@ -403,7 +449,13 @@ def _normalize(row: _Row, profile: dict) -> None:
         ("source", "feed_class", "fidelity", "availability_basis")
         if row.metadata is not None else ("source",)
     )
-    if any(facts.get(name) != profile[name] for name in claims):
+    if kind in ("exchange_session", "instrument_tradability"):
+        claims = ("source", "fidelity", "availability_basis")
+    elif kind == "contract_reference":
+        claims = ("source", "availability_basis")
+    elif kind == "provider_contract_mapping":
+        claims = ("availability_basis",)
+    if row.source != profile["source"] or any(facts.get(name) != profile[name] for name in claims):
         row.reasons.append("profile_mismatch")
     if kind == "greek_observation" and facts.get("availability_basis") != profile["availability_basis"]:
         row.reasons.append("profile_mismatch")
@@ -512,7 +564,11 @@ def _select(rows: list[_Row], cutoff: datetime) -> None:
         ):
             for other in ordered:
                 if other.member.kind == row.member.kind and (
-                    (row.target is None and (row.contract is None or row.contract == other.contract))
+                    (row.target is None and (
+                        # A mapping can change contract; it cannot bound an unknown provider/symbol.
+                        row.member.kind == "provider_contract_mapping"
+                        or row.contract is None or row.contract == other.contract
+                    ))
                     or (row.target is not None and row.target == other.target)
                 ):
                     other.reasons.append("target_unknown")
@@ -520,7 +576,7 @@ def _select(rows: list[_Row], cutoff: datetime) -> None:
         targets = {active[key].target for key in group}
         for other_group, _ in groups[index + 1:]:
             common = targets & {active[key].target for key in other_group}
-            if any(target is not None and target[0] != "tick_rule" for target in common):
+            if any(target is not None and target[0] not in ("tick_rule", "instrument_tradability", "contract_reference") for target in common):
                 for key in group | other_group:
                     active[key].reasons.append("current_roots_conflict")
         for key in tips:
@@ -557,7 +613,7 @@ def _same_source(left: _Row, right: _Row) -> bool:
         return False
     if type(a) in (QuoteObservation, UnderlyingQuote):
         return replace(a, meta=replace(a.meta, received_at=b.meta.received_at, raw_ref=b.meta.raw_ref)) == b
-    if type(a) is GreekObservation:
+    if type(a) in (GreekObservation, ExchangeSession, InstrumentTradability):
         return replace(a, received_at=b.received_at, raw_ref=b.raw_ref) == b
     return replace(a, raw_ref=b.raw_ref) == b
 
@@ -604,6 +660,25 @@ def _context(request, manifest, config, rows, rejections, chash, phash, global_r
     greeks = tuple(value for value in selected if type(value) is GreekObservation)
     proofs = tuple(value for value in selected if type(value) is QuoteCoherenceEvidence)
     ticks = tuple(value for value in selected if type(value) is TickRule)
+    sessions = [value for value in selected if type(value) is ExchangeSession]
+    session = sessions[0] if len(sessions) == 1 else None
+    statuses = tuple(value for value in selected if type(value) is InstrumentTradability)
+    mappings = tuple(value for value in selected if type(value) is ProviderContractMapping)
+    references = tuple(value for value in selected if type(value) is ContractReference)
+    session_assessments = tuple(
+        assess_session(session, status, config=config, now=header.decision_at)
+        for status in (statuses or (None,))
+    ) if session is not None or statuses else ()
+    reference_assessments = []
+    for reference in references:
+        compatible = [mapping for mapping in mappings if mapping.contract == reference.contract]
+        if not compatible and len(mappings) == 1 and len({r.contract for r in references}) == 1:
+            # One supplied target pair can expose a mismatch without decoding its symbol.
+            compatible = list(mappings)
+        if len(compatible) == 1:
+            reference_assessments.append(assess_contract_reference(
+                compatible[0], reference, decision_at=header.decision_at,
+            ))
     readiness, coherence = [], []
     reasons = list(global_reasons)
     for failure in request.rejections:
@@ -640,7 +715,7 @@ def _context(request, manifest, config, rows, rejections, chash, phash, global_r
             reasons.append("greek_coherence_missing")
     reasons = tuple(dict.fromkeys(reasons))
     timing = assess_decision_slot(
-        None, None, config=config, decision_at=header.decision_at, now=header.decision_at,
+        session, None, config=config, decision_at=header.decision_at, now=header.decision_at,
     )
     manifest_id = None if manifest is None else (manifest.fixture_id, manifest.payload_sha256)
     known_ids = {m.record_id for m in manifest.members} if manifest else set()
@@ -675,8 +750,10 @@ def _context(request, manifest, config, rows, rejections, chash, phash, global_r
         slot_key=timing.slot_key, timing=timing, manifest=manifest, input_manifest_id=manifest_id,
         option_quotes=options, underlying_quotes=underlying, greeks=greeks,
         coherence_evidence=proofs, tick_rules=ticks,
-        greek_readiness=tuple(readiness), coherence_assessments=tuple(coherence), session=None, tradability=(),
-        provider_mappings=(), contract_references=(), feature_state=None, bars=(), rejections=rejections,
+        greek_readiness=tuple(readiness), coherence_assessments=tuple(coherence), session=session, tradability=statuses,
+        provider_mappings=mappings, contract_references=references,
+        session_assessments=session_assessments, reference_assessments=tuple(reference_assessments),
+        feature_state=None, bars=(), rejections=rejections,
         input_reasons=reasons, config_hash=chash, policy_hash=phash, input_digest=digest, origin="synthetic",
         fidelity_tier=0, permitted_use="core_fixture", operational_allowed=False, economic_allowed=False,
     )

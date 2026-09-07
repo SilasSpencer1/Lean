@@ -22,6 +22,7 @@ from .greeks import FIXTURE_GREEK_METHOD, GreekMethodSpec
 
 FixtureKind = Literal[
     "option_quote", "underlying_quote", "greek_observation", "quote_coherence", "tick_rule",
+    "exchange_session", "instrument_tradability", "provider_contract_mapping", "contract_reference",
 ]
 FixtureRejectionCode = Literal[
     "catalog_unavailable", "catalog_invalid", "catalog_resource_limit",
@@ -61,6 +62,7 @@ _DESCRIPTOR_FIELDS = (
 )
 _KINDS = (
     "option_quote", "underlying_quote", "greek_observation", "quote_coherence", "tick_rule",
+    "exchange_session", "instrument_tradability", "provider_contract_mapping", "contract_reference",
 )
 _TICK_DEFINITIONS = (("fixture-usd-premium-tick-v1", "1"),)
 _COHERENCE_PROTOCOLS = (
@@ -89,6 +91,10 @@ _UNITS = {
     },
     "quote_coherence": {},
     "tick_rule": {"price": "USD_per_share"},
+    "exchange_session": {},
+    "instrument_tradability": {},
+    "provider_contract_mapping": {},
+    "contract_reference": {},
 }
 
 
@@ -459,7 +465,7 @@ def _profiles(
             ("feed_class", "realtime"), ("fidelity", "genuine")
         ):
             value = profile[name]
-            if quote:
+            if quote or (name == "fidelity" and kind in ("exchange_session", "instrument_tradability")):
                 if _parse_string(value, f"{path}.{name}") != expected:
                     _fail(f"{path}.{name}", "invalid_value")
             elif value is not None:
@@ -467,6 +473,7 @@ def _profiles(
         identity_rule = (
             "new_evidence_id_per_update"
             if kind == "quote_coherence"
+            else "new_event_id_per_update" if kind == "provider_contract_mapping"
             else "new_provider_record_id_per_update"
         )
         for name, expected in (
@@ -593,7 +600,10 @@ def _envelope(
     supersedes = envelope["supersedes_record_id"]
     if supersedes is not None:
         _parse_string(supersedes, f"{path}.supersedes_record_id")
-    if kind in ("quote_coherence", "tick_rule"):
+    if kind in (
+        "quote_coherence", "tick_rule", "exchange_session", "instrument_tradability",
+        "provider_contract_mapping", "contract_reference",
+    ):
         for name in ("contract", "metadata"):
             if envelope[name] is not None:
                 _fail(f"{path}.{name}", "invalid_value")
