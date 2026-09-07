@@ -42,6 +42,12 @@ from .bundle_manifest_inputs import (
     ModelBundleManifest,
     normalize_bundle_manifest,
 )
+from .bundles import (
+    BundleRejection,
+    BundleVerification,
+    VerifiedBundle,
+    verify_bundle,
+)
 from .candidates import (
     CandidateAssessment,
     CandidateConsideration,
@@ -220,6 +226,10 @@ from .volume_normalization import (
 )
 
 __all__ = [
+    "BundleRejection",
+    "BundleVerification",
+    "VerifiedBundle",
+    "verify_bundle",
     "BundleManifestValidation",
     "ModelBundleManifest",
     "normalize_bundle_manifest",
