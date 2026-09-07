@@ -88,6 +88,14 @@
       "generator_version": "1",
       "normalization_version": 1,
       "payload_schema_version": 1
+    },
+    {
+      "expected_payload_sha256": "3bf2edf298ab0172bd721b0dfbdd044f5d8ccdf878c28d9af43b0e0926520b38",
+      "fixture_id": "p12c-account-context-v1",
+      "generator_id": "optionslab-account-context-fixture-builder",
+      "generator_version": "1",
+      "normalization_version": 1,
+      "payload_schema_version": 1
     }
   ]
 }

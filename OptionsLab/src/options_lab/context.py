@@ -8,6 +8,8 @@ from typing import Literal
 
 from ._input_parsing import _InvalidInput, _parse_contract_id, _parse_date, _parse_string, _parse_timestamp
 from ._validation import _require_nonempty_string, _trusted_datetime
+from .account import AccountSnapshot
+from .account_inputs import AccountInputRejection, normalize_account
 from .admission import VerifiedFixtureManifest, VerifiedFixtureMember
 from .bar_inputs import BarContentIdentity, BarInputRejection, identify_underlying_bar, normalize_underlying_bar
 from .bars import UnderlyingBar
@@ -110,13 +112,13 @@ class ContextMemberRejection:
 
 MarketValue = (
     QuoteObservation | UnderlyingQuote | GreekObservation | QuoteCoherenceEvidence | TickRule
-    | ExchangeSession | InstrumentTradability | ProviderContractMapping | ContractReference | UnderlyingBar
+    | ExchangeSession | InstrumentTradability | ProviderContractMapping | ContractReference | UnderlyingBar | AccountSnapshot
 )
 ContextRejection = (
     ContextInputRejection | ContextMemberRejection | InputRejection | QuoteInputRejection
     | UnderlyingQuoteInputRejection | GreekInputRejection | CoherenceInputRejection
     | TickInputRejection | SessionInputRejection | ProviderContractMappingRejection
-    | ContractReferenceRejection | BarInputRejection
+    | ContractReferenceRejection | BarInputRejection | AccountInputRejection
 )
 
 
@@ -400,7 +402,7 @@ def _normalize(row: _Row, profile: dict) -> None:
         event_id=env["event_id"], raw_ref=env["raw_ref"],
         received_at=_parse_timestamp(env["simulated_received_at"], "received_at"),
     )
-    if kind not in ("underlying_quote", "exchange_session", "underlying_bar"):
+    if kind not in ("underlying_quote", "exchange_session", "underlying_bar", "account_snapshot"):
         try:
             row.contract = _parse_contract_id(
                 env["contract"] if env["contract"] is not None else raw.get("contract")
@@ -440,6 +442,8 @@ def _normalize(row: _Row, profile: dict) -> None:
         result = normalize_provider_contract_mapping(raw, **kwargs)
     elif kind == "contract_reference":
         result = normalize_contract_reference(raw, **kwargs)
+    elif kind == "account_snapshot":
+        result = normalize_account(raw, **kwargs)
     if result is not None:
         row.value = result.value
         if result.rejection is not None:
@@ -456,6 +460,10 @@ def _normalize(row: _Row, profile: dict) -> None:
         row.target = (kind, symbol, start) if symbol and start is not None else None
         if type(row.value) is UnderlyingBar:
             row.bar_identity = identify_underlying_bar(row.value)
+    elif kind == "account_snapshot":
+        row.source_id = env["event_id"]
+        account_id = _string(raw.get("account_id"))
+        row.target = (kind, account_id) if account_id is not None else None
     elif kind == "provider_contract_mapping":
         row.source_id = env["event_id"]
         symbol = _string(raw.get("symbol"))
@@ -494,7 +502,7 @@ def _normalize(row: _Row, profile: dict) -> None:
     )
     if kind in ("exchange_session", "instrument_tradability"):
         claims = ("source", "fidelity", "availability_basis")
-    elif kind == "contract_reference":
+    elif kind in ("contract_reference", "account_snapshot"):
         claims = ("source", "availability_basis")
     elif kind == "provider_contract_mapping":
         claims = ("availability_basis",)
@@ -666,6 +674,9 @@ def _same_source(left: _Row, right: _Row) -> bool:
         )
     if type(a) is not type(b):
         return False
+    if type(a) is AccountSnapshot:
+        return (replace(a, received_at=b.received_at, raw_ref=b.raw_ref) == b
+                and _account_mark_envelopes(left.body) == _account_mark_envelopes(right.body))
     if type(a) is UnderlyingBar:
         return replace(a, meta=replace(a.meta, received_at=b.meta.received_at, raw_ref=b.meta.raw_ref),
                        receive_sequence=b.receive_sequence) == b
@@ -674,6 +685,18 @@ def _same_source(left: _Row, right: _Row) -> bool:
     if type(a) in (GreekObservation, ExchangeSession, InstrumentTradability):
         return replace(a, received_at=b.received_at, raw_ref=b.raw_ref) == b
     return replace(a, raw_ref=b.raw_ref) == b
+
+
+def _account_mark_envelopes(body: dict) -> tuple:
+    """Retain ordered source claims absent from successfully normalized quotes.
+
+    :param body: Actual member body already normalized to an exact AccountSnapshot.
+    :returns: One null or four-field source-envelope tuple per retained holding.
+    """
+    return tuple(None if holding["mark_quote"] is None else tuple(
+        holding["mark_quote"]["envelope"][name]
+        for name in ("event_id", "stream_id", "receive_sequence", "supersedes_record_id")
+    ) for holding in body["holdings"])
 
 
 def _later(row: _Row, prior: _Row) -> bool:

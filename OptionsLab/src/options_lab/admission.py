@@ -21,7 +21,7 @@ from .greeks import FIXTURE_GREEK_METHOD, GreekMethodSpec
 
 
 FixtureKind = Literal[
-    "volume_partition", "feature_normalization",
+    "volume_partition", "feature_normalization", "account_snapshot",
     "option_quote", "underlying_quote", "greek_observation", "quote_coherence", "tick_rule",
     "exchange_session", "instrument_tradability", "provider_contract_mapping", "contract_reference", "underlying_bar",
 ]
@@ -62,7 +62,7 @@ _DESCRIPTOR_FIELDS = (
     "normalization_version", "expected_payload_sha256",
 )
 _KINDS = (
-    "volume_partition", "feature_normalization",
+    "volume_partition", "feature_normalization", "account_snapshot",
     "option_quote", "underlying_quote", "greek_observation", "quote_coherence", "tick_rule",
     "exchange_session", "instrument_tradability", "provider_contract_mapping", "contract_reference", "underlying_bar",
 )
@@ -81,6 +81,19 @@ _REJECTION_CODES = (
     "kind_mismatch", "stream_mismatch",
 )
 _UNITS = {
+    "account_snapshot": {
+        "money": "USD", "quantity": "holding_quantity_unit",
+        "basis_debit": "USD_total_remaining_entry_premium_excluding_posted_fees",
+        "virtual_cash": "USD_after_posted_premiums_proceeds_fees",
+        "virtual_settled_cash": "USD_before_virtual_reservations",
+        "virtual_reserved_cash": "USD_aggregate_unspent_hold",
+        "broker_settled_cash": "USD_settled_cash",
+        "broker_available_cash": "USD_already_net_of_broker_holds",
+        "broker_nonmargin_buying_power": "USD_nonmargin_already_net_of_broker_holds",
+        "session_realized_pnl": "USD_including_all_posted_fees",
+        "estimated_remaining_close_cost": "USD_unpaid_remaining_cost",
+        "applicable_round_trip_fees": "USD_optional_total_round_trip_estimate",
+    },
     "volume_partition": {},
     "feature_normalization": {"volume": "shares"},
     "option_quote": {
@@ -482,7 +495,7 @@ def _profiles(
             "new_evidence_id_per_update"
             if kind == "quote_coherence"
             else "provider_record_id_and_revision_id" if kind == "underlying_bar"
-            else "new_event_id_per_update" if kind in ("provider_contract_mapping", "volume_partition", "feature_normalization")
+            else "new_event_id_per_update" if kind in ("provider_contract_mapping", "volume_partition", "feature_normalization", "account_snapshot")
             else "new_provider_record_id_per_update"
         )
         for name, expected in (
@@ -610,7 +623,7 @@ def _envelope(
     if supersedes is not None:
         _parse_string(supersedes, f"{path}.supersedes_record_id")
     if kind in (
-        "volume_partition", "feature_normalization",
+        "volume_partition", "feature_normalization", "account_snapshot",
         "quote_coherence", "tick_rule", "exchange_session", "instrument_tradability",
         "provider_contract_mapping", "contract_reference",
     ):
@@ -814,7 +827,10 @@ def _allowed_codes(field_name: str) -> tuple[str, ...]:
         r"assembled_at|generator_source_ref|origin|permitted_use|"
         r"modeled_source_profiles(?:\[[0-9]+\](?:\.(?:profile_id|kind|source|"
         r"stream_id|feed_class|fidelity|availability_basis|record_identity_rule|"
-        r"units(?:\.(?:price|size|delta|iv|rate|dividend|volume|vwap_numerator|vwap_denominator))?))?)?|"
+        r"units(?:\.(?:price|size|delta|iv|rate|dividend|volume|vwap_numerator|vwap_denominator|"
+        r"money|quantity|basis_debit|virtual_cash|virtual_settled_cash|virtual_reserved_cash|broker_settled_cash|"
+        r"broker_available_cash|broker_nonmargin_buying_power|session_realized_pnl|estimated_remaining_close_cost|"
+        r"applicable_round_trip_fees))?))?)?|"
         r"definitions(?:\.(?:coherence_protocol_ids|tick_definition_ids|"
         r"greek_method(?:\.(?:method_id|method_version|assumptions_id|"
         r"method_spec_hash))?))?|members(?:\[[0-9]+\](?:\.(?:record_id|kind|"
