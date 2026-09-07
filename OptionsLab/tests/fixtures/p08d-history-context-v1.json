@@ -1,0 +1,3674 @@
+{
+  "assembled_at": "2026-09-07T00:14:28.640566+00:00",
+  "definitions": {
+    "coherence_protocol_ids": [
+      "fixture-joint-book-snapshot-v1",
+      "fixture-side-validity-overlap-v1"
+    ],
+    "greek_method": {
+      "assumptions_id": "fixture-flat-rates-v1",
+      "method_id": "fixture-greek-values",
+      "method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+      "method_version": "1"
+    },
+    "tick_definition_ids": [
+      "fixture-usd-premium-tick-v1"
+    ]
+  },
+  "fixture_id": "p08d-history-context-v1",
+  "generator_id": "optionslab-context-history-fixture-builder",
+  "generator_source_ref": "OptionsLab/tests/build_context_history_fixture.py",
+  "generator_version": "1",
+  "members": [
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-joined-option_quote",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-05T14:29:59+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "option-provider-1",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://reference-context/joined-option_quote",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "joined-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "joined-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 9,
+        "bid": "5.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "86c9a1339c31a4a5c6e1b55cc7cfe26f5728edb511336c698c56ac338c5f2ed4",
+      "record_id": "joined-option_quote"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-joined-underlying_quote",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/underlying-provider-1",
+          "available_at": "2026-09-05T14:29:59+00:00",
+          "event_at": "2026-09-05T14:29:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "underlying-provider-1",
+          "quality_flags": [],
+          "source": "synthetic-sip-underlying"
+        },
+        "raw_ref": "synthetic://reference-context/joined-underlying_quote",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "joined-underlying_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_quote",
+      "profile_id": "joined-underlying_quote",
+      "raw_body": {
+        "ask": "650.02",
+        "ask_at": "2026-09-05T14:29:58+00:00",
+        "ask_size": 900,
+        "bid": "650.00",
+        "bid_at": "2026-09-05T14:29:58+00:00",
+        "bid_size": 700,
+        "symbol": "SPY"
+      },
+      "raw_hash": "0144f763fe13671e714c2864337e088175fd15a44b00e4d5e988a68b241ebb07",
+      "record_id": "joined-underlying_quote"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "event_id": "event-joined-greek_observation",
+        "metadata": null,
+        "raw_ref": "synthetic://reference-context/joined-greek_observation",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:00+00:00",
+        "stream_id": "joined-greek_observation",
+        "supersedes_record_id": null
+      },
+      "kind": "greek_observation",
+      "profile_id": "joined-greek_observation",
+      "raw_body": {
+        "as_of": "2026-09-05T14:29:58+00:00",
+        "availability_basis": "measured",
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "delta": "0.50",
+        "delta_unit": "signed_option_price_per_underlying_price",
+        "input_hash": "7e3855d0dfb072da3bce8c6c7a9df4814d2d6eef1881a11807ef3f6f36cd5af7",
+        "inputs": {
+          "assumptions_id": "fixture-flat-rates-v1",
+          "dividend_unit": "continuous_annual_fraction",
+          "dividend_yield": "0.0125",
+          "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+          "rate": "-0.01",
+          "rate_unit": "continuous_annual_fraction",
+          "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+        },
+        "iv": "0.20",
+        "iv_unit": "annualized_volatility_fraction",
+        "method_id": "fixture-greek-values",
+        "method_version": "1",
+        "provider_record_id": "provider-market-greek_observation",
+        "source": "synthetic-greek-method"
+      },
+      "raw_hash": "8ec12f149d776e6818226cdff4474845f5483e35a079a5c591dfbbd5aa2b8bc2",
+      "record_id": "joined-greek_observation"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-joined-quote_coherence",
+        "metadata": null,
+        "raw_ref": "synthetic://reference-context/joined-quote_coherence",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "joined-quote_coherence",
+        "supersedes_record_id": null
+      },
+      "kind": "quote_coherence",
+      "profile_id": "joined-quote_coherence",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "coherent_at": "2026-09-05T14:29:58+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "evidence_id": "provider-market-quote_coherence",
+        "method": "joint_snapshot",
+        "option_quote_hash": "68c0ca3b3d60472fef4ec9c2ef840a7fb1e1a3a463acf32bdc774d0461c64afa",
+        "protocol_id": "fixture-joint-book-snapshot-v1",
+        "sides": [],
+        "snapshot_id": "joint-book-1",
+        "source": "synthetic-coherence",
+        "underlying_quote_hash": "a57b077d4feb1d3dd494f66879f5cc57354991c31c265d0fe44210c8d09dd880"
+      },
+      "raw_hash": "5e5275a99808eb47de3d3f2950935d663b83effbaff6916fb4a97c4d54a4d559",
+      "record_id": "joined-quote_coherence"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-joined-tick_rule",
+        "metadata": null,
+        "raw_ref": "synthetic://reference-context/joined-tick_rule",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T14:30:02+00:00",
+        "stream_id": "joined-tick_rule",
+        "supersedes_record_id": null
+      },
+      "kind": "tick_rule",
+      "profile_id": "joined-tick_rule",
+      "raw_body": {
+        "available_at": "2026-09-05T14:29:59+00:00",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:29:58+00:00",
+        "effective_until": "2026-09-05T20:29:58+00:00",
+        "increment": "0.01",
+        "price_from": "0",
+        "price_until": null,
+        "provider_record_id": "provider-market-tick_rule",
+        "rule_id": "fixture-usd-premium-tick-v1",
+        "source": "synthetic-tick-reference",
+        "source_version": "1",
+        "units": "USD_per_share"
+      },
+      "raw_hash": "1a9185e3f79ea6ce54bc1816bc5be4cbb3126e4608ff9a120bad32dad64707b3",
+      "record_id": "joined-tick_rule"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-joined-exchange_session",
+        "metadata": null,
+        "raw_ref": "synthetic://reference-context/joined-exchange_session",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T13:00:00Z",
+        "stream_id": "joined-exchange_session",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "joined-exchange_session",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-09-05T13:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-09-05T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-09-05T13:30:00Z",
+        "provider_record_id": "provider-joined-exchange_session",
+        "session_date": "2026-09-05",
+        "source": "fixture-calendar",
+        "source_version": "1"
+      },
+      "raw_hash": "a4d47235f509090e5a5802dde0d118e159a705c7171d7b3adff10d018be023e2",
+      "record_id": "joined-exchange_session"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-joined-instrument_tradability",
+        "metadata": null,
+        "raw_ref": "synthetic://reference-context/joined-instrument_tradability",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T13:00:00Z",
+        "stream_id": "joined-instrument_tradability",
+        "supersedes_record_id": null
+      },
+      "kind": "instrument_tradability",
+      "profile_id": "joined-instrument_tradability",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-09-05T13:00:00Z",
+        "closes_at": "2026-09-05T20:00:00Z",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:00:00Z",
+        "effective_until": "2026-09-05T20:00:00Z",
+        "fidelity": "genuine",
+        "instrument_ref": "opaque-K",
+        "opens_at": "2026-09-05T13:30:00Z",
+        "provider_record_id": "provider-joined-instrument_tradability",
+        "session_date": "2026-09-05",
+        "source": "fixture-instrument",
+        "source_version": "1",
+        "status": "tradable"
+      },
+      "raw_hash": "b60708a0e334e4cc8db2f2c066d0089b454156f4d06911870757a95c2970579d",
+      "record_id": "joined-instrument_tradability"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-joined-provider_contract_mapping",
+        "metadata": null,
+        "raw_ref": "synthetic://reference-context/joined-provider_contract_mapping",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T13:00:00Z",
+        "stream_id": "joined-provider_contract_mapping",
+        "supersedes_record_id": null
+      },
+      "kind": "provider_contract_mapping",
+      "profile_id": "joined-provider_contract_mapping",
+      "raw_body": {
+        "availability_basis": "measured",
+        "availability_evidence_ref": "synthetic://availability/joined-provider_contract_mapping",
+        "available_at": "2026-09-05T13:00:00Z",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "provider": "fixture-provider",
+        "symbol": "opaque-K"
+      },
+      "raw_hash": "c8b5ec042ff956dfbf425b8d8a1107c34da211320c9ab8e93d8d09c14c46b07d",
+      "record_id": "joined-provider_contract_mapping"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-joined-contract_reference",
+        "metadata": null,
+        "raw_ref": "synthetic://reference-context/joined-contract_reference",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-05T13:00:00Z",
+        "stream_id": "joined-contract_reference",
+        "supersedes_record_id": null
+      },
+      "kind": "contract_reference",
+      "profile_id": "joined-contract_reference",
+      "raw_body": {
+        "availability_basis": "measured",
+        "availability_evidence_ref": "synthetic://availability/joined-contract_reference",
+        "available_at": "2026-09-05T13:00:00Z",
+        "components": [
+          {
+            "asset": "SPY",
+            "kind": "shares",
+            "quantity": "100"
+          }
+        ],
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "650",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-05T14:00:00Z",
+        "effective_until": null,
+        "listed_at": "2026-08-01T00:00:00Z",
+        "listing_status": "listed",
+        "provider_record_id": "provider-joined-contract_reference",
+        "source": "fixture-reference"
+      },
+      "raw_hash": "d4be614d895659e7c75247df3c81689fbbd5474cdeeed5327edabe52f5bee47e",
+      "record_id": "joined-contract_reference"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "history-session",
+        "metadata": null,
+        "raw_ref": "synthetic://history/session",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T13:00:00Z",
+        "stream_id": "history-session",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "history-session",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-09-08T13:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-09-08T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-09-08T13:30:00Z",
+        "provider_record_id": "provider-null-end-S",
+        "session_date": "2026-09-08",
+        "source": "fixture-calendar",
+        "source_version": "1"
+      },
+      "raw_hash": "2379138dfaed7501993f55095e085ea595320954a93d8072bba28a4d2a00cb69",
+      "record_id": "history-S"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-history-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/history-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "history-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/history-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "history-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "history-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "history-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-history-B0r2",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/history-minute-0",
+          "available_at": "2026-09-08T14:02:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "history-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/history-B0r2",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-08T14:02:00Z",
+        "stream_id": "history-bars",
+        "supersedes_record_id": "history-B0"
+      },
+      "kind": "underlying_bar",
+      "profile_id": "history-bars",
+      "raw_body": {
+        "close_price": "651",
+        "price_basis": "raw",
+        "revision_id": "r2",
+        "supersedes_revision_id": "r1",
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "d2b669e298aca4655419fdf1932c51612bd36944681bfed10fa8f3e3131fc559",
+      "record_id": "history-B0r2"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-history-B1",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/history-minute-1",
+          "available_at": "2026-09-08T14:03:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:02:00Z",
+          "interval_start": "2026-09-08T14:01:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "history-minute-1",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/history-B1",
+        "receive_sequence": 3,
+        "simulated_received_at": "2026-09-08T14:03:00Z",
+        "stream_id": "history-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "history-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "history-B1"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-missing-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/missing-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "missing-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/missing-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "missing-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "missing-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "missing-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-missing-B0r2",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/missing-minute-0",
+          "available_at": "2026-09-08T14:02:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "missing-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/missing-B0r2",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-08T14:02:00Z",
+        "stream_id": "missing-bars",
+        "supersedes_record_id": "missing-B0"
+      },
+      "kind": "underlying_bar",
+      "profile_id": "missing-bars",
+      "raw_body": {
+        "close_price": null,
+        "price_basis": "raw",
+        "revision_id": "r2",
+        "supersedes_revision_id": "r1",
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "65e3658df859691eb204820a392b33762232db621fa6af5807c004e5ad9456f2",
+      "record_id": "missing-B0r2"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-zero-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/zero-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "zero-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/zero-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "zero-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "zero-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "zero-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-zero-B0r2",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/zero-minute-0",
+          "available_at": "2026-09-08T14:02:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "zero-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/zero-B0r2",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-08T14:02:00Z",
+        "stream_id": "zero-bars",
+        "supersedes_record_id": "zero-B0"
+      },
+      "kind": "underlying_bar",
+      "profile_id": "zero-bars",
+      "raw_body": {
+        "close_price": "0",
+        "price_basis": "raw",
+        "revision_id": "r2",
+        "supersedes_revision_id": "r1",
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "093e148369b0e06b8da6df1a4f1775448fa6af09feec10b733d4053aa0a27e45",
+      "record_id": "zero-B0r2"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-raw-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/raw-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "raw-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/raw-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "raw-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "raw-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "raw-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-raw-B0r2",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/raw-minute-0",
+          "available_at": "2026-09-08T14:02:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "raw-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/raw-B0r2",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-08T14:02:00Z",
+        "stream_id": "raw-bars",
+        "supersedes_record_id": "raw-B0"
+      },
+      "kind": "underlying_bar",
+      "profile_id": "raw-bars",
+      "raw_body": {
+        "close_price": true,
+        "price_basis": "raw",
+        "revision_id": "r2",
+        "supersedes_revision_id": "r1",
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "e58c99a74520c7c317f7ed11993d7a4e0f1c35c2876654404874606d62c25b09",
+      "record_id": "raw-B0r2"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-unknown-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/unknown-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "unknown-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/unknown-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "unknown-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "unknown-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "unknown-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-unknown-B0r2",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/unknown-minute-0",
+          "available_at": null,
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "unknown-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/unknown-B0r2",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-08T14:02:00Z",
+        "stream_id": "unknown-bars",
+        "supersedes_record_id": "unknown-B0"
+      },
+      "kind": "underlying_bar",
+      "profile_id": "unknown-bars",
+      "raw_body": {
+        "close_price": "651",
+        "price_basis": "raw",
+        "revision_id": "r2",
+        "supersedes_revision_id": "r1",
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "d2b669e298aca4655419fdf1932c51612bd36944681bfed10fa8f3e3131fc559",
+      "record_id": "unknown-B0r2"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-partial-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/partial-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "partial-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/partial-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "partial-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "partial-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": null,
+        "volume_definition_id": null,
+        "vwap_definition_id": null,
+        "vwap_denominator": null,
+        "vwap_numerator": null
+      },
+      "raw_hash": "51f80c9211f82cc44d0a9b963273f0eb89c0dca1a7a2ea4ba80b7b2677454e68",
+      "record_id": "partial-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-zero-vwap-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/zero-vwap-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "zero-vwap-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/zero-vwap-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "zero-vwap-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "zero-vwap-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "0",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "0",
+        "vwap_numerator": "0"
+      },
+      "raw_hash": "5fa8643ad11eb2ba9c79d5fa93e8472e032802cb91396bd506312b29ed66d6b1",
+      "record_id": "zero-vwap-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-definitions-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/definitions-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "definitions-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/definitions-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "definitions-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "definitions-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "20",
+        "volume_definition_id": "other-volume",
+        "vwap_definition_id": "other-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "13e39674bfb5cf520940027e057bc87ac5bc93be9f0472d402b54baefa40c7c0",
+      "record_id": "definitions-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-huge-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/huge-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "huge-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/huge-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "huge-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "huge-bars",
+      "raw_body": {
+        "close_price": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "cffe0c10e462af50edd4c91b1564e3b213d4cd103b1cf8a2acae534f1a0fc7a1",
+      "record_id": "huge-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-ordered-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/ordered-minute-0",
+          "available_at": "2026-09-08T14:03:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "ordered-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/ordered-B0",
+        "receive_sequence": 4,
+        "simulated_received_at": "2026-09-08T14:03:00Z",
+        "stream_id": "ordered-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "ordered-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "ordered-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-ordered-B1",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/ordered-minute-1",
+          "available_at": "2026-09-08T14:03:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:02:00Z",
+          "interval_start": "2026-09-08T14:01:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "ordered-minute-1",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/ordered-B1",
+        "receive_sequence": 5,
+        "simulated_received_at": "2026-09-08T14:03:00Z",
+        "stream_id": "ordered-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "ordered-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "ordered-B1"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-tie-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/tie-minute-0",
+          "available_at": "2026-09-08T14:03:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "tie-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/tie-B0",
+        "receive_sequence": 4,
+        "simulated_received_at": "2026-09-08T14:03:00Z",
+        "stream_id": "tie-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "tie-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "tie-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-tie-B1",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/tie-minute-1",
+          "available_at": "2026-09-08T14:03:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:02:00Z",
+          "interval_start": "2026-09-08T14:01:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "tie-minute-1",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/tie-B1",
+        "receive_sequence": 4,
+        "simulated_received_at": "2026-09-08T14:03:00Z",
+        "stream_id": "tie-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "tie-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "tie-B1"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-unknown-seq-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/unknown-seq-minute-0",
+          "available_at": "2026-09-08T14:03:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "unknown-seq-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/unknown-seq-B0",
+        "receive_sequence": 4,
+        "simulated_received_at": "2026-09-08T14:03:00Z",
+        "stream_id": "unknown-seq-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "unknown-seq-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "unknown-seq-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-unknown-seq-B1",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/unknown-seq-minute-1",
+          "available_at": "2026-09-08T14:03:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:02:00Z",
+          "interval_start": "2026-09-08T14:01:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "unknown-seq-minute-1",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/unknown-seq-B1",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-08T14:03:00Z",
+        "stream_id": "unknown-seq-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "unknown-seq-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "unknown-seq-B1"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-backward-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/backward-minute-0",
+          "available_at": "2026-09-08T14:03:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "backward-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/backward-B0",
+        "receive_sequence": 4,
+        "simulated_received_at": "2026-09-08T14:03:00Z",
+        "stream_id": "backward-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "backward-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "backward-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-backward-B1",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/backward-minute-1",
+          "available_at": "2026-09-08T14:03:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:02:00Z",
+          "interval_start": "2026-09-08T14:01:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "backward-minute-1",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/backward-B1",
+        "receive_sequence": 3,
+        "simulated_received_at": "2026-09-08T14:03:00Z",
+        "stream_id": "backward-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "backward-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "backward-B1"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-duplicate-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/duplicate-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "duplicate-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/duplicate-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "duplicate-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "duplicate-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "duplicate-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-duplicate-B0r2",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/duplicate-minute-0",
+          "available_at": "2026-09-08T14:02:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "duplicate-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/duplicate-B0r2",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-08T14:02:00Z",
+        "stream_id": "duplicate-bars",
+        "supersedes_record_id": "duplicate-B0"
+      },
+      "kind": "underlying_bar",
+      "profile_id": "duplicate-bars",
+      "raw_body": {
+        "close_price": "651",
+        "price_basis": "raw",
+        "revision_id": "r2",
+        "supersedes_revision_id": "r1",
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "d2b669e298aca4655419fdf1932c51612bd36944681bfed10fa8f3e3131fc559",
+      "record_id": "duplicate-B0r2"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-duplicate-redelivery",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/duplicate-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "duplicate-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/duplicate-redelivery",
+        "receive_sequence": 3,
+        "simulated_received_at": "2026-09-08T14:03:00Z",
+        "stream_id": "duplicate-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "duplicate-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "duplicate-redelivery"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-conflict-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/conflict-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "conflict-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/conflict-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "conflict-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "conflict-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "conflict-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-conflict-B0r2",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/conflict-minute-0",
+          "available_at": "2026-09-08T14:02:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "conflict-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/conflict-B0r2",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-08T14:02:00Z",
+        "stream_id": "conflict-bars",
+        "supersedes_record_id": "conflict-B0"
+      },
+      "kind": "underlying_bar",
+      "profile_id": "conflict-bars",
+      "raw_body": {
+        "close_price": "651",
+        "price_basis": "raw",
+        "revision_id": "r2",
+        "supersedes_revision_id": "r1",
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "d2b669e298aca4655419fdf1932c51612bd36944681bfed10fa8f3e3131fc559",
+      "record_id": "conflict-B0r2"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-conflict-redelivery",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/conflict-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "conflict-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/conflict-redelivery",
+        "receive_sequence": 3,
+        "simulated_received_at": "2026-09-08T14:03:00Z",
+        "stream_id": "conflict-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "conflict-bars",
+      "raw_body": {
+        "close_price": "652",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "4eaff6b75b2510d63236fabf6a1d5e3001a309fc0b1bcc96fd0ae01703f480c4",
+      "record_id": "conflict-redelivery"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-future-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/future-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "future-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/future-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "future-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "future-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "future-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-future-B1",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/future-minute-1",
+          "available_at": "2026-09-08T14:02:00.000001Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:02:00Z",
+          "interval_start": "2026-09-08T14:01:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "future-minute-1",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/future-B1",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-08T14:02:00.000001Z",
+        "stream_id": "future-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "future-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "future-B1"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-gap-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/gap-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "gap-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/gap-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "gap-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "gap-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "gap-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-gap-B2",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/gap-minute-2",
+          "available_at": "2026-09-08T14:03:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:03:00Z",
+          "interval_start": "2026-09-08T14:02:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "gap-minute-2",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/gap-B2",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-08T14:03:00Z",
+        "stream_id": "gap-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "gap-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "gap-B2"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-gap-B1",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/gap-minute-1",
+          "available_at": "2026-09-08T14:04:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:02:00Z",
+          "interval_start": "2026-09-08T14:01:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "gap-minute-1",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/gap-B1",
+        "receive_sequence": 3,
+        "simulated_received_at": "2026-09-08T14:04:00Z",
+        "stream_id": "gap-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "gap-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "gap-B1"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-body-lineage-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/body-lineage-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "body-lineage-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/body-lineage-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "body-lineage-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "body-lineage-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "body-lineage-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-body-lineage-B0r2",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/body-lineage-minute-0",
+          "available_at": "2026-09-08T14:02:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "body-lineage-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/body-lineage-B0r2",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-08T14:02:00Z",
+        "stream_id": "body-lineage-bars",
+        "supersedes_record_id": "body-lineage-B0"
+      },
+      "kind": "underlying_bar",
+      "profile_id": "body-lineage-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r2",
+        "supersedes_revision_id": "wrong",
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "ee81a80a91e01be9a8298ab7955d9a16c0d1aa8f4d30889bd92b68f916d7770e",
+      "record_id": "body-lineage-B0r2"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-shifted-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/shifted-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "shifted-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/shifted-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "shifted-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "shifted-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "shifted-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-shifted-B0r2",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/shifted-minute-0",
+          "available_at": "2026-09-08T14:02:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:02:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "shifted-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/shifted-B0r2",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-08T14:02:00Z",
+        "stream_id": "shifted-bars",
+        "supersedes_record_id": "shifted-B0"
+      },
+      "kind": "underlying_bar",
+      "profile_id": "shifted-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r2",
+        "supersedes_revision_id": "r1",
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "34e63553a5448e445cecd8583d4db544c9bafb5fc1e68f84db5b8d0d344e0094",
+      "record_id": "shifted-B0r2"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-missing-link-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/missing-link-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "missing-link-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/missing-link-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "missing-link-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "missing-link-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "missing-link-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-missing-link-B0r2",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/missing-link-minute-0",
+          "available_at": "2026-09-08T14:02:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "missing-link-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/missing-link-B0r2",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-08T14:02:00Z",
+        "stream_id": "missing-link-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "missing-link-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r2",
+        "supersedes_revision_id": "r1",
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "34e63553a5448e445cecd8583d4db544c9bafb5fc1e68f84db5b8d0d344e0094",
+      "record_id": "missing-link-B0r2"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-profile-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/profile-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "profile-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/profile-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "profile-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "profile-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "profile-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-profile-B0r2",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/profile-minute-0",
+          "available_at": "2026-09-08T14:02:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "profile-minute-0",
+          "quality_flags": [],
+          "source": "wrong-source"
+        },
+        "raw_ref": "synthetic://history/profile-B0r2",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-08T14:02:00Z",
+        "stream_id": "profile-bars",
+        "supersedes_record_id": "profile-B0"
+      },
+      "kind": "underlying_bar",
+      "profile_id": "profile-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r2",
+        "supersedes_revision_id": "r1",
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "34e63553a5448e445cecd8583d4db544c9bafb5fc1e68f84db5b8d0d344e0094",
+      "record_id": "profile-B0r2"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-cross-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/cross-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "cross-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/cross-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "cross-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "cross-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "cross-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-cross-other-B1",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/cross-other-minute-1",
+          "available_at": "2026-09-08T14:03:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:02:00Z",
+          "interval_start": "2026-09-08T14:01:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "cross-other-minute-1",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/cross-other-B1",
+        "receive_sequence": 3,
+        "simulated_received_at": "2026-09-08T14:03:00Z",
+        "stream_id": "cross-other-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "cross-other-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "cross-other-B1"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-ambiguous-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/ambiguous-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "ambiguous-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/ambiguous-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "ambiguous-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "ambiguous-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "ambiguous-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-ambiguous-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/ambiguous-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "ambiguous-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/ambiguous-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "ambiguous-other-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "ambiguous-other-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "ambiguous-other-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-same-time-duplicate-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/same-time-duplicate-minute-0",
+          "available_at": "2026-09-08T14:03:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "same-time-duplicate-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/same-time-duplicate-B0",
+        "receive_sequence": 4,
+        "simulated_received_at": "2026-09-08T14:03:00Z",
+        "stream_id": "same-time-duplicate-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "same-time-duplicate-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "same-time-duplicate-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-same-time-duplicate-B0r2",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/same-time-duplicate-minute-0",
+          "available_at": "2026-09-08T14:03:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "same-time-duplicate-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/same-time-duplicate-B0r2",
+        "receive_sequence": 5,
+        "simulated_received_at": "2026-09-08T14:03:00Z",
+        "stream_id": "same-time-duplicate-bars",
+        "supersedes_record_id": "same-time-duplicate-B0"
+      },
+      "kind": "underlying_bar",
+      "profile_id": "same-time-duplicate-bars",
+      "raw_body": {
+        "close_price": "651",
+        "price_basis": "raw",
+        "revision_id": "r2",
+        "supersedes_revision_id": "r1",
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "d2b669e298aca4655419fdf1932c51612bd36944681bfed10fa8f3e3131fc559",
+      "record_id": "same-time-duplicate-B0r2"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-same-time-duplicate-A-redelivery",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/same-time-duplicate-minute-0",
+          "available_at": "2026-09-08T14:03:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "same-time-duplicate-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/same-time-duplicate-A-redelivery",
+        "receive_sequence": 10,
+        "simulated_received_at": "2026-09-08T14:03:00Z",
+        "stream_id": "same-time-duplicate-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "same-time-duplicate-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "same-time-duplicate-A-redelivery"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-same-time-correction-copy-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/same-time-correction-copy-minute-0",
+          "available_at": "2026-09-08T14:03:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "same-time-correction-copy-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/same-time-correction-copy-B0",
+        "receive_sequence": 4,
+        "simulated_received_at": "2026-09-08T14:03:00Z",
+        "stream_id": "same-time-correction-copy-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "same-time-correction-copy-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "same-time-correction-copy-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-same-time-correction-copy-B0r2",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/same-time-correction-copy-minute-0",
+          "available_at": "2026-09-08T14:03:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "same-time-correction-copy-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/same-time-correction-copy-B0r2",
+        "receive_sequence": 5,
+        "simulated_received_at": "2026-09-08T14:03:00Z",
+        "stream_id": "same-time-correction-copy-bars",
+        "supersedes_record_id": "same-time-correction-copy-B0"
+      },
+      "kind": "underlying_bar",
+      "profile_id": "same-time-correction-copy-bars",
+      "raw_body": {
+        "close_price": "651",
+        "price_basis": "raw",
+        "revision_id": "r2",
+        "supersedes_revision_id": "r1",
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "d2b669e298aca4655419fdf1932c51612bd36944681bfed10fa8f3e3131fc559",
+      "record_id": "same-time-correction-copy-B0r2"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-same-time-correction-copy-A-copy",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/same-time-correction-copy-minute-0",
+          "available_at": "2026-09-08T14:03:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "same-time-correction-copy-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/same-time-correction-copy-A-copy",
+        "receive_sequence": 3,
+        "simulated_received_at": "2026-09-08T14:03:00Z",
+        "stream_id": "same-time-correction-copy-bars",
+        "supersedes_record_id": "same-time-correction-copy-B0"
+      },
+      "kind": "underlying_bar",
+      "profile_id": "same-time-correction-copy-bars",
+      "raw_body": {
+        "close_price": "651",
+        "price_basis": "raw",
+        "revision_id": "r2",
+        "supersedes_revision_id": "r1",
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "d2b669e298aca4655419fdf1932c51612bd36944681bfed10fa8f3e3131fc559",
+      "record_id": "same-time-correction-copy-A-copy"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-chain-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/chain-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "chain-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/chain-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "chain-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "chain-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "chain-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-chain-B0r2",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/chain-minute-0",
+          "available_at": "2026-09-08T14:02:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "chain-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/chain-B0r2",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-08T14:02:00Z",
+        "stream_id": "chain-bars",
+        "supersedes_record_id": "chain-B0"
+      },
+      "kind": "underlying_bar",
+      "profile_id": "chain-bars",
+      "raw_body": {
+        "close_price": "651",
+        "price_basis": "raw",
+        "revision_id": "r2",
+        "supersedes_revision_id": "r1",
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "d2b669e298aca4655419fdf1932c51612bd36944681bfed10fa8f3e3131fc559",
+      "record_id": "chain-B0r2"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-future-correction-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/future-correction-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "future-correction-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/future-correction-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "future-correction-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "future-correction-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "future-correction-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-future-correction-B0r2",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/future-correction-minute-0",
+          "available_at": "2026-09-08T14:03:00.000001Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "future-correction-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/future-correction-B0r2",
+        "receive_sequence": 2,
+        "simulated_received_at": "2026-09-08T14:03:00.000001Z",
+        "stream_id": "future-correction-bars",
+        "supersedes_record_id": "future-correction-B0"
+      },
+      "kind": "underlying_bar",
+      "profile_id": "future-correction-bars",
+      "raw_body": {
+        "close_price": true,
+        "price_basis": "raw",
+        "revision_id": "r2",
+        "supersedes_revision_id": "r1",
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "e58c99a74520c7c317f7ed11993d7a4e0f1c35c2876654404874606d62c25b09",
+      "record_id": "future-correction-B0r2"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-chain-B0r3",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/chain-minute-0",
+          "available_at": "2026-09-08T14:03:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "chain-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/chain-B0r3",
+        "receive_sequence": 3,
+        "simulated_received_at": "2026-09-08T14:03:00Z",
+        "stream_id": "chain-bars",
+        "supersedes_record_id": "chain-B0r2"
+      },
+      "kind": "underlying_bar",
+      "profile_id": "chain-bars",
+      "raw_body": {
+        "close_price": "652",
+        "price_basis": "raw",
+        "revision_id": "r3",
+        "supersedes_revision_id": "r2",
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "4cb8b86b439d51b587a59ff36ccf5e6f9d5555f1b3941ce7998c2f82e2c94aa1",
+      "record_id": "chain-B0r3"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-huge-sequence-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/huge-sequence-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "huge-sequence-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/huge-sequence-B0",
+        "receive_sequence": 10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "huge-sequence-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "huge-sequence-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "huge-sequence-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-wrong-meta-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/wrong-meta-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": "2026-09-08T14:00:00Z",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "wrong-meta-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/wrong-meta-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "wrong-meta-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "wrong-meta-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "wrong-meta-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-wrong-feed-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/wrong-feed-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "delayed",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "wrong-feed-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/wrong-feed-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "wrong-feed-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "wrong-feed-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "wrong-feed-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-wrong-fidelity-B0",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/wrong-fidelity-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "synthetic",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "wrong-fidelity-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/wrong-fidelity-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "wrong-fidelity-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "wrong-fidelity-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "wrong-fidelity-B0"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-wrong-basis-B0",
+        "metadata": {
+          "availability_basis": "assumed",
+          "availability_evidence_ref": "synthetic://capture/wrong-basis-minute-0",
+          "available_at": "2026-09-08T14:01:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-09-08T14:01:00Z",
+          "interval_start": "2026-09-08T14:00:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "wrong-basis-minute-0",
+          "quality_flags": [],
+          "source": "fixture-bars"
+        },
+        "raw_ref": "synthetic://history/wrong-basis-B0",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-08T14:01:00Z",
+        "stream_id": "wrong-basis-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "wrong-basis-bars",
+      "raw_body": {
+        "close_price": "650",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "fixture-volume",
+        "vwap_definition_id": "fixture-vwap",
+        "vwap_denominator": "10",
+        "vwap_numerator": "6500"
+      },
+      "raw_hash": "273cf8a4f4715d364d9c9015db1d748b6cf599ed07ba9da500627bf23b367d93",
+      "record_id": "wrong-basis-B0"
+    }
+  ],
+  "modeled_source_profiles": [
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "joined-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "joined-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_quote",
+      "profile_id": "joined-underlying_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-underlying",
+      "stream_id": "joined-underlying_quote",
+      "units": {
+        "price": "USD_per_share",
+        "size": "shares"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "greek_observation",
+      "profile_id": "joined-greek_observation",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-greek-method",
+      "stream_id": "joined-greek_observation",
+      "units": {
+        "delta": "signed_option_price_per_underlying_price",
+        "dividend": "continuous_annual_fraction",
+        "iv": "annualized_volatility_fraction",
+        "rate": "continuous_annual_fraction"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "quote_coherence",
+      "profile_id": "joined-quote_coherence",
+      "record_identity_rule": "new_evidence_id_per_update",
+      "source": "synthetic-coherence",
+      "stream_id": "joined-quote_coherence",
+      "units": {}
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "tick_rule",
+      "profile_id": "joined-tick_rule",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-tick-reference",
+      "stream_id": "joined-tick_rule",
+      "units": {
+        "price": "USD_per_share"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": "genuine",
+      "kind": "exchange_session",
+      "profile_id": "joined-exchange_session",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "fixture-calendar",
+      "stream_id": "joined-exchange_session",
+      "units": {}
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": "genuine",
+      "kind": "instrument_tradability",
+      "profile_id": "joined-instrument_tradability",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "fixture-instrument",
+      "stream_id": "joined-instrument_tradability",
+      "units": {}
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "provider_contract_mapping",
+      "profile_id": "joined-provider_contract_mapping",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "fixture-provider",
+      "stream_id": "joined-provider_contract_mapping",
+      "units": {}
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "contract_reference",
+      "profile_id": "joined-contract_reference",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "fixture-reference",
+      "stream_id": "joined-contract_reference",
+      "units": {}
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": "genuine",
+      "kind": "exchange_session",
+      "profile_id": "history-session",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "fixture-calendar",
+      "stream_id": "history-session",
+      "units": {}
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "history-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "history-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "missing-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "missing-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "zero-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "zero-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "raw-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "raw-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "unknown-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "unknown-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "partial-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "partial-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "zero-vwap-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "zero-vwap-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "definitions-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "definitions-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "huge-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "huge-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "ordered-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "ordered-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "tie-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "tie-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "unknown-seq-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "unknown-seq-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "backward-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "backward-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "duplicate-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "duplicate-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "conflict-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "conflict-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "future-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "future-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "gap-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "gap-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "body-lineage-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "body-lineage-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "shifted-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "shifted-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "missing-link-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "missing-link-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "profile-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "profile-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "cross-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "cross-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "cross-other-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "cross-other-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "ambiguous-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "ambiguous-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "ambiguous-other-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "ambiguous-other-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "same-time-duplicate-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "same-time-duplicate-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "same-time-correction-copy-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "same-time-correction-copy-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "chain-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "chain-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "future-correction-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "future-correction-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "huge-sequence-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "huge-sequence-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "wrong-meta-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "wrong-meta-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "wrong-feed-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "wrong-feed-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "wrong-fidelity-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "wrong-fidelity-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "wrong-basis-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-bars",
+      "stream_id": "wrong-basis-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    }
+  ],
+  "normalization_version": 1,
+  "origin": "synthetic",
+  "permitted_use": "core_fixture",
+  "schema_version": 1
+}
