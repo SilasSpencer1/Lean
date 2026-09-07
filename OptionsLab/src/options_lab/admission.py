@@ -21,7 +21,7 @@ from .greeks import FIXTURE_GREEK_METHOD, GreekMethodSpec
 
 
 FixtureKind = Literal[
-    "volume_partition", "feature_normalization", "account_snapshot",
+    "volume_partition", "feature_normalization", "account_snapshot", "model_bundle",
     "option_quote", "underlying_quote", "greek_observation", "quote_coherence", "tick_rule",
     "exchange_session", "instrument_tradability", "provider_contract_mapping", "contract_reference", "underlying_bar",
 ]
@@ -62,7 +62,7 @@ _DESCRIPTOR_FIELDS = (
     "normalization_version", "expected_payload_sha256",
 )
 _KINDS = (
-    "volume_partition", "feature_normalization", "account_snapshot",
+    "volume_partition", "feature_normalization", "account_snapshot", "model_bundle",
     "option_quote", "underlying_quote", "greek_observation", "quote_coherence", "tick_rule",
     "exchange_session", "instrument_tradability", "provider_contract_mapping", "contract_reference", "underlying_bar",
 )
@@ -81,6 +81,7 @@ _REJECTION_CODES = (
     "kind_mismatch", "stream_mismatch",
 )
 _UNITS = {
+    "model_bundle": {},
     "account_snapshot": {
         "money": "USD", "quantity": "holding_quantity_unit",
         "basis_debit": "USD_total_remaining_entry_premium_excluding_posted_fees",
@@ -495,7 +496,7 @@ def _profiles(
             "new_evidence_id_per_update"
             if kind == "quote_coherence"
             else "provider_record_id_and_revision_id" if kind == "underlying_bar"
-            else "new_event_id_per_update" if kind in ("provider_contract_mapping", "volume_partition", "feature_normalization", "account_snapshot")
+            else "new_event_id_per_update" if kind in ("provider_contract_mapping", "volume_partition", "feature_normalization", "account_snapshot", "model_bundle")
             else "new_provider_record_id_per_update"
         )
         for name, expected in (
@@ -623,7 +624,7 @@ def _envelope(
     if supersedes is not None:
         _parse_string(supersedes, f"{path}.supersedes_record_id")
     if kind in (
-        "volume_partition", "feature_normalization", "account_snapshot",
+        "volume_partition", "feature_normalization", "account_snapshot", "model_bundle",
         "quote_coherence", "tick_rule", "exchange_session", "instrument_tradability",
         "provider_contract_mapping", "contract_reference",
     ):
