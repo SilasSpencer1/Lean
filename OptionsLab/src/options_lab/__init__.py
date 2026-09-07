@@ -37,6 +37,11 @@ from .bundle_inputs import (
     ParsedModelData,
     normalize_model_bytes,
 )
+from .bundle_manifest_inputs import (
+    BundleManifestValidation,
+    ModelBundleManifest,
+    normalize_bundle_manifest,
+)
 from .candidates import (
     CandidateAssessment,
     CandidateConsideration,
@@ -215,6 +220,9 @@ from .volume_normalization import (
 )
 
 __all__ = [
+    "BundleManifestValidation",
+    "ModelBundleManifest",
+    "normalize_bundle_manifest",
     "BundleInputRejection",
     "ModelDataValidation",
     "ParsedModelData",
