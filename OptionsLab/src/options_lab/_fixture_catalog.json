@@ -96,6 +96,14 @@
       "generator_version": "1",
       "normalization_version": 1,
       "payload_schema_version": 1
+    },
+    {
+      "expected_payload_sha256": "c46d626a8986e605465a5733f0e0a2691d2a0b8c467deb17fe575dc99c20b254",
+      "fixture_id": "p13b-candidate-evidence-v1",
+      "generator_id": "optionslab-candidate-evidence-fixture-builder",
+      "generator_version": "1",
+      "normalization_version": 1,
+      "payload_schema_version": 1
     }
   ]
 }

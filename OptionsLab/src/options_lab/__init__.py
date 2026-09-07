@@ -31,6 +31,7 @@ from .bar_inputs import (
     normalize_underlying_bar,
 )
 from .bars import BarAssessment, UnderlyingBar, assess_underlying_bar
+from .candidates import CandidateAssessment, assess_candidate
 from .coherence import (
     CoherenceAssessment,
     CoherenceInputRejection,
@@ -194,6 +195,8 @@ from .volume_normalization import (
 )
 
 __all__ = [
+    "CandidateAssessment",
+    "assess_candidate",
     "AccountAssessment",
     "AccountInputRejection",
     "AccountSnapshot",
