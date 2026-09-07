@@ -56,6 +56,14 @@
       "generator_version": "1",
       "normalization_version": 1,
       "payload_schema_version": 1
+    },
+    {
+      "expected_payload_sha256": "d34c54d20dba583cf90f7e900ae7042547f0a3275011b1094e2d1a187bcf401d",
+      "fixture_id": "p10a-volume-moments-v1",
+      "generator_id": "optionslab-volume-training-fixture-builder",
+      "generator_version": "2",
+      "normalization_version": 1,
+      "payload_schema_version": 1
     }
   ]
 }

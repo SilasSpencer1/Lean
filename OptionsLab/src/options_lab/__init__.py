@@ -148,6 +148,13 @@ from .volume_inputs import (
     bind_volume_training_inputs,
     normalize_volume_partition,
 )
+from .volume import (
+    VOLUME_NORMALIZATION_ID,
+    VolumeBaseline,
+    VolumeBaselineFit,
+    VolumeBucket,
+    fit_volume_baseline,
+)
 
 __all__ = [
     "CLOSE_VOLUME_PROXY_TRANSFORM_ID",
@@ -226,6 +233,10 @@ __all__ = [
     "UnderlyingQuoteValidation",
     "VerifiedFixtureManifest",
     "VerifiedFixtureMember",
+    "VOLUME_NORMALIZATION_ID",
+    "VolumeBaseline",
+    "VolumeBaselineFit",
+    "VolumeBucket",
     "VwapFeatureResult",
     "VolumeInputRejection",
     "VolumePartition",
@@ -251,6 +262,7 @@ __all__ = [
     "calculate_vwap_feature",
     "config_hash",
     "config_snapshot",
+    "fit_volume_baseline",
     "greek_input_hash",
     "identify_underlying_bar",
     "identify_quote_content",
