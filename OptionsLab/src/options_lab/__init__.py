@@ -140,6 +140,13 @@ from .premium import PremiumBudget, assess_premium_budget
 from .quote_content import QuoteContentIdentity, identify_quote_content
 from .quote_inputs import QuoteInputRejection, QuoteValidation, normalize_quote_observation
 from .quotes import QuoteObservation, QuotePremiumAssessment, assess_quote_premium_budget
+from .runtime import (
+    RuntimeEvidence,
+    RuntimeMeasurement,
+    RuntimeRejection,
+    measure_runtime,
+    recheck_runtime,
+)
 from .session_inputs import (
     SessionInputRejection,
     SessionValidation,
@@ -202,6 +209,11 @@ from .volume_normalization import (
 )
 
 __all__ = [
+    "RuntimeEvidence",
+    "RuntimeMeasurement",
+    "RuntimeRejection",
+    "measure_runtime",
+    "recheck_runtime",
     "CandidateAssessment",
     "CandidateConsideration",
     "CandidateSet",
