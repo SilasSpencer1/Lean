@@ -130,8 +130,20 @@ from .underlying_inputs import (
     UnderlyingQuoteValidation,
     normalize_underlying_quote,
 )
+from .vwap_features import (
+    CLOSE_VOLUME_PROXY_TRANSFORM_ID,
+    ELIGIBLE_VOLUME_DEFINITION_ID,
+    EXACT_VWAP_DEFINITION_ID,
+    EXACT_VWAP_TRANSFORM_ID,
+    VwapFeatureResult,
+    calculate_vwap_feature,
+)
 
 __all__ = [
+    "CLOSE_VOLUME_PROXY_TRANSFORM_ID",
+    "ELIGIBLE_VOLUME_DEFINITION_ID",
+    "EXACT_VWAP_DEFINITION_ID",
+    "EXACT_VWAP_TRANSFORM_ID",
     "BarAssessment",
     "BarContentIdentity",
     "BarInputRejection",
@@ -203,6 +215,7 @@ __all__ = [
     "UnderlyingQuoteValidation",
     "VerifiedFixtureManifest",
     "VerifiedFixtureMember",
+    "VwapFeatureResult",
     "assess_configured_quote_budget",
     "assess_contract_reference",
     "assess_decision_slot",
@@ -218,6 +231,7 @@ __all__ = [
     "assess_underlying_quote",
     "build_decision_context",
     "calculate_return_features",
+    "calculate_vwap_feature",
     "config_hash",
     "config_snapshot",
     "greek_input_hash",
