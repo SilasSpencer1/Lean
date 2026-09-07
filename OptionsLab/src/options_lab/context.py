@@ -124,7 +124,11 @@ ContextRejection = (
 
 @dataclass(frozen=True, init=False)
 class ContextComponent:
-    """This class represents one actual member, partial normalization, and disposition."""
+    """This class represents one actual member, partial normalization, and disposition.
+
+    A duplicate's representative is the final source-owner choice, not authority:
+    the associated occurrence may itself be unresolved, omitted, or superseded.
+    """
 
     member: VerifiedFixtureMember
     requested: bool
@@ -137,6 +141,7 @@ class ContextComponent:
     rejection_indexes: tuple[int, ...]
     quote_identity: QuoteContentIdentity | None
     bar_identity: BarContentIdentity | None
+    representative_record_id: str | None
 
     def __init__(self) -> None:
         """Prevent caller-authored selection evidence.
@@ -158,6 +163,8 @@ class DecisionContext:
     Status/reference tuples retain complete known tips and separate owner assessments,
     including schedules and adverse applicability. Bars are authorized reducer-selected
     history; rejected arrivals remain separate components and FeatureUpdates.
+    Components retain the full same-object inspection audit and original rejection
+    index namespace; selected_components remains its authoritative selected subset.
     """
 
     decision_id: str
@@ -167,6 +174,7 @@ class DecisionContext:
     manifest: VerifiedFixtureManifest | None
     input_manifest_id: tuple[str, str] | None
     # rejection_indexes retain the original ContextBuildResult.rejections namespace.
+    components: tuple[ContextComponent, ...]
     selected_components: tuple[ContextComponent, ...]
     option_quotes: tuple[QuoteObservation, ...]
     underlying_quotes: tuple[UnderlyingQuote, ...]
@@ -254,6 +262,7 @@ class _Row:
     quote_identity: QuoteContentIdentity | None = None
     bar_identity: BarContentIdentity | None = None
     retained: bool = False
+    representative_record_id: str | None = None
 
 
 def build_decision_context(
@@ -331,17 +340,20 @@ def build_decision_context(
             available_at=row.available_at, disposition=row.disposition,
             reasons=tuple(dict.fromkeys(row.reasons)), rejection_indexes=indexes,
             quote_identity=row.quote_identity, bar_identity=row.bar_identity,
+            representative_record_id=row.representative_record_id if row.disposition == "duplicate" else None,
         ))
+    components = tuple(components)
     context = None
     if request.value is not None:
         context = _context(
             request, manifest, config, rows, tuple(causal_rejections), chash, phash,
             global_reasons, feature_state, prior_binding,
             tuple(c for c in components if c.disposition == "selected"),
+            components,
         )
     return _freeze(
         ContextBuildResult, request=request, manifest=manifest, context=context,
-        components=tuple(components), rejections=tuple(rejections), feature_updates=feature_updates,
+        components=components, rejections=tuple(rejections), feature_updates=feature_updates,
         previous_feature_state=previous_feature_state,
     )
 
@@ -553,6 +565,9 @@ def _select(rows: list[_Row], cutoff: datetime) -> None:
             else:
                 aliases[key] = chosen
                 causal[key].disposition = "duplicate"
+    # Project only the final owner choice, after requested-redelivery promotion.
+    for duplicate, representative in aliases.items():
+        causal[duplicate].representative_record_id = representative
     active = {key: row for key, row in causal.items() if key not in aliases}
     edges = {key: set() for key in active}
     children = {key: set() for key in active}
@@ -845,7 +860,7 @@ def _state_binding(state, rows):
     }
 
 
-def _context(request, manifest, config, rows, rejections, chash, phash, global_reasons, feature_state, prior_binding, selected_components):
+def _context(request, manifest, config, rows, rejections, chash, phash, global_reasons, feature_state, prior_binding, selected_components, components):
     """Project selected facts and bind actual causal commitments with owner identities."""
     header = request.value
     selected = [row.value for row in rows if row.disposition == "selected"]
@@ -946,7 +961,7 @@ def _context(request, manifest, config, rows, rejections, chash, phash, global_r
     return _freeze(
         DecisionContext, decision_id=header.decision_id, decision_at=header.decision_at,
         slot_key=timing.slot_key, timing=timing, manifest=manifest, input_manifest_id=manifest_id,
-        selected_components=selected_components,
+        selected_components=selected_components, components=components,
         option_quotes=options, underlying_quotes=underlying, greeks=greeks,
         coherence_evidence=proofs, tick_rules=ticks,
         greek_readiness=tuple(readiness), coherence_assessments=tuple(coherence), session=session, tradability=statuses,

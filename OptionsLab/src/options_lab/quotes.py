@@ -210,8 +210,20 @@ def _assess_quote_only(
     *,
     decision_at: datetime,
     max_quote_age: timedelta = _MAX_QUOTE_AGE,
+    max_spread_fraction: Decimal = _MAXIMUM_SPREAD_FRACTION,
+    spread_floor: Decimal = _MINIMUM_SPREAD,
 ) -> tuple[ObservationAssessment, tuple[str, ...]]:
-    """Assess current option quote evidence without account or premium inputs."""
+    """Assess current option quote evidence without account or premium inputs.
+
+    :param quote: Exact already-trusted option observation.
+    :param decision_at: Explicit aware current assessment time.
+    :param max_quote_age: Trusted owner/configured maximum age.
+    :param max_spread_fraction: Trusted configured spread fraction; defaults unchanged.
+    :param spread_floor: Trusted configured absolute spread floor.
+    :returns: Independent observation assessment and current quote reasons.
+    :raises TypeError: If the trusted assessment time has an incorrect type.
+    :raises ValueError: If the trusted assessment time is invalid.
+    """
     decision_at = _trusted_datetime("decision_at", decision_at)
     observation = assess_observation(
         quote.meta,
@@ -223,8 +235,8 @@ def _assess_quote_only(
         for value in (
             quote.bid,
             quote.ask,
-            _MAXIMUM_SPREAD_FRACTION,
-            _MINIMUM_SPREAD,
+            max_spread_fraction,
+            spread_floor,
             _MIDPOINT_DIVISOR,
         )
         if value is not None
@@ -233,8 +245,8 @@ def _assess_quote_only(
         quote,
         decision_at,
         max_quote_age,
-        _MAXIMUM_SPREAD_FRACTION,
-        _MINIMUM_SPREAD,
+        max_spread_fraction,
+        spread_floor,
         arithmetic_context,
     )
 
