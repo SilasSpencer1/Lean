@@ -67,6 +67,12 @@ from .contracts import (
     ProviderContractMapping,
     assess_contract_reference,
 )
+from .feature_math import (
+    NUMERIC_CONVENTION_ID,
+    RETURN_TRANSFORM_ID,
+    ReturnFeatureResult,
+    calculate_return_features,
+)
 from .features import FeatureState, FeatureUpdate, update_features
 from .greek_inputs import (
     GreekInputRejection,
@@ -165,6 +171,7 @@ __all__ = [
     "GreekValidation",
     "InputRejection",
     "InstrumentTradability",
+    "NUMERIC_CONVENTION_ID",
     "ObservationAssessment",
     "ObservationMeta",
     "ProviderContractMapping",
@@ -177,6 +184,8 @@ __all__ = [
     "QuoteObservation",
     "QuotePremiumAssessment",
     "QuoteValidation",
+    "RETURN_TRANSFORM_ID",
+    "ReturnFeatureResult",
     "ObservationValidation",
     "StrategyConfig",
     "SessionAssessment",
@@ -208,6 +217,7 @@ __all__ = [
     "assess_underlying_bar",
     "assess_underlying_quote",
     "build_decision_context",
+    "calculate_return_features",
     "config_hash",
     "config_snapshot",
     "greek_input_hash",
