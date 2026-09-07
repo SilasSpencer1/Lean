@@ -9,7 +9,7 @@ _MAXIMUM_PREMIUM_FRACTION = Decimal("0.005")
 _MAXIMUM_ARITHMETIC_PRECISION = 1000
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, init=False)
 class PremiumBudget:
     """This class represents evidence from a premium-budget assessment."""
 
@@ -19,6 +19,14 @@ class PremiumBudget:
     required_cash: Decimal
     equity_limit: Decimal | None
     reason: str | None
+
+    def __init__(self) -> None:
+        """Reject caller-authored cost and affordability evidence.
+
+        :returns: None.
+        :raises TypeError: Always; use assess_premium_budget.
+        """
+        raise TypeError("PremiumBudget values come from assess_premium_budget")
 
     @property
     def affordable(self) -> bool:
@@ -39,6 +47,7 @@ def assess_premium_budget(
     quantity: int = 1,
     round_trip_fees: Decimal = Decimal("1"),
     premium_fraction: Decimal = Decimal("0.005"),
+    original_ask_cap: Decimal | None = None,
 ) -> PremiumBudget:
     """
     Assess whether one contract fits the supplied premium and cash limits.
@@ -46,13 +55,14 @@ def assess_premium_budget(
     A successful result is budget evidence only. It neither authorizes an
     order nor reserves money.
 
-    :param    ask:              Decision quote ask price per share.
+    :param    ask:              Actual current ask price per share.
     :param    bid:              Decision quote bid price per share.
     :param    virtual_equity:   Declared virtual capital, or None when absent.
     :param    available_cash:   Unencumbered settled cash, or None when absent.
     :param    quantity:         Requested contract quantity, which must be one.
     :param    round_trip_fees:  Estimated fees, subject to a one-dollar floor.
     :param    premium_fraction: Maximum share of virtual equity, at most 0.005.
+    :param    original_ask_cap: Positive original cap >= ask, or None for current ask.
     :returns:                   Immutable budget evidence and one rejection reason.
     :raises   ValueError:       If an input is invalid or needs more than 1000
                                digits of working precision.
@@ -63,6 +73,8 @@ def assess_premium_budget(
         "round_trip_fees": round_trip_fees,
         "premium_fraction": premium_fraction,
     }
+    if original_ask_cap is not None:
+        values["original_ask_cap"] = original_ask_cap
     for name, value in values.items():
         _require_decimal(name, value)
     for name, value in (
@@ -86,6 +98,12 @@ def assess_premium_budget(
     if premium_fraction > _MAXIMUM_PREMIUM_FRACTION:
         raise ValueError("premium_fraction cannot exceed 0.005")
 
+    if original_ask_cap is not None:
+        if original_ask_cap <= 0:
+            raise ValueError("original_ask_cap must be positive")
+        if original_ask_cap < ask:
+            raise ValueError("original_ask_cap cannot be below current ask")
+
     decimal_values = [*values.values()]
     if virtual_equity is not None:
         decimal_values.append(virtual_equity)
@@ -97,7 +115,7 @@ def assess_premium_budget(
         Emin=MIN_EMIN,
     )
     with localcontext(arithmetic_context):
-        premium = _CONTRACT_MULTIPLIER * ask
+        premium = _CONTRACT_MULTIPLIER * (ask if original_ask_cap is None else original_ask_cap)
         fees = max(_MINIMUM_FEE, round_trip_fees)
         reserve = max(
             _MAXIMUM_PREMIUM_FRACTION * premium,
@@ -123,19 +141,22 @@ def assess_premium_budget(
     else:
         reason = None
 
-    return PremiumBudget(
+    result = object.__new__(PremiumBudget)
+    for name, value in dict(
         premium=premium,
         fees=fees,
         adverse_reserve=reserve,
         required_cash=required_cash,
         equity_limit=equity_limit,
         reason=reason,
-    )
+    ).items():
+        object.__setattr__(result, name, value)
+    return result
 
 
 def _require_decimal(name: str, value: object, *, nullable: bool = False) -> None:
-    """Reject values that are not finite Decimal instances."""
-    if not isinstance(value, Decimal):
+    """Reject values that are not exact finite Decimals before invoking hooks."""
+    if type(value) is not Decimal:
         suffix = " or None" if nullable else ""
         raise ValueError(f"{name} must be a Decimal{suffix}")
     if not value.is_finite():

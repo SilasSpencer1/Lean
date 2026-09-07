@@ -86,6 +86,7 @@ class QuotePremiumAssessment:
     max_quote_age: timedelta = _MAX_QUOTE_AGE
     max_spread_fraction: Decimal = _MAXIMUM_SPREAD_FRACTION
     spread_floor: Decimal = _MINIMUM_SPREAD
+    original_ask_cap: Decimal | None = None
     observation: ObservationAssessment = field(init=False)
     quote_reasons: tuple[str, ...] = field(init=False)
     budget: PremiumBudget | None = field(init=False)
@@ -103,7 +104,7 @@ class QuotePremiumAssessment:
             raise TypeError("quote must be a QuoteObservation")
         decision_at = _trusted_datetime("decision_at", self.decision_at)
         object.__setattr__(self, "decision_at", decision_at)
-        for name in ("virtual_equity", "available_cash"):
+        for name in ("virtual_equity", "available_cash", "original_ask_cap"):
             value = getattr(self, name)
             if value is not None:
                 _require_exact_decimal(name, value, nullable=True)
@@ -165,13 +166,15 @@ def assess_quote_premium_budget(
     max_quote_age: timedelta = _MAX_QUOTE_AGE,
     max_spread_fraction: Decimal = _MAXIMUM_SPREAD_FRACTION,
     spread_floor: Decimal = _MINIMUM_SPREAD,
+    original_ask_cap: Decimal | None = None,
 ) -> QuotePremiumAssessment:
     """
     Assess a typed quote and one-contract premium budget at a decision time.
 
     The result retains all supplied facts. It is bounded evidence and does
     not establish synchronized prices, contract reference proof, economic
-    readiness, or permission to place an order.
+    readiness, or permission to place an order. A finite incompatible original
+    cap remains evidence with no budget; current quote prices stay unchanged.
 
     :param    quote:             Typed option quote and observation metadata.
     :param    decision_at:       Decision timestamp used without reading a clock.
@@ -182,6 +185,7 @@ def assess_quote_premium_budget(
     :param    max_quote_age:     Positive quote age limit, at most five seconds.
     :param    max_spread_fraction: Positive midpoint spread fraction, at most 0.08.
     :param    spread_floor:      Positive absolute spread floor, at most 0.05.
+    :param    original_ask_cap:  Retained original cap, or None for current ask.
     :returns:                    Immutable quote and premium-budget evidence.
     :raises   TypeError:         If a trusted input has the wrong exact type.
     :raises   ValueError:        If a trusted timestamp, money value, fee, or
@@ -197,6 +201,7 @@ def assess_quote_premium_budget(
         max_quote_age,
         max_spread_fraction,
         spread_floor,
+        original_ask_cap=original_ask_cap,
     )
 
 
@@ -259,6 +264,7 @@ def _derive_evidence(
             _CONTRACT_MULTIPLIER,
             _MINIMUM_FEE,
             _MAXIMUM_PREMIUM_FRACTION,
+            assessment.original_ask_cap,
         )
         if value is not None
     )
@@ -271,6 +277,13 @@ def _derive_evidence(
         arithmetic_context,
     )
 
+    cap = assessment.original_ask_cap
+    if cap is not None:
+        if cap <= 0:
+            reasons = (*reasons, "original_ask_cap_nonpositive")
+        elif quote.ask is not None and quote.ask > cap:
+            reasons = (*reasons, "ask_exceeds_original_cap")
+
     if not observation.live_quote_time_suitable or reasons:
         return observation, reasons, None
 
@@ -282,6 +295,7 @@ def _derive_evidence(
             available_cash=assessment.available_cash,
             round_trip_fees=assessment.round_trip_fees,
             premium_fraction=assessment.premium_fraction,
+            original_ask_cap=assessment.original_ask_cap,
         )
     except ValueError as error:
         if str(error) != _ARITHMETIC_PRECISION_ERROR:

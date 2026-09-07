@@ -598,3 +598,74 @@ def test_derived_evidence_cannot_be_supplied_and_replace_recomputes_it() -> None
             first.premium_fraction,
             quote_reasons=(),
         )
+
+
+@pytest.mark.parametrize(('cap', 'changes', 'reason'), [
+    (Decimal('0'), {}, 'original_ask_cap_nonpositive'), (Decimal('-1'), {}, 'original_ask_cap_nonpositive'),
+    (Decimal('5'), {}, 'ask_exceeds_original_cap'), (Decimal('0e1000000'), {'ask': None}, 'original_ask_cap_nonpositive'),
+])
+def test_original_cap_adverse_facts_remain_quote_evidence(cap, changes, reason):
+    observed = quote(**changes)
+    result = assess(observed, original_ask_cap=cap)
+    assert result.quote is observed and result.original_ask_cap is cap
+    assert result.quote_reasons[-1] == reason and result.budget is None
+    if changes:
+        assert result.quote_reasons[0] == 'ask_missing'
+
+
+@pytest.mark.parametrize(('changes', 'reason'), [({'ask': None}, 'ask_missing'), ({'bid': Decimal('5.2')}, 'quote_crossed'),
+                                                          ({'bid_at': DECISION - timedelta(seconds=6)}, 'bid_too_old')])
+def test_original_cap_does_not_replace_current_quote_requirements(changes, reason):
+    observed = quote(**changes)
+    result = assess(observed, original_ask_cap=Decimal('5.10'))
+    assert result.quote is observed and reason in result.quote_reasons and result.budget is None
+
+
+@pytest.mark.parametrize(('cap', 'error'), [(True, TypeError), (5.1, TypeError), ('5.1', TypeError),
+                                           (Decimal('NaN'), ValueError), (Decimal('Infinity'), ValueError)])
+def test_original_cap_trusted_misuse_raises_even_for_bad_quote(cap, error):
+    with pytest.raises(error):
+        assess(quote(ask=None), original_ask_cap=cap)
+
+
+def test_original_cap_quote_rejects_subclass_before_decimal_hook():
+    class HostileCap(Decimal):
+        def is_finite(self):
+            raise AssertionError('cap hook executed')
+    with pytest.raises(TypeError):
+        assess(original_ask_cap=HostileCap('5.1'))
+
+
+def test_original_cap_precision_failure_is_retained_and_replace_recomputes():
+    observed = quote(bid=Decimal('4.95'), ask=Decimal('5'))
+    first = assess(observed, original_ask_cap=Decimal('5.1'))
+    assert first.budget.required_cash == Decimal('516')
+    second = replace(first, original_ask_cap=Decimal('1e1000000'))
+    assert second.budget is None and 'arithmetic_precision_unsupported' in second.quote_reasons
+    third = replace(first, original_ask_cap=Decimal('4.99'))
+    assert third.quote_reasons == ('ask_exceeds_original_cap',) and third.budget is None
+    assert first.quote is second.quote is third.quote is observed
+    assert first.budget.required_cash == Decimal('516')
+
+
+@pytest.mark.parametrize('precision', [2, 4, 120])
+def test_original_cap_keeps_high_precision_under_hostile_ambient_context(precision):
+    from decimal import ROUND_DOWN, Rounded
+    cap = Decimal('5.100000000000000000000000000000000001')
+    expected = Decimal('516.000000000000000000000000000000000100')
+    with localcontext() as ambient:
+        ambient.prec, ambient.Emax, ambient.Emin, ambient.rounding = precision, 2, -2, ROUND_DOWN
+        ambient.traps[Inexact] = ambient.traps[Rounded] = True
+        before = ambient.copy()
+        result = assess(quote(bid=Decimal('4.95'), ask=Decimal('5')), original_ask_cap=cap)
+        assert result.budget.required_cash == expected and result.quote_budget_suitable
+        assert ambient.flags == before.flags and ambient.traps == before.traps
+        assert (ambient.prec, ambient.Emax, ambient.Emin, ambient.rounding) == (precision, 2, -2, ROUND_DOWN)
+
+
+def test_original_cap_preserves_old_positional_quote_assessment_and_none():
+    observed = quote()
+    old = api.QuotePremiumAssessment(observed, DECISION, Decimal('104200'), Decimal('521'), Decimal('1'),
+                                     Decimal('.005'), timedelta(seconds=5), Decimal('.08'), Decimal('.05'))
+    assert old == assess(observed, original_ask_cap=None) == assess(observed)
+    assert old.budget == assess(observed, original_ask_cap=observed.ask).budget

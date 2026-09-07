@@ -273,3 +273,56 @@ def test_budget_evidence_is_immutable() -> None:
 
     with pytest.raises(FrozenInstanceError):
         budget.reason = "authorized"
+
+
+@pytest.mark.parametrize(('bid', 'reserve', 'required'), [('4.95', '5', '516'), ('4.80', '20', '531'), ('4.999', '2.55', '513.55')])
+def test_original_cap_keeps_capital_and_uses_actual_current_spread(bid, reserve, required):
+    result = assess_premium_budget(ask=Decimal('5'), bid=Decimal(bid), original_ask_cap=Decimal('5.10'),
+                                  virtual_equity=Decimal('150000'), available_cash=Decimal('1000'), premium_fraction=Decimal('.004'))
+    assert (result.premium, result.adverse_reserve, result.required_cash) == tuple(map(Decimal, ('510', reserve, required)))
+    assert result.affordable
+
+
+@pytest.mark.parametrize(('equity', 'cash', 'reason'), [
+    ('103200', '516', None), ('103199.99', '515.99', 'premium cap exceeded'),
+    ('103200', '515.99', 'insufficient available cash'), (None, '516', 'virtual equity is undeclared'),
+])
+def test_original_cap_uses_current_capital_and_keeps_failure_precedence(equity, cash, reason):
+    result = assess_premium_budget(ask=Decimal('5'), bid=Decimal('4.95'), original_ask_cap=Decimal('5.10'),
+                                  virtual_equity=None if equity is None else Decimal(equity), available_cash=Decimal(cash))
+    assert result.required_cash == Decimal('516') and result.reason == reason
+
+
+class CapDecimalHook(Decimal):
+    def is_finite(self):
+        raise AssertionError('Decimal subclass hook executed')
+
+
+@pytest.mark.parametrize('field', ['ask', 'bid', 'virtual_equity', 'available_cash', 'round_trip_fees', 'premium_fraction', 'original_ask_cap'])
+def test_premium_rejects_decimal_subclasses_before_any_hook(field):
+    values = dict(ask=Decimal('5'), bid=Decimal('4.95'), virtual_equity=Decimal('150000'), available_cash=Decimal('1000'))
+    values[field] = CapDecimalHook('5.1')
+    with pytest.raises(ValueError, match='must be a Decimal'):
+        assess_premium_budget(**values)
+
+
+@pytest.mark.parametrize('cap', [True, 5.1, '5.1', Decimal('NaN'), Decimal('Infinity'), Decimal('0'), Decimal('-1'), Decimal('4.99'), Decimal('1e1000000')])
+def test_low_level_original_cap_invalid_or_unsupported_values_raise(cap):
+    with pytest.raises(ValueError):
+        assess_premium_budget(ask=Decimal('5'), bid=Decimal('4.95'), original_ask_cap=cap,
+                              virtual_equity=Decimal('150000'), available_cash=Decimal('1000'))
+
+
+@pytest.mark.parametrize('values', [(), ('not-money', None, False, Decimal('NaN'), None, None),
+                                  tuple(map(Decimal, ('510', '1', '10', '521', '1'))) + (None,)])
+def test_premium_budget_cannot_claim_caller_authored_affordability(values):
+    from options_lab.premium import PremiumBudget
+    with pytest.raises(TypeError):
+        PremiumBudget(*values)
+
+
+def test_explicit_none_and_equal_cap_preserve_legacy_premium():
+    values = dict(ask=Decimal('5.1'), bid=Decimal('5'), virtual_equity=Decimal('104200'), available_cash=Decimal('521'))
+    legacy = assess_premium_budget(**values)
+    assert assess_premium_budget(**values, original_ask_cap=None) == legacy
+    assert assess_premium_budget(**values, original_ask_cap=Decimal('5.1')) == legacy
