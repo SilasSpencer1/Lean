@@ -164,6 +164,8 @@ class DecisionContext:
     timing: EntryTimingAssessment
     manifest: VerifiedFixtureManifest | None
     input_manifest_id: tuple[str, str] | None
+    # rejection_indexes retain the original ContextBuildResult.rejections namespace.
+    selected_components: tuple[ContextComponent, ...]
     option_quotes: tuple[QuoteObservation, ...]
     underlying_quotes: tuple[UnderlyingQuote, ...]
     greeks: tuple[GreekObservation, ...]
@@ -333,6 +335,7 @@ def build_decision_context(
         context = _context(
             request, manifest, config, rows, tuple(causal_rejections), chash, phash,
             global_reasons, feature_state, prior_binding,
+            tuple(c for c in components if c.disposition == "selected"),
         )
     return _freeze(
         ContextBuildResult, request=request, manifest=manifest, context=context,
@@ -819,7 +822,7 @@ def _state_binding(state, rows):
     }
 
 
-def _context(request, manifest, config, rows, rejections, chash, phash, global_reasons, feature_state, prior_binding):
+def _context(request, manifest, config, rows, rejections, chash, phash, global_reasons, feature_state, prior_binding, selected_components):
     """Project selected facts and bind actual causal commitments with owner identities."""
     header = request.value
     selected = [row.value for row in rows if row.disposition == "selected"]
@@ -920,6 +923,7 @@ def _context(request, manifest, config, rows, rejections, chash, phash, global_r
     return _freeze(
         DecisionContext, decision_id=header.decision_id, decision_at=header.decision_at,
         slot_key=timing.slot_key, timing=timing, manifest=manifest, input_manifest_id=manifest_id,
+        selected_components=selected_components,
         option_quotes=options, underlying_quotes=underlying, greeks=greeks,
         coherence_evidence=proofs, tick_rules=ticks,
         greek_readiness=tuple(readiness), coherence_assessments=tuple(coherence), session=session, tradability=statuses,

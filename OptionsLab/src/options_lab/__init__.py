@@ -73,6 +73,21 @@ from .feature_math import (
     ReturnFeatureResult,
     calculate_return_features,
 )
+from .feature_vector import (
+    CLOSE_VOLUME_PROXY_SPEC,
+    EXACT_VWAP_SPEC,
+    FEATURE_SCHEMA_ID,
+    PROXY_FEATURE_SCHEMA_ID,
+    PROXY_TRANSFORM_ID,
+    TRANSFORM_ID,
+    FeatureResult,
+    FeatureSpec,
+    FeatureSpecInputRejection,
+    FeatureSpecValidation,
+    FeatureVector,
+    build_features,
+    normalize_feature_spec,
+)
 from .features import FeatureState, FeatureUpdate, update_features
 from .greek_inputs import (
     GreekInputRejection,
@@ -163,6 +178,19 @@ from .volume_normalization import (
 )
 
 __all__ = [
+    "CLOSE_VOLUME_PROXY_SPEC",
+    "EXACT_VWAP_SPEC",
+    "FEATURE_SCHEMA_ID",
+    "PROXY_FEATURE_SCHEMA_ID",
+    "PROXY_TRANSFORM_ID",
+    "TRANSFORM_ID",
+    "FeatureResult",
+    "FeatureSpec",
+    "FeatureSpecInputRejection",
+    "FeatureSpecValidation",
+    "FeatureVector",
+    "build_features",
+    "normalize_feature_spec",
     "CLOSE_VOLUME_PROXY_TRANSFORM_ID",
     "ELIGIBLE_VOLUME_DEFINITION_ID",
     "EXACT_VWAP_DEFINITION_ID",
