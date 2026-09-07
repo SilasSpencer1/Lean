@@ -40,6 +40,14 @@
       "generator_version": "1",
       "normalization_version": 1,
       "payload_schema_version": 1
+    },
+    {
+      "expected_payload_sha256": "59dcab46055469ad3bfe6f10ebeeec45c6b15de1cc9fb149b7cb1d7ec2ec8bc4",
+      "fixture_id": "p08d-history-context-v1",
+      "generator_id": "optionslab-context-history-fixture-builder",
+      "generator_version": "1",
+      "normalization_version": 1,
+      "payload_schema_version": 1
     }
   ]
 }

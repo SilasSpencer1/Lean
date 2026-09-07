@@ -314,16 +314,16 @@ def test_nonnull_malformed_status_identity_cannot_masquerade_as_nullable_target(
     assert (native.field, native.code) == ("contract.multiplier", "invalid_type")
 
 
-def test_even_matching_admitted_session_cannot_authorize_prior_state_without_history():
+def test_empty_prior_state_rebinds_exact_admitted_session_without_inventing_history():
     from options_lab.features import FeatureState
     at = datetime(2026, 9, 5, 14, 30, tzinfo=timezone.utc)
     current = scenario("joined", at=at)
     previous = FeatureState(current.context.session, as_of=at)
     result = build([c.member.record_id for c in current.components], at=at, bundle=current.manifest, previous=previous)
     assert result.previous_feature_state is previous
-    assert result.context.feature_state is None and result.context.input_digest is None
+    assert result.context.feature_state is previous and result.context.input_digest
     assert result.context.bars == result.feature_updates == ()
-    assert "previous_state_unverified" in result.context.input_reasons
+    assert "previous_state_unverified" not in result.context.input_reasons
 
 
 def test_off_grid_session_context_remains_representable_with_separate_timing_reasons():

@@ -9,6 +9,8 @@ from typing import Literal
 from ._input_parsing import _InvalidInput, _parse_contract_id, _parse_date, _parse_string, _parse_timestamp
 from ._validation import _require_nonempty_string, _trusted_datetime
 from .admission import VerifiedFixtureManifest, VerifiedFixtureMember
+from .bar_inputs import BarContentIdentity, BarInputRejection, identify_underlying_bar, normalize_underlying_bar
+from .bars import UnderlyingBar
 from .coherence import (
     CoherenceAssessment, CoherenceInputRejection, QuoteCoherenceEvidence,
     assess_quote_coherence, normalize_quote_coherence,
@@ -23,7 +25,7 @@ from .contracts import (
     ContractId, ContractReference, ContractReferenceAssessment, ProviderContractMapping,
     assess_contract_reference,
 )
-from .features import FeatureState, FeatureUpdate
+from .features import FeatureState, FeatureUpdate, update_features
 from .greek_inputs import GreekInputRejection, normalize_greek_observation
 from .greeks import GreekObservation, GreekReadiness, assess_greek_readiness
 from .observations import InputRejection, ObservationMeta, normalize_observation_meta
@@ -48,6 +50,8 @@ _INTEGRITY = (
     "source_identity_conflict", "lineage_invalid", "lineage_unorderable", "lineage_cycle",
     "lineage_fork", "current_roots_conflict", "stream_order_ambiguous",
     "incomplete_context_input_set", "quote_pair_missing", "greek_coherence_missing",
+    "previous_state_membership_missing", "previous_state_session_mismatch",
+    "previous_state_time_invalid", "history_stream_ambiguous", "history_stream_mismatch",
 )
 _CONTRACT_CODES = {
     "contract": ("expected_exact_dict", "unknown_fields"),
@@ -105,13 +109,13 @@ class ContextMemberRejection:
 
 MarketValue = (
     QuoteObservation | UnderlyingQuote | GreekObservation | QuoteCoherenceEvidence | TickRule
-    | ExchangeSession | InstrumentTradability | ProviderContractMapping | ContractReference
+    | ExchangeSession | InstrumentTradability | ProviderContractMapping | ContractReference | UnderlyingBar
 )
 ContextRejection = (
     ContextInputRejection | ContextMemberRejection | InputRejection | QuoteInputRejection
     | UnderlyingQuoteInputRejection | GreekInputRejection | CoherenceInputRejection
     | TickInputRejection | SessionInputRejection | ProviderContractMappingRejection
-    | ContractReferenceRejection
+    | ContractReferenceRejection | BarInputRejection
 )
 
 
@@ -129,6 +133,7 @@ class ContextComponent:
     reasons: tuple[str, ...]
     rejection_indexes: tuple[int, ...]
     quote_identity: QuoteContentIdentity | None
+    bar_identity: BarContentIdentity | None
 
     def __init__(self) -> None:
         """Prevent caller-authored selection evidence.
@@ -148,7 +153,8 @@ class DecisionContext:
     schedules; applicability requires an actual-price consumer. The digest is absent
     when a supplied prior feature state cannot be rebound to admitted history.
     Status/reference tuples retain complete known tips and separate owner assessments,
-    including schedules and adverse applicability. History remains explicitly absent.
+    including schedules and adverse applicability. Bars are authorized reducer-selected
+    history; rejected arrivals remain separate components and FeatureUpdates.
     """
 
     decision_id: str
@@ -170,8 +176,8 @@ class DecisionContext:
     contract_references: tuple[ContractReference, ...]
     session_assessments: tuple[SessionAssessment, ...]
     reference_assessments: tuple[ContractReferenceAssessment, ...]
-    feature_state: None
-    bars: tuple[()]
+    feature_state: FeatureState | None
+    bars: tuple[UnderlyingBar, ...]
     rejections: tuple[ContextRejection, ...]
     input_reasons: tuple[str, ...]
     config_hash: str
@@ -235,12 +241,14 @@ class _Row:
     value: MarketValue | None = None
     available_at: datetime | None = None
     source: str | None = None
-    source_id: str | None = None
+    source_id: str | tuple[str, str] | None = None
     target: tuple | None = None
     failures: list = field(default_factory=list)
     reasons: list[str] = field(default_factory=list)
     disposition: str = "audit"
     quote_identity: QuoteContentIdentity | None = None
+    bar_identity: BarContentIdentity | None = None
+    retained: bool = False
 
 
 def build_decision_context(
@@ -253,13 +261,13 @@ def build_decision_context(
     Requested records establish scope, not currentness. Proven future availability
     stays outside causal selection and hashing. Unknown current facts suppress
     affected selections; inspected omitted records never become selected values.
-    A supplied prior state remains unverified audit evidence and prevents a digest;
-    it is never silently reset. Missing later inputs do not claim entry readiness.
+    Prior state requires full admitted session and selected/retired history binding;
+    failed reuse remains audit-only without reset. Missing inputs do not claim readiness.
 
     :param request: Exact factory-normalized partial request and ingestion facts.
     :param manifest: Actual verified fixture, or explicit absent evidence.
     :param config: Exact validated strategy configuration.
-    :param previous_feature_state: Prior state retained for audit, unverified here.
+    :param previous_feature_state: Prior state to rebind, or explicit fresh reconstruction.
     :returns: Frozen partial result with native failures and a context when time exists.
     :raises TypeError: If a trusted argument has the wrong exact type.
     """
@@ -280,13 +288,8 @@ def build_decision_context(
     for record_id in sorted(request.member_record_ids):
         if record_id not in members:
             global_reasons.append("unknown_member")
-    if previous_feature_state is not None:
-        global_reasons.append("previous_state_unverified")
-    for reason in global_reasons:
-        rejections.append(ContextMemberRejection(
-            request.event_id, request.received_at, request.raw_ref, "member", reason,
-        ))
-    rows = _resolve(request, manifest, members)
+    rows = _resolve(request, manifest, members, previous_feature_state)
+    feature_state, feature_updates, prior_binding = None, (), None
     if request.value is not None:
         _select(rows, request.value.decision_at)
         _quote_evidence(rows, request.value.decision_at, config)
@@ -297,6 +300,15 @@ def build_decision_context(
                     "calendar_unsupported", "session_wrong_date",
                 )) or "time_conversion_unsupported" in assessment.entry_reasons:
                     row.disposition = "audit"
+        feature_state, feature_updates, prior_binding = _history(
+            rows, previous_feature_state, request.value.decision_at, global_reasons,
+        )
+    elif previous_feature_state is not None:
+        global_reasons.append("previous_state_unverified")
+    for reason in dict.fromkeys(global_reasons):
+        rejections.append(ContextMemberRejection(
+            request.event_id, request.received_at, request.raw_ref, "member", reason,
+        ))
     components = []
     causal_rejections = list(rejections)
     for row in rows:
@@ -313,26 +325,39 @@ def build_decision_context(
             contract=row.contract, metadata=row.metadata, value=row.value,
             available_at=row.available_at, disposition=row.disposition,
             reasons=tuple(dict.fromkeys(row.reasons)), rejection_indexes=indexes,
-            quote_identity=row.quote_identity,
+            quote_identity=row.quote_identity, bar_identity=row.bar_identity,
         ))
     context = None
     if request.value is not None:
         context = _context(
             request, manifest, config, rows, tuple(causal_rejections), chash, phash,
-            global_reasons,
+            global_reasons, feature_state, prior_binding,
         )
     return _freeze(
         ContextBuildResult, request=request, manifest=manifest, context=context,
-        components=tuple(components), rejections=tuple(rejections), feature_updates=(),
+        components=tuple(components), rejections=tuple(rejections), feature_updates=feature_updates,
         previous_feature_state=previous_feature_state,
     )
 
 
-def _resolve(request, manifest, members) -> list[_Row]:
+def _resolve(request, manifest, members, previous) -> list[_Row]:
     """Normalize requested scope, finite stream siblings, and explicit linked members."""
     envelopes = {key: member.decode_envelope() for key, member in members.items()}
     bodies = {key: member.decode_raw_body() for key, member in members.items()}
-    selected = set(request.member_record_ids) & members.keys()
+    profiles = {} if manifest is None else {
+        p["profile_id"]: p for p in json.loads(manifest.modeled_source_profiles_bytes)
+    }
+    retained = set()
+    if previous is not None and request.value is not None:
+        values = (previous.session, *previous.bars, *previous.retired_bars)
+        for key, member in members.items():
+            if member.kind not in ("underlying_bar", "exchange_session"):
+                continue
+            row = _Row(member, envelopes[key], bodies[key], False)
+            _normalize(row, profiles[member.profile_id])
+            if row.value is not None and row.value in values:
+                retained.add(key)
+    selected = (set(request.member_record_ids) | retained) & members.keys()
     if request.value is not None:
         causal = {
             key for key in members
@@ -352,13 +377,11 @@ def _resolve(request, manifest, members) -> list[_Row]:
             if not added:
                 break
             selected.update(added)
-    profiles = {} if manifest is None else {
-        p["profile_id"]: p for p in json.loads(manifest.modeled_source_profiles_bytes)
-    }
     rows = []
     for key in sorted(selected):
         row = _Row(members[key], envelopes[key], bodies[key], key in request.member_record_ids)
         _normalize(row, profiles[row.member.profile_id])
+        row.retained = key in retained
         rows.append(row)
     return rows
 
@@ -370,7 +393,7 @@ def _normalize(row: _Row, profile: dict) -> None:
         event_id=env["event_id"], raw_ref=env["raw_ref"],
         received_at=_parse_timestamp(env["simulated_received_at"], "received_at"),
     )
-    if kind not in ("underlying_quote", "exchange_session"):
+    if kind not in ("underlying_quote", "exchange_session", "underlying_bar"):
         try:
             row.contract = _parse_contract_id(
                 env["contract"] if env["contract"] is not None else raw.get("contract")
@@ -379,7 +402,7 @@ def _normalize(row: _Row, profile: dict) -> None:
             # Body-owning normalizers retain their own contract failure below.
             if kind in ("option_quote", "greek_observation"):
                 row.failures.append(_failure(row, *failure.args))
-    if kind in ("option_quote", "underlying_quote"):
+    if kind in ("option_quote", "underlying_quote", "underlying_bar"):
         result = normalize_observation_meta(env["metadata"], **kwargs)
         row.metadata = result.value
         if result.rejection is not None:
@@ -391,6 +414,11 @@ def _normalize(row: _Row, profile: dict) -> None:
         )
     elif kind == "underlying_quote" and row.metadata is not None:
         result = normalize_underlying_quote(raw, meta=row.metadata, event_id=env["event_id"])
+    elif kind == "underlying_bar" and row.metadata is not None:
+        result = normalize_underlying_bar(
+            raw, meta=row.metadata, event_id=env["event_id"],
+            receive_sequence=env["receive_sequence"],
+        )
     elif kind == "greek_observation" and row.contract is not None:
         result = normalize_greek_observation(raw, contract=row.contract, **kwargs)
     elif kind == "quote_coherence":
@@ -409,11 +437,19 @@ def _normalize(row: _Row, profile: dict) -> None:
         row.value = result.value
         if result.rejection is not None:
             row.failures.append(result.rejection)
-    facts = env["metadata"] if kind in ("option_quote", "underlying_quote") else raw
+    facts = env["metadata"] if kind in ("option_quote", "underlying_quote", "underlying_bar") else raw
     row.available_at = _available(env, raw)
     row.source = _string(facts.get("provider" if kind == "provider_contract_mapping" else "source"))
     row.source_id = _string(facts.get("evidence_id" if kind == "quote_coherence" else "provider_record_id"))
-    if kind == "provider_contract_mapping":
+    if kind == "underlying_bar":
+        revision = _string(raw.get("revision_id"))
+        row.source_id = (row.source_id, revision) if row.source_id and revision else None
+        symbol = _string(raw.get("symbol"))
+        start = row.metadata.interval_start if row.metadata is not None else None
+        row.target = (kind, symbol, start) if symbol and start is not None else None
+        if type(row.value) is UnderlyingBar:
+            row.bar_identity = identify_underlying_bar(row.value)
+    elif kind == "provider_contract_mapping":
         row.source_id = env["event_id"]
         symbol = _string(raw.get("symbol"))
         row.target = (kind, row.source, symbol) if row.source and symbol else None
@@ -490,10 +526,11 @@ def _select(rows: list[_Row], cutoff: datetime) -> None:
         prior = identities.get(identity)
         if prior is not None and "source_identity_conflict" in prior.reasons:
             row.reasons.append("source_identity_conflict")
-    # Prefer an actual requested occurrence when a source redelivery represents a tip.
+    # Preserve rebound receipt history before choosing a requested source redelivery.
     for original in sorted(set(aliases.values())):
         occurrences = [original, *(key for key, value in aliases.items() if value == original)]
-        chosen = min((key for key in occurrences if causal[key].requested), default=original)
+        retained = [key for key in occurrences if causal[key].retained]
+        chosen = min(retained or [key for key in occurrences if causal[key].requested], default=original)
         for key in occurrences:
             if key == chosen:
                 aliases.pop(key, None)
@@ -507,7 +544,10 @@ def _select(rows: list[_Row], cutoff: datetime) -> None:
     for key, row in active.items():
         parent = row.envelope["supersedes_record_id"]
         if parent is None:
+            if row.member.kind == "underlying_bar" and row.body.get("supersedes_revision_id") is not None:
+                row.reasons.append("lineage_invalid")
             continue
+        declared_parent = causal.get(parent)
         parent = aliases.get(parent, parent)
         if parent not in active:
             row.reasons.append("lineage_invalid")
@@ -522,7 +562,15 @@ def _select(rows: list[_Row], cutoff: datetime) -> None:
             or row.envelope["stream_id"] != prior.envelope["stream_id"]
         ):
             row.reasons.append("lineage_invalid")
-        if not _later(row, prior):
+        if row.member.kind == "underlying_bar" and (
+            row.body.get("supersedes_revision_id") != prior.body.get("revision_id")
+            or row.metadata is None or prior.metadata is None
+            or row.metadata.interval_end != prior.metadata.interval_end
+        ):
+            row.reasons.append("lineage_invalid")
+        # A bar redelivery cannot rewrite the receipt order of the declared revision.
+        ordering_parent = declared_parent if row.member.kind == "underlying_bar" else prior
+        if not _later(row, ordering_parent):
             row.reasons.append("lineage_unorderable")
     for key, descendants in children.items():
         if len(descendants) > 1:
@@ -580,7 +628,7 @@ def _select(rows: list[_Row], cutoff: datetime) -> None:
                 for key in group | other_group:
                     active[key].reasons.append("current_roots_conflict")
         for key in tips:
-            if not active[key].requested:
+            if not (active[key].requested or active[key].retained):
                 active[key].reasons.append("incomplete_context_input_set")
                 # Missing a separate scoped tip invalidates the complete target set.
                 for other in ordered:
@@ -611,6 +659,9 @@ def _same_source(left: _Row, right: _Row) -> bool:
         )
     if type(a) is not type(b):
         return False
+    if type(a) is UnderlyingBar:
+        return replace(a, meta=replace(a.meta, received_at=b.meta.received_at, raw_ref=b.meta.raw_ref),
+                       receive_sequence=b.receive_sequence) == b
     if type(a) in (QuoteObservation, UnderlyingQuote):
         return replace(a, meta=replace(a.meta, received_at=b.meta.received_at, raw_ref=b.meta.raw_ref)) == b
     if type(a) in (GreekObservation, ExchangeSession, InstrumentTradability):
@@ -651,7 +702,120 @@ def _quote_evidence(rows, cutoff, config) -> None:
             row.reasons.extend(reasons)
 
 
-def _context(request, manifest, config, rows, rejections, chash, phash, global_reasons):
+def _history(rows, previous, cutoff, global_reasons):
+    """Rebind retained occurrences and consume only requested causal bar arrivals.
+
+    :param rows: Normalized finite scope, including actual retained occurrences.
+    :param previous: Exact supplied state, or explicit fresh history.
+    :param cutoff: Validated decision time.
+    :param global_reasons: Owned assembly diagnostics to extend on failed reuse.
+    :returns: Authorized state, actual reducer updates, and full prior commitments.
+    """
+    sessions = [r.value for r in rows if r.disposition == "selected" and type(r.value) is ExchangeSession]
+    session = sessions[0] if len(sessions) == 1 else None
+    bars = [r for r in rows if r.member.kind == "underlying_bar" and r.disposition != "future"]
+    failures = []
+    binding = None
+    if previous is not None:
+        for row in bars:
+            if not (row.requested or row.retained) and row.disposition != "duplicate":
+                row.reasons.append("incomplete_context_input_set")
+                row.disposition = "omitted"
+        retained = (previous.session, *previous.bars, *previous.retired_bars)
+        matches = [[r for r in rows if r.retained and r.value == value] for value in retained]
+        if any(not matching for matching in matches):
+            failures.append("previous_state_membership_missing")
+        if session != previous.session:
+            failures.append("previous_state_session_mismatch")
+        if previous.as_of > cutoff or any(
+            r.available_at is None or r.available_at > previous.as_of
+            for matching in matches for r in matching
+        ):
+            failures.append("previous_state_time_invalid")
+        prior_streams = {r.envelope["stream_id"] for matching in matches[1:] for r in matching}
+        if len(prior_streams) > 1:
+            failures.append("history_stream_ambiguous")
+        if any(r.bar_identity is not None and r.bar_identity.full_content_hash is None
+               for matching in matches for r in matching):
+            failures.append("previous_state_unverified")
+        if not failures:
+            binding = _state_binding(previous, rows)
+    else:
+        prior_streams = set()
+    streams = prior_streams | {r.envelope["stream_id"] for r in bars if r.requested}
+    if len(streams) > 1:
+        failures.append("history_stream_mismatch" if prior_streams else "history_stream_ambiguous")
+    # Context cannot authorize omitted or unframed history. Typed P06 rejections,
+    # including identity conflicts and cursor order, still retain actual old state.
+    fatal = {
+        "incomplete_context_input_set", "normalization_failed", "availability_unknown",
+        "source_identity_unknown", "profile_mismatch", "target_unknown", "lineage_invalid",
+        "lineage_unorderable", "lineage_cycle", "lineage_fork",
+    }
+    invalid = any(fatal.intersection(r.reasons) for r in bars)
+    if failures or invalid or session is None:
+        global_reasons.extend(failures)
+        if previous is not None:
+            global_reasons.append("previous_state_unverified")
+        return None, (), None
+    if previous is None and not any(r.requested for r in bars):
+        return None, (), None
+    arrivals = sorted((r for r in bars if r.requested and type(r.value) is UnderlyingBar), key=lambda r: (
+        r.available_at, r.envelope["receive_sequence"] is None,
+        r.envelope["receive_sequence"] or 0, r.member.record_id,
+    ))
+    retained_keys = {(r.source, r.source_id) for r in bars if r.retained}
+    new_arrivals = [r for r in arrivals if (r.source, r.source_id) not in retained_keys
+                    and r.disposition != "duplicate"]
+    for left, right in zip(new_arrivals, new_arrivals[1:]):
+        if not _later(right, left):
+            failures.append("stream_order_ambiguous")
+    if failures:
+        global_reasons.extend(failures)
+        if previous is not None:
+            global_reasons.append("previous_state_unverified")
+        return None, (), None
+    state = previous if previous is not None else FeatureState(session, as_of=cutoff)
+    updates = []
+    for row in arrivals:
+        update = update_features(state, row.value, session, as_of=cutoff)
+        updates.append(update)
+        state = update.next_state
+        row.reasons.extend(row.bar_identity.full_reasons)
+        if update.outcome != "duplicate":
+            row.reasons.extend(update.update_reasons)
+        row.reasons.extend(update.assessment.volume_reasons)
+        row.reasons.extend(update.assessment.vwap_reasons)
+        if update.outcome in ("rejected", "duplicate"):
+            row.disposition = "unresolved" if update.outcome == "rejected" else "duplicate"
+    for row in bars:
+        if row.value in state.bars and (row.requested or row.retained):
+            row.disposition = "selected"
+        elif row.value in state.retired_bars:
+            row.disposition = "superseded"
+    return state, tuple(updates), binding
+
+
+def _state_binding(state, rows):
+    """Bind ordered selected/retired membership plus cursor and cutoff, beyond input_hash.
+
+    :param state: Fully rebound prior state or actual reducer-produced state.
+    :param rows: Actual normalized members available for full-value matching.
+    :returns: Concrete serializable owned membership and reducer commitments.
+    """
+    return {
+        "session": [r.member.record_id for r in rows if r.value == state.session],
+        "selected": [[r.member.record_id for r in rows if r.value == bar] for bar in state.bars],
+        "retired": [[r.member.record_id for r in rows if r.value == bar] for bar in state.retired_bars],
+        "as_of": state.as_of.isoformat(),
+        "last_event_order": None if state.last_event_order is None else (
+            state.last_event_order[0].isoformat(), state.last_event_order[1],
+        ),
+        "input_hash": state.input_hash,
+    }
+
+
+def _context(request, manifest, config, rows, rejections, chash, phash, global_reasons, feature_state, prior_binding):
     """Project selected facts and bind actual causal commitments with owner identities."""
     header = request.value
     selected = [row.value for row in rows if row.disposition == "selected"]
@@ -725,6 +889,8 @@ def _context(request, manifest, config, rows, rejections, chash, phash, global_r
         "policy_hash": phash, "input_manifest_id": manifest_id,
         "slot_key": timing.slot_key, "input_reasons": reasons,
         "request_rejections": [(r.field, r.code) for r in request.rejections],
+        "prior_state": prior_binding,
+        "feature_state": _state_binding(feature_state, rows) if feature_state is not None else None,
         "unknown_member_ids": sorted(set(request.member_record_ids) - known_ids),
         "members": [{
             "record_id": r.member.record_id, "profile_id": r.member.profile_id,
@@ -733,6 +899,8 @@ def _context(request, manifest, config, rows, rejections, chash, phash, global_r
             "requested": r.requested, "disposition": r.disposition,
             "reasons": tuple(dict.fromkeys(r.reasons)),
             "quote_content_hash": None if r.quote_identity is None else r.quote_identity.content_hash,
+            "retained": r.retained,
+            "bar_content_hash": None if r.bar_identity is None else r.bar_identity.full_content_hash,
             "normalization_rejections": [(
                 failure.stage,
                 [(d.field, d.code) for d in failure.diagnostics]
@@ -753,7 +921,7 @@ def _context(request, manifest, config, rows, rejections, chash, phash, global_r
         greek_readiness=tuple(readiness), coherence_assessments=tuple(coherence), session=session, tradability=statuses,
         provider_mappings=mappings, contract_references=references,
         session_assessments=session_assessments, reference_assessments=tuple(reference_assessments),
-        feature_state=None, bars=(), rejections=rejections,
+        feature_state=feature_state, bars=() if feature_state is None else feature_state.bars, rejections=rejections,
         input_reasons=reasons, config_hash=chash, policy_hash=phash, input_digest=digest, origin="synthetic",
         fidelity_tier=0, permitted_use="core_fixture", operational_allowed=False, economic_allowed=False,
     )

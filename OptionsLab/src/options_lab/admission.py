@@ -22,7 +22,7 @@ from .greeks import FIXTURE_GREEK_METHOD, GreekMethodSpec
 
 FixtureKind = Literal[
     "option_quote", "underlying_quote", "greek_observation", "quote_coherence", "tick_rule",
-    "exchange_session", "instrument_tradability", "provider_contract_mapping", "contract_reference",
+    "exchange_session", "instrument_tradability", "provider_contract_mapping", "contract_reference", "underlying_bar",
 ]
 FixtureRejectionCode = Literal[
     "catalog_unavailable", "catalog_invalid", "catalog_resource_limit",
@@ -62,7 +62,7 @@ _DESCRIPTOR_FIELDS = (
 )
 _KINDS = (
     "option_quote", "underlying_quote", "greek_observation", "quote_coherence", "tick_rule",
-    "exchange_session", "instrument_tradability", "provider_contract_mapping", "contract_reference",
+    "exchange_session", "instrument_tradability", "provider_contract_mapping", "contract_reference", "underlying_bar",
 )
 _TICK_DEFINITIONS = (("fixture-usd-premium-tick-v1", "1"),)
 _COHERENCE_PROTOCOLS = (
@@ -83,6 +83,10 @@ _UNITS = {
         "price": "option_premium_USD_per_share", "size": "contracts",
     },
     "underlying_quote": {"price": "USD_per_share", "size": "shares"},
+    "underlying_bar": {
+        "price": "USD_per_share", "volume": "shares",
+        "vwap_numerator": "USD", "vwap_denominator": "shares",
+    },
     "greek_observation": {
         "delta": "signed_option_price_per_underlying_price",
         "iv": "annualized_volatility_fraction",
@@ -460,7 +464,7 @@ def _profiles(
         kind = _parse_token(profile["kind"], f"{path}.kind", _KINDS)
         _parse_string(profile["source"], f"{path}.source")
         _parse_string(profile["stream_id"], f"{path}.stream_id")
-        quote = kind in ("option_quote", "underlying_quote")
+        quote = kind in ("option_quote", "underlying_quote", "underlying_bar")
         for name, expected in (
             ("feed_class", "realtime"), ("fidelity", "genuine")
         ):
@@ -473,6 +477,7 @@ def _profiles(
         identity_rule = (
             "new_evidence_id_per_update"
             if kind == "quote_coherence"
+            else "provider_record_id_and_revision_id" if kind == "underlying_bar"
             else "new_event_id_per_update" if kind == "provider_contract_mapping"
             else "new_provider_record_id_per_update"
         )
@@ -607,7 +612,7 @@ def _envelope(
         for name in ("contract", "metadata"):
             if envelope[name] is not None:
                 _fail(f"{path}.{name}", "invalid_value")
-    elif kind == "underlying_quote":
+    elif kind in ("underlying_quote", "underlying_bar"):
         if envelope["contract"] is not None:
             _fail(f"{path}.contract", "invalid_value")
         if type(envelope["metadata"]) is not dict:
@@ -804,7 +809,7 @@ def _allowed_codes(field_name: str) -> tuple[str, ...]:
         r"assembled_at|generator_source_ref|origin|permitted_use|"
         r"modeled_source_profiles(?:\[[0-9]+\](?:\.(?:profile_id|kind|source|"
         r"stream_id|feed_class|fidelity|availability_basis|record_identity_rule|"
-        r"units(?:\.(?:price|size|delta|iv|rate|dividend))?))?)?|"
+        r"units(?:\.(?:price|size|delta|iv|rate|dividend|volume|vwap_numerator|vwap_denominator))?))?)?|"
         r"definitions(?:\.(?:coherence_protocol_ids|tick_definition_ids|"
         r"greek_method(?:\.(?:method_id|method_version|assumptions_id|"
         r"method_spec_hash))?))?|members(?:\[[0-9]+\](?:\.(?:record_id|kind|"
