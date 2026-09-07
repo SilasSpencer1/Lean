@@ -35,7 +35,7 @@ def test_actual_admitted_population_literals_and_independent_sparse_bucket():
     assert result.baseline.training_input_hash == result.inputs.training_input_hash
 
 
-@pytest.mark.parametrize("name", ["heldout", "future-bar", "wrong-source", "raw-volume", "source-identity", "calendar-source-identity"])
+@pytest.mark.parametrize("name", ["heldout", "future-bar", "wrong-source", "source-identity", "calendar-source-identity"])
 def test_fitting_never_recovers_a_good_subset_from_failed_binding(name):
     result = fit(name)
     assert result.baseline is None and result.reasons == result.inputs.reasons
@@ -226,3 +226,12 @@ def test_actual_calendar_first_minute_remains_one_across_dst_when_fitting():
     bucket = result.buckets[0]
     assert (bucket.minute_index, bucket.sample_count, bucket.mean, bucket.population_stddev) == (1, 2, D(900), D(0))
     assert bucket.contributing_sessions == result.inputs.partition.training_sessions
+
+
+def test_raw_omission_is_hashed_before_fit_and_reduces_only_its_bucket():
+    result = fit("raw-volume")
+    assert result.reasons == () and result.baseline is not None
+    assert result.inputs.training_input_hash is not None
+    buckets = {b.minute_index: b for b in result.buckets}
+    assert buckets[35].sample_count == 19 and not buckets[35].ready
+    assert buckets[34].sample_count == 20 and buckets[34].ready

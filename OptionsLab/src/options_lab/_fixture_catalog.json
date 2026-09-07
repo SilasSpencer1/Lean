@@ -64,6 +64,22 @@
       "generator_version": "2",
       "normalization_version": 1,
       "payload_schema_version": 1
+    },
+    {
+      "expected_payload_sha256": "c04f60b850e60a391660ca6332036de71d235918814a48dfed20260d77300549",
+      "fixture_id": "p10b-volume-omissions-v1",
+      "generator_id": "optionslab-volume-training-fixture-builder",
+      "generator_version": "3",
+      "normalization_version": 1,
+      "payload_schema_version": 1
+    },
+    {
+      "expected_payload_sha256": "6c8c54459d59ea87ca26e816f9bc1000f19ee513fe5da3e938634be72b1c7dfa",
+      "fixture_id": "p10b-volume-normalization-v1",
+      "generator_id": "optionslab-volume-normalization-fixture-builder",
+      "generator_version": "1",
+      "normalization_version": 1,
+      "payload_schema_version": 1
     }
   ]
 }

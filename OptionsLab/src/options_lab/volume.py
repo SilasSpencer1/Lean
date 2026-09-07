@@ -25,7 +25,7 @@ def _normalization_snapshot() -> dict[str, object]:
         "minute_index": "completed_minutes_since_actual_session_open_first_minute_is_1",
         "sample_identity": "one_causally_selected_economic_observation_per_session_minute",
         "sample_order": "oldest_session_date_to_newest",
-        "missingness": "typed_missing_volume_or_unknown_eligibility_omitted_no_imputation",
+        "missingness": "typed_missing_volume_or_unknown_eligibility_and_independently_verified_registered_raw_volume_only_failures_omitted_no_imputation",
         "input_failures": "whole_fit_rejection_no_selected_subset_recovery",
         "exact_arithmetic": "bounded_1000_digit_context_Inexact_trap_checked_operands_and_intermediates",
         "moment_order": ["x2=exact(x*x);S=exact(S+x);Q=exact(Q+x2)",

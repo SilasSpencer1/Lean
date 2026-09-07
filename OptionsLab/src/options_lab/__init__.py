@@ -155,6 +155,12 @@ from .volume import (
     VolumeBucket,
     fit_volume_baseline,
 )
+from .volume_normalization import (
+    FeatureNormalization,
+    FeatureNormalizationInputRejection,
+    FeatureNormalizationResult,
+    normalize_feature_normalization,
+)
 
 __all__ = [
     "CLOSE_VOLUME_PROXY_TRANSFORM_ID",
@@ -189,6 +195,9 @@ __all__ = [
     "FIXTURE_GREEK_METHOD",
     "FeatureState",
     "FeatureUpdate",
+    "FeatureNormalization",
+    "FeatureNormalizationInputRejection",
+    "FeatureNormalizationResult",
     "FieldDiagnostic",
     "FixtureInputRejection",
     "FixtureVerification",
@@ -271,6 +280,7 @@ __all__ = [
     "normalize_context_request",
     "normalize_contract_reference",
     "normalize_exchange_session",
+    "normalize_feature_normalization",
     "normalize_greek_observation",
     "normalize_instrument_tradability",
     "normalize_observation_meta",

@@ -208,27 +208,7 @@ def assess_underlying_bar(
 def _derive_bar_assessment(result: BarAssessment) -> None:
     """Derive fixed-order common and component evidence from retained inputs."""
     bar = result.bar
-    observation = assess_observation(bar.meta, decision_at=result.as_of)
-    availability_reasons = list(observation.availability_reasons)
-
-    expected_date = _expected_interval_date(bar, availability_reasons)
-    if expected_date is None and result.session is not None:
-        expected_date = result.session.session_date
-    try:
-        calendar_reasons, _ = _calendar_facts(
-            result.session,
-            expected_calendar="XNYS",
-            expected_session_date=expected_date or date.min,
-            cutoff=result.as_of,
-        )
-    except (OverflowError, ValueError):
-        calendar_reasons = []
-        _append_reason(availability_reasons, "time_conversion_unsupported")
-
-    for reason in calendar_reasons:
-        _append_reason(availability_reasons, reason)
-
-    _append_interval_reasons(bar, result.session, availability_reasons)
+    observation, availability_reasons = _bar_availability(bar.meta, result.session, result.as_of)
 
     common_component_reasons = [] if bar.symbol == "SPY" else ["unsupported_symbol"]
     price_reasons = list(common_component_reasons)
@@ -271,29 +251,48 @@ def _derive_bar_assessment(result: BarAssessment) -> None:
     object.__setattr__(result, "vwap_reasons", tuple(vwap_reasons))
 
 
+def _bar_availability(meta: ObservationMeta, session: ExchangeSession | None, as_of: datetime):
+    """Derive common availability from actual metadata for typed and raw bar inputs."""
+    observation = assess_observation(meta, decision_at=as_of)
+    reasons = list(observation.availability_reasons)
+    expected_date = _expected_interval_date(meta, reasons)
+    if expected_date is None and session is not None:
+        expected_date = session.session_date
+    try:
+        calendar, _ = _calendar_facts(session, expected_calendar="XNYS",
+                                      expected_session_date=expected_date or date.min, cutoff=as_of)
+    except (OverflowError, ValueError):
+        calendar = []
+        _append_reason(reasons, "time_conversion_unsupported")
+    for reason in calendar:
+        _append_reason(reasons, reason)
+    _append_interval_reasons(meta, session, reasons)
+    return observation, reasons
+
+
 def _expected_interval_date(
-    bar: UnderlyingBar, reasons: list[str]
+    meta: ObservationMeta, reasons: list[str]
 ) -> date | None:
     """Return the interval's New York date or bounded conversion evidence."""
-    if bar.interval_start is None:
+    if meta.interval_start is None:
         return None
     try:
-        return bar.interval_start.astimezone(_NY).date()
+        return meta.interval_start.astimezone(_NY).date()
     except (OverflowError, ValueError):
         _append_reason(reasons, "time_conversion_unsupported")
         return None
 
 
 def _append_interval_reasons(
-    bar: UnderlyingBar,
+    meta: ObservationMeta,
     session: ExchangeSession | None,
     reasons: list[str],
 ) -> None:
     """Append one-minute alignment and supplied-session containment reasons."""
-    if bar.meta.kind != "interval":
+    if meta.kind != "interval":
         reasons.append("not_interval")
-    start = bar.interval_start
-    end = bar.interval_end
+    start = meta.interval_start
+    end = meta.interval_end
     if start is None or end is None or start >= end:
         return
     if end - start != _MINUTE:
