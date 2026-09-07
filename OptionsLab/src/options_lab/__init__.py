@@ -4,8 +4,10 @@ from .account import (
     AccountAssessment,
     AccountSnapshot,
     HoldingFact,
+    HoldingMarkAssessment,
     OpenOrderFact,
     assess_account,
+    assess_holding_mark,
 )
 from .admission import (
     FixtureInputRejection,
@@ -188,8 +190,10 @@ __all__ = [
     "AccountAssessment",
     "AccountSnapshot",
     "HoldingFact",
+    "HoldingMarkAssessment",
     "OpenOrderFact",
     "assess_account",
+    "assess_holding_mark",
     "CLOSE_VOLUME_PROXY_SPEC",
     "EXACT_VWAP_SPEC",
     "FEATURE_SCHEMA_ID",

@@ -2,13 +2,18 @@
 
 from dataclasses import dataclass, field
 from datetime import date, datetime, timedelta
-from decimal import Decimal
+from decimal import (
+    MAX_EMAX, MIN_EMIN, Context, Decimal, DecimalException, DivisionByZero,
+    Inexact, InvalidOperation, Overflow, localcontext,
+)
 from typing import Literal
 from zoneinfo import ZoneInfo
 
 from ._validation import _require_nonempty_string, _require_token, _trusted_datetime
+from .bar_inputs import _identity_decimal, _MAX_INTEGER_EXCLUSIVE, _UnsupportedIdentity
 from .config import StrategyConfig
 from .contracts import ContractId
+from .observations import ObservationAssessment, assess_observation
 from .quotes import QuoteObservation
 from .sessions import ExchangeSession
 
@@ -171,7 +176,9 @@ class AccountAssessment:
 
     Observed flatness requires actually empty complete lists and current coherent
     claims. It proves neither source admission, true reconciliation nor entry
-    authority. Capital and risk references remain on the actual snapshot.
+    authority. Conservative dollars remain conditional on the retained claims;
+    time failures do not erase independently interpretable adverse amounts.
+    Risk references remain opaque on the actual snapshot.
     """
 
     account: AccountSnapshot | None
@@ -192,6 +199,14 @@ class AccountAssessment:
     has_open_order_records: bool = field(init=False)
     execution_uncertain: bool = field(init=False)
     observed_flat: bool = field(init=False)
+    holding_marks: tuple["HoldingMarkAssessment", ...] = field(init=False)
+    capital_reasons: tuple[str, ...] = field(init=False)
+    unrealized_pnl: Decimal | None = field(init=False)
+    conservative_daily_pnl: Decimal | None = field(init=False)
+    computed_liquidation_equity: Decimal | None = field(init=False)
+    conservative_virtual_equity: Decimal | None = field(init=False)
+    virtual_unencumbered_cash: Decimal | None = field(init=False)
+    effective_available_cash: Decimal | None = field(init=False)
 
     def __post_init__(self) -> None:
         """
@@ -209,6 +224,7 @@ class AccountAssessment:
             raise TypeError("config must be a StrategyConfig")
         object.__setattr__(self, "now", _trusted_datetime("now", self.now))
         _derive_account(self)
+        _derive_capital(self)
 
 
 def assess_account(account: AccountSnapshot | None, *, session: ExchangeSession | None,
@@ -408,3 +424,240 @@ def _fact_reasons(account: AccountSnapshot | None, day: date | None, now: dateti
             if quantity is not None and _fractional(quantity):
                 exposure.add("order_fractional_quantity")
     return integrity, exposure
+
+
+@dataclass(frozen=True)
+class HoldingMarkAssessment:
+    """
+    This class represents a bid observation or long-premium monetary stress.
+
+    It retains actual source claims, never admitted provenance or a sell fill.
+    Missing entry/ask/model prerequisites cannot erase an independent bid.
+    """
+
+    holding: HoldingFact
+    config: StrategyConfig
+    now: datetime
+    observation: ObservationAssessment | None = field(init=False)
+    holding_reasons: tuple[str, ...] = field(init=False)
+    mark_reasons: tuple[str, ...] = field(init=False)
+    cost_reasons: tuple[str, ...] = field(init=False)
+    valuation_basis: Literal["observed_bid", "zero_bid_nonexecutable", "full_premium_stress", "unavailable"] = field(init=False)
+    gross_liquidation_value: Decimal | None = field(init=False)
+    net_liquidation_value: Decimal | None = field(init=False)
+    unrealized_pnl: Decimal | None = field(init=False)
+
+    def __post_init__(self) -> None:
+        """
+        Derive independent mark and cost evidence from the retained holding.
+
+        :returns:             None.
+        :raises   TypeError:  If holding or config has the wrong exact type.
+        :raises   ValueError: If now is not a representable aware datetime.
+        """
+        if type(self.holding) is not HoldingFact:
+            raise TypeError("holding must be a HoldingFact")
+        if type(self.config) is not StrategyConfig:
+            raise TypeError("config must be a StrategyConfig")
+        object.__setattr__(self, "now", _trusted_datetime("now", self.now))
+        _derive_mark(self)
+
+
+def assess_holding_mark(holding: HoldingFact, *, config: StrategyConfig,
+                        now: datetime) -> HoldingMarkAssessment:
+    """
+    Assess one actual bid and the separately bounded long-premium stress.
+
+    :param    holding:    Actual immutable exposure, including unknown facts.
+    :param    config:     Exact configuration supplying the independent quote age.
+    :param    now:        Explicit aware assessment time.
+    :returns:             Derived monetary observations, never a sale or approval.
+    :raises   TypeError:  If holding or config has the wrong exact type.
+    :raises   ValueError: If now is not a representable aware datetime.
+    """
+    return HoldingMarkAssessment(holding, config, now)
+
+
+def _money_context() -> Context:
+    """Return explicit exact arithmetic, allowing only value-preserving rounding."""
+    return Context(prec=1000, Emax=MAX_EMAX, Emin=MIN_EMIN,
+                   traps=[Inexact, InvalidOperation, Overflow, DivisionByZero])
+
+
+def _money(value: Decimal) -> Decimal:
+    """Canonicalize a bounded operand/result before any exponent expansion."""
+    if not value.is_finite():
+        raise _UnsupportedIdentity
+    return Decimal(_identity_decimal(value))
+
+
+def _sum_money(values) -> Decimal:
+    """Sum bounded signed amounts exactly in deterministic numerical order."""
+    operands = sorted(_money(value) for value in values)
+    with localcontext(_money_context()):
+        total = Decimal(0)
+        for value in operands:
+            total = _money(total + value)
+    return total
+
+
+def _derive_mark(result: HoldingMarkAssessment) -> None:
+    """Derive holding, metadata, bid, cost and exact arithmetic evidence."""
+    holding, quote, now = result.holding, result.holding.mark_quote, result.now
+    holding_reasons, mark_reasons, cost_reasons = [], [], []
+    checks = ((holding.asset_kind != "option", "holding_asset_unsupported"),
+              (holding.quantity_unit != "contracts", "holding_unit_unsupported"),
+              (holding.contract is None, "holding_contract_unknown"),
+              (holding.contract is not None and holding.contract.multiplier != 100, "unsupported_multiplier"),
+              (holding.quantity is None, "holding_quantity_unknown"),
+              (holding.quantity is not None and holding.quantity <= 0, "holding_quantity_nonpositive"),
+              (holding.quantity is not None and _fractional(holding.quantity), "holding_fractional_quantity"))
+    holding_reasons.extend(reason for failed, reason in checks if failed)
+    quantity = None
+    if not holding_reasons:
+        try:
+            quantity = _money(holding.quantity)
+        except (DecimalException, _UnsupportedIdentity):
+            holding_reasons.append("arithmetic_precision_unsupported")
+    observation = None
+    zero_observed = False
+    if quote is None:
+        mark_reasons.append("mark_missing")
+    else:
+        observation = assess_observation(quote.meta, decision_at=now,
+                                         max_quote_age=result.config.execution.max_quote_age)
+        if quote.contract != holding.contract:
+            mark_reasons.append("mark_contract_mismatch")
+        if quote.bid_at is None:
+            mark_reasons.append("bid_time_missing")
+        else:
+            if quote.bid_at > quote.meta.available_at:
+                mark_reasons.append("bid_after_available")
+            if quote.bid_at > now:
+                mark_reasons.append("bid_after_now")
+            elif now - quote.bid_at > result.config.execution.max_quote_age:
+                mark_reasons.append("bid_too_old")
+        if quote.bid is None:
+            mark_reasons.append("bid_missing")
+        elif quote.bid == 0:
+            zero_observed = observation.live_quote_time_suitable and not mark_reasons
+            mark_reasons.append("zero_bid_nonexecutable")
+        if quote.bid_size is None:
+            mark_reasons.append("bid_size_unknown")
+        elif quote.bid_size >= _MAX_INTEGER_EXCLUSIVE:
+            mark_reasons.append("arithmetic_precision_unsupported")
+        elif holding.quantity is not None and quote.bid_size < holding.quantity:
+            mark_reasons.append("bid_size_insufficient")
+    gross = net = unrealized = None
+    basis = "unavailable"
+    if not holding_reasons:
+        if quote is not None and observation.live_quote_time_suitable and not mark_reasons:
+            try:
+                with localcontext(_money_context()):
+                    gross = _money(_money(quantity * Decimal(100)) * _money(quote.bid))
+                basis = "observed_bid"
+            except (DecimalException, _UnsupportedIdentity):
+                mark_reasons.append("arithmetic_precision_unsupported")
+        else:
+            gross = Decimal(0)
+            basis = "zero_bid_nonexecutable" if zero_observed else "full_premium_stress"
+    costs = {}
+    for name in ("estimated_remaining_close_cost", "basis_debit"):
+        value = getattr(holding, name)
+        costs[name] = None
+        if value is None:
+            cost_reasons.append(f"{name}_missing")
+        elif value < 0:
+            cost_reasons.append(f"{name}_negative")
+        else:
+            try:
+                costs[name] = _money(value)
+            except (DecimalException, _UnsupportedIdentity):
+                cost_reasons.append("arithmetic_precision_unsupported")
+    if gross is not None and costs["estimated_remaining_close_cost"] is not None:
+        try:
+            net = _sum_money((gross, costs["estimated_remaining_close_cost"].copy_negate()))
+        except (DecimalException, _UnsupportedIdentity):
+            cost_reasons.append("arithmetic_precision_unsupported")
+    if net is not None and costs["basis_debit"] is not None:
+        try:
+            unrealized = _sum_money((net, costs["basis_debit"].copy_negate()))
+        except (DecimalException, _UnsupportedIdentity):
+            cost_reasons.append("arithmetic_precision_unsupported")
+    values = dict(observation=observation, holding_reasons=tuple(holding_reasons),
+                  mark_reasons=tuple(mark_reasons), cost_reasons=tuple(dict.fromkeys(cost_reasons)),
+                  valuation_basis=basis, gross_liquidation_value=gross,
+                  net_liquidation_value=net, unrealized_pnl=unrealized)
+    for name, value in values.items():
+        object.__setattr__(result, name, value)
+
+
+def _derive_capital(result: AccountAssessment) -> None:
+    """Derive dependency-specific amounts without overriding account currentness."""
+    account = result.account
+    marks = () if account is None else tuple(
+        assess_holding_mark(holding, config=result.config, now=result.now) for holding in account.holdings)
+    values = dict(unrealized_pnl=None, conservative_daily_pnl=None, computed_liquidation_equity=None,
+                  conservative_virtual_equity=None, virtual_unencumbered_cash=None, effective_available_cash=None)
+    reasons = []
+    if account is None:
+        reasons.append("account_missing")
+    else:
+        if account.currency != "USD":
+            reasons.append("currency_unsupported")
+        if result.integrity_reasons or not result.ledger_revision_matches or account.reconciliation_id is None:
+            reasons.append("ledger_interpretation_unavailable")
+        for facts, key in ((account.holdings, "position_id"), (account.open_orders, "order_ref")):
+            if (len({getattr(fact, key) for fact in facts}) != len(facts)
+                    or len({(fact.source, fact.provider_record_id) for fact in facts}) != len(facts)):
+                reasons.append("duplicate_source_fact_unresolved")
+        if account.open_orders:
+            reasons.append("order_execution_accounting_unresolved")
+        if account.holdings_completeness != "complete":
+            reasons.append("holdings_incomplete_or_unknown")
+        if account.orders_completeness != "complete":
+            reasons.append("orders_incomplete_or_unknown")
+        interpretable = not reasons
+        complete_marks = all(mark.unrealized_pnl is not None for mark in marks)
+        if not complete_marks:
+            reasons.append("holding_valuation_unavailable")
+        operands = {}
+        arithmetic_failed = False
+        for name in ("virtual_cash", "virtual_equity", "session_realized_pnl", "virtual_settled_cash",
+                     "virtual_reserved_cash", "broker_settled_cash", "broker_available_cash", "broker_nonmargin_buying_power"):
+            value = getattr(account, name)
+            operands[name] = None
+            if value is None:
+                reasons.append(f"{name}_missing")
+            else:
+                try:
+                    operands[name] = _money(value)
+                except (DecimalException, _UnsupportedIdentity):
+                    arithmetic_failed = True
+        if interpretable and complete_marks:
+            try:
+                values["unrealized_pnl"] = _sum_money(mark.unrealized_pnl for mark in marks)
+                if operands["session_realized_pnl"] is not None:
+                    values["conservative_daily_pnl"] = _sum_money((operands["session_realized_pnl"], min(values["unrealized_pnl"], Decimal(0))))
+            except (DecimalException, _UnsupportedIdentity):
+                arithmetic_failed = True
+        if interpretable and operands["virtual_cash"] is not None and all(mark.net_liquidation_value is not None for mark in marks):
+            try:
+                values["computed_liquidation_equity"] = _sum_money((operands["virtual_cash"], *(mark.net_liquidation_value for mark in marks)))
+            except (DecimalException, _UnsupportedIdentity):
+                arithmetic_failed = True
+        if values["computed_liquidation_equity"] is not None and complete_marks and values["unrealized_pnl"] is not None and operands["virtual_equity"] is not None:
+            values["conservative_virtual_equity"] = min(operands["virtual_equity"], values["computed_liquidation_equity"])
+        virtual = (operands["virtual_cash"], operands["virtual_settled_cash"], operands["virtual_reserved_cash"])
+        if account.currency == "USD" and all(value is not None for value in virtual) and virtual[2] >= 0:
+            try:
+                values["virtual_unencumbered_cash"] = _sum_money((min(virtual[:2]), virtual[2].copy_negate()))
+            except (DecimalException, _UnsupportedIdentity):
+                arithmetic_failed = True
+        broker = (operands["broker_settled_cash"], operands["broker_available_cash"], operands["broker_nonmargin_buying_power"])
+        if interpretable and complete_marks and values["virtual_unencumbered_cash"] is not None and all(value is not None for value in broker):
+            values["effective_available_cash"] = min(values["virtual_unencumbered_cash"], *broker)
+        if arithmetic_failed:
+            reasons.append("arithmetic_precision_unsupported")
+    for name, value in dict(values, holding_marks=marks, capital_reasons=tuple(dict.fromkeys(reasons))).items():
+        object.__setattr__(result, name, value)
