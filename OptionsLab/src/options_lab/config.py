@@ -214,6 +214,7 @@ def assess_configured_quote_budget(
     virtual_equity: Decimal | None,
     available_cash: Decimal | None,
     applicable_round_trip_fees: Decimal = Decimal("0"),
+    original_ask_cap: Decimal | None = None,
 ) -> QuotePremiumAssessment:
     """
     Assess a quote using configured fee, premium, freshness, and spread limits.
@@ -227,6 +228,7 @@ def assess_configured_quote_budget(
     :param    virtual_equity:              Runtime virtual capital, or None.
     :param    available_cash:              Runtime available cash, or None.
     :param    applicable_round_trip_fees:  Current nonnegative fee estimate.
+    :param    original_ask_cap:             Original cap, or None for current ask.
     :returns:                              Bounded quote and premium evidence.
     :raises   TypeError:                   If a trusted input has the wrong exact type.
     :raises   ValueError:                  If a trusted input value is invalid.
@@ -250,6 +252,7 @@ def assess_configured_quote_budget(
         max_quote_age=config.execution.max_quote_age,
         max_spread_fraction=config.max_spread_fraction,
         spread_floor=config.spread_floor,
+        original_ask_cap=original_ask_cap,
     )
 
 

@@ -578,3 +578,29 @@ def test_identity_requires_exact_strategy_config() -> None:
         api.config_hash(StrategyConfigSubclass())
     with pytest.raises(TypeError):
         api.policy_hash(object())
+
+
+@pytest.mark.parametrize(('bid', 'fees', 'fraction', 'equity', 'cash', 'required', 'reason'), [
+    ('4.95', '1', '.005', '103200', '516', '516', None),
+    ('4.80', '1', '.005', '150000', '1000', '531', None),
+    ('4.95', '2', '.005', '150000', '1000', '517', None),
+    ('4.95', '1', '.004', '104200', '515', '516', 'premium cap exceeded'),
+    ('4.95', '1', '.005', '150000', '515.99', '516', 'insufficient available cash'),
+])
+def test_configured_original_cap_uses_current_spread_and_runtime_limits(bid, fees, fraction, equity, cash, required, reason):
+    observed = quote(bid=Decimal(bid), ask=Decimal('5'))
+    config = api.StrategyConfig(premium_fraction=Decimal(fraction))
+    result = api.assess_configured_quote_budget(config, observed, decision_at=DECISION, virtual_equity=Decimal(equity),
+        available_cash=Decimal(cash), applicable_round_trip_fees=Decimal(fees), original_ask_cap=Decimal('5.1'))
+    assert result.quote is observed and result.original_ask_cap == Decimal('5.1')
+    assert result.budget.premium == Decimal('510') and result.budget.required_cash == Decimal(required)
+    assert result.budget.reason == reason
+
+
+def test_configured_cap_compatibility_does_not_replace_source_or_configured_spread():
+    config = api.StrategyConfig(max_spread_fraction=Decimal('.01'), spread_floor=Decimal('.01'))
+    too_wide = assess(config, original_ask_cap=Decimal('5.1'))
+    assert 'spread_too_wide' in too_wide.quote_reasons and too_wide.budget is None
+    incompatible = assess(api.StrategyConfig(), original_ask_cap=Decimal('5'))
+    assert incompatible.quote_reasons == ('ask_exceeds_original_cap',) and incompatible.budget is None
+    assert assess(api.StrategyConfig(), original_ask_cap=None) == assess(api.StrategyConfig())
