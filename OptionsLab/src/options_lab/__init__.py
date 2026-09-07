@@ -31,6 +31,12 @@ from .bar_inputs import (
     normalize_underlying_bar,
 )
 from .bars import BarAssessment, UnderlyingBar, assess_underlying_bar
+from .bundle_inputs import (
+    BundleInputRejection,
+    ModelDataValidation,
+    ParsedModelData,
+    normalize_model_bytes,
+)
 from .candidates import (
     CandidateAssessment,
     CandidateConsideration,
@@ -209,6 +215,10 @@ from .volume_normalization import (
 )
 
 __all__ = [
+    "BundleInputRejection",
+    "ModelDataValidation",
+    "ParsedModelData",
+    "normalize_model_bytes",
     "RuntimeEvidence",
     "RuntimeMeasurement",
     "RuntimeRejection",
