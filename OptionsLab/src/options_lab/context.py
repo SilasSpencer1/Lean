@@ -45,6 +45,7 @@ from .underlying_inputs import UnderlyingQuoteInputRejection, normalize_underlyi
 
 
 _INTEGRITY = (
+    "artifact_not_market_input",
     "manifest_missing", "unknown_member", "previous_state_unverified", "normalization_failed",
     "availability_unknown", "source_identity_unknown", "profile_mismatch", "target_unknown",
     "source_identity_conflict", "lineage_invalid", "lineage_unorderable", "lineage_cycle",
@@ -389,6 +390,9 @@ def _resolve(request, manifest, members, previous) -> list[_Row]:
 def _normalize(row: _Row, profile: dict) -> None:
     """Dispatch to actual owners, parsing independent contract and metadata prerequisites."""
     kind, raw, env = row.member.kind, row.body, row.envelope
+    if kind == "volume_partition":
+        row.reasons.append("artifact_not_market_input")
+        return
     kwargs = dict(
         event_id=env["event_id"], raw_ref=env["raw_ref"],
         received_at=_parse_timestamp(env["simulated_received_at"], "received_at"),

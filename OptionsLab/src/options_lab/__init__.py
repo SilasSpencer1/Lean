@@ -138,6 +138,16 @@ from .vwap_features import (
     VwapFeatureResult,
     calculate_vwap_feature,
 )
+from .volume_inputs import (
+    TrainingSessionBars,
+    VolumeInputRejection,
+    VolumePartition,
+    VolumePartitionValidation,
+    VolumeTrainingInputEvidence,
+    VolumeTrainingInputResult,
+    bind_volume_training_inputs,
+    normalize_volume_partition,
+)
 
 __all__ = [
     "CLOSE_VOLUME_PROXY_TRANSFORM_ID",
@@ -208,6 +218,7 @@ __all__ = [
     "TickInputRejection",
     "TickRule",
     "TickValidation",
+    "TrainingSessionBars",
     "UnderlyingBar",
     "UnderlyingQuote",
     "UnderlyingQuoteAssessment",
@@ -216,6 +227,11 @@ __all__ = [
     "VerifiedFixtureManifest",
     "VerifiedFixtureMember",
     "VwapFeatureResult",
+    "VolumeInputRejection",
+    "VolumePartition",
+    "VolumePartitionValidation",
+    "VolumeTrainingInputEvidence",
+    "VolumeTrainingInputResult",
     "assess_configured_quote_budget",
     "assess_contract_reference",
     "assess_decision_slot",
@@ -230,6 +246,7 @@ __all__ = [
     "assess_underlying_bar",
     "assess_underlying_quote",
     "build_decision_context",
+    "bind_volume_training_inputs",
     "calculate_return_features",
     "calculate_vwap_feature",
     "config_hash",
@@ -251,6 +268,7 @@ __all__ = [
     "normalize_tick_rule",
     "normalize_underlying_bar",
     "normalize_underlying_quote",
+    "normalize_volume_partition",
     "policy_hash",
     "update_features",
     "verify_fixture_bundle",

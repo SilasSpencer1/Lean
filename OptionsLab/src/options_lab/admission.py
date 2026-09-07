@@ -21,6 +21,7 @@ from .greeks import FIXTURE_GREEK_METHOD, GreekMethodSpec
 
 
 FixtureKind = Literal[
+    "volume_partition",
     "option_quote", "underlying_quote", "greek_observation", "quote_coherence", "tick_rule",
     "exchange_session", "instrument_tradability", "provider_contract_mapping", "contract_reference", "underlying_bar",
 ]
@@ -61,6 +62,7 @@ _DESCRIPTOR_FIELDS = (
     "normalization_version", "expected_payload_sha256",
 )
 _KINDS = (
+    "volume_partition",
     "option_quote", "underlying_quote", "greek_observation", "quote_coherence", "tick_rule",
     "exchange_session", "instrument_tradability", "provider_contract_mapping", "contract_reference", "underlying_bar",
 )
@@ -79,6 +81,7 @@ _REJECTION_CODES = (
     "kind_mismatch", "stream_mismatch",
 )
 _UNITS = {
+    "volume_partition": {},
     "option_quote": {
         "price": "option_premium_USD_per_share", "size": "contracts",
     },
@@ -478,7 +481,7 @@ def _profiles(
             "new_evidence_id_per_update"
             if kind == "quote_coherence"
             else "provider_record_id_and_revision_id" if kind == "underlying_bar"
-            else "new_event_id_per_update" if kind == "provider_contract_mapping"
+            else "new_event_id_per_update" if kind in ("provider_contract_mapping", "volume_partition")
             else "new_provider_record_id_per_update"
         )
         for name, expected in (
@@ -606,6 +609,7 @@ def _envelope(
     if supersedes is not None:
         _parse_string(supersedes, f"{path}.supersedes_record_id")
     if kind in (
+        "volume_partition",
         "quote_coherence", "tick_rule", "exchange_session", "instrument_tradability",
         "provider_contract_mapping", "contract_reference",
     ):
