@@ -1,5 +1,12 @@
 """Public package for OptionsLab policy calculations."""
 
+from .account import (
+    AccountAssessment,
+    AccountSnapshot,
+    HoldingFact,
+    OpenOrderFact,
+    assess_account,
+)
 from .admission import (
     FixtureInputRejection,
     FixtureVerification,
@@ -178,6 +185,11 @@ from .volume_normalization import (
 )
 
 __all__ = [
+    "AccountAssessment",
+    "AccountSnapshot",
+    "HoldingFact",
+    "OpenOrderFact",
+    "assess_account",
     "CLOSE_VOLUME_PROXY_SPEC",
     "EXACT_VWAP_SPEC",
     "FEATURE_SCHEMA_ID",
