@@ -3,14 +3,22 @@
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta
 
-from ._input_parsing import _InvalidInput, _fail, _parse_date, _parse_string, _require_shape
+from ._input_parsing import _InvalidInput, _fail, _parse_date, _parse_string, _parse_token, _require_shape
 from ._validation import _require_nonempty_string, _trusted_datetime
 from .admission import VerifiedFixtureManifest, VerifiedFixtureMember, _canonical_bytes
-from .bar_inputs import BarInputRejection, identify_underlying_bar, normalize_underlying_bar
-from .bars import BarAssessment, UnderlyingBar, assess_underlying_bar
+from .bar_inputs import (
+    BarInputRejection, identify_underlying_bar, normalize_underlying_bar,
+    _BAR_FIELDS, _AMOUNT_FIELDS, _PRICE_BASES, _parse_amount,
+    _parse_nullable_string, _identity_decimal, _UnsupportedIdentity,
+)
+from .bars import BarAssessment, UnderlyingBar, PriceBasis, assess_underlying_bar, _bar_availability
 from .config import _snapshot_hash
-from .features import _session_snapshot, _source_identity
-from .observations import InputRejection, normalize_observation_meta
+from .features import _session_snapshot
+from .observations import (
+    InputRejection, ObservationMeta, ObservationAssessment,
+    normalize_observation_meta, assess_observation,
+)
+from .quote_content import _metadata_snapshot
 from .session_inputs import SessionInputRejection, normalize_exchange_session
 from .sessions import ExchangeSession, _calendar_facts
 from .vwap_features import ELIGIBLE_VOLUME_DEFINITION_ID
@@ -112,6 +120,13 @@ class VolumeTrainingInputEvidence:
     session: ExchangeSession | None
     bar: UnderlyingBar | None
     assessment: BarAssessment | None
+    meta: ObservationMeta | None
+    observation: ObservationAssessment | None
+    revision_id: str | None
+    supersedes_revision_id: str | None
+    price_basis: PriceBasis | None
+    volume_definition_id: str | None
+    additional_failure: tuple[str, str] | None
     rejection: SessionInputRejection | InputRejection | BarInputRejection | None
     minute_index: int | None
     economic_hash: str | None
@@ -252,14 +267,63 @@ def bind_volume_training_inputs(
         raise TypeError("training_bars must be a tuple of TrainingSessionBars")
     cutoff = _trusted_datetime("cutoff", cutoff)
     members = {m.record_id: m for m in manifest.members}
-    profiles = {p["profile_id"]: p for p in manifest.decode_modeled_source_profiles()}
-    reasons, evidence, groups = [], [], []
+    reasons = []
     actual = members.get(partition.record_id)
     verified = None if actual is None else normalize_volume_partition(actual.decode_raw_body(), manifest=manifest, record_id=actual.record_id).value
     if verified != partition:
         reasons.append("partition_manifest_mismatch")
     if partition.volume_definition_id != ELIGIBLE_VOLUME_DEFINITION_ID:
         reasons.append("volume_definition_unsupported")
+    groups, evidence = _declared_inputs(partition, manifest, cutoff)
+    reasons.extend(reason for row in evidence for reason in row.reasons)
+    reasons.extend(_supplied_reasons(training_bars, tuple(groups), partition, cutoff))
+    selected = {}
+    streams = set()
+    source_identities, session_identities = {}, {}
+    session_source_identities = {}
+    for row in evidence:
+        if row.member is not None and row.member.kind == "exchange_session" and row.session is not None and row.economic_hash is not None:
+            previous = session_identities.setdefault(row.session.session_date, row.economic_hash)
+            if previous != row.economic_hash:
+                reasons.append("session_identity_conflict")
+            source_key = (row.member.kind, row.member.decode_envelope()["stream_id"],
+                          row.session.source, row.session.provider_record_id)
+            previous = session_source_identities.setdefault(source_key, row.economic_hash)
+            if previous != row.economic_hash:
+                reasons.append("source_identity_conflict")
+        if row.meta is not None and row.economic_hash is not None:
+            source_key = (row.meta.source, row.meta.provider_record_id, row.revision_id)
+            previous = source_identities.setdefault(source_key, row.economic_hash)
+            if previous != row.economic_hash:
+                reasons.append("source_identity_conflict")
+        if row.meta is None or row.minute_index is None or row.economic_hash is None:
+            continue
+        key = (row.session.session_date, row.minute_index)
+        old = selected.get(key)
+        if old is not None and old.economic_hash != row.economic_hash:
+            reasons.append("session_minute_conflict")
+        if old is None or row.record_id < old.record_id:
+            selected[key] = row
+        env = row.member.decode_envelope()
+        streams.add((row.member.profile_id, env["stream_id"], row.meta.source,
+                     row.meta.feed_class, row.meta.fidelity, row.meta.availability_basis,
+                     row.price_basis))
+    if len(streams) > 1:
+        reasons.append("volume_stream_mismatch")
+    canonical = tuple(selected[key] for key in sorted(selected))
+    reasons = tuple(sorted(set(reasons)))
+    input_hash = None if reasons else _input_hash(partition, cutoff, evidence, canonical)
+    return _freeze(VolumeTrainingInputResult, training_bars=training_bars, cutoff=cutoff,
+                   partition=partition, manifest=manifest, normalized_groups=tuple(groups),
+                   member_evidence=tuple(evidence), selected_inputs=canonical,
+                   reasons=reasons, training_input_hash=input_hash)
+
+
+def _declared_inputs(partition, manifest, cutoff):
+    """Materialize actual declared members for binding and frozen recomputation."""
+    members = {m.record_id: m for m in manifest.members}
+    profiles = {p["profile_id"]: p for p in manifest.decode_modeled_source_profiles()}
+    evidence, groups = [], []
     for session_id, bar_ids in partition.training_inputs:
         session_row = _session_evidence(session_id, members.get(session_id), profiles, partition, cutoff)
         evidence.append(session_row)
@@ -271,47 +335,7 @@ def bind_volume_training_inputs(
                 bars.append(row.bar)
         if session_row.session is not None:
             groups.append(TrainingSessionBars(session_row.session, tuple(bars)))
-    reasons.extend(reason for row in evidence for reason in row.reasons)
-    reasons.extend(_supplied_reasons(training_bars, tuple(groups), partition, cutoff))
-    selected = {}
-    streams = set()
-    source_identities, session_identities = {}, {}
-    session_source_identities = {}
-    for row in evidence:
-        if row.bar is None and row.session is not None and row.economic_hash is not None:
-            previous = session_identities.setdefault(row.session.session_date, row.economic_hash)
-            if previous != row.economic_hash:
-                reasons.append("session_identity_conflict")
-            source_key = (row.member.kind, row.member.decode_envelope()["stream_id"],
-                          row.session.source, row.session.provider_record_id)
-            previous = session_source_identities.setdefault(source_key, row.economic_hash)
-            if previous != row.economic_hash:
-                reasons.append("source_identity_conflict")
-        if row.bar is not None and row.economic_hash is not None:
-            previous = source_identities.setdefault(_source_identity(row.bar), row.economic_hash)
-            if previous != row.economic_hash:
-                reasons.append("source_identity_conflict")
-        if row.bar is None or row.minute_index is None or row.economic_hash is None:
-            continue
-        key = (row.session.session_date, row.minute_index)
-        old = selected.get(key)
-        if old is not None and old.economic_hash != row.economic_hash:
-            reasons.append("session_minute_conflict")
-        if old is None or row.record_id < old.record_id:
-            selected[key] = row
-        env = row.member.decode_envelope()
-        streams.add((row.member.profile_id, env["stream_id"], row.bar.meta.source,
-                     row.bar.meta.feed_class, row.bar.meta.fidelity, row.bar.meta.availability_basis,
-                     row.bar.price_basis))
-    if len(streams) > 1:
-        reasons.append("volume_stream_mismatch")
-    canonical = tuple(selected[key] for key in sorted(selected))
-    reasons = tuple(sorted(set(reasons)))
-    input_hash = None if reasons else _input_hash(partition, cutoff, evidence, canonical)
-    return _freeze(VolumeTrainingInputResult, training_bars=training_bars, cutoff=cutoff,
-                   partition=partition, manifest=manifest, normalized_groups=tuple(groups),
-                   member_evidence=tuple(evidence), selected_inputs=canonical,
-                   reasons=reasons, training_input_hash=input_hash)
+    return tuple(groups), tuple(evidence)
 
 
 def _session_evidence(record_id, member, profiles, partition, cutoff):
@@ -331,53 +355,95 @@ def _session_evidence(record_id, member, profiles, partition, cutoff):
             economic_hash = _snapshot_hash(_calendar_snapshot(session))
     return _freeze(VolumeTrainingInputEvidence, record_id=record_id, member=member,
                    session_record_id=record_id, session=session, bar=None, assessment=None,
+                   meta=None, observation=None, revision_id=None, supersedes_revision_id=None,
+                   price_basis=None, volume_definition_id=None, additional_failure=None,
                    rejection=rejection, minute_index=None, economic_hash=economic_hash,
                    reasons=tuple(reasons), omission_reasons=())
 
 
 def _bar_evidence(record_id, member, profiles, session_row, partition, cutoff):
-    """Keep source, interval and eligible-volume evidence independent of close/VWAP."""
+    """Retain actual normalization failures while validating independent volume facts."""
     reasons = _member_reasons(member, "underlying_bar")
-    bar = rejection = assessment = minute = economic_hash = None
-    omissions = ()
+    bar = rejection = assessment = minute = economic_hash = meta = observation = None
+    additional_failure = None
+    facts, omissions = {}, ()
     session = session_row.session
     if not reasons:
         env = member.decode_envelope()
-        meta = normalize_observation_meta(env["metadata"], **_envelope(member))
-        rejection = meta.rejection
-        if meta.value is not None:
-            result = normalize_underlying_bar(member.decode_raw_body(), meta=meta.value,
+        normalized_meta = normalize_observation_meta(env["metadata"], **_envelope(member))
+        meta, rejection = normalized_meta.value, normalized_meta.rejection
+        if meta is not None:
+            observation = assess_observation(meta, decision_at=cutoff)
+            result = normalize_underlying_bar(member.decode_raw_body(), meta=meta,
                                              event_id=env["event_id"], receive_sequence=env["receive_sequence"])
             bar, rejection = result.value, result.rejection
-        if rejection is not None:
-            reasons.append("normalization_failed")
         if bar is not None:
+            facts = {name: getattr(bar, name) for name in (
+                "symbol", "revision_id", "supersedes_revision_id", "price_basis", "volume_definition_id")}
             assessment = assess_underlying_bar(bar, session, as_of=cutoff)
             reasons.extend(assessment.availability_reasons)
-            profile = profiles[member.profile_id]
-            if any(getattr(bar.meta, name) != profile[name] for name in ("source", "feed_class", "fidelity", "availability_basis")):
-                reasons.append("profile_mismatch")
-            checks = (
-                (bar.price_basis != "raw", "price_basis_not_raw"),
-                (bar.meta.is_fill_forward, "fill_forward"),
-                (bool(bar.meta.quality_flags), "quality_flags_present"),
-                (bar.supersedes_revision_id == bar.revision_id, "revision_self_supersession"),
-                (bar.volume_definition_id is not None and bar.volume_definition_id != partition.volume_definition_id, "volume_definition_mismatch"),
-            )
-            reasons.extend(reason for failed, reason in checks if failed)
             omissions = tuple(reason for reason in assessment.volume_reasons if reason in ("volume_missing", "volume_definition_unknown"))
             reasons.extend(reason for reason in assessment.volume_reasons if reason not in omissions)
             identity = identify_underlying_bar(bar)
             economic_hash = identity.economic_content_hash
             reasons.extend(identity.economic_reasons)
-            if session is not None and session.opens_at is not None and bar.interval_end is not None:
-                elapsed = bar.interval_end - session.opens_at
+        elif type(rejection) is BarInputRejection and rejection.field == "volume" and rejection.code in ("invalid_type", "invalid_decimal", "invalid_value"):
+            try:
+                facts = _raw_volume_facts(member.decode_raw_body())
+            except _InvalidInput as failure:
+                additional_failure = failure.args
+                reasons.append("normalization_failed")
+            else:
+                omissions = ("raw_volume_invalid",) + (("volume_definition_unknown",) if facts["volume_definition_id"] is None else ())
+                observation, availability = _bar_availability(meta, session, cutoff)
+                reasons.extend(availability)
+                economic_hash = _snapshot_hash({
+                    "record_kind": "options_lab.raw_volume_omission", "schema_version": 1,
+                    "raw_hash": member.raw_hash, "metadata": _metadata_snapshot(meta),
+                    "facts": facts, "rejection": {"field": rejection.field, "code": rejection.code},
+                })
+        else:
+            reasons.append("normalization_failed")
+        if facts:
+            profile = profiles[member.profile_id]
+            if any(getattr(meta, name) != profile[name] for name in ("source", "feed_class", "fidelity", "availability_basis")):
+                reasons.append("profile_mismatch")
+            checks = (
+                (facts["symbol"] != "SPY", "unsupported_symbol"),
+                (facts["price_basis"] != "raw", "price_basis_not_raw"),
+                (meta.is_fill_forward, "fill_forward"),
+                (bool(meta.quality_flags), "quality_flags_present"),
+                (facts["supersedes_revision_id"] == facts["revision_id"], "revision_self_supersession"),
+                (facts["volume_definition_id"] is not None and facts["volume_definition_id"] != partition.volume_definition_id, "volume_definition_mismatch"),
+            )
+            reasons.extend(reason for failed, reason in checks if failed)
+            if session is not None and session.opens_at is not None and meta.interval_end is not None:
+                elapsed = meta.interval_end - session.opens_at
                 if elapsed > timedelta(0) and elapsed % _MINUTE == timedelta(0):
                     minute = elapsed // _MINUTE
     return _freeze(VolumeTrainingInputEvidence, record_id=record_id, member=member,
                    session_record_id=session_row.record_id, session=session, bar=bar,
+                   meta=meta, observation=observation, additional_failure=additional_failure,
+                   **{name: facts.get(name) for name in ("revision_id", "supersedes_revision_id", "price_basis", "volume_definition_id")},
                    assessment=assessment, rejection=rejection, minute_index=minute,
                    economic_hash=economic_hash, reasons=tuple(reasons), omission_reasons=omissions)
+
+
+def _raw_volume_facts(raw):
+    """Validate every unchanged non-volume field without creating or repairing a bar."""
+    _require_shape(raw, "$", _BAR_FIELDS)
+    facts = {name: _parse_string(raw[name], name) for name in ("symbol", "revision_id")}
+    facts["price_basis"] = _parse_token(raw["price_basis"], "price_basis", _PRICE_BASES)
+    for name in ("volume_definition_id", "vwap_definition_id", "supersedes_revision_id"):
+        facts[name] = _parse_nullable_string(raw[name], name)
+    for name in _AMOUNT_FIELDS:
+        if name != "volume":
+            amount = _parse_amount(raw[name], name)
+            try:
+                _identity_decimal(amount)
+            except _UnsupportedIdentity:
+                _fail(name, "decimal_representation_unsupported")
+    return facts
 
 
 def _session_reasons(session, partition, cutoff):
@@ -418,7 +484,7 @@ def _supplied_reasons(supplied, declared, partition, cutoff):
 
 def _input_hash(partition, cutoff, evidence, canonical):
     """Commit exact declared identity and canonical selected/omitted economic facts."""
-    sessions = sorted({row.economic_hash for row in evidence if row.bar is None and row.economic_hash is not None})
+    sessions = sorted({row.economic_hash for row in evidence if row.member is not None and row.member.kind == "exchange_session" and row.economic_hash is not None})
     return _snapshot_hash({
         "record_kind": "options_lab.volume_training_inputs", "schema_version": 1,
         "partition": {

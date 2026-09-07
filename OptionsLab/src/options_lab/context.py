@@ -390,7 +390,7 @@ def _resolve(request, manifest, members, previous) -> list[_Row]:
 def _normalize(row: _Row, profile: dict) -> None:
     """Dispatch to actual owners, parsing independent contract and metadata prerequisites."""
     kind, raw, env = row.member.kind, row.body, row.envelope
-    if kind == "volume_partition":
+    if kind in ("volume_partition", "feature_normalization"):
         row.reasons.append("artifact_not_market_input")
         return
     kwargs = dict(

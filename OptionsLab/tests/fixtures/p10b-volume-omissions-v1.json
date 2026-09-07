@@ -1,0 +1,1941 @@
+{
+  "assembled_at": "2026-09-07T01:18:54.294584+00:00",
+  "definitions": {
+    "coherence_protocol_ids": [],
+    "greek_method": {
+      "assumptions_id": "fixture-flat-rates-v1",
+      "method_id": "fixture-greek-values",
+      "method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+      "method_version": "1"
+    },
+    "tick_definition_ids": []
+  },
+  "fixture_id": "p10b-volume-omissions-v1",
+  "generator_id": "optionslab-volume-training-fixture-builder",
+  "generator_source_ref": "OptionsLab/tests/build_volume_omissions_fixture.py",
+  "generator_version": "3",
+  "members": [
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session-2026-08-06",
+        "metadata": null,
+        "raw_ref": "synthetic://volume/session-2026-08-06",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-06T12:00:00Z",
+        "stream_id": "volume-calendar",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "volume-calendar",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-08-06T12:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-08-06T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-08-06T13:30:00Z",
+        "provider_record_id": "session-2026-08-06",
+        "session_date": "2026-08-06",
+        "source": "fixture-calendar",
+        "source_version": "1"
+      },
+      "raw_hash": "3b2b65015d0d06dbdba8cfa7b96fd2e5d02b55888349dc23c8c99d5cae830c45",
+      "record_id": "session-2026-08-06"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-boolean",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/bar-2026-08-06-35",
+          "available_at": "2026-08-06T14:05:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-08-06T14:05:00Z",
+          "interval_start": "2026-08-06T14:04:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "boolean",
+          "quality_flags": [],
+          "source": "fixture-volume-bars"
+        },
+        "raw_ref": "synthetic://omissions/boolean",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-06T14:05:00Z",
+        "stream_id": "volume-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "volume-bars",
+      "raw_body": {
+        "close_price": null,
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": true,
+        "volume_definition_id": "synthetic-volume-v1",
+        "vwap_definition_id": null,
+        "vwap_denominator": null,
+        "vwap_numerator": null
+      },
+      "raw_hash": "982d9e60386ae28b1d5fed3e822503f9d38204065620b429ccc8d931b33606a2",
+      "record_id": "boolean"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-case-boolean",
+        "metadata": null,
+        "raw_ref": "synthetic://omissions/case-boolean",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-03T00:00:00Z",
+        "stream_id": "volume-partitions",
+        "supersedes_record_id": null
+      },
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "raw_body": {
+        "partition_id": "case-boolean",
+        "schema_version": 1,
+        "test_sessions": [],
+        "training_inputs": [
+          {
+            "bar_record_ids": [
+              "boolean"
+            ],
+            "session_record_id": "session-2026-08-06"
+          }
+        ],
+        "training_sessions": [
+          "2026-08-06"
+        ],
+        "validation_sessions": [],
+        "volume_definition_id": "synthetic-volume-v1"
+      },
+      "raw_hash": "b8e8be51706ae07369feebc137ba3d343192a7cf4ee6197ef2b3ffe6a73ad3ca",
+      "record_id": "case-boolean"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-negative",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/bar-2026-08-06-35",
+          "available_at": "2026-08-06T14:05:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-08-06T14:05:00Z",
+          "interval_start": "2026-08-06T14:04:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "negative",
+          "quality_flags": [],
+          "source": "fixture-volume-bars"
+        },
+        "raw_ref": "synthetic://omissions/negative",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-06T14:05:00Z",
+        "stream_id": "volume-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "volume-bars",
+      "raw_body": {
+        "close_price": null,
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "-1",
+        "volume_definition_id": "synthetic-volume-v1",
+        "vwap_definition_id": null,
+        "vwap_denominator": null,
+        "vwap_numerator": null
+      },
+      "raw_hash": "2e36295f89f43b24c9c162db9a568bb2469f79b0b1016f42d3b98782ad91cd46",
+      "record_id": "negative"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-case-negative",
+        "metadata": null,
+        "raw_ref": "synthetic://omissions/case-negative",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-03T00:00:00Z",
+        "stream_id": "volume-partitions",
+        "supersedes_record_id": null
+      },
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "raw_body": {
+        "partition_id": "case-negative",
+        "schema_version": 1,
+        "test_sessions": [],
+        "training_inputs": [
+          {
+            "bar_record_ids": [
+              "negative"
+            ],
+            "session_record_id": "session-2026-08-06"
+          }
+        ],
+        "training_sessions": [
+          "2026-08-06"
+        ],
+        "validation_sessions": [],
+        "volume_definition_id": "synthetic-volume-v1"
+      },
+      "raw_hash": "129a779fd1dddd8606d201d685c1acff2f13515fe3ad0f3f81da330da65c4678",
+      "record_id": "case-negative"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-nonfinite",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/bar-2026-08-06-35",
+          "available_at": "2026-08-06T14:05:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-08-06T14:05:00Z",
+          "interval_start": "2026-08-06T14:04:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "nonfinite",
+          "quality_flags": [],
+          "source": "fixture-volume-bars"
+        },
+        "raw_ref": "synthetic://omissions/nonfinite",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-06T14:05:00Z",
+        "stream_id": "volume-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "volume-bars",
+      "raw_body": {
+        "close_price": null,
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "NaN",
+        "volume_definition_id": "synthetic-volume-v1",
+        "vwap_definition_id": null,
+        "vwap_denominator": null,
+        "vwap_numerator": null
+      },
+      "raw_hash": "b23806da8caa748c3d4477be8dcebd6d6e6042941777adcab4507e9a3a386413",
+      "record_id": "nonfinite"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-case-nonfinite",
+        "metadata": null,
+        "raw_ref": "synthetic://omissions/case-nonfinite",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-03T00:00:00Z",
+        "stream_id": "volume-partitions",
+        "supersedes_record_id": null
+      },
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "raw_body": {
+        "partition_id": "case-nonfinite",
+        "schema_version": 1,
+        "test_sessions": [],
+        "training_inputs": [
+          {
+            "bar_record_ids": [
+              "nonfinite"
+            ],
+            "session_record_id": "session-2026-08-06"
+          }
+        ],
+        "training_sessions": [
+          "2026-08-06"
+        ],
+        "validation_sessions": [],
+        "volume_definition_id": "synthetic-volume-v1"
+      },
+      "raw_hash": "0ee85213fbc513e10ebb50b7032da3a9603171b69a0b716df2fa3ea5b70ab4cb",
+      "record_id": "case-nonfinite"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-missing-volume",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/bar-2026-08-06-35",
+          "available_at": "2026-08-06T14:05:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-08-06T14:05:00Z",
+          "interval_start": "2026-08-06T14:04:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "missing-volume",
+          "quality_flags": [],
+          "source": "fixture-volume-bars"
+        },
+        "raw_ref": "synthetic://omissions/missing-volume",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-06T14:05:00Z",
+        "stream_id": "volume-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "volume-bars",
+      "raw_body": {
+        "close_price": null,
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume_definition_id": "synthetic-volume-v1",
+        "vwap_definition_id": null,
+        "vwap_denominator": null,
+        "vwap_numerator": null
+      },
+      "raw_hash": "40d12ebfd846d7f37f33f5313c4c9c5db1633656c2fd072075c05c8c02a93253",
+      "record_id": "missing-volume"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-case-missing-volume",
+        "metadata": null,
+        "raw_ref": "synthetic://omissions/case-missing-volume",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-03T00:00:00Z",
+        "stream_id": "volume-partitions",
+        "supersedes_record_id": null
+      },
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "raw_body": {
+        "partition_id": "case-missing-volume",
+        "schema_version": 1,
+        "test_sessions": [],
+        "training_inputs": [
+          {
+            "bar_record_ids": [
+              "missing-volume"
+            ],
+            "session_record_id": "session-2026-08-06"
+          }
+        ],
+        "training_sessions": [
+          "2026-08-06"
+        ],
+        "validation_sessions": [],
+        "volume_definition_id": "synthetic-volume-v1"
+      },
+      "raw_hash": "1d97939fd73d2683ee21786f639d27ab407e01ed4e994ec3a192594f263ede50",
+      "record_id": "case-missing-volume"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-hidden-revision",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/bar-2026-08-06-35",
+          "available_at": "2026-08-06T14:05:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-08-06T14:05:00Z",
+          "interval_start": "2026-08-06T14:04:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "hidden-revision",
+          "quality_flags": [],
+          "source": "fixture-volume-bars"
+        },
+        "raw_ref": "synthetic://omissions/hidden-revision",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-06T14:05:00Z",
+        "stream_id": "volume-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "volume-bars",
+      "raw_body": {
+        "close_price": null,
+        "price_basis": "raw",
+        "revision_id": true,
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": true,
+        "volume_definition_id": "synthetic-volume-v1",
+        "vwap_definition_id": null,
+        "vwap_denominator": null,
+        "vwap_numerator": null
+      },
+      "raw_hash": "b07f32ff54583a4433d5639ea6fffdbed43f766e89f32c3e1505e4cf650d548b",
+      "record_id": "hidden-revision"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-case-hidden-revision",
+        "metadata": null,
+        "raw_ref": "synthetic://omissions/case-hidden-revision",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-03T00:00:00Z",
+        "stream_id": "volume-partitions",
+        "supersedes_record_id": null
+      },
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "raw_body": {
+        "partition_id": "case-hidden-revision",
+        "schema_version": 1,
+        "test_sessions": [],
+        "training_inputs": [
+          {
+            "bar_record_ids": [
+              "hidden-revision"
+            ],
+            "session_record_id": "session-2026-08-06"
+          }
+        ],
+        "training_sessions": [
+          "2026-08-06"
+        ],
+        "validation_sessions": [],
+        "volume_definition_id": "synthetic-volume-v1"
+      },
+      "raw_hash": "05cfb3d00ba0ef5eb4b5cbb9285dd1b855a36612aa3261ee3a62485b31850a54",
+      "record_id": "case-hidden-revision"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-hidden-definition",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/bar-2026-08-06-35",
+          "available_at": "2026-08-06T14:05:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-08-06T14:05:00Z",
+          "interval_start": "2026-08-06T14:04:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "hidden-definition",
+          "quality_flags": [],
+          "source": "fixture-volume-bars"
+        },
+        "raw_ref": "synthetic://omissions/hidden-definition",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-06T14:05:00Z",
+        "stream_id": "volume-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "volume-bars",
+      "raw_body": {
+        "close_price": null,
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": true,
+        "volume_definition_id": true,
+        "vwap_definition_id": null,
+        "vwap_denominator": null,
+        "vwap_numerator": null
+      },
+      "raw_hash": "7448c26a2bae4799c61226f2526b5823f02da86b0d136d84fa8226a1f78a64be",
+      "record_id": "hidden-definition"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-case-hidden-definition",
+        "metadata": null,
+        "raw_ref": "synthetic://omissions/case-hidden-definition",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-03T00:00:00Z",
+        "stream_id": "volume-partitions",
+        "supersedes_record_id": null
+      },
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "raw_body": {
+        "partition_id": "case-hidden-definition",
+        "schema_version": 1,
+        "test_sessions": [],
+        "training_inputs": [
+          {
+            "bar_record_ids": [
+              "hidden-definition"
+            ],
+            "session_record_id": "session-2026-08-06"
+          }
+        ],
+        "training_sessions": [
+          "2026-08-06"
+        ],
+        "validation_sessions": [],
+        "volume_definition_id": "synthetic-volume-v1"
+      },
+      "raw_hash": "c3c085ab697af0028d32cf2a87de7340aa675beb028f20dc1be05725fa22b7f5",
+      "record_id": "case-hidden-definition"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-hidden-vwap",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/bar-2026-08-06-35",
+          "available_at": "2026-08-06T14:05:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-08-06T14:05:00Z",
+          "interval_start": "2026-08-06T14:04:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "hidden-vwap",
+          "quality_flags": [],
+          "source": "fixture-volume-bars"
+        },
+        "raw_ref": "synthetic://omissions/hidden-vwap",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-06T14:05:00Z",
+        "stream_id": "volume-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "volume-bars",
+      "raw_body": {
+        "close_price": null,
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": true,
+        "volume_definition_id": "synthetic-volume-v1",
+        "vwap_definition_id": null,
+        "vwap_denominator": null,
+        "vwap_numerator": "NaN"
+      },
+      "raw_hash": "fba23bf70d1713739b4a14a0be433f034bbb24a1d08014c9857e7ab23aa47d8f",
+      "record_id": "hidden-vwap"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-case-hidden-vwap",
+        "metadata": null,
+        "raw_ref": "synthetic://omissions/case-hidden-vwap",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-03T00:00:00Z",
+        "stream_id": "volume-partitions",
+        "supersedes_record_id": null
+      },
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "raw_body": {
+        "partition_id": "case-hidden-vwap",
+        "schema_version": 1,
+        "test_sessions": [],
+        "training_inputs": [
+          {
+            "bar_record_ids": [
+              "hidden-vwap"
+            ],
+            "session_record_id": "session-2026-08-06"
+          }
+        ],
+        "training_sessions": [
+          "2026-08-06"
+        ],
+        "validation_sessions": [],
+        "volume_definition_id": "synthetic-volume-v1"
+      },
+      "raw_hash": "5144e6acf7c031d817786ac383bb6591ea286891945e2bab84654ce4656556b1",
+      "record_id": "case-hidden-vwap"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-huge-close",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/bar-2026-08-06-35",
+          "available_at": "2026-08-06T14:05:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-08-06T14:05:00Z",
+          "interval_start": "2026-08-06T14:04:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "huge-close",
+          "quality_flags": [],
+          "source": "fixture-volume-bars"
+        },
+        "raw_ref": "synthetic://omissions/huge-close",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-06T14:05:00Z",
+        "stream_id": "volume-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "volume-bars",
+      "raw_body": {
+        "close_price": "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": true,
+        "volume_definition_id": "synthetic-volume-v1",
+        "vwap_definition_id": null,
+        "vwap_denominator": null,
+        "vwap_numerator": null
+      },
+      "raw_hash": "9c1fbc8e008e36c8a1d5cdbed9bc2515c956082ed8020504a31f37b476bb4417",
+      "record_id": "huge-close"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-case-huge-close",
+        "metadata": null,
+        "raw_ref": "synthetic://omissions/case-huge-close",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-03T00:00:00Z",
+        "stream_id": "volume-partitions",
+        "supersedes_record_id": null
+      },
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "raw_body": {
+        "partition_id": "case-huge-close",
+        "schema_version": 1,
+        "test_sessions": [],
+        "training_inputs": [
+          {
+            "bar_record_ids": [
+              "huge-close"
+            ],
+            "session_record_id": "session-2026-08-06"
+          }
+        ],
+        "training_sessions": [
+          "2026-08-06"
+        ],
+        "validation_sessions": [],
+        "volume_definition_id": "synthetic-volume-v1"
+      },
+      "raw_hash": "16327d473814495d24709bbb3eae92a56ffc9c4bb0d355dd4a8fb9200c2b1f20",
+      "record_id": "case-huge-close"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-unknown-definition",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/bar-2026-08-06-35",
+          "available_at": "2026-08-06T14:05:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-08-06T14:05:00Z",
+          "interval_start": "2026-08-06T14:04:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "unknown-definition",
+          "quality_flags": [],
+          "source": "fixture-volume-bars"
+        },
+        "raw_ref": "synthetic://omissions/unknown-definition",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-06T14:05:00Z",
+        "stream_id": "volume-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "volume-bars",
+      "raw_body": {
+        "close_price": null,
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": true,
+        "volume_definition_id": null,
+        "vwap_definition_id": null,
+        "vwap_denominator": null,
+        "vwap_numerator": null
+      },
+      "raw_hash": "7f1aeab19cf4e03c467a225a40c405ba072277be6ccba367daca0e684c964364",
+      "record_id": "unknown-definition"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-case-unknown-definition",
+        "metadata": null,
+        "raw_ref": "synthetic://omissions/case-unknown-definition",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-03T00:00:00Z",
+        "stream_id": "volume-partitions",
+        "supersedes_record_id": null
+      },
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "raw_body": {
+        "partition_id": "case-unknown-definition",
+        "schema_version": 1,
+        "test_sessions": [],
+        "training_inputs": [
+          {
+            "bar_record_ids": [
+              "unknown-definition"
+            ],
+            "session_record_id": "session-2026-08-06"
+          }
+        ],
+        "training_sessions": [
+          "2026-08-06"
+        ],
+        "validation_sessions": [],
+        "volume_definition_id": "synthetic-volume-v1"
+      },
+      "raw_hash": "2c9066ef96a6f62d44a5f51703bcb6ffeda9d95c22db55a24d4101347bdd76b5",
+      "record_id": "case-unknown-definition"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-wrong-definition",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/bar-2026-08-06-35",
+          "available_at": "2026-08-06T14:05:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-08-06T14:05:00Z",
+          "interval_start": "2026-08-06T14:04:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "wrong-definition",
+          "quality_flags": [],
+          "source": "fixture-volume-bars"
+        },
+        "raw_ref": "synthetic://omissions/wrong-definition",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-06T14:05:00Z",
+        "stream_id": "volume-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "volume-bars",
+      "raw_body": {
+        "close_price": null,
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": true,
+        "volume_definition_id": "other",
+        "vwap_definition_id": null,
+        "vwap_denominator": null,
+        "vwap_numerator": null
+      },
+      "raw_hash": "0b407ee65b9820b1c1a2e21877be2f3e0dabe84a1baff6f1c1d8da3ea5e92374",
+      "record_id": "wrong-definition"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-case-wrong-definition",
+        "metadata": null,
+        "raw_ref": "synthetic://omissions/case-wrong-definition",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-03T00:00:00Z",
+        "stream_id": "volume-partitions",
+        "supersedes_record_id": null
+      },
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "raw_body": {
+        "partition_id": "case-wrong-definition",
+        "schema_version": 1,
+        "test_sessions": [],
+        "training_inputs": [
+          {
+            "bar_record_ids": [
+              "wrong-definition"
+            ],
+            "session_record_id": "session-2026-08-06"
+          }
+        ],
+        "training_sessions": [
+          "2026-08-06"
+        ],
+        "validation_sessions": [],
+        "volume_definition_id": "synthetic-volume-v1"
+      },
+      "raw_hash": "551ea04a0ee6895aaee79147232f02774dcf7f8f338ef454bf3c9ea0797889f9",
+      "record_id": "case-wrong-definition"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-self-revision",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/bar-2026-08-06-35",
+          "available_at": "2026-08-06T14:05:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-08-06T14:05:00Z",
+          "interval_start": "2026-08-06T14:04:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "self-revision",
+          "quality_flags": [],
+          "source": "fixture-volume-bars"
+        },
+        "raw_ref": "synthetic://omissions/self-revision",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-06T14:05:00Z",
+        "stream_id": "volume-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "volume-bars",
+      "raw_body": {
+        "close_price": null,
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": "r1",
+        "symbol": "SPY",
+        "volume": true,
+        "volume_definition_id": "synthetic-volume-v1",
+        "vwap_definition_id": null,
+        "vwap_denominator": null,
+        "vwap_numerator": null
+      },
+      "raw_hash": "1760dbdf693c336cc29ef28b76c86a3ddc7a5eaf7e46a6b4f91b257276722f2f",
+      "record_id": "self-revision"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-case-self-revision",
+        "metadata": null,
+        "raw_ref": "synthetic://omissions/case-self-revision",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-03T00:00:00Z",
+        "stream_id": "volume-partitions",
+        "supersedes_record_id": null
+      },
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "raw_body": {
+        "partition_id": "case-self-revision",
+        "schema_version": 1,
+        "test_sessions": [],
+        "training_inputs": [
+          {
+            "bar_record_ids": [
+              "self-revision"
+            ],
+            "session_record_id": "session-2026-08-06"
+          }
+        ],
+        "training_sessions": [
+          "2026-08-06"
+        ],
+        "validation_sessions": [],
+        "volume_definition_id": "synthetic-volume-v1"
+      },
+      "raw_hash": "23caa7cbee35d469211e9a69c8e7820976386eb6f5faaa56404d8be5893c3c3d",
+      "record_id": "case-self-revision"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-adjusted",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/bar-2026-08-06-35",
+          "available_at": "2026-08-06T14:05:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-08-06T14:05:00Z",
+          "interval_start": "2026-08-06T14:04:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "adjusted",
+          "quality_flags": [],
+          "source": "fixture-volume-bars"
+        },
+        "raw_ref": "synthetic://omissions/adjusted",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-06T14:05:00Z",
+        "stream_id": "volume-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "volume-bars",
+      "raw_body": {
+        "close_price": null,
+        "price_basis": "split_adjusted",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": true,
+        "volume_definition_id": "synthetic-volume-v1",
+        "vwap_definition_id": null,
+        "vwap_denominator": null,
+        "vwap_numerator": null
+      },
+      "raw_hash": "be4c9b58ea39e024642c51e1c05f56f4705ee6053e08149496bf4fafd983f34f",
+      "record_id": "adjusted"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-case-adjusted",
+        "metadata": null,
+        "raw_ref": "synthetic://omissions/case-adjusted",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-03T00:00:00Z",
+        "stream_id": "volume-partitions",
+        "supersedes_record_id": null
+      },
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "raw_body": {
+        "partition_id": "case-adjusted",
+        "schema_version": 1,
+        "test_sessions": [],
+        "training_inputs": [
+          {
+            "bar_record_ids": [
+              "adjusted"
+            ],
+            "session_record_id": "session-2026-08-06"
+          }
+        ],
+        "training_sessions": [
+          "2026-08-06"
+        ],
+        "validation_sessions": [],
+        "volume_definition_id": "synthetic-volume-v1"
+      },
+      "raw_hash": "7616412a5629487778c18cd67552b028b870279572ca557ab3b0d2c91ca25255",
+      "record_id": "case-adjusted"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-future",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/bar-2026-08-06-35",
+          "available_at": "2026-09-04T00:00:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-08-06T14:05:00Z",
+          "interval_start": "2026-08-06T14:04:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "future",
+          "quality_flags": [],
+          "source": "fixture-volume-bars"
+        },
+        "raw_ref": "synthetic://omissions/future",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-06T14:05:00Z",
+        "stream_id": "volume-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "volume-bars",
+      "raw_body": {
+        "close_price": null,
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": true,
+        "volume_definition_id": "synthetic-volume-v1",
+        "vwap_definition_id": null,
+        "vwap_denominator": null,
+        "vwap_numerator": null
+      },
+      "raw_hash": "982d9e60386ae28b1d5fed3e822503f9d38204065620b429ccc8d931b33606a2",
+      "record_id": "future"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-case-future",
+        "metadata": null,
+        "raw_ref": "synthetic://omissions/case-future",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-03T00:00:00Z",
+        "stream_id": "volume-partitions",
+        "supersedes_record_id": null
+      },
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "raw_body": {
+        "partition_id": "case-future",
+        "schema_version": 1,
+        "test_sessions": [],
+        "training_inputs": [
+          {
+            "bar_record_ids": [
+              "future"
+            ],
+            "session_record_id": "session-2026-08-06"
+          }
+        ],
+        "training_sessions": [
+          "2026-08-06"
+        ],
+        "validation_sessions": [],
+        "volume_definition_id": "synthetic-volume-v1"
+      },
+      "raw_hash": "1bc18052b6f87dc515ed25784024d14d0696d7251449f8013d504f5f7114eff9",
+      "record_id": "case-future"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-wrong-source",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/bar-2026-08-06-35",
+          "available_at": "2026-08-06T14:05:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-08-06T14:05:00Z",
+          "interval_start": "2026-08-06T14:04:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "wrong-source",
+          "quality_flags": [],
+          "source": "other"
+        },
+        "raw_ref": "synthetic://omissions/wrong-source",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-06T14:05:00Z",
+        "stream_id": "volume-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "volume-bars",
+      "raw_body": {
+        "close_price": null,
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": true,
+        "volume_definition_id": "synthetic-volume-v1",
+        "vwap_definition_id": null,
+        "vwap_denominator": null,
+        "vwap_numerator": null
+      },
+      "raw_hash": "982d9e60386ae28b1d5fed3e822503f9d38204065620b429ccc8d931b33606a2",
+      "record_id": "wrong-source"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-case-wrong-source",
+        "metadata": null,
+        "raw_ref": "synthetic://omissions/case-wrong-source",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-03T00:00:00Z",
+        "stream_id": "volume-partitions",
+        "supersedes_record_id": null
+      },
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "raw_body": {
+        "partition_id": "case-wrong-source",
+        "schema_version": 1,
+        "test_sessions": [],
+        "training_inputs": [
+          {
+            "bar_record_ids": [
+              "wrong-source"
+            ],
+            "session_record_id": "session-2026-08-06"
+          }
+        ],
+        "training_sessions": [
+          "2026-08-06"
+        ],
+        "validation_sessions": [],
+        "volume_definition_id": "synthetic-volume-v1"
+      },
+      "raw_hash": "47c9debe1a29add18916f67eb7be6142ded28ed7799d26010bf22b0f7ad26eb9",
+      "record_id": "case-wrong-source"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-fill-forward",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/bar-2026-08-06-35",
+          "available_at": "2026-08-06T14:05:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-08-06T14:05:00Z",
+          "interval_start": "2026-08-06T14:04:00Z",
+          "is_fill_forward": true,
+          "kind": "interval",
+          "provider_record_id": "fill-forward",
+          "quality_flags": [],
+          "source": "fixture-volume-bars"
+        },
+        "raw_ref": "synthetic://omissions/fill-forward",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-06T14:05:00Z",
+        "stream_id": "volume-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "volume-bars",
+      "raw_body": {
+        "close_price": null,
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": true,
+        "volume_definition_id": "synthetic-volume-v1",
+        "vwap_definition_id": null,
+        "vwap_denominator": null,
+        "vwap_numerator": null
+      },
+      "raw_hash": "982d9e60386ae28b1d5fed3e822503f9d38204065620b429ccc8d931b33606a2",
+      "record_id": "fill-forward"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-case-fill-forward",
+        "metadata": null,
+        "raw_ref": "synthetic://omissions/case-fill-forward",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-03T00:00:00Z",
+        "stream_id": "volume-partitions",
+        "supersedes_record_id": null
+      },
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "raw_body": {
+        "partition_id": "case-fill-forward",
+        "schema_version": 1,
+        "test_sessions": [],
+        "training_inputs": [
+          {
+            "bar_record_ids": [
+              "fill-forward"
+            ],
+            "session_record_id": "session-2026-08-06"
+          }
+        ],
+        "training_sessions": [
+          "2026-08-06"
+        ],
+        "validation_sessions": [],
+        "volume_definition_id": "synthetic-volume-v1"
+      },
+      "raw_hash": "5c04ab71c30b4531457cff79c57025f86242926885c0ffb798b7bb84711548d6",
+      "record_id": "case-fill-forward"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-quality",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/bar-2026-08-06-35",
+          "available_at": "2026-08-06T14:05:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-08-06T14:05:00Z",
+          "interval_start": "2026-08-06T14:04:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "quality",
+          "quality_flags": [
+            "suspect"
+          ],
+          "source": "fixture-volume-bars"
+        },
+        "raw_ref": "synthetic://omissions/quality",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-06T14:05:00Z",
+        "stream_id": "volume-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "volume-bars",
+      "raw_body": {
+        "close_price": null,
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": true,
+        "volume_definition_id": "synthetic-volume-v1",
+        "vwap_definition_id": null,
+        "vwap_denominator": null,
+        "vwap_numerator": null
+      },
+      "raw_hash": "982d9e60386ae28b1d5fed3e822503f9d38204065620b429ccc8d931b33606a2",
+      "record_id": "quality"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-case-quality",
+        "metadata": null,
+        "raw_ref": "synthetic://omissions/case-quality",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-03T00:00:00Z",
+        "stream_id": "volume-partitions",
+        "supersedes_record_id": null
+      },
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "raw_body": {
+        "partition_id": "case-quality",
+        "schema_version": 1,
+        "test_sessions": [],
+        "training_inputs": [
+          {
+            "bar_record_ids": [
+              "quality"
+            ],
+            "session_record_id": "session-2026-08-06"
+          }
+        ],
+        "training_sessions": [
+          "2026-08-06"
+        ],
+        "validation_sessions": [],
+        "volume_definition_id": "synthetic-volume-v1"
+      },
+      "raw_hash": "0510b9b343f62ca18898cd8fa9b573290339a6701b675ff1d553a60f9d363c79",
+      "record_id": "case-quality"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-duration",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/bar-2026-08-06-35",
+          "available_at": "2026-08-06T14:05:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-08-06T14:05:00Z",
+          "interval_start": "2026-08-06T14:03:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "duration",
+          "quality_flags": [],
+          "source": "fixture-volume-bars"
+        },
+        "raw_ref": "synthetic://omissions/duration",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-06T14:05:00Z",
+        "stream_id": "volume-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "volume-bars",
+      "raw_body": {
+        "close_price": null,
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": true,
+        "volume_definition_id": "synthetic-volume-v1",
+        "vwap_definition_id": null,
+        "vwap_denominator": null,
+        "vwap_numerator": null
+      },
+      "raw_hash": "982d9e60386ae28b1d5fed3e822503f9d38204065620b429ccc8d931b33606a2",
+      "record_id": "duration"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-case-duration",
+        "metadata": null,
+        "raw_ref": "synthetic://omissions/case-duration",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-03T00:00:00Z",
+        "stream_id": "volume-partitions",
+        "supersedes_record_id": null
+      },
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "raw_body": {
+        "partition_id": "case-duration",
+        "schema_version": 1,
+        "test_sessions": [],
+        "training_inputs": [
+          {
+            "bar_record_ids": [
+              "duration"
+            ],
+            "session_record_id": "session-2026-08-06"
+          }
+        ],
+        "training_sessions": [
+          "2026-08-06"
+        ],
+        "validation_sessions": [],
+        "volume_definition_id": "synthetic-volume-v1"
+      },
+      "raw_hash": "48ce44384a9fc9eaa7287fb4dcefe19d8ff0c8144c3638eeb56ac77118f39aa3",
+      "record_id": "case-duration"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-alignment",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/bar-2026-08-06-35",
+          "available_at": "2026-08-06T14:05:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-08-06T14:05:01Z",
+          "interval_start": "2026-08-06T14:04:01Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "alignment",
+          "quality_flags": [],
+          "source": "fixture-volume-bars"
+        },
+        "raw_ref": "synthetic://omissions/alignment",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-06T14:05:00Z",
+        "stream_id": "volume-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "volume-bars",
+      "raw_body": {
+        "close_price": null,
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": true,
+        "volume_definition_id": "synthetic-volume-v1",
+        "vwap_definition_id": null,
+        "vwap_denominator": null,
+        "vwap_numerator": null
+      },
+      "raw_hash": "982d9e60386ae28b1d5fed3e822503f9d38204065620b429ccc8d931b33606a2",
+      "record_id": "alignment"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-case-alignment",
+        "metadata": null,
+        "raw_ref": "synthetic://omissions/case-alignment",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-03T00:00:00Z",
+        "stream_id": "volume-partitions",
+        "supersedes_record_id": null
+      },
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "raw_body": {
+        "partition_id": "case-alignment",
+        "schema_version": 1,
+        "test_sessions": [],
+        "training_inputs": [
+          {
+            "bar_record_ids": [
+              "alignment"
+            ],
+            "session_record_id": "session-2026-08-06"
+          }
+        ],
+        "training_sessions": [
+          "2026-08-06"
+        ],
+        "validation_sessions": [],
+        "volume_definition_id": "synthetic-volume-v1"
+      },
+      "raw_hash": "dbc5e347b056ea6a04384fce6e9058af2da493eb423d75c79ca867938a5450cb",
+      "record_id": "case-alignment"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-outside",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/bar-2026-08-06-35",
+          "available_at": "2026-08-06T14:05:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-08-06T13:30:00Z",
+          "interval_start": "2026-08-06T13:29:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "outside",
+          "quality_flags": [],
+          "source": "fixture-volume-bars"
+        },
+        "raw_ref": "synthetic://omissions/outside",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-06T14:05:00Z",
+        "stream_id": "volume-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "volume-bars",
+      "raw_body": {
+        "close_price": null,
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": true,
+        "volume_definition_id": "synthetic-volume-v1",
+        "vwap_definition_id": null,
+        "vwap_denominator": null,
+        "vwap_numerator": null
+      },
+      "raw_hash": "982d9e60386ae28b1d5fed3e822503f9d38204065620b429ccc8d931b33606a2",
+      "record_id": "outside"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-case-outside",
+        "metadata": null,
+        "raw_ref": "synthetic://omissions/case-outside",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-03T00:00:00Z",
+        "stream_id": "volume-partitions",
+        "supersedes_record_id": null
+      },
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "raw_body": {
+        "partition_id": "case-outside",
+        "schema_version": 1,
+        "test_sessions": [],
+        "training_inputs": [
+          {
+            "bar_record_ids": [
+              "outside"
+            ],
+            "session_record_id": "session-2026-08-06"
+          }
+        ],
+        "training_sessions": [
+          "2026-08-06"
+        ],
+        "validation_sessions": [],
+        "volume_definition_id": "synthetic-volume-v1"
+      },
+      "raw_hash": "d130fed048fb07473ee097c6d2abbf3ed51d8ab19e20af207a15df8c9f0a1296",
+      "record_id": "case-outside"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-wrong-day",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/bar-2026-08-06-35",
+          "available_at": "2026-08-07T14:05:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-08-07T14:05:00Z",
+          "interval_start": "2026-08-07T14:04:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "wrong-day",
+          "quality_flags": [],
+          "source": "fixture-volume-bars"
+        },
+        "raw_ref": "synthetic://omissions/wrong-day",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-06T14:05:00Z",
+        "stream_id": "volume-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "volume-bars",
+      "raw_body": {
+        "close_price": null,
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": true,
+        "volume_definition_id": "synthetic-volume-v1",
+        "vwap_definition_id": null,
+        "vwap_denominator": null,
+        "vwap_numerator": null
+      },
+      "raw_hash": "982d9e60386ae28b1d5fed3e822503f9d38204065620b429ccc8d931b33606a2",
+      "record_id": "wrong-day"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-case-wrong-day",
+        "metadata": null,
+        "raw_ref": "synthetic://omissions/case-wrong-day",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-03T00:00:00Z",
+        "stream_id": "volume-partitions",
+        "supersedes_record_id": null
+      },
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "raw_body": {
+        "partition_id": "case-wrong-day",
+        "schema_version": 1,
+        "test_sessions": [],
+        "training_inputs": [
+          {
+            "bar_record_ids": [
+              "wrong-day"
+            ],
+            "session_record_id": "session-2026-08-06"
+          }
+        ],
+        "training_sessions": [
+          "2026-08-06"
+        ],
+        "validation_sessions": [],
+        "volume_definition_id": "synthetic-volume-v1"
+      },
+      "raw_hash": "d319cd58c16fa9199d9c0eabbbd9569512193070fbd1c87001c08a84b0a3d4a9",
+      "record_id": "case-wrong-day"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-boolean-copy",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/bar-2026-08-06-35",
+          "available_at": "2026-08-06T14:05:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-08-06T14:05:00Z",
+          "interval_start": "2026-08-06T14:04:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "boolean",
+          "quality_flags": [],
+          "source": "fixture-volume-bars"
+        },
+        "raw_ref": "synthetic://omissions/copy",
+        "receive_sequence": 999,
+        "simulated_received_at": "2026-08-06T14:05:00Z",
+        "stream_id": "volume-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "volume-bars",
+      "raw_body": {
+        "close_price": null,
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": true,
+        "volume_definition_id": "synthetic-volume-v1",
+        "vwap_definition_id": null,
+        "vwap_denominator": null,
+        "vwap_numerator": null
+      },
+      "raw_hash": "982d9e60386ae28b1d5fed3e822503f9d38204065620b429ccc8d931b33606a2",
+      "record_id": "boolean-copy"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-duplicate",
+        "metadata": null,
+        "raw_ref": "synthetic://omissions/duplicate",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-03T00:00:00Z",
+        "stream_id": "volume-partitions",
+        "supersedes_record_id": null
+      },
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "raw_body": {
+        "partition_id": "duplicate",
+        "schema_version": 1,
+        "test_sessions": [],
+        "training_inputs": [
+          {
+            "bar_record_ids": [
+              "boolean",
+              "boolean-copy"
+            ],
+            "session_record_id": "session-2026-08-06"
+          }
+        ],
+        "training_sessions": [
+          "2026-08-06"
+        ],
+        "validation_sessions": [],
+        "volume_definition_id": "synthetic-volume-v1"
+      },
+      "raw_hash": "a817ec8c336202d4f6e1319ba9b3c5a70f9502d23dd269585d6d2e2beda7ec9e",
+      "record_id": "duplicate"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-heldout",
+        "metadata": null,
+        "raw_ref": "synthetic://omissions/heldout",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-03T00:00:00Z",
+        "stream_id": "volume-partitions",
+        "supersedes_record_id": null
+      },
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "raw_body": {
+        "partition_id": "heldout",
+        "schema_version": 1,
+        "test_sessions": [],
+        "training_inputs": [
+          {
+            "bar_record_ids": [
+              "boolean"
+            ],
+            "session_record_id": "session-2026-08-06"
+          }
+        ],
+        "training_sessions": [
+          "2026-08-05"
+        ],
+        "validation_sessions": [],
+        "volume_definition_id": "synthetic-volume-v1"
+      },
+      "raw_hash": "487d10aecedcbaff7841f21747d49cc78f249fabd560a59528e783d12f56825a",
+      "record_id": "heldout"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-typed-good",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/bar-2026-08-06-35",
+          "available_at": "2026-08-06T14:05:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-08-06T14:05:00Z",
+          "interval_start": "2026-08-06T14:04:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "typed-good",
+          "quality_flags": [],
+          "source": "fixture-volume-bars"
+        },
+        "raw_ref": "synthetic://omissions/typed-good",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-06T14:05:00Z",
+        "stream_id": "volume-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "volume-bars",
+      "raw_body": {
+        "close_price": null,
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": "10",
+        "volume_definition_id": "synthetic-volume-v1",
+        "vwap_definition_id": null,
+        "vwap_denominator": null,
+        "vwap_numerator": null
+      },
+      "raw_hash": "2c268a9af12d7ba1937955406db531a7e82433f40ad5f5fe33718865a2c42fff",
+      "record_id": "typed-good"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-minute-conflict",
+        "metadata": null,
+        "raw_ref": "synthetic://omissions/minute-conflict",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-03T00:00:00Z",
+        "stream_id": "volume-partitions",
+        "supersedes_record_id": null
+      },
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "raw_body": {
+        "partition_id": "minute-conflict",
+        "schema_version": 1,
+        "test_sessions": [],
+        "training_inputs": [
+          {
+            "bar_record_ids": [
+              "boolean",
+              "typed-good"
+            ],
+            "session_record_id": "session-2026-08-06"
+          }
+        ],
+        "training_sessions": [
+          "2026-08-06"
+        ],
+        "validation_sessions": [],
+        "volume_definition_id": "synthetic-volume-v1"
+      },
+      "raw_hash": "903baaea1a59bc8daecb2679f208a610bfb48245e2874b07f35b0d5703525fe1",
+      "record_id": "minute-conflict"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-identity-other-minute",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/bar-2026-08-06-35",
+          "available_at": "2026-08-06T14:05:00Z",
+          "event_at": null,
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": "2026-08-06T14:04:00Z",
+          "interval_start": "2026-08-06T14:03:00Z",
+          "is_fill_forward": false,
+          "kind": "interval",
+          "provider_record_id": "boolean",
+          "quality_flags": [],
+          "source": "fixture-volume-bars"
+        },
+        "raw_ref": "synthetic://omissions/identity-other-minute",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-06T14:05:00Z",
+        "stream_id": "volume-bars",
+        "supersedes_record_id": null
+      },
+      "kind": "underlying_bar",
+      "profile_id": "volume-bars",
+      "raw_body": {
+        "close_price": null,
+        "price_basis": "raw",
+        "revision_id": "r1",
+        "supersedes_revision_id": null,
+        "symbol": "SPY",
+        "volume": true,
+        "volume_definition_id": "synthetic-volume-v1",
+        "vwap_definition_id": null,
+        "vwap_denominator": null,
+        "vwap_numerator": null
+      },
+      "raw_hash": "982d9e60386ae28b1d5fed3e822503f9d38204065620b429ccc8d931b33606a2",
+      "record_id": "identity-other-minute"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-source-conflict",
+        "metadata": null,
+        "raw_ref": "synthetic://omissions/source-conflict",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-03T00:00:00Z",
+        "stream_id": "volume-partitions",
+        "supersedes_record_id": null
+      },
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "raw_body": {
+        "partition_id": "source-conflict",
+        "schema_version": 1,
+        "test_sessions": [],
+        "training_inputs": [
+          {
+            "bar_record_ids": [
+              "boolean",
+              "identity-other-minute"
+            ],
+            "session_record_id": "session-2026-08-06"
+          }
+        ],
+        "training_sessions": [
+          "2026-08-06"
+        ],
+        "validation_sessions": [],
+        "volume_definition_id": "synthetic-volume-v1"
+      },
+      "raw_hash": "0740ce3d3c6232cb72aed982817208a72ea73444d149d54febcad64a36cfff04",
+      "record_id": "source-conflict"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session-2026-08-06",
+        "metadata": null,
+        "raw_ref": "synthetic://volume/session-2026-08-06",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-06T12:00:00Z",
+        "stream_id": "volume-calendar",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "volume-calendar",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T00:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-08-06T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-08-06T13:30:00Z",
+        "provider_record_id": "session-2026-08-06",
+        "session_date": "2026-08-06",
+        "source": "fixture-calendar",
+        "source_version": "1"
+      },
+      "raw_hash": "00730f298a0adc55d70c26c188f94c33b0731c72dda55d7fb10472c74cfaeb98",
+      "record_id": "future-session"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-future-calendar",
+        "metadata": null,
+        "raw_ref": "synthetic://omissions/future-calendar",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-03T00:00:00Z",
+        "stream_id": "volume-partitions",
+        "supersedes_record_id": null
+      },
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "raw_body": {
+        "partition_id": "future-calendar",
+        "schema_version": 1,
+        "test_sessions": [],
+        "training_inputs": [
+          {
+            "bar_record_ids": [
+              "boolean"
+            ],
+            "session_record_id": "future-session"
+          }
+        ],
+        "training_sessions": [
+          "2026-08-06"
+        ],
+        "validation_sessions": [],
+        "volume_definition_id": "synthetic-volume-v1"
+      },
+      "raw_hash": "855b560059446e85c3a1fe72cdc59edd25b8ba6bc7f144a810a14b92fe42c02a",
+      "record_id": "future-calendar"
+    }
+  ],
+  "modeled_source_profiles": [
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": "genuine",
+      "kind": "exchange_session",
+      "profile_id": "volume-calendar",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "fixture-calendar",
+      "stream_id": "volume-calendar",
+      "units": {}
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "underlying_bar",
+      "profile_id": "volume-bars",
+      "record_identity_rule": "provider_record_id_and_revision_id",
+      "source": "fixture-volume-bars",
+      "stream_id": "volume-bars",
+      "units": {
+        "price": "USD_per_share",
+        "volume": "shares",
+        "vwap_denominator": "shares",
+        "vwap_numerator": "USD"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "volume_partition",
+      "profile_id": "volume-partitions",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "optionslab-volume-training-fixture-builder",
+      "stream_id": "volume-partitions",
+      "units": {}
+    }
+  ],
+  "normalization_version": 1,
+  "origin": "synthetic",
+  "permitted_use": "core_fixture",
+  "schema_version": 1
+}

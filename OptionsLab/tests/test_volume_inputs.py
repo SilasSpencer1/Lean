@@ -89,7 +89,7 @@ def test_complete_volume_population_ignores_missing_price_vwap_and_audits_omissi
 
 @pytest.mark.parametrize("name,reason", [
     ("heldout", "session_not_training"), ("nonmember", "session_not_training"),
-    ("wrong-definition", "volume_definition_mismatch"), ("raw-volume", "normalization_failed"),
+    ("wrong-definition", "volume_definition_mismatch"),
     ("wrong-source", "profile_mismatch"), ("future-bar", "available_after_decision"),
     ("fill-forward", "fill_forward"), ("quality", "quality_flags_present"),
     ("adjusted", "price_basis_not_raw"), ("self-revision", "revision_self_supersession"),
@@ -312,3 +312,17 @@ def test_factory_outcomes_are_immutable_and_cannot_accept_caller_success_hashes(
     assert result.manifest.origin == "synthetic" and result.manifest.fidelity_tier == 0
     assert result.manifest.permitted_use == "core_fixture"
     assert not result.manifest.operational_allowed and not result.manifest.economic_allowed
+
+
+def test_registered_raw_volume_omission_keeps_actual_rejection_and_full_identity():
+    result = bound("raw-volume")
+    assert result.reasons == ()
+    assert result.training_input_hash is not None
+    row = next(r for r in result.selected_inputs if "raw_volume_invalid" in r.omission_reasons)
+    assert row.bar is row.assessment is None
+    assert row.rejection.field == "volume" and row.rejection.code == "invalid_type"
+    assert row.meta is row.observation.meta
+    assert row.minute_index == 35 and row.economic_hash is not None
+    assert row.member.kind == "underlying_bar"
+    assert len(result.selected_inputs) == 60
+    assert len(result.normalized_groups[0].bars) == 2
