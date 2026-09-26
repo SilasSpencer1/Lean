@@ -23,6 +23,17 @@ def test_exact_premium_and_cash_limits_are_affordable() -> None:
     assert budget.affordable is True
 
 
+def test_simultaneous_premium_and_cash_shortfall_reports_premium_first() -> None:
+    """Both native inequalities may fail, but premium owns first refusal."""
+    budget = assess_premium_budget(ask=Decimal("5.10"), bid=Decimal("5.00"),
+        virtual_equity=Decimal("104199.99"), available_cash=Decimal("520.99"))
+
+    assert budget.required_cash == Decimal("521.00")
+    assert budget.required_cash > budget.equity_limit
+    assert budget.required_cash > Decimal("520.99")
+    assert budget.reason == "premium cap exceeded"
+
+
 def test_amount_above_premium_limit_is_not_rounded_down() -> None:
     budget = assess_premium_budget(
         ask=Decimal("5.1000000001"),

@@ -29,15 +29,15 @@ NOW = datetime(2026, 9, 4, 14, 5, tzinfo=timezone.utc)
 SOURCE = "p15-decision-source-v1"
 
 
-def bundle(name="call"):
+def bundle(name="call", *, fixture_id="p15-decision-bundle-v1", source_id=SOURCE):
     """Verify a registered P15 model against all original A2 owners."""
-    fixture = admitted("p15-decision-bundle-v1")
+    fixture = admitted(fixture_id)
     body = next(m for m in fixture.members if m.record_id == name).decode_raw_body()
     manifest = normalize_bundle_manifest(body["manifest"], event_id="p15-test",
         raw_ref="fixture", received_at=NOW).value
     assert manifest is not None
     names = ["p14c2-sources-v1", "p14c2-calendar-v1", "p14b-schedule-v1",
-        "p11-feature-vector-v1", SOURCE]
+        "p11-feature-vector-v1", source_id]
     normalizer = None
     if name != "cash":
         names = ["p14c-partition-samples-v1", "p14c-partition-memberships-v1",

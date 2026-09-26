@@ -12,7 +12,11 @@ from .bundle_inputs import _make
 from .bundles import VerifiedBundle
 from .config import StrategyConfig, _snapshot_hash, config_hash
 from .context import DecisionContext
+from .entry_intent import TradeIntent
+from .candidates import CandidateAssessment
+from .premium import PremiumBudget
 from .risk_inputs import RiskControlEvent, RiskObservation, normalize_risk_control, observe_risk_inputs
+from .sessions import ExchangeSession, EntryTimingAssessment
 
 
 _RULES = (
@@ -140,6 +144,75 @@ class RiskAdvanceError(ValueError):
         self.reason = reason
         self.previous = previous
         self.observation = observation
+
+
+@dataclass(frozen=True, init=False)
+class RiskCheck:
+    """This class represents one reached ordered opening check and its native reasons."""
+
+    name: str
+    passed: bool
+    reasons: tuple[str, ...]
+
+    def __init__(self) -> None:
+        """Require the canonical opening authorization factory.
+
+        :returns:             None.
+        :raises   TypeError:  Always; use authorize_entry.
+        """
+        raise TypeError("risk checks come from authorize_entry")
+
+
+@dataclass(frozen=True, init=False)
+class RiskDecision:
+    """This class represents current opening permission and all reached proof."""
+
+    approved: bool
+    intent: TradeIntent | None
+    proposed_intent: TradeIntent | None
+    checks: tuple[RiskCheck, ...]
+    reason: str | None
+    evaluated_at: datetime
+    portfolio_revision: str | None
+    previous_risk_state: RiskState
+    advanced_risk_state: RiskState | None
+    risk_observation: RiskObservation | None
+    risk_advance_reason: str | None
+    candidate_assessment: CandidateAssessment | None
+    timing_assessment: EntryTimingAssessment | None
+    premium_budget: PremiumBudget | None
+
+    def __init__(self) -> None:
+        """Require the canonical opening authorization factory.
+
+        :returns:             None.
+        :raises   TypeError:  Always; use authorize_entry.
+        """
+        raise TypeError("risk decisions come from authorize_entry")
+
+
+def authorize_entry(intent: TradeIntent | None, context: DecisionContext,
+                    account: AccountSnapshot | None, session: ExchangeSession | None,
+                    config: StrategyConfig, now: datetime, *,
+                    previous_risk_state: RiskState,
+                    bundle: VerifiedBundle | None = None) -> RiskDecision:
+    """Authorize one original opening against fresh risk and source evidence.
+
+    :param    intent:                Original source-proved proposal or absence.
+    :param    context:               Current source-backed decision context.
+    :param    account:               Supplied current selected account or absence.
+    :param    session:               Supplied current selected session or absence.
+    :param    config:                Current exact strategy configuration.
+    :param    now:                   Explicit current standard aware instant.
+    :param    previous_risk_state:   Prior replayable risk history.
+    :param    bundle:                Current verified bundle or absence.
+    :returns:                       Frozen reached opening decision and evidence.
+    :raises   TypeError:           If a public owner has an incorrect exact type.
+    :raises   ValueError:          If now is not a standard aware instant.
+    """
+    from ._entry_authorization import _authorize_entry
+    return _authorize_entry(intent, context, account, session, config, now,
+                            previous_risk_state=previous_risk_state, bundle=bundle)
 
 
 def _material(account: AccountSnapshot | None) -> dict[str, object] | None:

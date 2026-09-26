@@ -1,5 +1,5 @@
 {
-  "assembled_at": "2026-09-26T05:16:14.122425+00:00",
+  "assembled_at": "2026-09-26T06:00:16.685860+00:00",
   "definitions": {
     "coherence_protocol_ids": [],
     "greek_method": {
@@ -750,13 +750,13 @@
         "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
         "partition_ref": {
           "fixture_id": "p14c-partition-v1",
-          "payload_sha256": "73d935cf5890c3a57d60aa4597c47e2c2acd0e9aad8689fcea430ebae3a9e987",
+          "payload_sha256": "727b34213aa1782f3b92ff13dc76f97e85dc2485c2addeaf45194181620fe950",
           "raw_hash": "34e7bd02300884ef0d581afed7a904beb9fc64a13aa735b66dc566617917ebc1",
           "record_id": "partition"
         },
         "schema_version": 1
       },
-      "raw_hash": "6f43ef54ddf0ce365a6540ca922ba16613a78a38abd06f1c52ad611935f6f56f",
+      "raw_hash": "52e09c3ea1e0d085cf7769394ccfe80db87d4ad29f6d241e2757b0d298ca4f51",
       "record_id": "record"
     },
     {
@@ -1494,13 +1494,13 @@
         "model_hash": "0000000000000000000000000000000000000000000000000000000000000000",
         "partition_ref": {
           "fixture_id": "p14c-partition-v1",
-          "payload_sha256": "73d935cf5890c3a57d60aa4597c47e2c2acd0e9aad8689fcea430ebae3a9e987",
+          "payload_sha256": "727b34213aa1782f3b92ff13dc76f97e85dc2485c2addeaf45194181620fe950",
           "raw_hash": "34e7bd02300884ef0d581afed7a904beb9fc64a13aa735b66dc566617917ebc1",
           "record_id": "partition"
         },
         "schema_version": 1
       },
-      "raw_hash": "303c97bfe46f3d4f6e1194df9d01fd30b78fba9b3353a5f63077be039486595d",
+      "raw_hash": "a5331cd0b0741650cd1396b7f5fd26b67d3b230c5956f2289df36e61fabec6af",
       "record_id": "wrong-model-hash"
     },
     {
@@ -2232,13 +2232,13 @@
         "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
         "partition_ref": {
           "fixture_id": "p14c-partition-v1",
-          "payload_sha256": "73d935cf5890c3a57d60aa4597c47e2c2acd0e9aad8689fcea430ebae3a9e987",
+          "payload_sha256": "727b34213aa1782f3b92ff13dc76f97e85dc2485c2addeaf45194181620fe950",
           "raw_hash": "34e7bd02300884ef0d581afed7a904beb9fc64a13aa735b66dc566617917ebc1",
           "record_id": "partition"
         },
         "schema_version": 1
       },
-      "raw_hash": "8653ec612ea48dc605c6b18d22a16a3076fd118c756540711796b907c7aa338a",
+      "raw_hash": "f4a6231527c53dfad4f4638158cc268f3112bcb4ec45647950cbdd8c5234b1e3",
       "record_id": "missing-member"
     },
     {
@@ -2968,13 +2968,13 @@
         "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
         "partition_ref": {
           "fixture_id": "p14c-partition-v1",
-          "payload_sha256": "73d935cf5890c3a57d60aa4597c47e2c2acd0e9aad8689fcea430ebae3a9e987",
+          "payload_sha256": "727b34213aa1782f3b92ff13dc76f97e85dc2485c2addeaf45194181620fe950",
           "raw_hash": "34e7bd02300884ef0d581afed7a904beb9fc64a13aa735b66dc566617917ebc1",
           "record_id": "partition"
         },
         "schema_version": 1
       },
-      "raw_hash": "944b9061ad9695daab9328a4180cc344c4ce79d8ecf6e6a368050b7d4b16148c",
+      "raw_hash": "d73a2376f46c56cfb503e700cc1f5616983b76c378de5a00637f97182d6613d3",
       "record_id": "wrong-pair"
     },
     {
@@ -3712,13 +3712,13 @@
         "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
         "partition_ref": {
           "fixture_id": "p14c-partition-v1",
-          "payload_sha256": "73d935cf5890c3a57d60aa4597c47e2c2acd0e9aad8689fcea430ebae3a9e987",
+          "payload_sha256": "727b34213aa1782f3b92ff13dc76f97e85dc2485c2addeaf45194181620fe950",
           "raw_hash": "34e7bd02300884ef0d581afed7a904beb9fc64a13aa735b66dc566617917ebc1",
           "record_id": "partition"
         },
         "schema_version": 1
       },
-      "raw_hash": "fded1414ae6eb9a962e15c414aecd694508a5eddd749aa6965611ffd4e1f766e",
+      "raw_hash": "33edb30db564265db64cda41422b713f9ee299162883dd7a8c51d9911198d165",
       "record_id": "negative-penalty"
     },
     {
@@ -4456,13 +4456,13 @@
         "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
         "partition_ref": {
           "fixture_id": "p14c-partition-v1",
-          "payload_sha256": "73d935cf5890c3a57d60aa4597c47e2c2acd0e9aad8689fcea430ebae3a9e987",
+          "payload_sha256": "727b34213aa1782f3b92ff13dc76f97e85dc2485c2addeaf45194181620fe950",
           "raw_hash": "34e7bd02300884ef0d581afed7a904beb9fc64a13aa735b66dc566617917ebc1",
           "record_id": "partition"
         },
         "schema_version": 1
       },
-      "raw_hash": "10cab7c1ac2de0c70cb0974c08f24fbf05f82d5cb72f51a33ae1802287df213d",
+      "raw_hash": "ede6f98d6a74c5f47c5ea3b9c607b8f67accb20610c65981bc743d38701acd87",
       "record_id": "wrong-method"
     },
     {
@@ -5200,13 +5200,13 @@
         "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
         "partition_ref": {
           "fixture_id": "p14c-partition-v1",
-          "payload_sha256": "73d935cf5890c3a57d60aa4597c47e2c2acd0e9aad8689fcea430ebae3a9e987",
+          "payload_sha256": "727b34213aa1782f3b92ff13dc76f97e85dc2485c2addeaf45194181620fe950",
           "raw_hash": "0000000000000000000000000000000000000000000000000000000000000000",
           "record_id": "partition"
         },
         "schema_version": 1
       },
-      "raw_hash": "596d0ac6a6ea886c2869022a8ec9f6e8b09958e8b30dbdae67728aeacfb8d8cd",
+      "raw_hash": "2787688a67f2d3f3b17c646dc91374bf071284cea1936791a13964ed9bd685ec",
       "record_id": "wrong-partition"
     },
     {
@@ -30214,13 +30214,13 @@
         "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
         "partition_ref": {
           "fixture_id": "p14c-partition-v1",
-          "payload_sha256": "73d935cf5890c3a57d60aa4597c47e2c2acd0e9aad8689fcea430ebae3a9e987",
+          "payload_sha256": "727b34213aa1782f3b92ff13dc76f97e85dc2485c2addeaf45194181620fe950",
           "raw_hash": "34e7bd02300884ef0d581afed7a904beb9fc64a13aa735b66dc566617917ebc1",
           "record_id": "partition"
         },
         "schema_version": 1
       },
-      "raw_hash": "ff340c806b7f8ba06854c26f9cc149c974267ff98f04438b7b8af0a99e647709",
+      "raw_hash": "0c01026f7ad216897ec976981844c5a3166085232b61f50dd6ab62a394705046",
       "record_id": "over-bucket-population"
     }
   ],

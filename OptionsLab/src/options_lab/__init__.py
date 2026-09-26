@@ -78,6 +78,9 @@ from .risk import (
     RiskAdvanceError,
     start_risk_state,
     advance_risk_state,
+    RiskCheck,
+    RiskDecision,
+    authorize_entry,
 )
 from .risk_inputs import (
     RiskControlEvent,
@@ -287,6 +290,9 @@ __all__ = [
     "RiskAdvanceError",
     "start_risk_state",
     "advance_risk_state",
+    "RiskCheck",
+    "RiskDecision",
+    "authorize_entry",
     "CalibrationAssessment",
     "assess_calibration",
     "BundleAssessment",
