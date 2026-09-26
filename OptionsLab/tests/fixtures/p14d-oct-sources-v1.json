@@ -1,0 +1,674 @@
+{
+  "assembled_at": "2026-09-26T03:17:01.477347+00:00",
+  "definitions": {
+    "coherence_protocol_ids": [],
+    "greek_method": {
+      "assumptions_id": "fixture-flat-rates-v1",
+      "method_id": "fixture-greek-values",
+      "method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+      "method_version": "1"
+    },
+    "tick_definition_ids": []
+  },
+  "fixture_id": "p14d-oct-sources-v1",
+  "generator_id": "optionslab-calibration-inputs-fixture-builder",
+  "generator_source_ref": "OptionsLab/tests/build_bundle_activation_fixture.py",
+  "generator_version": "1",
+  "members": [
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session-2026-10-01",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/session-2026-10-01",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-04-30T00:00:00Z",
+        "stream_id": "oct-sessions",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "oct-sessions",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-04-30T00:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-10-01T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-10-01T13:30:00Z",
+        "provider_record_id": "oct-2026-10-01",
+        "session_date": "2026-10-01",
+        "source": "fixture-calendar-d",
+        "source_version": "1"
+      },
+      "raw_hash": "13cbfadeceb098d2d0d7aea51639bcdcb4657b037d3bd0f3bcde5486695f6ed4",
+      "record_id": "session-2026-10-01"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session-2026-10-02",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/session-2026-10-02",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-04-30T00:00:00Z",
+        "stream_id": "oct-sessions",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "oct-sessions",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-04-30T00:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-10-02T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-10-02T13:30:00Z",
+        "provider_record_id": "oct-2026-10-02",
+        "session_date": "2026-10-02",
+        "source": "fixture-calendar-d",
+        "source_version": "1"
+      },
+      "raw_hash": "915b6064b3a875aa4b90a6eff1d9104a47373cb380d1d7e2c43a3ab6a2666458",
+      "record_id": "session-2026-10-02"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session-2026-10-05",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/session-2026-10-05",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-04-30T00:00:00Z",
+        "stream_id": "oct-sessions",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "oct-sessions",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-04-30T00:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-10-05T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-10-05T13:30:00Z",
+        "provider_record_id": "oct-2026-10-05",
+        "session_date": "2026-10-05",
+        "source": "fixture-calendar-d",
+        "source_version": "1"
+      },
+      "raw_hash": "cb82ad4067272f39b6775a0af976aacaa2774588abb6b840db3375667b96ddff",
+      "record_id": "session-2026-10-05"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session-2026-10-06",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/session-2026-10-06",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-04-30T00:00:00Z",
+        "stream_id": "oct-sessions",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "oct-sessions",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-04-30T00:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-10-06T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-10-06T13:30:00Z",
+        "provider_record_id": "oct-2026-10-06",
+        "session_date": "2026-10-06",
+        "source": "fixture-calendar-d",
+        "source_version": "1"
+      },
+      "raw_hash": "4bbe14a56e0338ce68cd8e7754cb9f0223afffeb49b6387fb270f23ea252bc1f",
+      "record_id": "session-2026-10-06"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session-2026-10-07",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/session-2026-10-07",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-04-30T00:00:00Z",
+        "stream_id": "oct-sessions",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "oct-sessions",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-04-30T00:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-10-07T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-10-07T13:30:00Z",
+        "provider_record_id": "oct-2026-10-07",
+        "session_date": "2026-10-07",
+        "source": "fixture-calendar-d",
+        "source_version": "1"
+      },
+      "raw_hash": "14f51f84c07e528ed546ec5b3e2411046c4f892ec7375eb8e6670f958908f66b",
+      "record_id": "session-2026-10-07"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session-2026-10-08",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/session-2026-10-08",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-04-30T00:00:00Z",
+        "stream_id": "oct-sessions",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "oct-sessions",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-04-30T00:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-10-08T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-10-08T13:30:00Z",
+        "provider_record_id": "oct-2026-10-08",
+        "session_date": "2026-10-08",
+        "source": "fixture-calendar-d",
+        "source_version": "1"
+      },
+      "raw_hash": "b17429153228fc0e17dd29e2f1b57205ab13a4fcd56ab0c64106e82f1ff0476f",
+      "record_id": "session-2026-10-08"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session-2026-10-09",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/session-2026-10-09",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-04-30T00:00:00Z",
+        "stream_id": "oct-sessions",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "oct-sessions",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-04-30T00:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-10-09T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-10-09T13:30:00Z",
+        "provider_record_id": "oct-2026-10-09",
+        "session_date": "2026-10-09",
+        "source": "fixture-calendar-d",
+        "source_version": "1"
+      },
+      "raw_hash": "656ed93b688beb18bbdcefb1f9334144bb8d6a9aa69bee72a9592c119855b948",
+      "record_id": "session-2026-10-09"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session-2026-10-12",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/session-2026-10-12",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-04-30T00:00:00Z",
+        "stream_id": "oct-sessions",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "oct-sessions",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-04-30T00:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-10-12T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-10-12T13:30:00Z",
+        "provider_record_id": "oct-2026-10-12",
+        "session_date": "2026-10-12",
+        "source": "fixture-calendar-d",
+        "source_version": "1"
+      },
+      "raw_hash": "d19570448b24fe84d6bdea9d918c9a37c781718ffffc80b7b96bebbac8c0c070",
+      "record_id": "session-2026-10-12"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session-2026-10-13",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/session-2026-10-13",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-04-30T00:00:00Z",
+        "stream_id": "oct-sessions",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "oct-sessions",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-04-30T00:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-10-13T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-10-13T13:30:00Z",
+        "provider_record_id": "oct-2026-10-13",
+        "session_date": "2026-10-13",
+        "source": "fixture-calendar-d",
+        "source_version": "1"
+      },
+      "raw_hash": "f20be0d31261b8e3d786aae1768957096a9a483d1df32b46315f9046147327e1",
+      "record_id": "session-2026-10-13"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session-2026-10-14",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/session-2026-10-14",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-04-30T00:00:00Z",
+        "stream_id": "oct-sessions",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "oct-sessions",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-04-30T00:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-10-14T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-10-14T13:30:00Z",
+        "provider_record_id": "oct-2026-10-14",
+        "session_date": "2026-10-14",
+        "source": "fixture-calendar-d",
+        "source_version": "1"
+      },
+      "raw_hash": "bfcfe2cae47753f191343a0a75a29e6289d48ac5e806c389a7780385119c81c0",
+      "record_id": "session-2026-10-14"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session-2026-10-15",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/session-2026-10-15",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-04-30T00:00:00Z",
+        "stream_id": "oct-sessions",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "oct-sessions",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-04-30T00:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-10-15T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-10-15T13:30:00Z",
+        "provider_record_id": "oct-2026-10-15",
+        "session_date": "2026-10-15",
+        "source": "fixture-calendar-d",
+        "source_version": "1"
+      },
+      "raw_hash": "6751ac6ddaafec910f576d6f2af5f4c760117d2de9f26255c89821684bf26378",
+      "record_id": "session-2026-10-15"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session-2026-10-16",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/session-2026-10-16",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-04-30T00:00:00Z",
+        "stream_id": "oct-sessions",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "oct-sessions",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-04-30T00:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-10-16T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-10-16T13:30:00Z",
+        "provider_record_id": "oct-2026-10-16",
+        "session_date": "2026-10-16",
+        "source": "fixture-calendar-d",
+        "source_version": "1"
+      },
+      "raw_hash": "4207eb27576c685cd7f0c1d05a6311869f2bd780f74f6fa6bbe8958e54dd58c6",
+      "record_id": "session-2026-10-16"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session-2026-10-19",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/session-2026-10-19",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-04-30T00:00:00Z",
+        "stream_id": "oct-sessions",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "oct-sessions",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-04-30T00:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-10-19T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-10-19T13:30:00Z",
+        "provider_record_id": "oct-2026-10-19",
+        "session_date": "2026-10-19",
+        "source": "fixture-calendar-d",
+        "source_version": "1"
+      },
+      "raw_hash": "a234cf981091eaadc3e748d522c3f6338828c938c9f2898a5c81ff1c97f90392",
+      "record_id": "session-2026-10-19"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session-2026-10-20",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/session-2026-10-20",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-04-30T00:00:00Z",
+        "stream_id": "oct-sessions",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "oct-sessions",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-04-30T00:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-10-20T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-10-20T13:30:00Z",
+        "provider_record_id": "oct-2026-10-20",
+        "session_date": "2026-10-20",
+        "source": "fixture-calendar-d",
+        "source_version": "1"
+      },
+      "raw_hash": "4c31640fa9f9064d6d2cbf8969b5728fb5c62e1b7b55fe02c32a5369a9b80825",
+      "record_id": "session-2026-10-20"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session-2026-10-21",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/session-2026-10-21",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-04-30T00:00:00Z",
+        "stream_id": "oct-sessions",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "oct-sessions",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-04-30T00:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-10-21T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-10-21T13:30:00Z",
+        "provider_record_id": "oct-2026-10-21",
+        "session_date": "2026-10-21",
+        "source": "fixture-calendar-d",
+        "source_version": "1"
+      },
+      "raw_hash": "4145fee86072634d0600030d07d578af3f6877e50a9b320451fa542f8c8d6b37",
+      "record_id": "session-2026-10-21"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session-2026-10-22",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/session-2026-10-22",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-04-30T00:00:00Z",
+        "stream_id": "oct-sessions",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "oct-sessions",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-04-30T00:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-10-22T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-10-22T13:30:00Z",
+        "provider_record_id": "oct-2026-10-22",
+        "session_date": "2026-10-22",
+        "source": "fixture-calendar-d",
+        "source_version": "1"
+      },
+      "raw_hash": "8e3de6af2934892336cafa42ff4e9b61116c3f07d57fa6711ac4f94d284efcdb",
+      "record_id": "session-2026-10-22"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session-2026-10-23",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/session-2026-10-23",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-04-30T00:00:00Z",
+        "stream_id": "oct-sessions",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "oct-sessions",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-04-30T00:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-10-23T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-10-23T13:30:00Z",
+        "provider_record_id": "oct-2026-10-23",
+        "session_date": "2026-10-23",
+        "source": "fixture-calendar-d",
+        "source_version": "1"
+      },
+      "raw_hash": "6e785a28c4e057a0369519be10cbd1f921e1079a757cae9f31e3151a7c3fb486",
+      "record_id": "session-2026-10-23"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session-2026-10-26",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/session-2026-10-26",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-04-30T00:00:00Z",
+        "stream_id": "oct-sessions",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "oct-sessions",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-04-30T00:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-10-26T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-10-26T13:30:00Z",
+        "provider_record_id": "oct-2026-10-26",
+        "session_date": "2026-10-26",
+        "source": "fixture-calendar-d",
+        "source_version": "1"
+      },
+      "raw_hash": "9985660bcaf0b9c6b338f414a63f9d3f3ac796e48b5dba00baee3d941976478c",
+      "record_id": "session-2026-10-26"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session-2026-10-27",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/session-2026-10-27",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-04-30T00:00:00Z",
+        "stream_id": "oct-sessions",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "oct-sessions",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-04-30T00:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-10-27T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-10-27T13:30:00Z",
+        "provider_record_id": "oct-2026-10-27",
+        "session_date": "2026-10-27",
+        "source": "fixture-calendar-d",
+        "source_version": "1"
+      },
+      "raw_hash": "cf824c71bae3e3866631e887a8fa226a739a00cb0c282e24e966df53b5c23145",
+      "record_id": "session-2026-10-27"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session-2026-10-28",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/session-2026-10-28",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-04-30T00:00:00Z",
+        "stream_id": "oct-sessions",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "oct-sessions",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-04-30T00:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-10-28T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-10-28T13:30:00Z",
+        "provider_record_id": "oct-2026-10-28",
+        "session_date": "2026-10-28",
+        "source": "fixture-calendar-d",
+        "source_version": "1"
+      },
+      "raw_hash": "2ceb04c5d468868a731bbe2870aa2707ce9e5660748c5c8d8cf9abc91bb3af9d",
+      "record_id": "session-2026-10-28"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session-2026-10-29",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/session-2026-10-29",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-04-30T00:00:00Z",
+        "stream_id": "oct-sessions",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "oct-sessions",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-04-30T00:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-10-29T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-10-29T13:30:00Z",
+        "provider_record_id": "oct-2026-10-29",
+        "session_date": "2026-10-29",
+        "source": "fixture-calendar-d",
+        "source_version": "1"
+      },
+      "raw_hash": "3faeed3dbfcaf18ea01f46daaaf6ce97ecb1d13248bb4db551daf1634a32e6d8",
+      "record_id": "session-2026-10-29"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session-2026-10-30",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/session-2026-10-30",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-04-30T00:00:00Z",
+        "stream_id": "oct-sessions",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "oct-sessions",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-04-30T00:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-10-30T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-10-30T13:30:00Z",
+        "provider_record_id": "oct-2026-10-30",
+        "session_date": "2026-10-30",
+        "source": "fixture-calendar-d",
+        "source_version": "1"
+      },
+      "raw_hash": "426090775913496bd4b569b1dd29a6192b23941d17d3b7b39cbbe31869456597",
+      "record_id": "session-2026-10-30"
+    }
+  ],
+  "modeled_source_profiles": [
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": "genuine",
+      "kind": "exchange_session",
+      "profile_id": "oct-sessions",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "fixture-calendar-d",
+      "stream_id": "oct-sessions",
+      "units": {}
+    }
+  ],
+  "normalization_version": 1,
+  "origin": "synthetic",
+  "permitted_use": "core_fixture",
+  "schema_version": 1
+}

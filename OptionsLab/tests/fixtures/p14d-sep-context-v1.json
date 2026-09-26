@@ -1,0 +1,70 @@
+{
+  "assembled_at": "2026-09-26T03:23:32.537652+00:00",
+  "definitions": {
+    "coherence_protocol_ids": [
+      "fixture-joint-book-snapshot-v1",
+      "fixture-side-validity-overlap-v1"
+    ],
+    "greek_method": {
+      "assumptions_id": "fixture-flat-rates-v1",
+      "method_id": "fixture-greek-values",
+      "method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+      "method_version": "1"
+    },
+    "tick_definition_ids": [
+      "fixture-usd-premium-tick-v1"
+    ]
+  },
+  "fixture_id": "p14d-sep-context-v1",
+  "generator_id": "optionslab-calibration-inputs-fixture-builder",
+  "generator_source_ref": "OptionsLab/tests/build_bundle_activation_fixture.py",
+  "generator_version": "1",
+  "members": [
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session-2026-09-30",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/session-2026-09-30",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-04-30T00:00:00Z",
+        "stream_id": "gap-session",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "gap-session",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-04-30T00:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-09-30T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-09-30T13:30:00Z",
+        "provider_record_id": "session-2026-09-30",
+        "session_date": "2026-09-30",
+        "source": "fixture-calendar-c2",
+        "source_version": "1"
+      },
+      "raw_hash": "25fe6edd1128ac8eadd5d1b193bc2a218bec825777eb0469f3e30072d3c3098d",
+      "record_id": "session-2026-09-30"
+    }
+  ],
+  "modeled_source_profiles": [
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": "genuine",
+      "kind": "exchange_session",
+      "profile_id": "gap-session",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "fixture-calendar-c2",
+      "stream_id": "gap-session",
+      "units": {}
+    }
+  ],
+  "normalization_version": 1,
+  "origin": "synthetic",
+  "permitted_use": "core_fixture",
+  "schema_version": 1
+}

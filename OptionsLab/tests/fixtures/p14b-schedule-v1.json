@@ -1,5 +1,5 @@
 {
-  "assembled_at": "2026-09-26T02:40:09.437035+00:00",
+  "assembled_at": "2026-09-26T03:17:36.783798+00:00",
   "definitions": {
     "coherence_protocol_ids": [],
     "greek_method": {
@@ -185,14 +185,14 @@
         },
         "calibration_partition_ref": {
           "fixture_id": "p14c2-partition-v1",
-          "payload_sha256": "535ac5ebd848710f34db0d19b3e82d56b387ce768c272706a122e6557279164f",
+          "payload_sha256": "b6465c0dc9dca8310fd5564d151872a06c380dd47b5917ab8b5a4ac421cad921",
           "raw_hash": "7edcfec8c94ebd744ffd090b92251ac440ab4fd5c1723201269d44cbced1f884",
           "record_id": "partition"
         },
         "calibration_record_ref": {
           "fixture_id": "p14c2-record-v1",
-          "payload_sha256": "fedf180ae9942345775ed4511ca519281dcbeb624f7a14fc63167a54f80b8792",
-          "raw_hash": "56dff5aeddebc315264f4bc67bfb8ca445c9d76445ec0253d67d5eb021337d12",
+          "payload_sha256": "917a192b3b8c7e4d3d77a7ad13e20dba32ed5787bc231d0815a4f98a2f9fe942",
+          "raw_hash": "aaa40f8a07266af0e6467916dd29ea524ccbf8755f610e803b307f7148518cf9",
           "record_id": "record"
         },
         "ends_at": "2026-10-01T04:00:00Z",
@@ -204,7 +204,7 @@
         "starts_at": "2026-09-01T04:00:00Z",
         "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621"
       },
-      "raw_hash": "72a089ff21e69db5b932856a94c7cc26f8fe9135ae7de425965bc9851a82de86",
+      "raw_hash": "36f5f8c6169d72b9a53e47fe21dfacb5e8fb407ca8813984fd5624a27a8c095f",
       "record_id": "block"
     },
     {
@@ -232,14 +232,14 @@
         },
         "calibration_partition_ref": {
           "fixture_id": "p14c2-partition-v1",
-          "payload_sha256": "535ac5ebd848710f34db0d19b3e82d56b387ce768c272706a122e6557279164f",
+          "payload_sha256": "b6465c0dc9dca8310fd5564d151872a06c380dd47b5917ab8b5a4ac421cad921",
           "raw_hash": "7edcfec8c94ebd744ffd090b92251ac440ab4fd5c1723201269d44cbced1f884",
           "record_id": "partition"
         },
         "calibration_record_ref": {
           "fixture_id": "p14c2-record-v1",
-          "payload_sha256": "fedf180ae9942345775ed4511ca519281dcbeb624f7a14fc63167a54f80b8792",
-          "raw_hash": "56dff5aeddebc315264f4bc67bfb8ca445c9d76445ec0253d67d5eb021337d12",
+          "payload_sha256": "917a192b3b8c7e4d3d77a7ad13e20dba32ed5787bc231d0815a4f98a2f9fe942",
+          "raw_hash": "aaa40f8a07266af0e6467916dd29ea524ccbf8755f610e803b307f7148518cf9",
           "record_id": "record"
         },
         "ends_at": "2026-10-01T04:00:00Z",
@@ -251,7 +251,7 @@
         "starts_at": "2026-09-01T04:00:00Z",
         "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621"
       },
-      "raw_hash": "bf50a86b1bbf915691960ede9d86e10e6070df87c7e0115baa73e9e2cba12ebe",
+      "raw_hash": "ea92bace26d72f40b74db3fbb457cc60a0fc4428505fbc103b414e945ab2d272",
       "record_id": "wrong-model"
     },
     {
@@ -279,14 +279,14 @@
         },
         "calibration_partition_ref": {
           "fixture_id": "p14c2-partition-v1",
-          "payload_sha256": "535ac5ebd848710f34db0d19b3e82d56b387ce768c272706a122e6557279164f",
+          "payload_sha256": "b6465c0dc9dca8310fd5564d151872a06c380dd47b5917ab8b5a4ac421cad921",
           "raw_hash": "7edcfec8c94ebd744ffd090b92251ac440ab4fd5c1723201269d44cbced1f884",
           "record_id": "partition"
         },
         "calibration_record_ref": {
           "fixture_id": "p14c2-record-v1",
-          "payload_sha256": "fedf180ae9942345775ed4511ca519281dcbeb624f7a14fc63167a54f80b8792",
-          "raw_hash": "56dff5aeddebc315264f4bc67bfb8ca445c9d76445ec0253d67d5eb021337d12",
+          "payload_sha256": "917a192b3b8c7e4d3d77a7ad13e20dba32ed5787bc231d0815a4f98a2f9fe942",
+          "raw_hash": "aaa40f8a07266af0e6467916dd29ea524ccbf8755f610e803b307f7148518cf9",
           "record_id": "record"
         },
         "ends_at": "2026-10-02T04:00:00Z",
@@ -298,7 +298,7 @@
         "starts_at": "2026-09-01T04:00:00Z",
         "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621"
       },
-      "raw_hash": "78b5ea91f8abbba02bf3a222e6027f68da10b335a5664ee1f11e420a7d21b3bb",
+      "raw_hash": "9d192e8b25f017d1455d8117f983bdc0191a46e9ddc4963da3fe79aaf933d6f9",
       "record_id": "wrong-interval"
     },
     {
@@ -326,14 +326,14 @@
         },
         "calibration_partition_ref": {
           "fixture_id": "p14c2-partition-v1",
-          "payload_sha256": "535ac5ebd848710f34db0d19b3e82d56b387ce768c272706a122e6557279164f",
+          "payload_sha256": "b6465c0dc9dca8310fd5564d151872a06c380dd47b5917ab8b5a4ac421cad921",
           "raw_hash": "7edcfec8c94ebd744ffd090b92251ac440ab4fd5c1723201269d44cbced1f884",
           "record_id": "partition"
         },
         "calibration_record_ref": {
           "fixture_id": "p14c2-record-v1",
-          "payload_sha256": "fedf180ae9942345775ed4511ca519281dcbeb624f7a14fc63167a54f80b8792",
-          "raw_hash": "56dff5aeddebc315264f4bc67bfb8ca445c9d76445ec0253d67d5eb021337d12",
+          "payload_sha256": "917a192b3b8c7e4d3d77a7ad13e20dba32ed5787bc231d0815a4f98a2f9fe942",
+          "raw_hash": "aaa40f8a07266af0e6467916dd29ea524ccbf8755f610e803b307f7148518cf9",
           "record_id": "record"
         },
         "ends_at": "2026-10-01T04:00:00Z",
@@ -345,7 +345,7 @@
         "starts_at": "2026-09-01T04:00:00Z",
         "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621"
       },
-      "raw_hash": "ecc67c72f2cdb64ab0ce57da7805b0fd22212e2098e1e30fcf826f30ecd788f6",
+      "raw_hash": "690836ffbc17bd1af8d2cd10b950508eacd6dbb241e308dea62df076fe5865e0",
       "record_id": "wrong-schema"
     },
     {
@@ -373,14 +373,14 @@
         },
         "calibration_partition_ref": {
           "fixture_id": "p14c2-partition-v1",
-          "payload_sha256": "535ac5ebd848710f34db0d19b3e82d56b387ce768c272706a122e6557279164f",
+          "payload_sha256": "b6465c0dc9dca8310fd5564d151872a06c380dd47b5917ab8b5a4ac421cad921",
           "raw_hash": "7edcfec8c94ebd744ffd090b92251ac440ab4fd5c1723201269d44cbced1f884",
           "record_id": "partition"
         },
         "calibration_record_ref": {
           "fixture_id": "p14c2-record-v1",
-          "payload_sha256": "fedf180ae9942345775ed4511ca519281dcbeb624f7a14fc63167a54f80b8792",
-          "raw_hash": "56dff5aeddebc315264f4bc67bfb8ca445c9d76445ec0253d67d5eb021337d12",
+          "payload_sha256": "917a192b3b8c7e4d3d77a7ad13e20dba32ed5787bc231d0815a4f98a2f9fe942",
+          "raw_hash": "aaa40f8a07266af0e6467916dd29ea524ccbf8755f610e803b307f7148518cf9",
           "record_id": "record"
         },
         "ends_at": "2026-10-01T04:00:00Z",
@@ -392,7 +392,7 @@
         "starts_at": "2026-09-01T04:00:00Z",
         "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621"
       },
-      "raw_hash": "6df4472e9c277fd9b99122190bf3634dfd4b43af66183d4d41272b93737a8250",
+      "raw_hash": "dbc15072a2af05b65ac9219e3c8c24d22829412a74b4e3962a312d0725811110",
       "record_id": "wrong-normalization"
     },
     {
@@ -420,14 +420,14 @@
         },
         "calibration_partition_ref": {
           "fixture_id": "p14c2-partition-v1",
-          "payload_sha256": "535ac5ebd848710f34db0d19b3e82d56b387ce768c272706a122e6557279164f",
+          "payload_sha256": "b6465c0dc9dca8310fd5564d151872a06c380dd47b5917ab8b5a4ac421cad921",
           "raw_hash": "7edcfec8c94ebd744ffd090b92251ac440ab4fd5c1723201269d44cbced1f884",
           "record_id": "partition"
         },
         "calibration_record_ref": {
           "fixture_id": "p14c2-record-v1",
-          "payload_sha256": "fedf180ae9942345775ed4511ca519281dcbeb624f7a14fc63167a54f80b8792",
-          "raw_hash": "56dff5aeddebc315264f4bc67bfb8ca445c9d76445ec0253d67d5eb021337d12",
+          "payload_sha256": "917a192b3b8c7e4d3d77a7ad13e20dba32ed5787bc231d0815a4f98a2f9fe942",
+          "raw_hash": "aaa40f8a07266af0e6467916dd29ea524ccbf8755f610e803b307f7148518cf9",
           "record_id": "record"
         },
         "ends_at": "2026-10-01T04:00:00Z",
@@ -439,7 +439,7 @@
         "starts_at": "2026-09-01T04:00:00Z",
         "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621"
       },
-      "raw_hash": "bda12a872daa1f2bca09eca4e610357fd03aab864b3153a1a0484a2bdeb5f506",
+      "raw_hash": "512fe723f33e3911f5127216bbbc2b1f609d5c5e4d4f1dc824f93d7fa680a4a3",
       "record_id": "wrong-threshold"
     },
     {
@@ -467,14 +467,14 @@
         },
         "calibration_partition_ref": {
           "fixture_id": "p14c2-partition-v1",
-          "payload_sha256": "535ac5ebd848710f34db0d19b3e82d56b387ce768c272706a122e6557279164f",
+          "payload_sha256": "b6465c0dc9dca8310fd5564d151872a06c380dd47b5917ab8b5a4ac421cad921",
           "raw_hash": "7edcfec8c94ebd744ffd090b92251ac440ab4fd5c1723201269d44cbced1f884",
           "record_id": "partition"
         },
         "calibration_record_ref": {
           "fixture_id": "p14c2-record-v1",
-          "payload_sha256": "fedf180ae9942345775ed4511ca519281dcbeb624f7a14fc63167a54f80b8792",
-          "raw_hash": "56dff5aeddebc315264f4bc67bfb8ca445c9d76445ec0253d67d5eb021337d12",
+          "payload_sha256": "917a192b3b8c7e4d3d77a7ad13e20dba32ed5787bc231d0815a4f98a2f9fe942",
+          "raw_hash": "aaa40f8a07266af0e6467916dd29ea524ccbf8755f610e803b307f7148518cf9",
           "record_id": "record"
         },
         "ends_at": "2026-10-01T04:00:00Z",
@@ -486,7 +486,7 @@
         "starts_at": "2026-09-01T04:00:00Z",
         "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621"
       },
-      "raw_hash": "f729ca0bbc7a9ccbf3dbefe3d16b9ce546bc19057d6a914f97f3fc31d72f96d4",
+      "raw_hash": "e573dcf597a96074756a867c973f1c9c064d61d28ba7aea5347cfed8e80e0c15",
       "record_id": "wrong-bucket-rule"
     },
     {
@@ -514,14 +514,14 @@
         },
         "calibration_partition_ref": {
           "fixture_id": "p14c2-partition-v1",
-          "payload_sha256": "535ac5ebd848710f34db0d19b3e82d56b387ce768c272706a122e6557279164f",
+          "payload_sha256": "b6465c0dc9dca8310fd5564d151872a06c380dd47b5917ab8b5a4ac421cad921",
           "raw_hash": "7edcfec8c94ebd744ffd090b92251ac440ab4fd5c1723201269d44cbced1f884",
           "record_id": "partition"
         },
         "calibration_record_ref": {
           "fixture_id": "p14c2-record-v1",
-          "payload_sha256": "fedf180ae9942345775ed4511ca519281dcbeb624f7a14fc63167a54f80b8792",
-          "raw_hash": "56dff5aeddebc315264f4bc67bfb8ca445c9d76445ec0253d67d5eb021337d12",
+          "payload_sha256": "917a192b3b8c7e4d3d77a7ad13e20dba32ed5787bc231d0815a4f98a2f9fe942",
+          "raw_hash": "aaa40f8a07266af0e6467916dd29ea524ccbf8755f610e803b307f7148518cf9",
           "record_id": "record"
         },
         "ends_at": "2026-10-01T04:00:00Z",
@@ -533,7 +533,7 @@
         "starts_at": "2026-09-01T04:00:00Z",
         "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621"
       },
-      "raw_hash": "44b5315eb57a1bd91c22eb7e27730eb5de4a170ae559e21c9fa58ccc6882a9cf",
+      "raw_hash": "a0e0dada5f4b488ca9f870aa8e03ef45301a11c468132ee634d8add281743447",
       "record_id": "wrong-calendar"
     },
     {
@@ -561,13 +561,13 @@
         },
         "calibration_partition_ref": {
           "fixture_id": "p14c2-partition-v1",
-          "payload_sha256": "535ac5ebd848710f34db0d19b3e82d56b387ce768c272706a122e6557279164f",
+          "payload_sha256": "b6465c0dc9dca8310fd5564d151872a06c380dd47b5917ab8b5a4ac421cad921",
           "raw_hash": "7edcfec8c94ebd744ffd090b92251ac440ab4fd5c1723201269d44cbced1f884",
           "record_id": "partition"
         },
         "calibration_record_ref": {
           "fixture_id": "p14c2-record-v1",
-          "payload_sha256": "fedf180ae9942345775ed4511ca519281dcbeb624f7a14fc63167a54f80b8792",
+          "payload_sha256": "917a192b3b8c7e4d3d77a7ad13e20dba32ed5787bc231d0815a4f98a2f9fe942",
           "raw_hash": "0000000000000000000000000000000000000000000000000000000000000000",
           "record_id": "record"
         },
@@ -580,7 +580,7 @@
         "starts_at": "2026-09-01T04:00:00Z",
         "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621"
       },
-      "raw_hash": "a329071d67e130bcc5e0020f90118ff44d089d18f53768a7eef808dc44da0c10",
+      "raw_hash": "2505395cf5d535aebd4988e61a26be8929b39128525d65273bd25575c9befa78",
       "record_id": "wrong-record-ref"
     },
     {

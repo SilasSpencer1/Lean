@@ -1,0 +1,282 @@
+{
+  "assembled_at": "2026-09-26T03:20:15.946689+00:00",
+  "definitions": {
+    "coherence_protocol_ids": [],
+    "greek_method": {
+      "assumptions_id": "fixture-flat-rates-v1",
+      "method_id": "fixture-greek-values",
+      "method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+      "method_version": "1"
+    },
+    "tick_definition_ids": []
+  },
+  "fixture_id": "p14d-schedule-v1",
+  "generator_id": "optionslab-bundle-schedule-fixture-builder",
+  "generator_source_ref": "OptionsLab/tests/build_bundle_activation_fixture.py",
+  "generator_version": "1",
+  "members": [
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-renamed-september",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/renamed-september",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "blocks",
+        "supersedes_record_id": null
+      },
+      "kind": "evaluation_block",
+      "profile_id": "blocks",
+      "raw_body": {
+        "available_at": "2026-09-01T01:00:00Z",
+        "block_id": "renamed-september-2026",
+        "bucket_rule_id": null,
+        "calendar_descriptor_ref": {
+          "fixture_id": "p14c2-calendar-v1",
+          "payload_sha256": "c79b4d4d1c4651154c7c0b3e11922dc87a070f6eb17477f4fc7cb86d78afa51e",
+          "raw_hash": "1ff03d5460edb2b359651a5ac606672e85046a21f8f47351ea5244ccb4438dcf",
+          "record_id": "calendar"
+        },
+        "calibration_partition_ref": null,
+        "calibration_record_ref": null,
+        "ends_at": "2026-10-01T04:00:00Z",
+        "feature_schema_id": null,
+        "frozen_threshold_return": null,
+        "model_hash": null,
+        "normalization_hash": null,
+        "schema_version": 1,
+        "starts_at": "2026-09-01T04:00:00Z",
+        "transform_id": null
+      },
+      "raw_hash": "767fa5d505b6105d1211ca935846bc445cef42b06715f5ec6e153701f7cd4661",
+      "record_id": "renamed-september"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-close-block",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/close-block",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-31T20:00:00Z",
+        "stream_id": "blocks",
+        "supersedes_record_id": null
+      },
+      "kind": "evaluation_block",
+      "profile_id": "blocks",
+      "raw_body": {
+        "available_at": "2026-08-31T20:00:00Z",
+        "block_id": "september-at-close-2026",
+        "bucket_rule_id": null,
+        "calendar_descriptor_ref": {
+          "fixture_id": "p14c2-calendar-v1",
+          "payload_sha256": "c79b4d4d1c4651154c7c0b3e11922dc87a070f6eb17477f4fc7cb86d78afa51e",
+          "raw_hash": "1ff03d5460edb2b359651a5ac606672e85046a21f8f47351ea5244ccb4438dcf",
+          "record_id": "calendar"
+        },
+        "calibration_partition_ref": null,
+        "calibration_record_ref": null,
+        "ends_at": "2026-10-01T04:00:00Z",
+        "feature_schema_id": null,
+        "frozen_threshold_return": null,
+        "model_hash": null,
+        "normalization_hash": null,
+        "schema_version": 1,
+        "starts_at": "2026-09-01T04:00:00Z",
+        "transform_id": null
+      },
+      "raw_hash": "748beb892b107e8a39b0b106696056bb23d3b6d54df481267de3f9ef17014311",
+      "record_id": "close-block"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-close-gap",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/close-gap",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-31T20:00:00Z",
+        "stream_id": "gaps",
+        "supersedes_record_id": null
+      },
+      "kind": "activation_gap",
+      "profile_id": "gaps",
+      "raw_body": {
+        "available_at": "2026-08-31T20:00:00Z",
+        "calendar_descriptor_ref": {
+          "fixture_id": "p14c2-calendar-v1",
+          "payload_sha256": "c79b4d4d1c4651154c7c0b3e11922dc87a070f6eb17477f4fc7cb86d78afa51e",
+          "raw_hash": "1ff03d5460edb2b359651a5ac606672e85046a21f8f47351ea5244ccb4438dcf",
+          "record_id": "calendar"
+        },
+        "gap_id": "august-september-at-close-2026",
+        "next_session": "2026-09-01",
+        "previous_session": "2026-08-31",
+        "schema_version": 1
+      },
+      "raw_hash": "4bb9ccea5415562ae180b09f5511b93e69d3797b229ced9cf6bc353a433b98ba",
+      "record_id": "close-gap"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-renamed-calendar-september",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/renamed-calendar-september",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "blocks",
+        "supersedes_record_id": null
+      },
+      "kind": "evaluation_block",
+      "profile_id": "blocks",
+      "raw_body": {
+        "available_at": "2026-09-01T01:00:00Z",
+        "block_id": "renamed-calendar-september-2026",
+        "bucket_rule_id": null,
+        "calendar_descriptor_ref": {
+          "fixture_id": "p14d-sep-calendar-v1",
+          "payload_sha256": "9f376c83daf2a70ae1b427f387f246c753a60c8dd653d2b2eeec6b2ee63f2568",
+          "raw_hash": "a8bad7eab2ff8130b7f8719f26cdffdb83b5e20f1630f72bc79667f2f14aa7f7",
+          "record_id": "calendar"
+        },
+        "calibration_partition_ref": null,
+        "calibration_record_ref": null,
+        "ends_at": "2026-10-01T04:00:00Z",
+        "feature_schema_id": null,
+        "frozen_threshold_return": null,
+        "model_hash": null,
+        "normalization_hash": null,
+        "schema_version": 1,
+        "starts_at": "2026-09-01T04:00:00Z",
+        "transform_id": null
+      },
+      "raw_hash": "f4c64958c3f97e0aaee046f47849e55c7908737d2d72e15ff669b90e84004b99",
+      "record_id": "renamed-calendar-september"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-renamed-calendar-gap",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/renamed-calendar-gap",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "gaps",
+        "supersedes_record_id": null
+      },
+      "kind": "activation_gap",
+      "profile_id": "gaps",
+      "raw_body": {
+        "available_at": "2026-09-01T01:00:00Z",
+        "calendar_descriptor_ref": {
+          "fixture_id": "p14d-sep-calendar-v1",
+          "payload_sha256": "9f376c83daf2a70ae1b427f387f246c753a60c8dd653d2b2eeec6b2ee63f2568",
+          "raw_hash": "a8bad7eab2ff8130b7f8719f26cdffdb83b5e20f1630f72bc79667f2f14aa7f7",
+          "record_id": "calendar"
+        },
+        "gap_id": "renamed-calendar-august-september-2026",
+        "next_session": "2026-09-01",
+        "previous_session": "2026-08-31",
+        "schema_version": 1
+      },
+      "raw_hash": "4a2aa8644de714bdf0ebbd1609276d6efc373f9ba019ec1fc49741c7367689cb",
+      "record_id": "renamed-calendar-gap"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-october-gap",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/october-gap",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-10-01T01:00:00Z",
+        "stream_id": "gaps",
+        "supersedes_record_id": null
+      },
+      "kind": "activation_gap",
+      "profile_id": "gaps",
+      "raw_body": {
+        "available_at": "2026-10-01T01:00:00Z",
+        "calendar_descriptor_ref": {
+          "fixture_id": "p14d-oct-calendar-v1",
+          "payload_sha256": "c863137510fcfc2d4e54fcda6afda5e973cd8e5234cf1475ac8d8fcc131b6772",
+          "raw_hash": "2436f8007b0ae2355e22d99811b988564bef1f59ab452535bcb4c506373397f0",
+          "record_id": "calendar"
+        },
+        "gap_id": "september-october-2026",
+        "next_session": "2026-10-01",
+        "previous_session": "2026-09-30",
+        "schema_version": 1
+      },
+      "raw_hash": "719aa7e261e88939618646596ec4e71931e394bf64b859b05cb56b9a50611dba",
+      "record_id": "october-gap"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-october-block",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/october-block",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-10-01T01:00:00Z",
+        "stream_id": "blocks",
+        "supersedes_record_id": null
+      },
+      "kind": "evaluation_block",
+      "profile_id": "blocks",
+      "raw_body": {
+        "available_at": "2026-10-01T01:00:00Z",
+        "block_id": "october-2026",
+        "bucket_rule_id": null,
+        "calendar_descriptor_ref": {
+          "fixture_id": "p14d-oct-calendar-v1",
+          "payload_sha256": "c863137510fcfc2d4e54fcda6afda5e973cd8e5234cf1475ac8d8fcc131b6772",
+          "raw_hash": "2436f8007b0ae2355e22d99811b988564bef1f59ab452535bcb4c506373397f0",
+          "record_id": "calendar"
+        },
+        "calibration_partition_ref": null,
+        "calibration_record_ref": null,
+        "ends_at": "2026-11-01T04:00:00Z",
+        "feature_schema_id": null,
+        "frozen_threshold_return": null,
+        "model_hash": null,
+        "normalization_hash": null,
+        "schema_version": 1,
+        "starts_at": "2026-10-01T04:00:00Z",
+        "transform_id": null
+      },
+      "raw_hash": "82a12ff1071e2c35bc430958bfe26d00946c023998278dd6733731ab267faad1",
+      "record_id": "october-block"
+    }
+  ],
+  "modeled_source_profiles": [
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "activation_gap",
+      "profile_id": "gaps",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "optionslab-bundle-schedule-fixture-builder",
+      "stream_id": "gaps",
+      "units": {}
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "evaluation_block",
+      "profile_id": "blocks",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "optionslab-bundle-schedule-fixture-builder",
+      "stream_id": "blocks",
+      "units": {}
+    }
+  ],
+  "normalization_version": 1,
+  "origin": "synthetic",
+  "permitted_use": "core_fixture",
+  "schema_version": 1
+}
