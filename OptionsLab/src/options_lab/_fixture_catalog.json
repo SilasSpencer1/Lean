@@ -114,7 +114,7 @@
       "payload_schema_version": 1
     },
     {
-      "expected_payload_sha256": "ebd0132ddaf54778be993a5de6fefb798322b112d825d7768f9e6ba6b922cbbf",
+      "expected_payload_sha256": "228f8f9adef95d2b8f8e366846c22b59e33b5dc2791c2b667834bcbe06c7f266",
       "fixture_id": "p14a-bundle-content-v1",
       "generator_id": "optionslab-bundle-fixture-builder",
       "generator_version": "1",
@@ -250,7 +250,7 @@
       "payload_schema_version": 1
     },
     {
-      "expected_payload_sha256": "79cd91f818d4ac06fcb50eb76c8aef25dc3e5176e0a9c893bfc7a952a8bf6687",
+      "expected_payload_sha256": "49d31e6ee8f34b6476648c7538a9aef2a8defd889a04e94443aaabd4acc09703",
       "fixture_id": "p14c-membership-bundle-v1",
       "generator_id": "optionslab-bundle-fixture-builder",
       "generator_version": "1",
@@ -258,7 +258,7 @@
       "payload_schema_version": 1
     },
     {
-      "expected_payload_sha256": "7d21c5ee4dcf563f699f5d35163165e378804e4322f77d3c4ac8cf98ba2f59ca",
+      "expected_payload_sha256": "73d935cf5890c3a57d60aa4597c47e2c2acd0e9aad8689fcea430ebae3a9e987",
       "fixture_id": "p14c-partition-v1",
       "generator_id": "optionslab-calibration-inputs-fixture-builder",
       "generator_version": "1",
@@ -266,7 +266,7 @@
       "payload_schema_version": 1
     },
     {
-      "expected_payload_sha256": "e973b17ab979ece0d153e24649ddbf6dd8d476493cf0b2c4005ad8d8fe51fbce",
+      "expected_payload_sha256": "9d3a1f635cd5bfd8a970d32ad105a6735d9d6075997e8cf336e23a5caa767f4b",
       "fixture_id": "p14c-partition-bundle-v1",
       "generator_id": "optionslab-bundle-fixture-builder",
       "generator_version": "1",
@@ -274,7 +274,7 @@
       "payload_schema_version": 1
     },
     {
-      "expected_payload_sha256": "32fed1fc91a77a96625fdc179421fcac1b55436b17190cc5e80f382542403770",
+      "expected_payload_sha256": "7b0f3688d440d4165e327accbb82766591077609548f73bbc4106264d6a74bcf",
       "fixture_id": "p14c-metadata-v1",
       "generator_id": "optionslab-calibration-inputs-fixture-builder",
       "generator_version": "1",
@@ -282,7 +282,7 @@
       "payload_schema_version": 1
     },
     {
-      "expected_payload_sha256": "c303513a27b153a679e0043bf56eb4445056b24e70db45f1e1914d5f08580a2e",
+      "expected_payload_sha256": "89ce46dc13bdb5d7b972742c0072a9d040a7fa4805783db5e5f2ff5f74789681",
       "fixture_id": "p14c-metadata-bundle-v1",
       "generator_id": "optionslab-bundle-fixture-builder",
       "generator_version": "1",
@@ -290,7 +290,7 @@
       "payload_schema_version": 1
     },
     {
-      "expected_payload_sha256": "8eff54e8237b47db55a46fe310e275e018aba2d9bf4c043a3891b38404d15911",
+      "expected_payload_sha256": "ed02e416037e3e68f4614b08379508b1a2189dc4266d90aecaec777d3f5344d8",
       "fixture_id": "p14c2-partition-v1",
       "generator_id": "optionslab-calibration-inputs-fixture-builder",
       "generator_version": "1",
@@ -298,7 +298,7 @@
       "payload_schema_version": 1
     },
     {
-      "expected_payload_sha256": "c8f7989e966f07ec9807ec42a5a0ff0a24f9e41a708b7d67e0e3c99b510795a2",
+      "expected_payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
       "fixture_id": "p14c2-record-v1",
       "generator_id": "optionslab-calibration-inputs-fixture-builder",
       "generator_version": "1",
@@ -306,7 +306,7 @@
       "payload_schema_version": 1
     },
     {
-      "expected_payload_sha256": "1c5a5092456cd7b0cda6630f80a0a2c5ec6b3619eaee48338f8c67428298aa93",
+      "expected_payload_sha256": "5c67b56b99fd8f5895d8965b0ffd00f4fb9381e4d800b7cd3268946243843c91",
       "fixture_id": "p14c2-bundle-v1",
       "generator_id": "optionslab-bundle-fixture-builder",
       "generator_version": "1",
@@ -314,7 +314,7 @@
       "payload_schema_version": 1
     },
     {
-      "expected_payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+      "expected_payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
       "fixture_id": "p14b-schedule-v1",
       "generator_id": "optionslab-bundle-schedule-fixture-builder",
       "generator_version": "1",
@@ -322,7 +322,7 @@
       "payload_schema_version": 1
     },
     {
-      "expected_payload_sha256": "d88e6636a403173cbb5a9ee5cc76d0c29a3045d0d55a449bdb64d34604be103b",
+      "expected_payload_sha256": "936fc87656751c291c80ba8833ad06b57fb09de736e3e2b8400c3632210efbd0",
       "fixture_id": "p14b-schedule-bundle-v1",
       "generator_id": "optionslab-bundle-fixture-builder",
       "generator_version": "1",
@@ -330,7 +330,7 @@
       "payload_schema_version": 1
     },
     {
-      "expected_payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
+      "expected_payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
       "fixture_id": "p14b1b-assembly-v1",
       "generator_id": "optionslab-bundle-validation-fixture-builder",
       "generator_version": "1",
@@ -338,7 +338,7 @@
       "payload_schema_version": 1
     },
     {
-      "expected_payload_sha256": "94c9bcd911e41247a182a77fdd55c9dddf7fd438b4563da4de721a97d4d6cc6e",
+      "expected_payload_sha256": "737b633659ad2df093c5f677ee37b0834c914a78a383d3094591e76aed81f9ff",
       "fixture_id": "p14b1b-assembly-bundle-v1",
       "generator_id": "optionslab-bundle-fixture-builder",
       "generator_version": "1",
@@ -346,7 +346,7 @@
       "payload_schema_version": 1
     },
     {
-      "expected_payload_sha256": "05abaf29806f991ef5677d65af2a378c3f6576c33efb4b2db0ed25035089bbad",
+      "expected_payload_sha256": "d7770ac799115ee9320b7409049b046b4dfc635b9ed840f4201b44957fa42a95",
       "fixture_id": "p14b2-availability-bundle-v1",
       "generator_id": "optionslab-bundle-fixture-builder",
       "generator_version": "1",
@@ -354,7 +354,7 @@
       "payload_schema_version": 1
     },
     {
-      "expected_payload_sha256": "0acc5ad9c2ddd272686eb8da9181688f42a319ed9393145bc3abffc7af1cba32",
+      "expected_payload_sha256": "847b7d54f893165cb7ad4171b6aac7cee666cd7326c1ee92af53c6e867d0feb2",
       "fixture_id": "p14d-bundle-v1",
       "generator_id": "optionslab-bundle-fixture-builder",
       "generator_version": "1",
@@ -362,7 +362,7 @@
       "payload_schema_version": 1
     },
     {
-      "expected_payload_sha256": "52ec8a0beda056ddbda1e6cc190d73eb8cc23ace6ab8c4e88cf72527d611f6ff",
+      "expected_payload_sha256": "62b98b3e2fe35d0f935a8233f1aaadd8dc51f995343065bdb8c6b7abdc12e22f",
       "fixture_id": "p15-decision-partition-v1",
       "generator_id": "optionslab-calibration-inputs-fixture-builder",
       "generator_version": "1",
@@ -370,7 +370,7 @@
       "payload_schema_version": 1
     },
     {
-      "expected_payload_sha256": "76db43167e8a443880db0c4279a5b46e9364f9b6fcc5d8a2d4b2a8afba94a1f0",
+      "expected_payload_sha256": "44c348cccafa370baf8e99a9274ec857dee33b54a1050ce85f98431d03da2b98",
       "fixture_id": "p15-decision-record-v1",
       "generator_id": "optionslab-calibration-inputs-fixture-builder",
       "generator_version": "1",
@@ -378,7 +378,7 @@
       "payload_schema_version": 1
     },
     {
-      "expected_payload_sha256": "5fef140d07d039a06d516d34cb7fdb9e2b56d51ce3fe4fd468a007756fda8a00",
+      "expected_payload_sha256": "84eda02ef0836a4a75b50672b22207221b38e004bfc0902c8e09bf059ec55038",
       "fixture_id": "p15-decision-report-v1",
       "generator_id": "optionslab-bundle-validation-fixture-builder",
       "generator_version": "1",
@@ -386,7 +386,7 @@
       "payload_schema_version": 1
     },
     {
-      "expected_payload_sha256": "bc7c06082fcf88c67e16ddf7488a22b67301a22ff4f0cc0c533ffabfd4bc712e",
+      "expected_payload_sha256": "710340b14e3e3e16fb85e59da3bb01bc9266b823d16dcd76021f917c3fa1ac4e",
       "fixture_id": "p15-decision-schedule-v1",
       "generator_id": "optionslab-bundle-schedule-fixture-builder",
       "generator_version": "1",
@@ -394,7 +394,7 @@
       "payload_schema_version": 1
     },
     {
-      "expected_payload_sha256": "cc11ab9504ffcc2fbc50a745767fae8fef7acd87e0a9f08f145d517e90e75460",
+      "expected_payload_sha256": "1e3fe5a51b97a466330abf4c047d0c74f01d15d8b42f096fa8804a42a1b0b9df",
       "fixture_id": "p15-decision-bundle-v1",
       "generator_id": "optionslab-bundle-fixture-builder",
       "generator_version": "1",
