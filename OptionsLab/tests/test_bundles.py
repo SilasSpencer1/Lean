@@ -349,3 +349,4 @@ def test_direct_model_and_tuning_membership_refs_resolve_actual_rows():
     assert result.value.model_membership.role == "model"
     assert result.value.tuning_membership.role == "tuning"
     assert result.value.manifest.prediction_contract.calibration_record is None
+    assert result.value.calibration_partition is None

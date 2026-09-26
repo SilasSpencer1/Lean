@@ -1,7 +1,7 @@
 """Admit finite calendar and fit membership content from actual fixture members."""
 
 from dataclasses import dataclass
-from datetime import date, datetime
+from datetime import date, datetime, timedelta, timezone
 from decimal import Decimal
 import hashlib
 
@@ -14,6 +14,7 @@ from .bundle_inputs import ParsedModelData, ModelDataRow, _identifier, _make, _s
 from .bundle_manifest_inputs import ExternalReference, _list, _one, _reference, _timestamp
 from .config import _snapshot_hash
 from .features import _session_snapshot
+from .greeks import GreekMethodSpec
 from .session_inputs import SessionInputRejection, normalize_exchange_session
 from .sessions import ExchangeSession, _hours_reasons
 
@@ -247,11 +248,45 @@ def _receipt(member, fixture):
         received_at=_timestamp(env["simulated_received_at"], "envelope.simulated_received_at"))
 
 
+def _retained_fixture_shape(old):
+    """Preflight every retained fixture leaf before hashing, indexing or equality."""
+    try:
+        if type(old) is not VerifiedFixtureManifest:
+            return False
+        method = old.greek_method
+        return (all(type(getattr(old, name)) is str for name in ("fixture_id", "payload_sha256",
+                "generator_id", "generator_version", "generator_source_ref", "event_id", "raw_ref",
+                "origin", "permitted_use"))
+            and all(type(getattr(old, name)) is bytes for name in ("payload_bytes", "modeled_source_profiles_bytes"))
+            and all(type(getattr(old, name)) is int for name in ("schema_version", "normalization_version",
+                "fidelity_tier"))
+            and all(type(getattr(old, name)) is bool for name in ("operational_allowed", "economic_allowed"))
+            and type(old.assembled_at) is datetime and type(old.received_at) is datetime
+            and type(old.assembled_at.tzinfo) is timezone and type(old.received_at.tzinfo) is timezone
+            and type(old.members) is tuple
+            and all(type(member) is VerifiedFixtureMember
+                and all(type(getattr(member, name)) is str for name in ("record_id", "kind", "profile_id", "raw_hash"))
+                and type(member.raw_body_bytes) is bytes and type(member.envelope_bytes) is bytes
+                for member in old.members)
+            and type(old.coherence_protocol_ids) is tuple
+            and all(type(item) is str for item in old.coherence_protocol_ids)
+            and type(old.tick_definition_ids) is tuple
+            and all(type(item) is str for item in old.tick_definition_ids)
+            and type(method) is GreekMethodSpec
+            and all(type(getattr(method, name)) is str for name in ("method_id", "method_version",
+                "assumptions_id", "delta_unit", "iv_unit", "rate_unit", "dividend_unit",
+                "option_price_basis", "underlying_price_basis", "method_spec_hash"))
+            and type(method.max_age) is timedelta)
+    except (AttributeError, TypeError, ValueError):
+        return False
+
+
 def _roots(fixture, explicit):
     """Bound distinct actual bytes and re-admit all supplied roots once."""
     _check(len(explicit) <= 64, "upstream_fixtures", "resource_limit")
     ids, shas, total = {}, {}, 0
     for index, old in enumerate((fixture, *explicit)):
+        _check(_retained_fixture_shape(old), "fixtures", "retained_content_mismatch")
         _check(type(old.payload_bytes) is bytes and type(old.payload_sha256) is str,
                "fixtures", "retained_content_mismatch")
         _check(hashlib.sha256(old.payload_bytes).hexdigest() == old.payload_sha256,

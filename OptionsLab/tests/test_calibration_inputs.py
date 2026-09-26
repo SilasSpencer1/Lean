@@ -191,6 +191,27 @@ def test_corrupted_retained_envelope_still_returns_safe_rejection():
     assert result.rejection.member is None
 
 
+def test_hostile_retained_member_tuple_rejects_without_equality():
+    source, fixture = admitted("p14c-fit-sources-v1"), admitted("p14c-fit-membership-v1")
+    body = next(m for m in fixture.members if m.record_id == "model").decode_raw_body()
+    class Hostile:
+        def __eq__(self, other):
+            raise AssertionError("hostile member equality ran")
+
+    changed = copy(fixture)
+    object.__setattr__(changed, "members", (Hostile(),))
+    result = api().normalize_fit_membership(body, fixture=changed, record_id="model",
+        model=model(), upstream_fixtures=(source,))
+    assert result.value is None and result.rejection.code == "retained_content_mismatch"
+    assert result.rejection.member is None
+    changed = copy(fixture)
+    object.__setattr__(changed, "fixture_id", [])
+    result = api().normalize_fit_membership(body, fixture=changed, record_id="model",
+        model=model(), upstream_fixtures=(source,))
+    assert result.value is None and result.rejection.code == "retained_content_mismatch"
+    assert result.rejection.member is None
+
+
 def test_large_exact_body_rejects_before_canonical_serialization():
     """Finite references can collectively exceed the separate 8 MiB body cap."""
     source, fixture = admitted("p14c-fit-sources-v1"), admitted("p14c-fit-membership-v1")

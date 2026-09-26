@@ -114,7 +114,7 @@
       "payload_schema_version": 1
     },
     {
-      "expected_payload_sha256": "0adc55458ec7e4981de7e6f3c0bcd7820542a0ce277f0613a781e283ad10660a",
+      "expected_payload_sha256": "79d12fb2d05656da07c1389805b47b8eb4a554f5f69ca259c4b38263af99791f",
       "fixture_id": "p14a-bundle-content-v1",
       "generator_id": "optionslab-bundle-fixture-builder",
       "generator_version": "1",
@@ -154,8 +154,40 @@
       "payload_schema_version": 1
     },
     {
-      "expected_payload_sha256": "3823a1d954b34cfbacaacd34b237d64671e34f9827dd1d63289861258fe00222",
+      "expected_payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+      "fixture_id": "p14c-partition-samples-v1",
+      "generator_id": "optionslab-calibration-inputs-fixture-builder",
+      "generator_version": "1",
+      "normalization_version": 1,
+      "payload_schema_version": 1
+    },
+    {
+      "expected_payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+      "fixture_id": "p14c-partition-memberships-v1",
+      "generator_id": "optionslab-calibration-inputs-fixture-builder",
+      "generator_version": "1",
+      "normalization_version": 1,
+      "payload_schema_version": 1
+    },
+    {
+      "expected_payload_sha256": "96b5de3dddbc37a4e263ebd571ed8e2afee3ede1c5c4bdaee7daf52c5b47cebb",
+      "fixture_id": "p14c-partition-v1",
+      "generator_id": "optionslab-calibration-inputs-fixture-builder",
+      "generator_version": "1",
+      "normalization_version": 1,
+      "payload_schema_version": 1
+    },
+    {
+      "expected_payload_sha256": "a4ea2d62de56ca6576f975891fce8634512328cabd410276caf6c59ce2f8c83c",
       "fixture_id": "p14c-membership-bundle-v1",
+      "generator_id": "optionslab-bundle-fixture-builder",
+      "generator_version": "1",
+      "normalization_version": 1,
+      "payload_schema_version": 1
+    },
+    {
+      "expected_payload_sha256": "0a5d7f1cd5b70158440faf05406eeca4b9ac29e8eb5b3d62a692910f4bbda329",
+      "fixture_id": "p14c-partition-bundle-v1",
       "generator_id": "optionslab-bundle-fixture-builder",
       "generator_version": "1",
       "normalization_version": 1,
