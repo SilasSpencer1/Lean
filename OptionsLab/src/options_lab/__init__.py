@@ -48,6 +48,15 @@ from .bundles import (
     VerifiedBundle,
     verify_bundle,
 )
+from .calibration_inputs import (
+    CalendarDescriptor,
+    CalendarDescriptorValidation,
+    CalibrationInputRejection,
+    FitMembership,
+    FitMembershipValidation,
+    normalize_calendar_descriptor,
+    normalize_fit_membership,
+)
 from .candidates import (
     CandidateAssessment,
     CandidateConsideration,
@@ -226,6 +235,13 @@ from .volume_normalization import (
 )
 
 __all__ = [
+    "CalendarDescriptor",
+    "CalendarDescriptorValidation",
+    "CalibrationInputRejection",
+    "FitMembership",
+    "FitMembershipValidation",
+    "normalize_calendar_descriptor",
+    "normalize_fit_membership",
     "BundleRejection",
     "BundleVerification",
     "VerifiedBundle",

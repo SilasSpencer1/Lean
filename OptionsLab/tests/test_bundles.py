@@ -328,3 +328,24 @@ def test_actual_runtime_recheck_and_fresh_code_mismatch_fail(source, target):
     actual = run_at(source / "src", body=body)
     assert actual == (["runtime_unavailable", "runtime_changed", "runtime_binding.implementation_digest"]
                       if target == "bundles.py" else ["runtime_unavailable", "catalog_unavailable"])
+
+
+def test_direct_model_and_tuning_membership_refs_resolve_actual_rows():
+    """Current bundle content traverses both C roles without calibration claims."""
+    fixture = admitted("p14c-membership-bundle-v1")
+    body = next(m for m in fixture.members if m.record_id == "fixed-membership").decode_raw_body()
+    manifest = normalize_bundle_manifest(body["manifest"], **RECEIPT).value
+    artifact = admitted("p14c-volume-normalization-v1")
+    training = admitted("p14c-volume-training-v1")
+    raw = next(m for m in artifact.members if m.record_id == "good").decode_raw_body()
+    normalization = normalize_feature_normalization(raw, manifest=artifact, record_id="good",
+        training_manifest=training, decision_at=datetime(2026, 4, 30, 1, tzinfo=timezone.utc)).value
+    result = api().verify_bundle(manifest, body["model_utf8"].encode(), fixture=fixture,
+        spec=EXACT_VWAP_SPEC, normalization=normalization, config=StrategyConfig(),
+        runtime=measure_runtime().value, upstream_fixtures=(admitted("p11-feature-vector-v1"),
+            admitted("p14c-fit-membership-v1"), admitted("p14c-fit-sources-v1")))
+    assert result.value is not None, result.rejection
+    assert len(result.value.model_membership.rows) == len(result.value.tuning_membership.rows) == 2
+    assert result.value.model_membership.role == "model"
+    assert result.value.tuning_membership.role == "tuning"
+    assert result.value.manifest.prediction_contract.calibration_record is None

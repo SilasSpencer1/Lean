@@ -11,6 +11,8 @@ from .bar_inputs import _UnsupportedIdentity
 from .bundle_inputs import BundleInputRejection, ParsedModelData, _make, _shape, normalize_model_bytes
 from .bundle_manifest_inputs import ModelBundleManifest, QualifiedProfile, normalize_bundle_manifest
 from .candidates import SELECTION_RULE_ID, _selection_definition_snapshot
+from .calibration_inputs import (CalibrationInputRejection, FitMembership,
+                                 normalize_fit_membership)
 from .config import StrategyConfig, _snapshot_hash, config_hash, config_snapshot, policy_hash
 from .feature_math import NUMERIC_CONVENTION_ID, _numeric_snapshot
 from .feature_vector import FeatureSpec, EXACT_VWAP_SPEC, CLOSE_VOLUME_PROXY_SPEC
@@ -66,6 +68,8 @@ class VerifiedBundle:
     upstream_fixtures: tuple[VerifiedFixtureManifest, ...]
     supplied_upstream_fixtures: tuple[VerifiedFixtureManifest, ...]
     source_profiles: tuple[BundleSourceProfile, ...]
+    model_membership: FitMembership | None
+    tuning_membership: FitMembership | None
     origin: str = field(default="synthetic", init=False)
     fidelity_tier: int = field(default=0, init=False)
     permitted_use: str = field(default="core_fixture", init=False)
@@ -92,7 +96,7 @@ class BundleRejection:
     received_at: datetime
     field: str
     code: str
-    cause: RuntimeRejection | FixtureInputRejection | BundleInputRejection | FeatureNormalizationResult | None
+    cause: RuntimeRejection | FixtureInputRejection | BundleInputRejection | FeatureNormalizationResult | CalibrationInputRejection | None
     stage: str = field(default="bundle_verification", init=False)
 
     def __init__(self) -> None:
@@ -214,14 +218,14 @@ def _policy(manifest, config, runtime):
 
 
 def _declared_roots(manifest, roots, normalization):
-    """Resolve declared data roots and reject currently unsupported C/B member owners."""
+    """Resolve declared data roots and reject still unsupported references."""
     used = set()
     for row in manifest.data_manifest_hashes:
         root = next((r for r in roots if r.fixture_id == row.fixture_id), None)
         _check(root is not None, "data_manifest_hashes", "unknown_fixture")
         _check(root.payload_sha256 == row.payload_sha256, "data_manifest_hashes", "payload_mismatch")
-        if normalization is not None and row.role in ("normalization", "training"):
-            owner = normalization.manifest if row.role == "normalization" else normalization.baseline.manifest
+        if normalization is not None and row.role == "normalization":
+            owner = normalization.manifest
             _check((root.fixture_id, root.payload_sha256) == (owner.fixture_id, owner.payload_sha256),
                    "data_manifest_hashes", "role_mismatch")
         used.add(root.fixture_id)
@@ -230,13 +234,60 @@ def _declared_roots(manifest, roots, normalization):
             ("provenance.activation_gap", manifest.provenance.activation_gap)]
     if manifest.prediction_contract is not None:
         refs.extend(("prediction_contract." + name, getattr(manifest.prediction_contract, name))
-                    for name in ("calibration_record", "model_membership", "tuning_membership", "calibration_partition"))
+                    for name in ("calibration_record", "calibration_partition"))
     if manifest.provenance.simulated_schedule is not None:
         refs.extend(("provenance.simulated_schedule." + name, getattr(manifest.provenance.simulated_schedule, name))
                     for name in ("evaluation_block", "activation_gap"))
     for path, ref in refs:
         _check(ref is None, path, "unsupported_reference")
     return used
+
+
+def _memberships(manifest, model, roots):
+    """Traverse direct C references once and bind only their actual sample roots."""
+    prediction = manifest.prediction_contract
+    claims = () if prediction is None else (("model", prediction.model_membership, "model_membership"),
+                                               ("tuning", prediction.tuning_membership, "tuning_membership"))
+    selected, bodies, traversed = {}, [], set()
+    for role, ref, kind in claims:
+        if ref is None:
+            continue
+        root = next((r for r in roots if r.fixture_id == ref.fixture_id), None)
+        _check(root is not None, "prediction_contract." + role + "_membership", "unknown_fixture")
+        _check(root.payload_sha256 == ref.payload_sha256, "prediction_contract." + role + "_membership", "payload_mismatch")
+        member = _member(root, ref.record_id, kind, ref.raw_hash)
+        body = member.decode_raw_body()
+        bodies.append((role, root, member, body))
+        traversed.add(root.fixture_id)
+    occurrences = sum(len(body["sample_refs"]) for _, _, _, body in bodies
+                      if type(body.get("sample_refs")) is list)
+    _check(occurrences <= 4096, "prediction_contract", "resource_limit")
+    for role, root, member, body in bodies:
+        needed = {row.get("fixture_id") for row in body.get("sample_refs", ())
+                  if type(row) is dict and type(row.get("fixture_id")) is str} if type(body.get("sample_refs")) is list else set()
+        sources = tuple(r for r in roots if r.fixture_id in needed and r.fixture_id != root.fixture_id)
+        result = normalize_fit_membership(body, fixture=root, record_id=member.record_id,
+                                          model=model, upstream_fixtures=sources)
+        _check(result.value is not None, "prediction_contract." + role + "_membership",
+               "normalization_failed", result.rejection)
+        selected[role] = result.value
+        traversed.update(r.fixture_id for r in result.value.upstream_fixtures)
+    return selected.get("model"), selected.get("tuning"), traversed
+
+
+def _roles(manifest, normalization, model_membership, tuning_membership):
+    """Limit each declared role to its actually traversed owner roots."""
+    training = set() if normalization is None else {normalization.baseline.manifest.fixture_id}
+    tuning = set()
+    for owner, allowed in ((model_membership, training), (tuning_membership, tuning)):
+        if owner is not None:
+            allowed.add(owner.fixture.fixture_id)
+            allowed.update(root.fixture_id for root in owner.upstream_fixtures)
+    allowed = dict(training=training, tuning=tuning, normalization=set() if normalization is None else
+                   {normalization.manifest.fixture_id}, calibration=set())
+    for row in manifest.data_manifest_hashes:
+        if row.role != "source":
+            _check(row.fixture_id in allowed[row.role], "data_manifest_hashes", "role_mismatch")
 
 
 def _normalization(old, roots):
@@ -403,6 +454,9 @@ def verify_bundle(manifest: ModelBundleManifest, model_bytes: bytes, *, fixture:
         _check(actual.model_kind == "cash" or normalization is not None, "normalization", "normalization_missing")
         used = _declared_roots(actual, roots, normalization)
         normalization_result, profiles = _features(actual, spec, normalization, roots)
+        model_membership, tuning_membership, traversed = _memberships(actual, parsed.value, roots)
+        _roles(actual, normalization, model_membership, tuning_membership)
+        used.update(traversed)
         if normalization is not None:
             used.update((normalization.manifest.fixture_id, normalization.baseline.manifest.fixture_id))
         _check(all(r.fixture_id in used for r in upstream_fixtures), "upstream_fixtures", "unused_reference")
@@ -412,6 +466,7 @@ def verify_bundle(manifest: ModelBundleManifest, model_bytes: bytes, *, fixture:
             original_fixture=fixture, fixture=fresh, member=member, supplied_runtime=runtime, runtime=checked.value,
             config=config, spec=spec, supplied_normalization=normalization, normalization_result=normalization_result,
             upstream_fixtures=roots, supplied_upstream_fixtures=upstream_fixtures, source_profiles=profiles,
+            model_membership=model_membership, tuning_membership=tuning_membership,
             origin=fresh.origin, fidelity_tier=fresh.fidelity_tier, permitted_use=fresh.permitted_use,
             operational_allowed=fresh.operational_allowed, economic_allowed=fresh.economic_allowed)
     except _BundleFailure as failure:
