@@ -18,6 +18,7 @@ from .calibration import (CalibrationMetadata, CalibrationPartition, _normalizat
                           normalize_calibration_metadata, normalize_calibration_partition)
 from .bundle_schedule import (ActivationGap, EvaluationBlock,
                               normalize_activation_gap, normalize_evaluation_block)
+from .bundle_validation import BundleAssemblyValidation, normalize_bundle_validation
 from .config import StrategyConfig, _snapshot_hash, config_hash, config_snapshot, policy_hash
 from .feature_math import NUMERIC_CONVENTION_ID, _numeric_snapshot
 from .feature_vector import FeatureSpec, EXACT_VWAP_SPEC, CLOSE_VOLUME_PROXY_SPEC
@@ -79,6 +80,7 @@ class VerifiedBundle:
     calibration_metadata: CalibrationMetadata | None
     activation_gap: ActivationGap | None
     evaluation_block: EvaluationBlock | None
+    validation_report: BundleAssemblyValidation | None
     origin: str = field(default="synthetic", init=False)
     fidelity_tier: int = field(default=0, init=False)
     permitted_use: str = field(default="core_fixture", init=False)
@@ -194,7 +196,7 @@ def _member(manifest, record_id, kind, raw_hash=None):
     _check(member is not None, "member", "unknown_member")
     _check(member.kind == kind, "member", "kind_mismatch")
     if kind in ("calibration_record", "calibration_partition", "model_membership",
-                "tuning_membership", "calendar_descriptor", "fit_sample", "activation_gap", "evaluation_block"):
+                "tuning_membership", "calendar_descriptor", "fit_sample", "activation_gap", "evaluation_block", "bundle_validation"):
         _check(len(member.raw_body_bytes) <= _MAX_BODY, "member", "resource_limit")
     _check(hashlib.sha256(member.raw_body_bytes).hexdigest() == member.raw_hash,
            "member", "raw_hash_mismatch")
@@ -233,7 +235,7 @@ def _policy(manifest, config, runtime):
 
 
 def _declared_roots(manifest, roots, normalization):
-    """Resolve declared data roots and reject still unsupported validation reports."""
+    """Resolve declared data roots against actual admitted sources."""
     used = set()
     for row in manifest.data_manifest_hashes:
         root = next((r for r in roots if r.fixture_id == row.fixture_id), None)
@@ -244,8 +246,37 @@ def _declared_roots(manifest, roots, normalization):
             _check((root.fixture_id, root.payload_sha256) == (owner.fixture_id, owner.payload_sha256),
                    "data_manifest_hashes", "role_mismatch")
         used.add(root.fixture_id)
-    _check(manifest.validation_report is None, "validation_report", "unsupported_reference")
     return used
+
+
+def _report(manifest, roots, model, spec, normalization, partition, metadata, config, runtime):
+    """Recheck one actual report and retain its complete traversed source graph."""
+    ref = manifest.validation_report
+    if ref is None:
+        return None, set()
+    owner = next((root for root in roots if root.fixture_id == ref.fixture_id), None)
+    _check(owner is not None, "validation_report", "unknown_fixture")
+    _check(owner.payload_sha256 == ref.payload_sha256, "validation_report", "payload_mismatch")
+    _check(any(row.fixture_id == ref.fixture_id and row.payload_sha256 == ref.payload_sha256
+               and row.role == "source" for row in manifest.data_manifest_hashes),
+           "validation_report", "undeclared_reference")
+    member = _member(owner, ref.record_id, "bundle_validation", ref.raw_hash)
+    needed = set()
+    if normalization is not None:
+        needed.update((normalization.manifest.fixture_id, normalization.baseline.manifest.fixture_id))
+    if metadata is not None:
+        needed.add(metadata.fixture.fixture_id)
+        needed.update(root.fixture_id for root in metadata.upstream_fixtures)
+    supplied = tuple(root for root in roots if root.fixture_id in needed and root.fixture_id != owner.fixture_id)
+    result = normalize_bundle_validation(member.decode_raw_body(), fixture=owner,
+        record_id=member.record_id, model=model, spec=spec, normalization=normalization,
+        partition=partition, metadata=metadata, config=config, runtime=runtime,
+        upstream_fixtures=supplied)
+    _check(result.value is not None, "validation_report", "normalization_failed", result.rejection)
+    value = result.value
+    _check(value.performed_at <= owner.assembled_at <= manifest.provenance.built_at,
+           "validation_report.performed_at", "performed_after_build")
+    return value, {owner.fixture_id, *(root.fixture_id for root in value.upstream_fixtures)}
 
 
 def _schedule_calendar(ref, roots, kind):
@@ -647,8 +678,11 @@ def verify_bundle(manifest: ModelBundleManifest, model_bytes: bytes, *, fixture:
         _roles(actual, normalization, model_membership, tuning_membership, partition, metadata)
         gap, block, schedule_roots = _schedule(actual, roots, parsed.value, spec, normalization,
                                                 partition, metadata)
+        report, report_roots = _report(actual, roots, parsed.value, spec, normalization,
+                                      partition, metadata, config, checked.value)
         used.update(traversed)
         used.update(schedule_roots)
+        used.update(report_roots)
         if partition is not None:
             used.update(root.fixture_id for root in partition.upstream_fixtures)
         if normalization is not None:
@@ -662,7 +696,7 @@ def verify_bundle(manifest: ModelBundleManifest, model_bytes: bytes, *, fixture:
             upstream_fixtures=roots, supplied_upstream_fixtures=upstream_fixtures, source_profiles=profiles,
             model_membership=model_membership, tuning_membership=tuning_membership,
             calibration_partition=partition, calibration_metadata=metadata,
-            activation_gap=gap, evaluation_block=block,
+            activation_gap=gap, evaluation_block=block, validation_report=report,
             origin=fresh.origin, fidelity_tier=fresh.fidelity_tier, permitted_use=fresh.permitted_use,
             operational_allowed=fresh.operational_allowed, economic_allowed=fresh.economic_allowed)
     except _BundleFailure as failure:

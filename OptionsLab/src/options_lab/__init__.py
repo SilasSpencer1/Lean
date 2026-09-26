@@ -75,6 +75,12 @@ from .bundle_schedule import (
     normalize_activation_gap,
     normalize_evaluation_block,
 )
+from .bundle_validation import (
+    BUNDLE_ASSEMBLY_METHOD_ID,
+    BundleAssemblyValidation,
+    BundleAssemblyValidationResult,
+    normalize_bundle_validation,
+)
 from .candidates import (
     CandidateAssessment,
     CandidateConsideration,
@@ -261,6 +267,10 @@ __all__ = [
     "EvaluationBlockValidation",
     "normalize_activation_gap",
     "normalize_evaluation_block",
+    "BUNDLE_ASSEMBLY_METHOD_ID",
+    "BundleAssemblyValidation",
+    "BundleAssemblyValidationResult",
+    "normalize_bundle_validation",
     "CalibrationMetadata",
     "CalibrationMetadataValidation",
     "normalize_calibration_metadata",
