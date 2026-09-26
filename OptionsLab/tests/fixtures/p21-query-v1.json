@@ -1,0 +1,1352 @@
+{
+  "assembled_at": "2026-09-26T17:52:28.494393+00:00",
+  "definitions": {
+    "coherence_protocol_ids": [
+      "fixture-joint-book-snapshot-v1",
+      "fixture-side-validity-overlap-v1"
+    ],
+    "greek_method": {
+      "assumptions_id": "fixture-flat-rates-v1",
+      "method_id": "fixture-greek-values",
+      "method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+      "method_version": "1"
+    },
+    "tick_definition_ids": [
+      "fixture-usd-premium-tick-v1"
+    ]
+  },
+  "fixture_id": "p21-query-v1",
+  "generator_id": "optionslab-query-fixture-builder",
+  "generator_source_ref": "OptionsLab/tests/build_query_fixture.py",
+  "generator_version": "1",
+  "members": [
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-account-flat",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/account-flat",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "alpaca-account",
+      "raw_body": {
+        "account_id": "acct-1",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T14:05:00Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T14:05:02Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "connected",
+        "currency": "USD",
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [],
+        "holdings_completeness": "complete",
+        "ledger_revision": "account-flat",
+        "open_orders": [],
+        "orders_completeness": "complete",
+        "provider_record_id": "account-flat",
+        "reconciled_at": "2026-09-04T14:05:00Z",
+        "reconciled_ledger_revision": "account-flat",
+        "reconciliation_id": "account-flat",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "0",
+        "session_start_equity": "100000",
+        "source": "alpaca",
+        "virtual_cash": "100000",
+        "virtual_equity": "100000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "100000"
+      },
+      "raw_hash": "919b8b63fdb2974dace0e43ab504785a4ac9a6a5d64076d4deffb4c7ee80550d",
+      "record_id": "account-flat"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-fresh-flat",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/fresh-flat",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-query-atomic-v1",
+        "supersedes_record_id": null
+      },
+      "kind": "broker_query",
+      "profile_id": "alpaca-query-atomic-v1",
+      "raw_body": {
+        "account_id": "acct-1",
+        "account_record_id": "account-flat",
+        "available_at": "2026-09-04T14:05:02Z",
+        "captured_at": "2026-09-04T14:05:00Z",
+        "completed": true,
+        "holdings_coverage": "complete",
+        "included_order_record_ids": [],
+        "issued_actions": [],
+        "order_ref_aliases": [],
+        "orders_coverage": "complete",
+        "request_id": "request-fresh-flat",
+        "requested_at": "2026-09-04T14:05:00Z",
+        "responded_at": "2026-09-04T14:05:01Z",
+        "response_id": "response-fresh-flat",
+        "schema_version": 1,
+        "source": "alpaca"
+      },
+      "raw_hash": "c0201985a070eed72eb08dd6b917a5b4ab40097bb21395c1f6a7ec68ed4176b7",
+      "record_id": "fresh-flat"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-account-partial",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/account-partial",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "alpaca-account",
+      "raw_body": {
+        "account_id": "acct-1",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T14:05:00Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T14:05:02Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "connected",
+        "currency": "USD",
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [],
+        "holdings_completeness": "incomplete",
+        "ledger_revision": "account-partial",
+        "open_orders": [],
+        "orders_completeness": "complete",
+        "provider_record_id": "account-partial",
+        "reconciled_at": "2026-09-04T14:05:00Z",
+        "reconciled_ledger_revision": "account-partial",
+        "reconciliation_id": "account-partial",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "0",
+        "session_start_equity": "100000",
+        "source": "alpaca",
+        "virtual_cash": "100000",
+        "virtual_equity": "100000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "100000"
+      },
+      "raw_hash": "a0fdb5e1d73d4262c714d8ff2d7aa6b4dd748cafc4a0eb968f706aeaecf5f37d",
+      "record_id": "account-partial"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-partial-holdings",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/partial-holdings",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-query-atomic-v1",
+        "supersedes_record_id": null
+      },
+      "kind": "broker_query",
+      "profile_id": "alpaca-query-atomic-v1",
+      "raw_body": {
+        "account_id": "acct-1",
+        "account_record_id": "account-partial",
+        "available_at": "2026-09-04T14:05:02Z",
+        "captured_at": "2026-09-04T14:05:00Z",
+        "completed": true,
+        "holdings_coverage": "partial",
+        "included_order_record_ids": [],
+        "issued_actions": [],
+        "order_ref_aliases": [],
+        "orders_coverage": "complete",
+        "request_id": "request-partial-holdings",
+        "requested_at": "2026-09-04T14:05:00Z",
+        "responded_at": "2026-09-04T14:05:01Z",
+        "response_id": "response-partial-holdings",
+        "schema_version": 1,
+        "source": "alpaca"
+      },
+      "raw_hash": "e4f13533d37c0d0eb5cd52830768f08b1e92ee288e77663cc3ed14bbde24769c",
+      "record_id": "partial-holdings"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-missing-account",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/missing-account",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-query-atomic-v1",
+        "supersedes_record_id": null
+      },
+      "kind": "broker_query",
+      "profile_id": "alpaca-query-atomic-v1",
+      "raw_body": {
+        "account_id": "acct-1",
+        "account_record_id": "absent",
+        "available_at": "2026-09-04T14:05:02Z",
+        "captured_at": "2026-09-04T14:05:00Z",
+        "completed": true,
+        "holdings_coverage": "complete",
+        "included_order_record_ids": [],
+        "issued_actions": [],
+        "order_ref_aliases": [],
+        "orders_coverage": "complete",
+        "request_id": "request-missing-account",
+        "requested_at": "2026-09-04T14:05:00Z",
+        "responded_at": "2026-09-04T14:05:01Z",
+        "response_id": "response-missing-account",
+        "schema_version": 1,
+        "source": "alpaca"
+      },
+      "raw_hash": "7ae73efa4fc1449bb134860a226550cffb435460f31d3346efbc6865f463da2c",
+      "record_id": "missing-account"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-wrong-account",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/wrong-account",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-query-atomic-v1",
+        "supersedes_record_id": null
+      },
+      "kind": "broker_query",
+      "profile_id": "alpaca-query-atomic-v1",
+      "raw_body": {
+        "account_id": "other",
+        "account_record_id": "account-flat",
+        "available_at": "2026-09-04T14:05:02Z",
+        "captured_at": "2026-09-04T14:05:00Z",
+        "completed": true,
+        "holdings_coverage": "complete",
+        "included_order_record_ids": [],
+        "issued_actions": [],
+        "order_ref_aliases": [],
+        "orders_coverage": "complete",
+        "request_id": "request-wrong-account",
+        "requested_at": "2026-09-04T14:05:00Z",
+        "responded_at": "2026-09-04T14:05:01Z",
+        "response_id": "response-wrong-account",
+        "schema_version": 1,
+        "source": "alpaca"
+      },
+      "raw_hash": "a8e4608ceabeb20d2bc272af084b9f95eab3e1afacb998dad4155e5b656c3467",
+      "record_id": "wrong-account"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-noncompleted",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/noncompleted",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-query-atomic-v1",
+        "supersedes_record_id": null
+      },
+      "kind": "broker_query",
+      "profile_id": "alpaca-query-atomic-v1",
+      "raw_body": {
+        "account_id": "acct-1",
+        "account_record_id": "account-flat",
+        "available_at": "2026-09-04T14:05:02Z",
+        "captured_at": "2026-09-04T14:05:00Z",
+        "completed": false,
+        "holdings_coverage": "complete",
+        "included_order_record_ids": [],
+        "issued_actions": [],
+        "order_ref_aliases": [],
+        "orders_coverage": "complete",
+        "request_id": "request-noncompleted",
+        "requested_at": "2026-09-04T14:05:00Z",
+        "responded_at": "2026-09-04T14:05:01Z",
+        "response_id": "response-noncompleted",
+        "schema_version": 1,
+        "source": "alpaca"
+      },
+      "raw_hash": "05fa4ad3f63ccd92b2e7e3ccd27f6d7dae63100be687604437347c8969a656a5",
+      "record_id": "noncompleted"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-unresolved-send",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/unresolved-send",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-query-atomic-v1",
+        "supersedes_record_id": null
+      },
+      "kind": "broker_query",
+      "profile_id": "alpaca-query-atomic-v1",
+      "raw_body": {
+        "account_id": "acct-1",
+        "account_record_id": "account-flat",
+        "available_at": "2026-09-04T14:05:02Z",
+        "captured_at": "2026-09-04T14:05:00Z",
+        "completed": true,
+        "holdings_coverage": "complete",
+        "included_order_record_ids": [],
+        "issued_actions": [
+          {
+            "action_id": "send-1",
+            "broker_order_id": null,
+            "client_order_id": "client-1",
+            "issued_at": "2026-09-04T14:05:00Z",
+            "kind": "submit",
+            "resolution": "unresolved"
+          }
+        ],
+        "order_ref_aliases": [],
+        "orders_coverage": "complete",
+        "request_id": "request-unresolved-send",
+        "requested_at": "2026-09-04T14:05:00Z",
+        "responded_at": "2026-09-04T14:05:01Z",
+        "response_id": "response-unresolved-send",
+        "schema_version": 1,
+        "source": "alpaca"
+      },
+      "raw_hash": "0dc8fff43b918461dab556b1ffa52c35c50af4aa8ae410e23042131a4aa56121",
+      "record_id": "unresolved-send"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-malformed-clock",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/malformed-clock",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-query-atomic-v1",
+        "supersedes_record_id": null
+      },
+      "kind": "broker_query",
+      "profile_id": "alpaca-query-atomic-v1",
+      "raw_body": {
+        "account_id": "acct-1",
+        "account_record_id": "account-flat",
+        "available_at": "2026-09-04T14:05:02Z",
+        "captured_at": "2026-09-04T14:05:00Z",
+        "completed": true,
+        "holdings_coverage": "complete",
+        "included_order_record_ids": [],
+        "issued_actions": [],
+        "order_ref_aliases": [],
+        "orders_coverage": "complete",
+        "request_id": "request-malformed-clock",
+        "requested_at": "2026-09-04T14:05:01Z",
+        "responded_at": "2026-09-04T14:05:01Z",
+        "response_id": "response-malformed-clock",
+        "schema_version": 1,
+        "source": "alpaca"
+      },
+      "raw_hash": "07671a2cad187fa31d437b173a1a19abae66651646e1204fef0967cf8c01414a",
+      "record_id": "malformed-clock"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-account-entry",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/account-entry",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "alpaca-account",
+      "raw_body": {
+        "account_id": "acct-1",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T14:05:00Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T14:05:02Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "connected",
+        "currency": "USD",
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [],
+        "holdings_completeness": "complete",
+        "ledger_revision": "account-entry",
+        "open_orders": [
+          {
+            "client_order_id": "client-1",
+            "contract": {
+              "deliverable_id": "SPY-100",
+              "expiry": "2026-09-04",
+              "multiplier": 100,
+              "right": "call",
+              "strike": "500",
+              "underlying": "SPY"
+            },
+            "cumulative_filled_quantity": "1",
+            "execution_uncertain": false,
+            "instrument_ref": "SPY-option",
+            "order_ref": "order-1",
+            "provider_record_id": "order-1",
+            "raw_ref": "synthetic://p21/order-1",
+            "remaining_quantity": "0",
+            "reserved_cash": "0",
+            "role": "entry",
+            "side": "buy",
+            "source": "alpaca",
+            "status": "terminal"
+          }
+        ],
+        "orders_completeness": "complete",
+        "provider_record_id": "account-entry",
+        "reconciled_at": "2026-09-04T14:05:00Z",
+        "reconciled_ledger_revision": "account-entry",
+        "reconciliation_id": "account-entry",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "0",
+        "session_start_equity": "100000",
+        "source": "alpaca",
+        "virtual_cash": "100000",
+        "virtual_equity": "100000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "100000"
+      },
+      "raw_hash": "480f0718afea0101b3d50b0898027e14ebbfd4586469f36e9549743561027fe3",
+      "record_id": "account-entry"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-entry-fill",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/entry-fill",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:04:59Z",
+        "stream_id": "alpaca-orders",
+        "supersedes_record_id": null
+      },
+      "kind": "order_update",
+      "profile_id": "alpaca-orders",
+      "raw_body": {
+        "account_id": "acct-1",
+        "available_at": "2026-09-04T14:04:59Z",
+        "broker_order_id": "broker-1",
+        "client_order_id": "client-1",
+        "contract": {
+          "deliverable_id": "SPY-100",
+          "expiry": "2026-09-04",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "500",
+          "underlying": "SPY"
+        },
+        "cumulative_fees_usd": null,
+        "cumulative_fill_notional_usd": "510",
+        "decision_id": "decision-1",
+        "event_at": "2026-09-04T14:04:59Z",
+        "pending": false,
+        "provider_event_id": "fill-1",
+        "provider_sequence": 1,
+        "quantity_basis": "cumulative",
+        "raw_filled_quantity": "1",
+        "replaced_by_broker_order_id": null,
+        "replaced_by_client_order_id": null,
+        "replaces_broker_order_id": null,
+        "replaces_client_order_id": null,
+        "role": "buy_entry",
+        "schema_version": 1,
+        "source": "alpaca",
+        "status": "filled",
+        "terminal": true
+      },
+      "raw_hash": "0fdfc17706abbca4883f2cef9a7572dc8394e7d83a6a560bf30425ad7ded3d66",
+      "record_id": "entry-fill"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-included-entry",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/included-entry",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-query-atomic-v1",
+        "supersedes_record_id": null
+      },
+      "kind": "broker_query",
+      "profile_id": "alpaca-query-atomic-v1",
+      "raw_body": {
+        "account_id": "acct-1",
+        "account_record_id": "account-entry",
+        "available_at": "2026-09-04T14:05:02Z",
+        "captured_at": "2026-09-04T14:05:00Z",
+        "completed": true,
+        "holdings_coverage": "complete",
+        "included_order_record_ids": [
+          "entry-fill"
+        ],
+        "issued_actions": [],
+        "order_ref_aliases": [
+          {
+            "alias_id": "broker-1",
+            "alias_kind": "broker",
+            "client_order_id": "client-1",
+            "order_ref": "order-1"
+          }
+        ],
+        "orders_coverage": "complete",
+        "request_id": "request-included-entry",
+        "requested_at": "2026-09-04T14:05:00Z",
+        "responded_at": "2026-09-04T14:05:01Z",
+        "response_id": "response-included-entry",
+        "schema_version": 1,
+        "source": "alpaca"
+      },
+      "raw_hash": "0da2864b8956d9b329c1def8f0868b7304811277235b192108ba8e7b5c8fa56c",
+      "record_id": "included-entry"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-later-fill",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/later-fill",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:01Z",
+        "stream_id": "alpaca-orders",
+        "supersedes_record_id": null
+      },
+      "kind": "order_update",
+      "profile_id": "alpaca-orders",
+      "raw_body": {
+        "account_id": "acct-1",
+        "available_at": "2026-09-04T14:05:01Z",
+        "broker_order_id": "broker-1",
+        "client_order_id": "client-1",
+        "contract": {
+          "deliverable_id": "SPY-100",
+          "expiry": "2026-09-04",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "500",
+          "underlying": "SPY"
+        },
+        "cumulative_fees_usd": null,
+        "cumulative_fill_notional_usd": "510",
+        "decision_id": "decision-1",
+        "event_at": "2026-09-04T14:05:01Z",
+        "pending": false,
+        "provider_event_id": "late-fill",
+        "provider_sequence": 1,
+        "quantity_basis": "cumulative",
+        "raw_filled_quantity": "1",
+        "replaced_by_broker_order_id": null,
+        "replaced_by_client_order_id": null,
+        "replaces_broker_order_id": null,
+        "replaces_client_order_id": null,
+        "role": "buy_entry",
+        "schema_version": 1,
+        "source": "alpaca",
+        "status": "filled",
+        "terminal": true
+      },
+      "raw_hash": "70e4089ced2a1b94c35bffefa13197d59460e0a0a4b1844a273c2927a453cd03",
+      "record_id": "later-fill"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-late-excluded",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/late-excluded",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-query-atomic-v1",
+        "supersedes_record_id": null
+      },
+      "kind": "broker_query",
+      "profile_id": "alpaca-query-atomic-v1",
+      "raw_body": {
+        "account_id": "acct-1",
+        "account_record_id": "account-flat",
+        "available_at": "2026-09-04T14:05:03Z",
+        "captured_at": "2026-09-04T14:05:00Z",
+        "completed": true,
+        "holdings_coverage": "complete",
+        "included_order_record_ids": [],
+        "issued_actions": [],
+        "order_ref_aliases": [],
+        "orders_coverage": "complete",
+        "request_id": "request-late-excluded",
+        "requested_at": "2026-09-04T14:05:00Z",
+        "responded_at": "2026-09-04T14:05:03Z",
+        "response_id": "response-late-excluded",
+        "schema_version": 1,
+        "source": "alpaca"
+      },
+      "raw_hash": "09ad13cbdc76ff7ca8f86cd9656cd1ad183a101cd4d24490ae76b30db40a2de8",
+      "record_id": "late-excluded"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-late-included",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/late-included",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-query-atomic-v1",
+        "supersedes_record_id": null
+      },
+      "kind": "broker_query",
+      "profile_id": "alpaca-query-atomic-v1",
+      "raw_body": {
+        "account_id": "acct-1",
+        "account_record_id": "account-flat",
+        "available_at": "2026-09-04T14:05:03Z",
+        "captured_at": "2026-09-04T14:05:00Z",
+        "completed": true,
+        "holdings_coverage": "complete",
+        "included_order_record_ids": [
+          "later-fill"
+        ],
+        "issued_actions": [],
+        "order_ref_aliases": [],
+        "orders_coverage": "complete",
+        "request_id": "request-late-included",
+        "requested_at": "2026-09-04T14:05:00Z",
+        "responded_at": "2026-09-04T14:05:03Z",
+        "response_id": "response-late-included",
+        "schema_version": 1,
+        "source": "alpaca"
+      },
+      "raw_hash": "4a2b4f86630d2e38b6f64b84c5c07dedec1800997bf2835d238875e0f099b50d",
+      "record_id": "late-included"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-wrong-kind-ref",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/wrong-kind-ref",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-query-atomic-v1",
+        "supersedes_record_id": null
+      },
+      "kind": "broker_query",
+      "profile_id": "alpaca-query-atomic-v1",
+      "raw_body": {
+        "account_id": "acct-1",
+        "account_record_id": "account-flat",
+        "available_at": "2026-09-04T14:05:02Z",
+        "captured_at": "2026-09-04T14:05:00Z",
+        "completed": true,
+        "holdings_coverage": "complete",
+        "included_order_record_ids": [
+          "account-flat"
+        ],
+        "issued_actions": [],
+        "order_ref_aliases": [],
+        "orders_coverage": "complete",
+        "request_id": "request-wrong-kind-ref",
+        "requested_at": "2026-09-04T14:05:00Z",
+        "responded_at": "2026-09-04T14:05:01Z",
+        "response_id": "response-wrong-kind-ref",
+        "schema_version": 1,
+        "source": "alpaca"
+      },
+      "raw_hash": "4de1fbbed3a37e1d81393a640cc9a16a3f06a36c0a930fefb39c79efdbc11d28",
+      "record_id": "wrong-kind-ref"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-missing-ref",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/missing-ref",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-query-atomic-v1",
+        "supersedes_record_id": null
+      },
+      "kind": "broker_query",
+      "profile_id": "alpaca-query-atomic-v1",
+      "raw_body": {
+        "account_id": "acct-1",
+        "account_record_id": "account-flat",
+        "available_at": "2026-09-04T14:05:02Z",
+        "captured_at": "2026-09-04T14:05:00Z",
+        "completed": true,
+        "holdings_coverage": "complete",
+        "included_order_record_ids": [
+          "absent"
+        ],
+        "issued_actions": [],
+        "order_ref_aliases": [],
+        "orders_coverage": "complete",
+        "request_id": "request-missing-ref",
+        "requested_at": "2026-09-04T14:05:00Z",
+        "responded_at": "2026-09-04T14:05:01Z",
+        "response_id": "response-missing-ref",
+        "schema_version": 1,
+        "source": "alpaca"
+      },
+      "raw_hash": "1427080f8c7997c2937852d2ab42a4c67958a910eef2acb176849f3f66c5643e",
+      "record_id": "missing-ref"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-bad-alias",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/bad-alias",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-query-atomic-v1",
+        "supersedes_record_id": null
+      },
+      "kind": "broker_query",
+      "profile_id": "alpaca-query-atomic-v1",
+      "raw_body": {
+        "account_id": "acct-1",
+        "account_record_id": "account-entry",
+        "available_at": "2026-09-04T14:05:02Z",
+        "captured_at": "2026-09-04T14:05:00Z",
+        "completed": true,
+        "holdings_coverage": "complete",
+        "included_order_record_ids": [
+          "entry-fill"
+        ],
+        "issued_actions": [],
+        "order_ref_aliases": [
+          {
+            "alias_id": "other-broker",
+            "alias_kind": "broker",
+            "client_order_id": "client-1",
+            "order_ref": "order-1"
+          }
+        ],
+        "orders_coverage": "complete",
+        "request_id": "request-bad-alias",
+        "requested_at": "2026-09-04T14:05:00Z",
+        "responded_at": "2026-09-04T14:05:01Z",
+        "response_id": "response-bad-alias",
+        "schema_version": 1,
+        "source": "alpaca"
+      },
+      "raw_hash": "af145ac91fcf3ca83333bd4b5049662121d771b959cde28afe1a9a093d7f6578",
+      "record_id": "bad-alias"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-duplicate-action",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/duplicate-action",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-query-atomic-v1",
+        "supersedes_record_id": null
+      },
+      "kind": "broker_query",
+      "profile_id": "alpaca-query-atomic-v1",
+      "raw_body": {
+        "account_id": "acct-1",
+        "account_record_id": "account-flat",
+        "available_at": "2026-09-04T14:05:02Z",
+        "captured_at": "2026-09-04T14:05:00Z",
+        "completed": true,
+        "holdings_coverage": "complete",
+        "included_order_record_ids": [],
+        "issued_actions": [
+          {
+            "action_id": "send-1",
+            "broker_order_id": null,
+            "client_order_id": "client-1",
+            "issued_at": "2026-09-04T14:05:00Z",
+            "kind": "submit",
+            "resolution": "unresolved"
+          },
+          {
+            "action_id": "send-1",
+            "broker_order_id": null,
+            "client_order_id": "client-1",
+            "issued_at": "2026-09-04T14:05:00Z",
+            "kind": "submit",
+            "resolution": "unresolved"
+          }
+        ],
+        "order_ref_aliases": [],
+        "orders_coverage": "complete",
+        "request_id": "request-duplicate-action",
+        "requested_at": "2026-09-04T14:05:00Z",
+        "responded_at": "2026-09-04T14:05:01Z",
+        "response_id": "response-duplicate-action",
+        "schema_version": 1,
+        "source": "alpaca"
+      },
+      "raw_hash": "109b326485079a9e6d11f4d2bf4a296c56e51ebe40131f0b0331421b144f3a6b",
+      "record_id": "duplicate-action"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-action-after-capture",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/action-after-capture",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-query-atomic-v1",
+        "supersedes_record_id": null
+      },
+      "kind": "broker_query",
+      "profile_id": "alpaca-query-atomic-v1",
+      "raw_body": {
+        "account_id": "acct-1",
+        "account_record_id": "account-flat",
+        "available_at": "2026-09-04T14:05:02Z",
+        "captured_at": "2026-09-04T14:05:00Z",
+        "completed": true,
+        "holdings_coverage": "complete",
+        "included_order_record_ids": [],
+        "issued_actions": [
+          {
+            "action_id": "send-1",
+            "broker_order_id": null,
+            "client_order_id": "client-1",
+            "issued_at": "2026-09-04T14:05:01Z",
+            "kind": "submit",
+            "resolution": "unresolved"
+          }
+        ],
+        "order_ref_aliases": [],
+        "orders_coverage": "complete",
+        "request_id": "request-action-after-capture",
+        "requested_at": "2026-09-04T14:05:00Z",
+        "responded_at": "2026-09-04T14:05:01Z",
+        "response_id": "response-action-after-capture",
+        "schema_version": 1,
+        "source": "alpaca"
+      },
+      "raw_hash": "d458bf042779104a236f753d3fe513addfebe9cbc2b3544c2303a5fbccfd93eb",
+      "record_id": "action-after-capture"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-duplicate-include",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/duplicate-include",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-query-atomic-v1",
+        "supersedes_record_id": null
+      },
+      "kind": "broker_query",
+      "profile_id": "alpaca-query-atomic-v1",
+      "raw_body": {
+        "account_id": "acct-1",
+        "account_record_id": "account-entry",
+        "available_at": "2026-09-04T14:05:02Z",
+        "captured_at": "2026-09-04T14:05:00Z",
+        "completed": true,
+        "holdings_coverage": "complete",
+        "included_order_record_ids": [
+          "entry-fill",
+          "entry-fill"
+        ],
+        "issued_actions": [],
+        "order_ref_aliases": [],
+        "orders_coverage": "complete",
+        "request_id": "request-duplicate-include",
+        "requested_at": "2026-09-04T14:05:00Z",
+        "responded_at": "2026-09-04T14:05:01Z",
+        "response_id": "response-duplicate-include",
+        "schema_version": 1,
+        "source": "alpaca"
+      },
+      "raw_hash": "309ed520164e6badfe4aa4061a9dae119e7fbc3b53975ff1360b0a04d490b508",
+      "record_id": "duplicate-include"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-duplicate-alias",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/duplicate-alias",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-query-atomic-v1",
+        "supersedes_record_id": null
+      },
+      "kind": "broker_query",
+      "profile_id": "alpaca-query-atomic-v1",
+      "raw_body": {
+        "account_id": "acct-1",
+        "account_record_id": "account-entry",
+        "available_at": "2026-09-04T14:05:02Z",
+        "captured_at": "2026-09-04T14:05:00Z",
+        "completed": true,
+        "holdings_coverage": "complete",
+        "included_order_record_ids": [
+          "entry-fill"
+        ],
+        "issued_actions": [],
+        "order_ref_aliases": [
+          {
+            "alias_id": "broker-1",
+            "alias_kind": "broker",
+            "client_order_id": "client-1",
+            "order_ref": "order-1"
+          },
+          {
+            "alias_id": "broker-1",
+            "alias_kind": "broker",
+            "client_order_id": "client-1",
+            "order_ref": "order-1"
+          }
+        ],
+        "orders_coverage": "complete",
+        "request_id": "request-duplicate-alias",
+        "requested_at": "2026-09-04T14:05:00Z",
+        "responded_at": "2026-09-04T14:05:01Z",
+        "response_id": "response-duplicate-alias",
+        "schema_version": 1,
+        "source": "alpaca"
+      },
+      "raw_hash": "3d32ee36330a493cd593cb41fac1c554f60137a972c8beaa2e571e300ec96a23",
+      "record_id": "duplicate-alias"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-account-wrong-contract",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/account-wrong-contract",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "alpaca-account",
+      "raw_body": {
+        "account_id": "acct-1",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T14:05:00Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T14:05:02Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "connected",
+        "currency": "USD",
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [],
+        "holdings_completeness": "complete",
+        "ledger_revision": "account-wrong-contract",
+        "open_orders": [
+          {
+            "client_order_id": "client-1",
+            "contract": {
+              "deliverable_id": "SPY-100",
+              "expiry": "2026-09-04",
+              "multiplier": 100,
+              "right": "call",
+              "strike": "501",
+              "underlying": "SPY"
+            },
+            "cumulative_filled_quantity": "1",
+            "execution_uncertain": false,
+            "instrument_ref": "SPY-option",
+            "order_ref": "order-1",
+            "provider_record_id": "order-1",
+            "raw_ref": "synthetic://p21/order-1",
+            "remaining_quantity": "0",
+            "reserved_cash": "0",
+            "role": "entry",
+            "side": "buy",
+            "source": "alpaca",
+            "status": "terminal"
+          }
+        ],
+        "orders_completeness": "complete",
+        "provider_record_id": "account-wrong-contract",
+        "reconciled_at": "2026-09-04T14:05:00Z",
+        "reconciled_ledger_revision": "account-wrong-contract",
+        "reconciliation_id": "account-wrong-contract",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "0",
+        "session_start_equity": "100000",
+        "source": "alpaca",
+        "virtual_cash": "100000",
+        "virtual_equity": "100000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "100000"
+      },
+      "raw_hash": "bcf6d57c20779df091ac220e20009b039f1fe5f7467f66f902eb4665494e5bcf",
+      "record_id": "account-wrong-contract"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-bad-account-contract",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/bad-account-contract",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-query-atomic-v1",
+        "supersedes_record_id": null
+      },
+      "kind": "broker_query",
+      "profile_id": "alpaca-query-atomic-v1",
+      "raw_body": {
+        "account_id": "acct-1",
+        "account_record_id": "account-wrong-contract",
+        "available_at": "2026-09-04T14:05:02Z",
+        "captured_at": "2026-09-04T14:05:00Z",
+        "completed": true,
+        "holdings_coverage": "complete",
+        "included_order_record_ids": [
+          "entry-fill"
+        ],
+        "issued_actions": [],
+        "order_ref_aliases": [
+          {
+            "alias_id": "broker-1",
+            "alias_kind": "broker",
+            "client_order_id": "client-1",
+            "order_ref": "order-1"
+          }
+        ],
+        "orders_coverage": "complete",
+        "request_id": "request-bad-account-contract",
+        "requested_at": "2026-09-04T14:05:00Z",
+        "responded_at": "2026-09-04T14:05:01Z",
+        "response_id": "response-bad-account-contract",
+        "schema_version": 1,
+        "source": "alpaca"
+      },
+      "raw_hash": "d5a803c7cf0cf6f4f159e13968ac07eb5deaed9db52d419314d377912a7201e2",
+      "record_id": "bad-account-contract"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-missing-field",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/missing-field",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-query-atomic-v1",
+        "supersedes_record_id": null
+      },
+      "kind": "broker_query",
+      "profile_id": "alpaca-query-atomic-v1",
+      "raw_body": {
+        "account_id": "acct-1",
+        "account_record_id": "account-flat",
+        "available_at": "2026-09-04T14:05:02Z",
+        "captured_at": "2026-09-04T14:05:00Z",
+        "completed": true,
+        "holdings_coverage": "complete",
+        "included_order_record_ids": [],
+        "issued_actions": [],
+        "order_ref_aliases": [],
+        "orders_coverage": "complete",
+        "request_id": "request-missing-field",
+        "requested_at": "2026-09-04T14:05:00Z",
+        "responded_at": "2026-09-04T14:05:01Z",
+        "schema_version": 1,
+        "source": "alpaca"
+      },
+      "raw_hash": "294e97784ab427f35fd955896ae623738f675f84bb1ef5de595081d120d1ec96",
+      "record_id": "missing-field"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-wrong-source",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/wrong-source",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-query-atomic-v1",
+        "supersedes_record_id": null
+      },
+      "kind": "broker_query",
+      "profile_id": "alpaca-query-atomic-v1",
+      "raw_body": {
+        "account_id": "acct-1",
+        "account_record_id": "account-flat",
+        "available_at": "2026-09-04T14:05:02Z",
+        "captured_at": "2026-09-04T14:05:00Z",
+        "completed": true,
+        "holdings_coverage": "complete",
+        "included_order_record_ids": [],
+        "issued_actions": [],
+        "order_ref_aliases": [],
+        "orders_coverage": "complete",
+        "request_id": "request-wrong-source",
+        "requested_at": "2026-09-04T14:05:00Z",
+        "responded_at": "2026-09-04T14:05:01Z",
+        "response_id": "response-wrong-source",
+        "schema_version": 1,
+        "source": "lean"
+      },
+      "raw_hash": "912ae28ab79e0262d3e318b4b00e617d62ddd65b2e69c7edbde275eaee69237f",
+      "record_id": "wrong-source"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-account-malformed",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/account-malformed",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "alpaca-account",
+      "raw_body": {
+        "account_id": "acct-1",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T14:05:00Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T14:05:02Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "connected",
+        "currency": null,
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [],
+        "holdings_completeness": "complete",
+        "ledger_revision": "account-malformed",
+        "open_orders": [],
+        "orders_completeness": "complete",
+        "provider_record_id": "account-malformed",
+        "reconciled_at": "2026-09-04T14:05:00Z",
+        "reconciled_ledger_revision": "account-malformed",
+        "reconciliation_id": "account-malformed",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "0",
+        "session_start_equity": "100000",
+        "source": "alpaca",
+        "virtual_cash": "100000",
+        "virtual_equity": "100000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "100000"
+      },
+      "raw_hash": "ffff69e68c6dc1006c44c08a0586c578bcc2769f05832e018322b231bc9b430d",
+      "record_id": "account-malformed"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-malformed-account",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/malformed-account",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-query-atomic-v1",
+        "supersedes_record_id": null
+      },
+      "kind": "broker_query",
+      "profile_id": "alpaca-query-atomic-v1",
+      "raw_body": {
+        "account_id": "acct-1",
+        "account_record_id": "account-malformed",
+        "available_at": "2026-09-04T14:05:02Z",
+        "captured_at": "2026-09-04T14:05:00Z",
+        "completed": true,
+        "holdings_coverage": "complete",
+        "included_order_record_ids": [],
+        "issued_actions": [],
+        "order_ref_aliases": [],
+        "orders_coverage": "complete",
+        "request_id": "request-malformed-account",
+        "requested_at": "2026-09-04T14:05:00Z",
+        "responded_at": "2026-09-04T14:05:01Z",
+        "response_id": "response-malformed-account",
+        "schema_version": 1,
+        "source": "alpaca"
+      },
+      "raw_hash": "76cd6455a689b76c96980b3ac7edac57b10e20e20422cd4ab6c6bc7ee224b490",
+      "record_id": "malformed-account"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-order-malformed",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/order-malformed",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:04:59Z",
+        "stream_id": "alpaca-orders",
+        "supersedes_record_id": null
+      },
+      "kind": "order_update",
+      "profile_id": "alpaca-orders",
+      "raw_body": {
+        "account_id": "acct-1",
+        "available_at": "2026-09-04T14:04:59Z",
+        "broker_order_id": "broker-1",
+        "client_order_id": "client-1",
+        "contract": {
+          "deliverable_id": "SPY-100",
+          "expiry": "2026-09-04",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "500",
+          "underlying": "SPY"
+        },
+        "cumulative_fees_usd": null,
+        "cumulative_fill_notional_usd": "510",
+        "decision_id": "decision-1",
+        "event_at": "2026-09-04T14:04:59Z",
+        "pending": false,
+        "provider_event_id": "bad-quantity",
+        "provider_sequence": 1,
+        "quantity_basis": "cumulative",
+        "raw_filled_quantity": "NaN",
+        "replaced_by_broker_order_id": null,
+        "replaced_by_client_order_id": null,
+        "replaces_broker_order_id": null,
+        "replaces_client_order_id": null,
+        "role": "buy_entry",
+        "schema_version": 1,
+        "source": "alpaca",
+        "status": "filled",
+        "terminal": true
+      },
+      "raw_hash": "4fbe79352a3b904f4df52b0e341a6e7b74081a7db3ec80395533831bd29c4612",
+      "record_id": "order-malformed"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-malformed-order",
+        "metadata": null,
+        "raw_ref": "synthetic://p21/malformed-order",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:02Z",
+        "stream_id": "alpaca-query-atomic-v1",
+        "supersedes_record_id": null
+      },
+      "kind": "broker_query",
+      "profile_id": "alpaca-query-atomic-v1",
+      "raw_body": {
+        "account_id": "acct-1",
+        "account_record_id": "account-flat",
+        "available_at": "2026-09-04T14:05:02Z",
+        "captured_at": "2026-09-04T14:05:00Z",
+        "completed": true,
+        "holdings_coverage": "complete",
+        "included_order_record_ids": [
+          "order-malformed"
+        ],
+        "issued_actions": [],
+        "order_ref_aliases": [],
+        "orders_coverage": "complete",
+        "request_id": "request-malformed-order",
+        "requested_at": "2026-09-04T14:05:00Z",
+        "responded_at": "2026-09-04T14:05:01Z",
+        "response_id": "response-malformed-order",
+        "schema_version": 1,
+        "source": "alpaca"
+      },
+      "raw_hash": "d208441f26a9908c86be95ea91f02ea0aea760391226dd5413bef9c864e40543",
+      "record_id": "malformed-order"
+    }
+  ],
+  "modeled_source_profiles": [
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "broker_query",
+      "profile_id": "alpaca-query-atomic-v1",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "alpaca",
+      "stream_id": "alpaca-query-atomic-v1",
+      "units": {}
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "account_snapshot",
+      "profile_id": "alpaca-account",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "alpaca",
+      "stream_id": "alpaca-account",
+      "units": {
+        "applicable_round_trip_fees": "USD_optional_total_round_trip_estimate",
+        "basis_debit": "USD_total_remaining_entry_premium_excluding_posted_fees",
+        "broker_available_cash": "USD_already_net_of_broker_holds",
+        "broker_nonmargin_buying_power": "USD_nonmargin_already_net_of_broker_holds",
+        "broker_settled_cash": "USD_settled_cash",
+        "estimated_remaining_close_cost": "USD_unpaid_remaining_cost",
+        "money": "USD",
+        "quantity": "holding_quantity_unit",
+        "session_realized_pnl": "USD_including_all_posted_fees",
+        "virtual_cash": "USD_after_posted_premiums_proceeds_fees",
+        "virtual_reserved_cash": "USD_aggregate_unspent_hold",
+        "virtual_settled_cash": "USD_before_virtual_reservations"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "order_update",
+      "profile_id": "alpaca-orders",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "alpaca",
+      "stream_id": "alpaca-orders",
+      "units": {
+        "cumulative_fees": "USD_total_cumulative",
+        "cumulative_fill_notional": "USD_total_cumulative",
+        "quantity": "contracts"
+      }
+    }
+  ],
+  "normalization_version": 1,
+  "origin": "synthetic",
+  "permitted_use": "core_fixture",
+  "schema_version": 1
+}
