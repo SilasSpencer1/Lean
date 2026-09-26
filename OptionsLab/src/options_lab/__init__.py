@@ -72,6 +72,14 @@ from .bundle_activation import ActivationSelection, choose_bundle_activation
 from .decision import Forecast, ScoredCandidate, DecisionResult, FixedJsonPredictor
 from .entry_intent import TradeIntent, derive_trade_intent
 from .exits import ExitEvidence, ExitInstruction, observe_exit_inputs, evaluate_exit
+from .order_inputs import (
+    OrderUpdate,
+    OrderInputValidation,
+    OrderInputRejection,
+    OrderInputAdmission,
+    normalize_order_update,
+    admit_order_update,
+)
 from .risk import (
     HaltEntry,
     HaltState,
@@ -283,6 +291,12 @@ from .volume_normalization import (
 )
 
 __all__ = [
+    "OrderUpdate",
+    "OrderInputValidation",
+    "OrderInputRejection",
+    "OrderInputAdmission",
+    "normalize_order_update",
+    "admit_order_update",
     "ExitEvidence",
     "ExitInstruction",
     "observe_exit_inputs",
