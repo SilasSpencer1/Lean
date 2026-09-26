@@ -305,7 +305,7 @@ def _body_size(value):
         for char in value:
             code = ord(char)
             size += (2 if char in '"\\\b\f\n\r\t' else
-                     6 if code < 32 or 128 <= code <= 65535 else
+                     6 if code < 32 or 127 <= code <= 65535 else
                      12 if code > 65535 else 1)
         return size
     if type(value) is dict:

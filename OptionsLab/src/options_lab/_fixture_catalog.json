@@ -114,7 +114,7 @@
       "payload_schema_version": 1
     },
     {
-      "expected_payload_sha256": "79f24c30298a9c388a56a449a1b98375a1f90525bc59231f29c7f8e3ca02e9b9",
+      "expected_payload_sha256": "0adc55458ec7e4981de7e6f3c0bcd7820542a0ce277f0613a781e283ad10660a",
       "fixture_id": "p14a-bundle-content-v1",
       "generator_id": "optionslab-bundle-fixture-builder",
       "generator_version": "1",
@@ -154,7 +154,7 @@
       "payload_schema_version": 1
     },
     {
-      "expected_payload_sha256": "c220b1868678c9a2157d1a7fcf087116a1b35b05a98c9a54a1782a27d524ac9a",
+      "expected_payload_sha256": "3823a1d954b34cfbacaacd34b237d64671e34f9827dd1d63289861258fe00222",
       "fixture_id": "p14c-membership-bundle-v1",
       "generator_id": "optionslab-bundle-fixture-builder",
       "generator_version": "1",

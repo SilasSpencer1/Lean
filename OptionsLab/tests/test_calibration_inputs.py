@@ -8,7 +8,7 @@ from pathlib import Path
 
 import pytest
 
-from options_lab.admission import verify_fixture_bundle
+from options_lab.admission import _canonical_bytes, verify_fixture_bundle
 from options_lab.bundle_inputs import normalize_model_bytes
 
 
@@ -184,7 +184,6 @@ def test_corrupted_retained_envelope_still_returns_safe_rejection():
     row = copy(next(m for m in fixture.members if m.record_id == "calendar"))
     envelope = row.decode_envelope()
     envelope["event_id"] = "forged-event"
-    from options_lab.admission import _canonical_bytes
     object.__setattr__(row, "envelope_bytes", _canonical_bytes(envelope))
     object.__setattr__(forged, "members", tuple(row if m.record_id == "calendar" else m for m in fixture.members))
     result = api().normalize_calendar_descriptor({}, fixture=forged, record_id="calendar")
@@ -202,3 +201,11 @@ def test_large_exact_body_rejects_before_canonical_serialization():
     result = api().normalize_fit_membership(body, fixture=fixture, record_id="model", model=model(),
                                             upstream_fixtures=(source,))
     assert result.value is None and result.rejection.code == "resource_limit"
+
+
+def test_json_size_preflight_counts_escape_boundaries_exactly():
+    """The resource guard matches the owned ASCII JSON encoder at edge code points."""
+    for value in ("\x00", "\b", "\t", "\n", "\f", "\r", "\x1f", '"', "\\",
+                  "\x7e", "\x7f", "\x80", "\uffff", "\U00010000"):
+        raw = {"key": [value, value + "x"]}
+        assert api()._body_size(raw) == len(_canonical_bytes(raw))
