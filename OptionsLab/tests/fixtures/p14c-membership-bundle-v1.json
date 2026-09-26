@@ -1,5 +1,5 @@
 {
-  "assembled_at": "2026-09-26T03:17:21.954691+00:00",
+  "assembled_at": "2026-09-26T03:52:44.969310+00:00",
   "definitions": {
     "coherence_protocol_ids": [],
     "greek_method": {
@@ -161,7 +161,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T03:17:21.953872+00:00",
+            "built_at": "2026-09-26T03:52:44.968598+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-30T22:00:00+00:00",
@@ -175,7 +175,7 @@
               "final",
               0
             ],
-            "implementation_digest": "9efa2d4f3a0c8e33798da71f9c8453368276271aedb25148e05effe28438c7a2",
+            "implementation_digest": "d28927a2b00d03762d5c89a8874a2365b0522471a87cacc53f76dc97d71e5f52",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -188,7 +188,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "968235acc6a5faff0a0eb33a2d29f95bb2a26a5213807403ee2eafedd05c8897",
+      "raw_hash": "a16c08b2ddb7e38acf2c87144dea14ad9a16a5b72564b95276d1e7e984a03ea9",
       "record_id": "fixed-membership"
     }
   ],
