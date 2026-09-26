@@ -70,6 +70,13 @@ from .calibration_support import CalibrationAssessment, assess_calibration
 from .bundle_availability import BundleAssessment, assess_bundle
 from .bundle_activation import ActivationSelection, choose_bundle_activation
 from .decision import Forecast, ScoredCandidate, DecisionResult, FixedJsonPredictor
+from .risk_inputs import (
+    RiskControlEvent,
+    RiskControlValidation,
+    normalize_risk_control,
+    RiskObservation,
+    observe_risk_inputs,
+)
 from .bundle_schedule import (
     ActivationGap,
     ActivationGapValidation,
@@ -273,6 +280,11 @@ __all__ = [
     "ScoredCandidate",
     "DecisionResult",
     "FixedJsonPredictor",
+    "RiskControlEvent",
+    "RiskControlValidation",
+    "normalize_risk_control",
+    "RiskObservation",
+    "observe_risk_inputs",
     "ActivationGap",
     "ActivationGapValidation",
     "EvaluationBlock",
