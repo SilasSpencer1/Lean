@@ -1,0 +1,4393 @@
+{
+  "assembled_at": "2026-09-26T06:28:02.820800+00:00",
+  "definitions": {
+    "coherence_protocol_ids": [
+      "fixture-joint-book-snapshot-v1",
+      "fixture-side-validity-overlap-v1"
+    ],
+    "greek_method": {
+      "assumptions_id": "fixture-flat-rates-v1",
+      "method_id": "fixture-greek-values",
+      "method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+      "method_version": "1"
+    },
+    "tick_definition_ids": [
+      "fixture-usd-premium-tick-v1"
+    ]
+  },
+  "fixture_id": "p18-exit-source-v1",
+  "generator_id": "optionslab-exit-fixture-builder",
+  "generator_source_ref": "OptionsLab/tests/build_exit_fixture.py",
+  "generator_version": "1",
+  "members": [
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-session",
+        "metadata": null,
+        "raw_ref": "synthetic://p11/session",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T13:00:00Z",
+        "stream_id": "session",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "session",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T13:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-09-04T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-09-04T13:30:00+00:00",
+        "provider_record_id": "p11-session",
+        "session_date": "2026-09-04",
+        "source": "fixture-calendar",
+        "source_version": "1"
+      },
+      "raw_hash": "5c5301232cc7713458f21167e24c4e9ce1334d17a5c8b9c70f2cd13928ded36f",
+      "record_id": "session"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-good-instrument_tradability",
+        "metadata": null,
+        "raw_ref": "synthetic://p11/good-instrument_tradability",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T13:00:00Z",
+        "stream_id": "good-instrument_tradability",
+        "supersedes_record_id": null
+      },
+      "kind": "instrument_tradability",
+      "profile_id": "good-instrument_tradability",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T13:00:00Z",
+        "closes_at": "2026-09-04T20:00:00Z",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "434",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-04T13:30:00+00:00",
+        "effective_until": "2026-09-04T20:00:00Z",
+        "fidelity": "genuine",
+        "instrument_ref": "opaque-K",
+        "opens_at": "2026-09-04T13:30:00+00:00",
+        "provider_record_id": "good-instrument_tradability",
+        "session_date": "2026-09-04",
+        "source": "fixture-instrument",
+        "source_version": "1",
+        "status": "tradable"
+      },
+      "raw_hash": "a42553b2e5050e9cf783f43002ac716c65c6f80099850e48c628db3282b041c3",
+      "record_id": "good-instrument_tradability"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "434",
+          "underlying": "SPY"
+        },
+        "event_id": "event-good-option_quote",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-04T14:04:59+00:00",
+          "event_at": "2026-09-04T14:04:58+00:00",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "good-option_quote",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://p11/good-option_quote",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:04:59+00:00",
+        "stream_id": "good-option_quote",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "good-option_quote",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-04T14:04:58+00:00",
+        "ask_size": 9,
+        "bid": "4.90",
+        "bid_at": "2026-09-04T14:04:58+00:00",
+        "bid_size": 7
+      },
+      "raw_hash": "bc1596b88d2c355b87d8dbee8b113e6302b81775cef0cae9e36b0c4385c91f39",
+      "record_id": "good-option_quote"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "434",
+          "underlying": "SPY"
+        },
+        "event_id": "event-horizon-before-mark",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-04T14:34:59Z",
+          "event_at": "2026-09-04T14:34:59Z",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "horizon-before-mark",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://p18/horizon-before-mark",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:34:59Z",
+        "stream_id": "horizon-before-mark",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "horizon-before-mark",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-04T14:04:58+00:00",
+        "ask_size": 9,
+        "bid": "4.90",
+        "bid_at": "2026-09-04T14:34:59Z",
+        "bid_size": 7
+      },
+      "raw_hash": "19171dcc28e36220bca43c49321c7f695fdf79e7dce53e1b0907eb834e6fa4d4",
+      "record_id": "horizon-before-mark"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-horizon-before-account",
+        "metadata": null,
+        "raw_ref": "synthetic://p18/horizon-before-account",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:34:59Z",
+        "stream_id": "horizon-before-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "horizon-before-account",
+      "raw_body": {
+        "account_id": "exit-account",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T14:34:59Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T14:34:59Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "connected",
+        "currency": "USD",
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [
+          {
+            "asset_kind": "option",
+            "basis_debit": "500",
+            "contract": {
+              "deliverable_id": "standard-spy-100",
+              "expiry": "2026-09-18",
+              "multiplier": 100,
+              "right": "call",
+              "strike": "434",
+              "underlying": "SPY"
+            },
+            "entry_client_order_id": "entry-1",
+            "entry_filled_at": "2026-09-04T14:05:00Z",
+            "estimated_remaining_close_cost": "1",
+            "instrument_ref": "opaque-K",
+            "mark_quote": {
+              "envelope": {
+                "contract": {
+                  "deliverable_id": "standard-spy-100",
+                  "expiry": "2026-09-18",
+                  "multiplier": 100,
+                  "right": "call",
+                  "strike": "434",
+                  "underlying": "SPY"
+                },
+                "event_id": "event-horizon-before-mark",
+                "metadata": {
+                  "availability_basis": "measured",
+                  "availability_evidence_ref": "synthetic://capture/option-provider-1",
+                  "available_at": "2026-09-04T14:34:59Z",
+                  "event_at": "2026-09-04T14:34:59Z",
+                  "feed_class": "realtime",
+                  "fidelity": "genuine",
+                  "interval_end": null,
+                  "interval_start": null,
+                  "is_fill_forward": false,
+                  "kind": "quote",
+                  "provider_record_id": "horizon-before-mark",
+                  "quality_flags": [],
+                  "source": "synthetic-sip-option"
+                },
+                "raw_ref": "synthetic://p18/horizon-before-mark",
+                "receive_sequence": 1,
+                "simulated_received_at": "2026-09-04T14:34:59Z",
+                "stream_id": "horizon-before-mark",
+                "supersedes_record_id": null
+              },
+              "raw_body": {
+                "ask": "5.10",
+                "ask_at": "2026-09-04T14:04:58+00:00",
+                "ask_size": 9,
+                "bid": "4.90",
+                "bid_at": "2026-09-04T14:34:59Z",
+                "bid_size": 7
+              }
+            },
+            "position_id": "position-1",
+            "provider_record_id": "holding-report",
+            "quantity": "1",
+            "quantity_unit": "contracts",
+            "raw_ref": "synthetic://p12c/holding",
+            "source": "fixture-holdings"
+          }
+        ],
+        "holdings_completeness": "complete",
+        "ledger_revision": "ledger-horizon-before",
+        "open_orders": [],
+        "orders_completeness": "complete",
+        "provider_record_id": "report-horizon-before",
+        "reconciled_at": "2026-09-04T14:34:59Z",
+        "reconciled_ledger_revision": "ledger-horizon-before",
+        "reconciliation_id": "reconcile-horizon-before",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "-1",
+        "session_start_equity": "100000",
+        "source": "fixture-account-ledger",
+        "virtual_cash": "99499",
+        "virtual_equity": "100000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "99499"
+      },
+      "raw_hash": "1ba1711bc40fdf0a319e2bbc82fb1dbfb90c926938ee3f970aa8f01139b1ae66",
+      "record_id": "horizon-before-account"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "434",
+          "underlying": "SPY"
+        },
+        "event_id": "event-horizon-at-mark",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-04T14:35:00Z",
+          "event_at": "2026-09-04T14:35:00Z",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "horizon-at-mark",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://p18/horizon-at-mark",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:35:00Z",
+        "stream_id": "horizon-at-mark",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "horizon-at-mark",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-04T14:04:58+00:00",
+        "ask_size": 9,
+        "bid": "4.90",
+        "bid_at": "2026-09-04T14:35:00Z",
+        "bid_size": 7
+      },
+      "raw_hash": "f76ebe1791b1bff79ac603b6dea3c500c5120ec1fd36057376d79f9300299d98",
+      "record_id": "horizon-at-mark"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-horizon-at-account",
+        "metadata": null,
+        "raw_ref": "synthetic://p18/horizon-at-account",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:35:00Z",
+        "stream_id": "horizon-at-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "horizon-at-account",
+      "raw_body": {
+        "account_id": "exit-account",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T14:35:00Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T14:35:00Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "connected",
+        "currency": "USD",
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [
+          {
+            "asset_kind": "option",
+            "basis_debit": "500",
+            "contract": {
+              "deliverable_id": "standard-spy-100",
+              "expiry": "2026-09-18",
+              "multiplier": 100,
+              "right": "call",
+              "strike": "434",
+              "underlying": "SPY"
+            },
+            "entry_client_order_id": "entry-1",
+            "entry_filled_at": "2026-09-04T14:05:00Z",
+            "estimated_remaining_close_cost": "1",
+            "instrument_ref": "opaque-K",
+            "mark_quote": {
+              "envelope": {
+                "contract": {
+                  "deliverable_id": "standard-spy-100",
+                  "expiry": "2026-09-18",
+                  "multiplier": 100,
+                  "right": "call",
+                  "strike": "434",
+                  "underlying": "SPY"
+                },
+                "event_id": "event-horizon-at-mark",
+                "metadata": {
+                  "availability_basis": "measured",
+                  "availability_evidence_ref": "synthetic://capture/option-provider-1",
+                  "available_at": "2026-09-04T14:35:00Z",
+                  "event_at": "2026-09-04T14:35:00Z",
+                  "feed_class": "realtime",
+                  "fidelity": "genuine",
+                  "interval_end": null,
+                  "interval_start": null,
+                  "is_fill_forward": false,
+                  "kind": "quote",
+                  "provider_record_id": "horizon-at-mark",
+                  "quality_flags": [],
+                  "source": "synthetic-sip-option"
+                },
+                "raw_ref": "synthetic://p18/horizon-at-mark",
+                "receive_sequence": 1,
+                "simulated_received_at": "2026-09-04T14:35:00Z",
+                "stream_id": "horizon-at-mark",
+                "supersedes_record_id": null
+              },
+              "raw_body": {
+                "ask": "5.10",
+                "ask_at": "2026-09-04T14:04:58+00:00",
+                "ask_size": 9,
+                "bid": "4.90",
+                "bid_at": "2026-09-04T14:35:00Z",
+                "bid_size": 7
+              }
+            },
+            "position_id": "position-1",
+            "provider_record_id": "holding-report",
+            "quantity": "1",
+            "quantity_unit": "contracts",
+            "raw_ref": "synthetic://p12c/holding",
+            "source": "fixture-holdings"
+          }
+        ],
+        "holdings_completeness": "complete",
+        "ledger_revision": "ledger-horizon-at",
+        "open_orders": [],
+        "orders_completeness": "complete",
+        "provider_record_id": "report-horizon-at",
+        "reconciled_at": "2026-09-04T14:35:00Z",
+        "reconciled_ledger_revision": "ledger-horizon-at",
+        "reconciliation_id": "reconcile-horizon-at",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "-1",
+        "session_start_equity": "100000",
+        "source": "fixture-account-ledger",
+        "virtual_cash": "99499",
+        "virtual_equity": "100000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "99499"
+      },
+      "raw_hash": "06dfcfb4e1d7a80a2968e1d92a8bab4c76bd2e8e8783ed7ef732784f59970978",
+      "record_id": "horizon-at-account"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "434",
+          "underlying": "SPY"
+        },
+        "event_id": "event-liquidation-before-mark",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-04T19:34:59Z",
+          "event_at": "2026-09-04T19:34:59Z",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "liquidation-before-mark",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://p18/liquidation-before-mark",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T19:34:59Z",
+        "stream_id": "liquidation-before-mark",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "liquidation-before-mark",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-04T14:04:58+00:00",
+        "ask_size": 9,
+        "bid": "4.90",
+        "bid_at": "2026-09-04T19:34:59Z",
+        "bid_size": 7
+      },
+      "raw_hash": "72c008c28af547e0184729f9f9443c5024aaefa43de2ad341203e706794e062a",
+      "record_id": "liquidation-before-mark"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-liquidation-before-account",
+        "metadata": null,
+        "raw_ref": "synthetic://p18/liquidation-before-account",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T19:34:59Z",
+        "stream_id": "liquidation-before-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "liquidation-before-account",
+      "raw_body": {
+        "account_id": "exit-account",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T19:34:59Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T19:34:59Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "connected",
+        "currency": "USD",
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [
+          {
+            "asset_kind": "option",
+            "basis_debit": "500",
+            "contract": {
+              "deliverable_id": "standard-spy-100",
+              "expiry": "2026-09-18",
+              "multiplier": 100,
+              "right": "call",
+              "strike": "434",
+              "underlying": "SPY"
+            },
+            "entry_client_order_id": "entry-1",
+            "entry_filled_at": "2026-09-04T19:20:00Z",
+            "estimated_remaining_close_cost": "1",
+            "instrument_ref": "opaque-K",
+            "mark_quote": {
+              "envelope": {
+                "contract": {
+                  "deliverable_id": "standard-spy-100",
+                  "expiry": "2026-09-18",
+                  "multiplier": 100,
+                  "right": "call",
+                  "strike": "434",
+                  "underlying": "SPY"
+                },
+                "event_id": "event-liquidation-before-mark",
+                "metadata": {
+                  "availability_basis": "measured",
+                  "availability_evidence_ref": "synthetic://capture/option-provider-1",
+                  "available_at": "2026-09-04T19:34:59Z",
+                  "event_at": "2026-09-04T19:34:59Z",
+                  "feed_class": "realtime",
+                  "fidelity": "genuine",
+                  "interval_end": null,
+                  "interval_start": null,
+                  "is_fill_forward": false,
+                  "kind": "quote",
+                  "provider_record_id": "liquidation-before-mark",
+                  "quality_flags": [],
+                  "source": "synthetic-sip-option"
+                },
+                "raw_ref": "synthetic://p18/liquidation-before-mark",
+                "receive_sequence": 1,
+                "simulated_received_at": "2026-09-04T19:34:59Z",
+                "stream_id": "liquidation-before-mark",
+                "supersedes_record_id": null
+              },
+              "raw_body": {
+                "ask": "5.10",
+                "ask_at": "2026-09-04T14:04:58+00:00",
+                "ask_size": 9,
+                "bid": "4.90",
+                "bid_at": "2026-09-04T19:34:59Z",
+                "bid_size": 7
+              }
+            },
+            "position_id": "position-1",
+            "provider_record_id": "holding-report",
+            "quantity": "1",
+            "quantity_unit": "contracts",
+            "raw_ref": "synthetic://p12c/holding",
+            "source": "fixture-holdings"
+          }
+        ],
+        "holdings_completeness": "complete",
+        "ledger_revision": "ledger-liquidation-before",
+        "open_orders": [],
+        "orders_completeness": "complete",
+        "provider_record_id": "report-liquidation-before",
+        "reconciled_at": "2026-09-04T19:34:59Z",
+        "reconciled_ledger_revision": "ledger-liquidation-before",
+        "reconciliation_id": "reconcile-liquidation-before",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "-1",
+        "session_start_equity": "100000",
+        "source": "fixture-account-ledger",
+        "virtual_cash": "99499",
+        "virtual_equity": "100000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "99499"
+      },
+      "raw_hash": "936b42a16fca79d6d176413db22c2af593ba52f547acf6bafdabc1cc26fb8af4",
+      "record_id": "liquidation-before-account"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "434",
+          "underlying": "SPY"
+        },
+        "event_id": "event-liquidation-at-mark",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-04T19:35:00Z",
+          "event_at": "2026-09-04T19:35:00Z",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "liquidation-at-mark",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://p18/liquidation-at-mark",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T19:35:00Z",
+        "stream_id": "liquidation-at-mark",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "liquidation-at-mark",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-04T14:04:58+00:00",
+        "ask_size": 9,
+        "bid": "4.90",
+        "bid_at": "2026-09-04T19:35:00Z",
+        "bid_size": 7
+      },
+      "raw_hash": "ae69049cbf2989df0e124d9c2862503d941332ef16d354c7cfbb22642edc19a0",
+      "record_id": "liquidation-at-mark"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-liquidation-at-account",
+        "metadata": null,
+        "raw_ref": "synthetic://p18/liquidation-at-account",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T19:35:00Z",
+        "stream_id": "liquidation-at-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "liquidation-at-account",
+      "raw_body": {
+        "account_id": "exit-account",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T19:35:00Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T19:35:00Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "connected",
+        "currency": "USD",
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [
+          {
+            "asset_kind": "option",
+            "basis_debit": "500",
+            "contract": {
+              "deliverable_id": "standard-spy-100",
+              "expiry": "2026-09-18",
+              "multiplier": 100,
+              "right": "call",
+              "strike": "434",
+              "underlying": "SPY"
+            },
+            "entry_client_order_id": "entry-1",
+            "entry_filled_at": "2026-09-04T19:20:00Z",
+            "estimated_remaining_close_cost": "1",
+            "instrument_ref": "opaque-K",
+            "mark_quote": {
+              "envelope": {
+                "contract": {
+                  "deliverable_id": "standard-spy-100",
+                  "expiry": "2026-09-18",
+                  "multiplier": 100,
+                  "right": "call",
+                  "strike": "434",
+                  "underlying": "SPY"
+                },
+                "event_id": "event-liquidation-at-mark",
+                "metadata": {
+                  "availability_basis": "measured",
+                  "availability_evidence_ref": "synthetic://capture/option-provider-1",
+                  "available_at": "2026-09-04T19:35:00Z",
+                  "event_at": "2026-09-04T19:35:00Z",
+                  "feed_class": "realtime",
+                  "fidelity": "genuine",
+                  "interval_end": null,
+                  "interval_start": null,
+                  "is_fill_forward": false,
+                  "kind": "quote",
+                  "provider_record_id": "liquidation-at-mark",
+                  "quality_flags": [],
+                  "source": "synthetic-sip-option"
+                },
+                "raw_ref": "synthetic://p18/liquidation-at-mark",
+                "receive_sequence": 1,
+                "simulated_received_at": "2026-09-04T19:35:00Z",
+                "stream_id": "liquidation-at-mark",
+                "supersedes_record_id": null
+              },
+              "raw_body": {
+                "ask": "5.10",
+                "ask_at": "2026-09-04T14:04:58+00:00",
+                "ask_size": 9,
+                "bid": "4.90",
+                "bid_at": "2026-09-04T19:35:00Z",
+                "bid_size": 7
+              }
+            },
+            "position_id": "position-1",
+            "provider_record_id": "holding-report",
+            "quantity": "1",
+            "quantity_unit": "contracts",
+            "raw_ref": "synthetic://p12c/holding",
+            "source": "fixture-holdings"
+          }
+        ],
+        "holdings_completeness": "complete",
+        "ledger_revision": "ledger-liquidation-at",
+        "open_orders": [],
+        "orders_completeness": "complete",
+        "provider_record_id": "report-liquidation-at",
+        "reconciled_at": "2026-09-04T19:35:00Z",
+        "reconciled_ledger_revision": "ledger-liquidation-at",
+        "reconciliation_id": "reconcile-liquidation-at",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "-1",
+        "session_start_equity": "100000",
+        "source": "fixture-account-ledger",
+        "virtual_cash": "99499",
+        "virtual_equity": "100000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "99499"
+      },
+      "raw_hash": "da6c9a27fc95ca079023d34fea64991d40d8472de6bfb369d9506cf6cbe4d8cd",
+      "record_id": "liquidation-at-account"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "434",
+          "underlying": "SPY"
+        },
+        "event_id": "event-escalation-at-mark",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-04T19:39:00Z",
+          "event_at": "2026-09-04T19:39:00Z",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "escalation-at-mark",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://p18/escalation-at-mark",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T19:39:00Z",
+        "stream_id": "escalation-at-mark",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "escalation-at-mark",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-04T14:04:58+00:00",
+        "ask_size": 9,
+        "bid": "4.90",
+        "bid_at": "2026-09-04T19:39:00Z",
+        "bid_size": 7
+      },
+      "raw_hash": "b0182369433c52fefc3b0a967f82ce9a13ac98fbb88b995b79f72590924936c7",
+      "record_id": "escalation-at-mark"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-escalation-at-account",
+        "metadata": null,
+        "raw_ref": "synthetic://p18/escalation-at-account",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T19:39:00Z",
+        "stream_id": "escalation-at-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "escalation-at-account",
+      "raw_body": {
+        "account_id": "exit-account",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T19:39:00Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T19:39:00Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "connected",
+        "currency": "USD",
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [
+          {
+            "asset_kind": "option",
+            "basis_debit": "500",
+            "contract": {
+              "deliverable_id": "standard-spy-100",
+              "expiry": "2026-09-18",
+              "multiplier": 100,
+              "right": "call",
+              "strike": "434",
+              "underlying": "SPY"
+            },
+            "entry_client_order_id": "entry-1",
+            "entry_filled_at": "2026-09-04T19:20:00Z",
+            "estimated_remaining_close_cost": "1",
+            "instrument_ref": "opaque-K",
+            "mark_quote": {
+              "envelope": {
+                "contract": {
+                  "deliverable_id": "standard-spy-100",
+                  "expiry": "2026-09-18",
+                  "multiplier": 100,
+                  "right": "call",
+                  "strike": "434",
+                  "underlying": "SPY"
+                },
+                "event_id": "event-escalation-at-mark",
+                "metadata": {
+                  "availability_basis": "measured",
+                  "availability_evidence_ref": "synthetic://capture/option-provider-1",
+                  "available_at": "2026-09-04T19:39:00Z",
+                  "event_at": "2026-09-04T19:39:00Z",
+                  "feed_class": "realtime",
+                  "fidelity": "genuine",
+                  "interval_end": null,
+                  "interval_start": null,
+                  "is_fill_forward": false,
+                  "kind": "quote",
+                  "provider_record_id": "escalation-at-mark",
+                  "quality_flags": [],
+                  "source": "synthetic-sip-option"
+                },
+                "raw_ref": "synthetic://p18/escalation-at-mark",
+                "receive_sequence": 1,
+                "simulated_received_at": "2026-09-04T19:39:00Z",
+                "stream_id": "escalation-at-mark",
+                "supersedes_record_id": null
+              },
+              "raw_body": {
+                "ask": "5.10",
+                "ask_at": "2026-09-04T14:04:58+00:00",
+                "ask_size": 9,
+                "bid": "4.90",
+                "bid_at": "2026-09-04T19:39:00Z",
+                "bid_size": 7
+              }
+            },
+            "position_id": "position-1",
+            "provider_record_id": "holding-report",
+            "quantity": "1",
+            "quantity_unit": "contracts",
+            "raw_ref": "synthetic://p12c/holding",
+            "source": "fixture-holdings"
+          }
+        ],
+        "holdings_completeness": "complete",
+        "ledger_revision": "ledger-escalation-at",
+        "open_orders": [],
+        "orders_completeness": "complete",
+        "provider_record_id": "report-escalation-at",
+        "reconciled_at": "2026-09-04T19:39:00Z",
+        "reconciled_ledger_revision": "ledger-escalation-at",
+        "reconciliation_id": "reconcile-escalation-at",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "-1",
+        "session_start_equity": "100000",
+        "source": "fixture-account-ledger",
+        "virtual_cash": "99499",
+        "virtual_equity": "100000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "99499"
+      },
+      "raw_hash": "746ed7f0b21155b5a5def00dd71f605688f56f0a776e892343884162cfda01de",
+      "record_id": "escalation-at-account"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "434",
+          "underlying": "SPY"
+        },
+        "event_id": "event-deadline-at-mark",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-04T19:40:00Z",
+          "event_at": "2026-09-04T19:40:00Z",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "deadline-at-mark",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://p18/deadline-at-mark",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T19:40:00Z",
+        "stream_id": "deadline-at-mark",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "deadline-at-mark",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-04T14:04:58+00:00",
+        "ask_size": 9,
+        "bid": "4.90",
+        "bid_at": "2026-09-04T19:40:00Z",
+        "bid_size": 7
+      },
+      "raw_hash": "b07cbf38880819eef03083f971cce428dfd72b3d7f67d74f64e0815e45d9f94c",
+      "record_id": "deadline-at-mark"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-deadline-at-account",
+        "metadata": null,
+        "raw_ref": "synthetic://p18/deadline-at-account",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T19:40:00Z",
+        "stream_id": "deadline-at-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "deadline-at-account",
+      "raw_body": {
+        "account_id": "exit-account",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T19:40:00Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T19:40:00Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "connected",
+        "currency": "USD",
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [
+          {
+            "asset_kind": "option",
+            "basis_debit": "500",
+            "contract": {
+              "deliverable_id": "standard-spy-100",
+              "expiry": "2026-09-18",
+              "multiplier": 100,
+              "right": "call",
+              "strike": "434",
+              "underlying": "SPY"
+            },
+            "entry_client_order_id": "entry-1",
+            "entry_filled_at": "2026-09-04T19:20:00Z",
+            "estimated_remaining_close_cost": "1",
+            "instrument_ref": "opaque-K",
+            "mark_quote": {
+              "envelope": {
+                "contract": {
+                  "deliverable_id": "standard-spy-100",
+                  "expiry": "2026-09-18",
+                  "multiplier": 100,
+                  "right": "call",
+                  "strike": "434",
+                  "underlying": "SPY"
+                },
+                "event_id": "event-deadline-at-mark",
+                "metadata": {
+                  "availability_basis": "measured",
+                  "availability_evidence_ref": "synthetic://capture/option-provider-1",
+                  "available_at": "2026-09-04T19:40:00Z",
+                  "event_at": "2026-09-04T19:40:00Z",
+                  "feed_class": "realtime",
+                  "fidelity": "genuine",
+                  "interval_end": null,
+                  "interval_start": null,
+                  "is_fill_forward": false,
+                  "kind": "quote",
+                  "provider_record_id": "deadline-at-mark",
+                  "quality_flags": [],
+                  "source": "synthetic-sip-option"
+                },
+                "raw_ref": "synthetic://p18/deadline-at-mark",
+                "receive_sequence": 1,
+                "simulated_received_at": "2026-09-04T19:40:00Z",
+                "stream_id": "deadline-at-mark",
+                "supersedes_record_id": null
+              },
+              "raw_body": {
+                "ask": "5.10",
+                "ask_at": "2026-09-04T14:04:58+00:00",
+                "ask_size": 9,
+                "bid": "4.90",
+                "bid_at": "2026-09-04T19:40:00Z",
+                "bid_size": 7
+              }
+            },
+            "position_id": "position-1",
+            "provider_record_id": "holding-report",
+            "quantity": "1",
+            "quantity_unit": "contracts",
+            "raw_ref": "synthetic://p12c/holding",
+            "source": "fixture-holdings"
+          }
+        ],
+        "holdings_completeness": "complete",
+        "ledger_revision": "ledger-deadline-at",
+        "open_orders": [],
+        "orders_completeness": "complete",
+        "provider_record_id": "report-deadline-at",
+        "reconciled_at": "2026-09-04T19:40:00Z",
+        "reconciled_ledger_revision": "ledger-deadline-at",
+        "reconciliation_id": "reconcile-deadline-at",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "-1",
+        "session_start_equity": "100000",
+        "source": "fixture-account-ledger",
+        "virtual_cash": "99499",
+        "virtual_equity": "100000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "99499"
+      },
+      "raw_hash": "b10f03e735a934a88716bcb52acc4e5a20577abd82f65b2b6079853fd5fb39bd",
+      "record_id": "deadline-at-account"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "434",
+          "underlying": "SPY"
+        },
+        "event_id": "event-early-at-mark",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-04T17:35:00Z",
+          "event_at": "2026-09-04T17:35:00Z",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "early-at-mark",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://p18/early-at-mark",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T17:35:00Z",
+        "stream_id": "early-at-mark",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "early-at-mark",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-04T14:04:58+00:00",
+        "ask_size": 9,
+        "bid": "4.90",
+        "bid_at": "2026-09-04T17:35:00Z",
+        "bid_size": 7
+      },
+      "raw_hash": "6f765fb1f20d176deee46345dfd307d814f9e6ede9333da7a5dbae4f47086abe",
+      "record_id": "early-at-mark"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-early-at-account",
+        "metadata": null,
+        "raw_ref": "synthetic://p18/early-at-account",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T17:35:00Z",
+        "stream_id": "early-at-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "early-at-account",
+      "raw_body": {
+        "account_id": "exit-account",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T17:35:00Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T17:35:00Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "connected",
+        "currency": "USD",
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [
+          {
+            "asset_kind": "option",
+            "basis_debit": "500",
+            "contract": {
+              "deliverable_id": "standard-spy-100",
+              "expiry": "2026-09-18",
+              "multiplier": 100,
+              "right": "call",
+              "strike": "434",
+              "underlying": "SPY"
+            },
+            "entry_client_order_id": "entry-1",
+            "entry_filled_at": "2026-09-04T17:20:00Z",
+            "estimated_remaining_close_cost": "1",
+            "instrument_ref": "opaque-K",
+            "mark_quote": {
+              "envelope": {
+                "contract": {
+                  "deliverable_id": "standard-spy-100",
+                  "expiry": "2026-09-18",
+                  "multiplier": 100,
+                  "right": "call",
+                  "strike": "434",
+                  "underlying": "SPY"
+                },
+                "event_id": "event-early-at-mark",
+                "metadata": {
+                  "availability_basis": "measured",
+                  "availability_evidence_ref": "synthetic://capture/option-provider-1",
+                  "available_at": "2026-09-04T17:35:00Z",
+                  "event_at": "2026-09-04T17:35:00Z",
+                  "feed_class": "realtime",
+                  "fidelity": "genuine",
+                  "interval_end": null,
+                  "interval_start": null,
+                  "is_fill_forward": false,
+                  "kind": "quote",
+                  "provider_record_id": "early-at-mark",
+                  "quality_flags": [],
+                  "source": "synthetic-sip-option"
+                },
+                "raw_ref": "synthetic://p18/early-at-mark",
+                "receive_sequence": 1,
+                "simulated_received_at": "2026-09-04T17:35:00Z",
+                "stream_id": "early-at-mark",
+                "supersedes_record_id": null
+              },
+              "raw_body": {
+                "ask": "5.10",
+                "ask_at": "2026-09-04T14:04:58+00:00",
+                "ask_size": 9,
+                "bid": "4.90",
+                "bid_at": "2026-09-04T17:35:00Z",
+                "bid_size": 7
+              }
+            },
+            "position_id": "position-1",
+            "provider_record_id": "holding-report",
+            "quantity": "1",
+            "quantity_unit": "contracts",
+            "raw_ref": "synthetic://p12c/holding",
+            "source": "fixture-holdings"
+          }
+        ],
+        "holdings_completeness": "complete",
+        "ledger_revision": "ledger-early-at",
+        "open_orders": [],
+        "orders_completeness": "complete",
+        "provider_record_id": "report-early-at",
+        "reconciled_at": "2026-09-04T17:35:00Z",
+        "reconciled_ledger_revision": "ledger-early-at",
+        "reconciliation_id": "reconcile-early-at",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "-1",
+        "session_start_equity": "100000",
+        "source": "fixture-account-ledger",
+        "virtual_cash": "99499",
+        "virtual_equity": "100000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "99499"
+      },
+      "raw_hash": "d26de78b3ec7f46667733cb2499ac426f6ffb2a79b0e4b4435304ecbecdd1364",
+      "record_id": "early-at-account"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-early-session",
+        "metadata": null,
+        "raw_ref": "synthetic://p18/early-session",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T13:00:00Z",
+        "stream_id": "early-session",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "early-session",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T13:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-09-04T18:00:00Z",
+        "fidelity": "genuine",
+        "kind": "early_close",
+        "opens_at": "2026-09-04T13:30:00+00:00",
+        "provider_record_id": "early-session",
+        "session_date": "2026-09-04",
+        "source": "fixture-calendar",
+        "source_version": "1"
+      },
+      "raw_hash": "ef3d6f4a16082388c0fe49a8e851b128986a481b073afd98f6ba6332e0b71dbc",
+      "record_id": "early-session"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-early-instrument",
+        "metadata": null,
+        "raw_ref": "synthetic://p18/early-instrument",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T13:00:00Z",
+        "stream_id": "early-instrument",
+        "supersedes_record_id": null
+      },
+      "kind": "instrument_tradability",
+      "profile_id": "early-instrument",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T13:00:00Z",
+        "closes_at": "2026-09-04T18:00:00Z",
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "434",
+          "underlying": "SPY"
+        },
+        "effective_from": "2026-09-04T13:30:00+00:00",
+        "effective_until": "2026-09-04T18:00:00Z",
+        "fidelity": "genuine",
+        "instrument_ref": "opaque-K",
+        "opens_at": "2026-09-04T13:30:00+00:00",
+        "provider_record_id": "early-instrument",
+        "session_date": "2026-09-04",
+        "source": "fixture-instrument",
+        "source_version": "1",
+        "status": "tradable"
+      },
+      "raw_hash": "68e21d768a72a7867ee95f25436f6564cfbbe3d1eee6ef22fef58093dce0d21f",
+      "record_id": "early-instrument"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "434",
+          "underlying": "SPY"
+        },
+        "event_id": "event-pending-deadline-mark",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-04T19:40:00Z",
+          "event_at": "2026-09-04T19:40:00Z",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "pending-deadline-mark",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://p18/pending-deadline-mark",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T19:40:00Z",
+        "stream_id": "pending-deadline-mark",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "pending-deadline-mark",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-04T14:04:58+00:00",
+        "ask_size": 9,
+        "bid": "4.90",
+        "bid_at": "2026-09-04T19:40:00Z",
+        "bid_size": 7
+      },
+      "raw_hash": "b07cbf38880819eef03083f971cce428dfd72b3d7f67d74f64e0815e45d9f94c",
+      "record_id": "pending-deadline-mark"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-pending-deadline-account",
+        "metadata": null,
+        "raw_ref": "synthetic://p18/pending-deadline-account",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T19:40:00Z",
+        "stream_id": "pending-deadline-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "pending-deadline-account",
+      "raw_body": {
+        "account_id": "exit-account",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T19:40:00Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T19:40:00Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "connected",
+        "currency": "USD",
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [
+          {
+            "asset_kind": "option",
+            "basis_debit": "500",
+            "contract": {
+              "deliverable_id": "standard-spy-100",
+              "expiry": "2026-09-18",
+              "multiplier": 100,
+              "right": "call",
+              "strike": "434",
+              "underlying": "SPY"
+            },
+            "entry_client_order_id": "entry-1",
+            "entry_filled_at": "2026-09-04T19:20:00Z",
+            "estimated_remaining_close_cost": "1",
+            "instrument_ref": "opaque-K",
+            "mark_quote": {
+              "envelope": {
+                "contract": {
+                  "deliverable_id": "standard-spy-100",
+                  "expiry": "2026-09-18",
+                  "multiplier": 100,
+                  "right": "call",
+                  "strike": "434",
+                  "underlying": "SPY"
+                },
+                "event_id": "event-pending-deadline-mark",
+                "metadata": {
+                  "availability_basis": "measured",
+                  "availability_evidence_ref": "synthetic://capture/option-provider-1",
+                  "available_at": "2026-09-04T19:40:00Z",
+                  "event_at": "2026-09-04T19:40:00Z",
+                  "feed_class": "realtime",
+                  "fidelity": "genuine",
+                  "interval_end": null,
+                  "interval_start": null,
+                  "is_fill_forward": false,
+                  "kind": "quote",
+                  "provider_record_id": "pending-deadline-mark",
+                  "quality_flags": [],
+                  "source": "synthetic-sip-option"
+                },
+                "raw_ref": "synthetic://p18/pending-deadline-mark",
+                "receive_sequence": 1,
+                "simulated_received_at": "2026-09-04T19:40:00Z",
+                "stream_id": "pending-deadline-mark",
+                "supersedes_record_id": null
+              },
+              "raw_body": {
+                "ask": "5.10",
+                "ask_at": "2026-09-04T14:04:58+00:00",
+                "ask_size": 9,
+                "bid": "4.90",
+                "bid_at": "2026-09-04T19:40:00Z",
+                "bid_size": 7
+              }
+            },
+            "position_id": "position-1",
+            "provider_record_id": "holding-report",
+            "quantity": "1",
+            "quantity_unit": "contracts",
+            "raw_ref": "synthetic://p12c/holding",
+            "source": "fixture-holdings"
+          }
+        ],
+        "holdings_completeness": "complete",
+        "ledger_revision": "ledger-pending-deadline",
+        "open_orders": [
+          {
+            "client_order_id": "exit-client-1",
+            "contract": {
+              "deliverable_id": "standard-spy-100",
+              "expiry": "2026-09-18",
+              "multiplier": 100,
+              "right": "call",
+              "strike": "434",
+              "underlying": "SPY"
+            },
+            "cumulative_filled_quantity": "0",
+            "execution_uncertain": false,
+            "instrument_ref": "opaque-K",
+            "order_ref": "exit-1",
+            "provider_record_id": "exit-order-1",
+            "raw_ref": "synthetic://p18/exit-order-1",
+            "remaining_quantity": "1",
+            "reserved_cash": "0",
+            "role": "exit",
+            "side": "sell",
+            "source": "fixture-orders",
+            "status": "open"
+          }
+        ],
+        "orders_completeness": "complete",
+        "provider_record_id": "report-pending-deadline",
+        "reconciled_at": "2026-09-04T19:40:00Z",
+        "reconciled_ledger_revision": "ledger-pending-deadline",
+        "reconciliation_id": "reconcile-pending-deadline",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "-1",
+        "session_start_equity": "100000",
+        "source": "fixture-account-ledger",
+        "virtual_cash": "99499",
+        "virtual_equity": "100000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "99499"
+      },
+      "raw_hash": "155a22a9af94d3b6c386d1fb019ff0a114e327c04912016244d83077a0559bcc",
+      "record_id": "pending-deadline-account"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "434",
+          "underlying": "SPY"
+        },
+        "event_id": "event-pending-horizon-mark",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-04T14:35:00Z",
+          "event_at": "2026-09-04T14:35:00Z",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "pending-horizon-mark",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://p18/pending-horizon-mark",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:35:00Z",
+        "stream_id": "pending-horizon-mark",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "pending-horizon-mark",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-04T14:04:58+00:00",
+        "ask_size": 9,
+        "bid": "4.90",
+        "bid_at": "2026-09-04T14:35:00Z",
+        "bid_size": 7
+      },
+      "raw_hash": "f76ebe1791b1bff79ac603b6dea3c500c5120ec1fd36057376d79f9300299d98",
+      "record_id": "pending-horizon-mark"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-pending-horizon-account",
+        "metadata": null,
+        "raw_ref": "synthetic://p18/pending-horizon-account",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:35:00Z",
+        "stream_id": "pending-horizon-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "pending-horizon-account",
+      "raw_body": {
+        "account_id": "exit-account",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T14:35:00Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T14:35:00Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "connected",
+        "currency": "USD",
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [
+          {
+            "asset_kind": "option",
+            "basis_debit": "500",
+            "contract": {
+              "deliverable_id": "standard-spy-100",
+              "expiry": "2026-09-18",
+              "multiplier": 100,
+              "right": "call",
+              "strike": "434",
+              "underlying": "SPY"
+            },
+            "entry_client_order_id": "entry-1",
+            "entry_filled_at": "2026-09-04T14:05:00Z",
+            "estimated_remaining_close_cost": "1",
+            "instrument_ref": "opaque-K",
+            "mark_quote": {
+              "envelope": {
+                "contract": {
+                  "deliverable_id": "standard-spy-100",
+                  "expiry": "2026-09-18",
+                  "multiplier": 100,
+                  "right": "call",
+                  "strike": "434",
+                  "underlying": "SPY"
+                },
+                "event_id": "event-pending-horizon-mark",
+                "metadata": {
+                  "availability_basis": "measured",
+                  "availability_evidence_ref": "synthetic://capture/option-provider-1",
+                  "available_at": "2026-09-04T14:35:00Z",
+                  "event_at": "2026-09-04T14:35:00Z",
+                  "feed_class": "realtime",
+                  "fidelity": "genuine",
+                  "interval_end": null,
+                  "interval_start": null,
+                  "is_fill_forward": false,
+                  "kind": "quote",
+                  "provider_record_id": "pending-horizon-mark",
+                  "quality_flags": [],
+                  "source": "synthetic-sip-option"
+                },
+                "raw_ref": "synthetic://p18/pending-horizon-mark",
+                "receive_sequence": 1,
+                "simulated_received_at": "2026-09-04T14:35:00Z",
+                "stream_id": "pending-horizon-mark",
+                "supersedes_record_id": null
+              },
+              "raw_body": {
+                "ask": "5.10",
+                "ask_at": "2026-09-04T14:04:58+00:00",
+                "ask_size": 9,
+                "bid": "4.90",
+                "bid_at": "2026-09-04T14:35:00Z",
+                "bid_size": 7
+              }
+            },
+            "position_id": "position-1",
+            "provider_record_id": "holding-report",
+            "quantity": "1",
+            "quantity_unit": "contracts",
+            "raw_ref": "synthetic://p12c/holding",
+            "source": "fixture-holdings"
+          }
+        ],
+        "holdings_completeness": "complete",
+        "ledger_revision": "ledger-pending-horizon",
+        "open_orders": [
+          {
+            "client_order_id": "exit-client-1",
+            "contract": {
+              "deliverable_id": "standard-spy-100",
+              "expiry": "2026-09-18",
+              "multiplier": 100,
+              "right": "call",
+              "strike": "434",
+              "underlying": "SPY"
+            },
+            "cumulative_filled_quantity": "0",
+            "execution_uncertain": false,
+            "instrument_ref": "opaque-K",
+            "order_ref": "exit-1",
+            "provider_record_id": "exit-order-1",
+            "raw_ref": "synthetic://p18/exit-order-1",
+            "remaining_quantity": "1",
+            "reserved_cash": "0",
+            "role": "exit",
+            "side": "sell",
+            "source": "fixture-orders",
+            "status": "open"
+          }
+        ],
+        "orders_completeness": "complete",
+        "provider_record_id": "report-pending-horizon",
+        "reconciled_at": "2026-09-04T14:35:00Z",
+        "reconciled_ledger_revision": "ledger-pending-horizon",
+        "reconciliation_id": "reconcile-pending-horizon",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "-1",
+        "session_start_equity": "100000",
+        "source": "fixture-account-ledger",
+        "virtual_cash": "99499",
+        "virtual_equity": "100000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "99499"
+      },
+      "raw_hash": "1e14aadd366e008a420dee57b74661fdf2135524b7f26528c5e00413a10b71a2",
+      "record_id": "pending-horizon-account"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "434",
+          "underlying": "SPY"
+        },
+        "event_id": "event-unknown-fill-mark",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-04T14:05:00Z",
+          "event_at": "2026-09-04T14:05:00Z",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "unknown-fill-mark",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://p18/unknown-fill-mark",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:05:00Z",
+        "stream_id": "unknown-fill-mark",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "unknown-fill-mark",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-04T14:04:58+00:00",
+        "ask_size": 9,
+        "bid": "4.90",
+        "bid_at": "2026-09-04T14:05:00Z",
+        "bid_size": 7
+      },
+      "raw_hash": "7d36016868dad96e6488a7f72d8d005322486c2aacff5c70a3a6f3f9586405e5",
+      "record_id": "unknown-fill-mark"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-unknown-fill-account",
+        "metadata": null,
+        "raw_ref": "synthetic://p18/unknown-fill-account",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:05:00Z",
+        "stream_id": "unknown-fill-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "unknown-fill-account",
+      "raw_body": {
+        "account_id": "exit-account",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T14:05:00Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T14:05:00Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "connected",
+        "currency": "USD",
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [
+          {
+            "asset_kind": "option",
+            "basis_debit": "500",
+            "contract": {
+              "deliverable_id": "standard-spy-100",
+              "expiry": "2026-09-18",
+              "multiplier": 100,
+              "right": "call",
+              "strike": "434",
+              "underlying": "SPY"
+            },
+            "entry_client_order_id": "entry-1",
+            "entry_filled_at": null,
+            "estimated_remaining_close_cost": "1",
+            "instrument_ref": "opaque-K",
+            "mark_quote": {
+              "envelope": {
+                "contract": {
+                  "deliverable_id": "standard-spy-100",
+                  "expiry": "2026-09-18",
+                  "multiplier": 100,
+                  "right": "call",
+                  "strike": "434",
+                  "underlying": "SPY"
+                },
+                "event_id": "event-unknown-fill-mark",
+                "metadata": {
+                  "availability_basis": "measured",
+                  "availability_evidence_ref": "synthetic://capture/option-provider-1",
+                  "available_at": "2026-09-04T14:05:00Z",
+                  "event_at": "2026-09-04T14:05:00Z",
+                  "feed_class": "realtime",
+                  "fidelity": "genuine",
+                  "interval_end": null,
+                  "interval_start": null,
+                  "is_fill_forward": false,
+                  "kind": "quote",
+                  "provider_record_id": "unknown-fill-mark",
+                  "quality_flags": [],
+                  "source": "synthetic-sip-option"
+                },
+                "raw_ref": "synthetic://p18/unknown-fill-mark",
+                "receive_sequence": 1,
+                "simulated_received_at": "2026-09-04T14:05:00Z",
+                "stream_id": "unknown-fill-mark",
+                "supersedes_record_id": null
+              },
+              "raw_body": {
+                "ask": "5.10",
+                "ask_at": "2026-09-04T14:04:58+00:00",
+                "ask_size": 9,
+                "bid": "4.90",
+                "bid_at": "2026-09-04T14:05:00Z",
+                "bid_size": 7
+              }
+            },
+            "position_id": "position-1",
+            "provider_record_id": "holding-report",
+            "quantity": "1",
+            "quantity_unit": "contracts",
+            "raw_ref": "synthetic://p12c/holding",
+            "source": "fixture-holdings"
+          }
+        ],
+        "holdings_completeness": "complete",
+        "ledger_revision": "ledger-unknown-fill",
+        "open_orders": [],
+        "orders_completeness": "complete",
+        "provider_record_id": "report-unknown-fill",
+        "reconciled_at": "2026-09-04T14:05:00Z",
+        "reconciled_ledger_revision": "ledger-unknown-fill",
+        "reconciliation_id": "reconcile-unknown-fill",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "-1",
+        "session_start_equity": "100000",
+        "source": "fixture-account-ledger",
+        "virtual_cash": "99499",
+        "virtual_equity": "100000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "99499"
+      },
+      "raw_hash": "f42d9a0c7386f691a5b98107c9c0055ee02e47506ab481abd4344672b5fa0ebc",
+      "record_id": "unknown-fill-account"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "434",
+          "underlying": "SPY"
+        },
+        "event_id": "event-prior-session-mark",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-04T14:05:00Z",
+          "event_at": "2026-09-04T14:05:00Z",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "prior-session-mark",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://p18/prior-session-mark",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:05:00Z",
+        "stream_id": "prior-session-mark",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "prior-session-mark",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-04T14:04:58+00:00",
+        "ask_size": 9,
+        "bid": "4.90",
+        "bid_at": "2026-09-04T14:05:00Z",
+        "bid_size": 7
+      },
+      "raw_hash": "7d36016868dad96e6488a7f72d8d005322486c2aacff5c70a3a6f3f9586405e5",
+      "record_id": "prior-session-mark"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-prior-session-account",
+        "metadata": null,
+        "raw_ref": "synthetic://p18/prior-session-account",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:05:00Z",
+        "stream_id": "prior-session-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "prior-session-account",
+      "raw_body": {
+        "account_id": "exit-account",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T14:05:00Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T14:05:00Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "connected",
+        "currency": "USD",
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [
+          {
+            "asset_kind": "option",
+            "basis_debit": "500",
+            "contract": {
+              "deliverable_id": "standard-spy-100",
+              "expiry": "2026-09-18",
+              "multiplier": 100,
+              "right": "call",
+              "strike": "434",
+              "underlying": "SPY"
+            },
+            "entry_client_order_id": "entry-1",
+            "entry_filled_at": "2026-09-03T19:00:00Z",
+            "estimated_remaining_close_cost": "1",
+            "instrument_ref": "opaque-K",
+            "mark_quote": {
+              "envelope": {
+                "contract": {
+                  "deliverable_id": "standard-spy-100",
+                  "expiry": "2026-09-18",
+                  "multiplier": 100,
+                  "right": "call",
+                  "strike": "434",
+                  "underlying": "SPY"
+                },
+                "event_id": "event-prior-session-mark",
+                "metadata": {
+                  "availability_basis": "measured",
+                  "availability_evidence_ref": "synthetic://capture/option-provider-1",
+                  "available_at": "2026-09-04T14:05:00Z",
+                  "event_at": "2026-09-04T14:05:00Z",
+                  "feed_class": "realtime",
+                  "fidelity": "genuine",
+                  "interval_end": null,
+                  "interval_start": null,
+                  "is_fill_forward": false,
+                  "kind": "quote",
+                  "provider_record_id": "prior-session-mark",
+                  "quality_flags": [],
+                  "source": "synthetic-sip-option"
+                },
+                "raw_ref": "synthetic://p18/prior-session-mark",
+                "receive_sequence": 1,
+                "simulated_received_at": "2026-09-04T14:05:00Z",
+                "stream_id": "prior-session-mark",
+                "supersedes_record_id": null
+              },
+              "raw_body": {
+                "ask": "5.10",
+                "ask_at": "2026-09-04T14:04:58+00:00",
+                "ask_size": 9,
+                "bid": "4.90",
+                "bid_at": "2026-09-04T14:05:00Z",
+                "bid_size": 7
+              }
+            },
+            "position_id": "position-1",
+            "provider_record_id": "holding-report",
+            "quantity": "1",
+            "quantity_unit": "contracts",
+            "raw_ref": "synthetic://p12c/holding",
+            "source": "fixture-holdings"
+          }
+        ],
+        "holdings_completeness": "complete",
+        "ledger_revision": "ledger-prior-session",
+        "open_orders": [],
+        "orders_completeness": "complete",
+        "provider_record_id": "report-prior-session",
+        "reconciled_at": "2026-09-04T14:05:00Z",
+        "reconciled_ledger_revision": "ledger-prior-session",
+        "reconciliation_id": "reconcile-prior-session",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "-1",
+        "session_start_equity": "100000",
+        "source": "fixture-account-ledger",
+        "virtual_cash": "99499",
+        "virtual_equity": "100000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "99499"
+      },
+      "raw_hash": "5ae00503044cac28a571c12c08166b30d9398f8f935a07b0c21211bbed8fafa8",
+      "record_id": "prior-session-account"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "434",
+          "underlying": "SPY"
+        },
+        "event_id": "event-prior-local-day-mark",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-04T14:05:00Z",
+          "event_at": "2026-09-04T14:05:00Z",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "prior-local-day-mark",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://p18/prior-local-day-mark",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:05:00Z",
+        "stream_id": "prior-local-day-mark",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "prior-local-day-mark",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-04T14:04:58+00:00",
+        "ask_size": 9,
+        "bid": "4.90",
+        "bid_at": "2026-09-04T14:05:00Z",
+        "bid_size": 7
+      },
+      "raw_hash": "7d36016868dad96e6488a7f72d8d005322486c2aacff5c70a3a6f3f9586405e5",
+      "record_id": "prior-local-day-mark"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-prior-local-day-account",
+        "metadata": null,
+        "raw_ref": "synthetic://p18/prior-local-day-account",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:05:00Z",
+        "stream_id": "prior-local-day-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "prior-local-day-account",
+      "raw_body": {
+        "account_id": "exit-account",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T14:05:00Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T14:05:00Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "connected",
+        "currency": "USD",
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [
+          {
+            "asset_kind": "option",
+            "basis_debit": "500",
+            "contract": {
+              "deliverable_id": "standard-spy-100",
+              "expiry": "2026-09-18",
+              "multiplier": 100,
+              "right": "call",
+              "strike": "434",
+              "underlying": "SPY"
+            },
+            "entry_client_order_id": "entry-1",
+            "entry_filled_at": "2026-09-04T00:30:00Z",
+            "estimated_remaining_close_cost": "1",
+            "instrument_ref": "opaque-K",
+            "mark_quote": {
+              "envelope": {
+                "contract": {
+                  "deliverable_id": "standard-spy-100",
+                  "expiry": "2026-09-18",
+                  "multiplier": 100,
+                  "right": "call",
+                  "strike": "434",
+                  "underlying": "SPY"
+                },
+                "event_id": "event-prior-local-day-mark",
+                "metadata": {
+                  "availability_basis": "measured",
+                  "availability_evidence_ref": "synthetic://capture/option-provider-1",
+                  "available_at": "2026-09-04T14:05:00Z",
+                  "event_at": "2026-09-04T14:05:00Z",
+                  "feed_class": "realtime",
+                  "fidelity": "genuine",
+                  "interval_end": null,
+                  "interval_start": null,
+                  "is_fill_forward": false,
+                  "kind": "quote",
+                  "provider_record_id": "prior-local-day-mark",
+                  "quality_flags": [],
+                  "source": "synthetic-sip-option"
+                },
+                "raw_ref": "synthetic://p18/prior-local-day-mark",
+                "receive_sequence": 1,
+                "simulated_received_at": "2026-09-04T14:05:00Z",
+                "stream_id": "prior-local-day-mark",
+                "supersedes_record_id": null
+              },
+              "raw_body": {
+                "ask": "5.10",
+                "ask_at": "2026-09-04T14:04:58+00:00",
+                "ask_size": 9,
+                "bid": "4.90",
+                "bid_at": "2026-09-04T14:05:00Z",
+                "bid_size": 7
+              }
+            },
+            "position_id": "position-1",
+            "provider_record_id": "holding-report",
+            "quantity": "1",
+            "quantity_unit": "contracts",
+            "raw_ref": "synthetic://p12c/holding",
+            "source": "fixture-holdings"
+          }
+        ],
+        "holdings_completeness": "complete",
+        "ledger_revision": "ledger-prior-local-day",
+        "open_orders": [],
+        "orders_completeness": "complete",
+        "provider_record_id": "report-prior-local-day",
+        "reconciled_at": "2026-09-04T14:05:00Z",
+        "reconciled_ledger_revision": "ledger-prior-local-day",
+        "reconciliation_id": "reconcile-prior-local-day",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "-1",
+        "session_start_equity": "100000",
+        "source": "fixture-account-ledger",
+        "virtual_cash": "99499",
+        "virtual_equity": "100000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "99499"
+      },
+      "raw_hash": "0310022cfe7fb22dcd507be7816116b52213739a909937de5e5dc6b9f1cb4b91",
+      "record_id": "prior-local-day-account"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "434",
+          "underlying": "SPY"
+        },
+        "event_id": "event-quantity-two-mark",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-04T14:05:00Z",
+          "event_at": "2026-09-04T14:05:00Z",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "quantity-two-mark",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://p18/quantity-two-mark",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:05:00Z",
+        "stream_id": "quantity-two-mark",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "quantity-two-mark",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-04T14:04:58+00:00",
+        "ask_size": 9,
+        "bid": "4.90",
+        "bid_at": "2026-09-04T14:05:00Z",
+        "bid_size": 7
+      },
+      "raw_hash": "7d36016868dad96e6488a7f72d8d005322486c2aacff5c70a3a6f3f9586405e5",
+      "record_id": "quantity-two-mark"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-quantity-two-account",
+        "metadata": null,
+        "raw_ref": "synthetic://p18/quantity-two-account",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:05:00Z",
+        "stream_id": "quantity-two-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "quantity-two-account",
+      "raw_body": {
+        "account_id": "exit-account",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T14:05:00Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T14:05:00Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "connected",
+        "currency": "USD",
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [
+          {
+            "asset_kind": "option",
+            "basis_debit": "500",
+            "contract": {
+              "deliverable_id": "standard-spy-100",
+              "expiry": "2026-09-18",
+              "multiplier": 100,
+              "right": "call",
+              "strike": "434",
+              "underlying": "SPY"
+            },
+            "entry_client_order_id": "entry-1",
+            "entry_filled_at": "2026-09-04T14:05:00Z",
+            "estimated_remaining_close_cost": "1",
+            "instrument_ref": "opaque-K",
+            "mark_quote": {
+              "envelope": {
+                "contract": {
+                  "deliverable_id": "standard-spy-100",
+                  "expiry": "2026-09-18",
+                  "multiplier": 100,
+                  "right": "call",
+                  "strike": "434",
+                  "underlying": "SPY"
+                },
+                "event_id": "event-quantity-two-mark",
+                "metadata": {
+                  "availability_basis": "measured",
+                  "availability_evidence_ref": "synthetic://capture/option-provider-1",
+                  "available_at": "2026-09-04T14:05:00Z",
+                  "event_at": "2026-09-04T14:05:00Z",
+                  "feed_class": "realtime",
+                  "fidelity": "genuine",
+                  "interval_end": null,
+                  "interval_start": null,
+                  "is_fill_forward": false,
+                  "kind": "quote",
+                  "provider_record_id": "quantity-two-mark",
+                  "quality_flags": [],
+                  "source": "synthetic-sip-option"
+                },
+                "raw_ref": "synthetic://p18/quantity-two-mark",
+                "receive_sequence": 1,
+                "simulated_received_at": "2026-09-04T14:05:00Z",
+                "stream_id": "quantity-two-mark",
+                "supersedes_record_id": null
+              },
+              "raw_body": {
+                "ask": "5.10",
+                "ask_at": "2026-09-04T14:04:58+00:00",
+                "ask_size": 9,
+                "bid": "4.90",
+                "bid_at": "2026-09-04T14:05:00Z",
+                "bid_size": 7
+              }
+            },
+            "position_id": "position-1",
+            "provider_record_id": "holding-report",
+            "quantity": "2",
+            "quantity_unit": "contracts",
+            "raw_ref": "synthetic://p12c/holding",
+            "source": "fixture-holdings"
+          }
+        ],
+        "holdings_completeness": "complete",
+        "ledger_revision": "ledger-quantity-two",
+        "open_orders": [],
+        "orders_completeness": "complete",
+        "provider_record_id": "report-quantity-two",
+        "reconciled_at": "2026-09-04T14:05:00Z",
+        "reconciled_ledger_revision": "ledger-quantity-two",
+        "reconciliation_id": "reconcile-quantity-two",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "-1",
+        "session_start_equity": "100000",
+        "source": "fixture-account-ledger",
+        "virtual_cash": "99499",
+        "virtual_equity": "100000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "99499"
+      },
+      "raw_hash": "dd11726303e43df2d1d87d3af3c8a7944da1161282eeb59112455c62ec02a93a",
+      "record_id": "quantity-two-account"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "434",
+          "underlying": "SPY"
+        },
+        "event_id": "event-quantity-unknown-mark",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-04T14:05:00Z",
+          "event_at": "2026-09-04T14:05:00Z",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "quantity-unknown-mark",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://p18/quantity-unknown-mark",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:05:00Z",
+        "stream_id": "quantity-unknown-mark",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "quantity-unknown-mark",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-04T14:04:58+00:00",
+        "ask_size": 9,
+        "bid": "4.90",
+        "bid_at": "2026-09-04T14:05:00Z",
+        "bid_size": 7
+      },
+      "raw_hash": "7d36016868dad96e6488a7f72d8d005322486c2aacff5c70a3a6f3f9586405e5",
+      "record_id": "quantity-unknown-mark"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-quantity-unknown-account",
+        "metadata": null,
+        "raw_ref": "synthetic://p18/quantity-unknown-account",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:05:00Z",
+        "stream_id": "quantity-unknown-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "quantity-unknown-account",
+      "raw_body": {
+        "account_id": "exit-account",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T14:05:00Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T14:05:00Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "connected",
+        "currency": "USD",
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [
+          {
+            "asset_kind": "option",
+            "basis_debit": "500",
+            "contract": {
+              "deliverable_id": "standard-spy-100",
+              "expiry": "2026-09-18",
+              "multiplier": 100,
+              "right": "call",
+              "strike": "434",
+              "underlying": "SPY"
+            },
+            "entry_client_order_id": "entry-1",
+            "entry_filled_at": "2026-09-04T14:05:00Z",
+            "estimated_remaining_close_cost": "1",
+            "instrument_ref": "opaque-K",
+            "mark_quote": {
+              "envelope": {
+                "contract": {
+                  "deliverable_id": "standard-spy-100",
+                  "expiry": "2026-09-18",
+                  "multiplier": 100,
+                  "right": "call",
+                  "strike": "434",
+                  "underlying": "SPY"
+                },
+                "event_id": "event-quantity-unknown-mark",
+                "metadata": {
+                  "availability_basis": "measured",
+                  "availability_evidence_ref": "synthetic://capture/option-provider-1",
+                  "available_at": "2026-09-04T14:05:00Z",
+                  "event_at": "2026-09-04T14:05:00Z",
+                  "feed_class": "realtime",
+                  "fidelity": "genuine",
+                  "interval_end": null,
+                  "interval_start": null,
+                  "is_fill_forward": false,
+                  "kind": "quote",
+                  "provider_record_id": "quantity-unknown-mark",
+                  "quality_flags": [],
+                  "source": "synthetic-sip-option"
+                },
+                "raw_ref": "synthetic://p18/quantity-unknown-mark",
+                "receive_sequence": 1,
+                "simulated_received_at": "2026-09-04T14:05:00Z",
+                "stream_id": "quantity-unknown-mark",
+                "supersedes_record_id": null
+              },
+              "raw_body": {
+                "ask": "5.10",
+                "ask_at": "2026-09-04T14:04:58+00:00",
+                "ask_size": 9,
+                "bid": "4.90",
+                "bid_at": "2026-09-04T14:05:00Z",
+                "bid_size": 7
+              }
+            },
+            "position_id": "position-1",
+            "provider_record_id": "holding-report",
+            "quantity": null,
+            "quantity_unit": "contracts",
+            "raw_ref": "synthetic://p12c/holding",
+            "source": "fixture-holdings"
+          }
+        ],
+        "holdings_completeness": "complete",
+        "ledger_revision": "ledger-quantity-unknown",
+        "open_orders": [],
+        "orders_completeness": "complete",
+        "provider_record_id": "report-quantity-unknown",
+        "reconciled_at": "2026-09-04T14:05:00Z",
+        "reconciled_ledger_revision": "ledger-quantity-unknown",
+        "reconciliation_id": "reconcile-quantity-unknown",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "-1",
+        "session_start_equity": "100000",
+        "source": "fixture-account-ledger",
+        "virtual_cash": "99499",
+        "virtual_equity": "100000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "99499"
+      },
+      "raw_hash": "6ce85c49792ead3af23bf6fb85926439da4d97b37dafc791c1777687b098e7d3",
+      "record_id": "quantity-unknown-account"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "434",
+          "underlying": "SPY"
+        },
+        "event_id": "event-stale-bid-mark",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-04T14:05:00Z",
+          "event_at": "2026-09-04T14:04:50Z",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "stale-bid-mark",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://p18/stale-bid-mark",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:05:00Z",
+        "stream_id": "stale-bid-mark",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "stale-bid-mark",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-04T14:04:58+00:00",
+        "ask_size": 9,
+        "bid": "4.90",
+        "bid_at": "2026-09-04T14:04:50Z",
+        "bid_size": 7
+      },
+      "raw_hash": "5071572768533e87ffb2e9a4a8c4b22f170a4428c69488ef03372e0cb1c76272",
+      "record_id": "stale-bid-mark"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-stale-bid-account",
+        "metadata": null,
+        "raw_ref": "synthetic://p18/stale-bid-account",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:05:00Z",
+        "stream_id": "stale-bid-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "stale-bid-account",
+      "raw_body": {
+        "account_id": "exit-account",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T14:05:00Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T14:05:00Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "connected",
+        "currency": "USD",
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [
+          {
+            "asset_kind": "option",
+            "basis_debit": "500",
+            "contract": {
+              "deliverable_id": "standard-spy-100",
+              "expiry": "2026-09-18",
+              "multiplier": 100,
+              "right": "call",
+              "strike": "434",
+              "underlying": "SPY"
+            },
+            "entry_client_order_id": "entry-1",
+            "entry_filled_at": "2026-09-04T14:05:00Z",
+            "estimated_remaining_close_cost": "1",
+            "instrument_ref": "opaque-K",
+            "mark_quote": {
+              "envelope": {
+                "contract": {
+                  "deliverable_id": "standard-spy-100",
+                  "expiry": "2026-09-18",
+                  "multiplier": 100,
+                  "right": "call",
+                  "strike": "434",
+                  "underlying": "SPY"
+                },
+                "event_id": "event-stale-bid-mark",
+                "metadata": {
+                  "availability_basis": "measured",
+                  "availability_evidence_ref": "synthetic://capture/option-provider-1",
+                  "available_at": "2026-09-04T14:05:00Z",
+                  "event_at": "2026-09-04T14:04:50Z",
+                  "feed_class": "realtime",
+                  "fidelity": "genuine",
+                  "interval_end": null,
+                  "interval_start": null,
+                  "is_fill_forward": false,
+                  "kind": "quote",
+                  "provider_record_id": "stale-bid-mark",
+                  "quality_flags": [],
+                  "source": "synthetic-sip-option"
+                },
+                "raw_ref": "synthetic://p18/stale-bid-mark",
+                "receive_sequence": 1,
+                "simulated_received_at": "2026-09-04T14:05:00Z",
+                "stream_id": "stale-bid-mark",
+                "supersedes_record_id": null
+              },
+              "raw_body": {
+                "ask": "5.10",
+                "ask_at": "2026-09-04T14:04:58+00:00",
+                "ask_size": 9,
+                "bid": "4.90",
+                "bid_at": "2026-09-04T14:04:50Z",
+                "bid_size": 7
+              }
+            },
+            "position_id": "position-1",
+            "provider_record_id": "holding-report",
+            "quantity": "1",
+            "quantity_unit": "contracts",
+            "raw_ref": "synthetic://p12c/holding",
+            "source": "fixture-holdings"
+          }
+        ],
+        "holdings_completeness": "complete",
+        "ledger_revision": "ledger-stale-bid",
+        "open_orders": [],
+        "orders_completeness": "complete",
+        "provider_record_id": "report-stale-bid",
+        "reconciled_at": "2026-09-04T14:05:00Z",
+        "reconciled_ledger_revision": "ledger-stale-bid",
+        "reconciliation_id": "reconcile-stale-bid",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "-1",
+        "session_start_equity": "100000",
+        "source": "fixture-account-ledger",
+        "virtual_cash": "99499",
+        "virtual_equity": "100000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "99499"
+      },
+      "raw_hash": "78afd3d8214842b1bf3929f0885ed43c56126e4cb17aeec15c7305332b9d8ba2",
+      "record_id": "stale-bid-account"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "434",
+          "underlying": "SPY"
+        },
+        "event_id": "event-missing-bid-mark",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-04T14:05:00Z",
+          "event_at": "2026-09-04T14:05:00Z",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "missing-bid-mark",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://p18/missing-bid-mark",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:05:00Z",
+        "stream_id": "missing-bid-mark",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "missing-bid-mark",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-04T14:04:58+00:00",
+        "ask_size": 9,
+        "bid": null,
+        "bid_at": "2026-09-04T14:05:00Z",
+        "bid_size": null
+      },
+      "raw_hash": "9439f5151c5d12eebe3e77cb5120cf07b8c8735a45552f94be4d3f18e38081f2",
+      "record_id": "missing-bid-mark"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-missing-bid-account",
+        "metadata": null,
+        "raw_ref": "synthetic://p18/missing-bid-account",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:05:00Z",
+        "stream_id": "missing-bid-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "missing-bid-account",
+      "raw_body": {
+        "account_id": "exit-account",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T14:05:00Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T14:05:00Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "connected",
+        "currency": "USD",
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [
+          {
+            "asset_kind": "option",
+            "basis_debit": "500",
+            "contract": {
+              "deliverable_id": "standard-spy-100",
+              "expiry": "2026-09-18",
+              "multiplier": 100,
+              "right": "call",
+              "strike": "434",
+              "underlying": "SPY"
+            },
+            "entry_client_order_id": "entry-1",
+            "entry_filled_at": "2026-09-04T14:05:00Z",
+            "estimated_remaining_close_cost": "1",
+            "instrument_ref": "opaque-K",
+            "mark_quote": {
+              "envelope": {
+                "contract": {
+                  "deliverable_id": "standard-spy-100",
+                  "expiry": "2026-09-18",
+                  "multiplier": 100,
+                  "right": "call",
+                  "strike": "434",
+                  "underlying": "SPY"
+                },
+                "event_id": "event-missing-bid-mark",
+                "metadata": {
+                  "availability_basis": "measured",
+                  "availability_evidence_ref": "synthetic://capture/option-provider-1",
+                  "available_at": "2026-09-04T14:05:00Z",
+                  "event_at": "2026-09-04T14:05:00Z",
+                  "feed_class": "realtime",
+                  "fidelity": "genuine",
+                  "interval_end": null,
+                  "interval_start": null,
+                  "is_fill_forward": false,
+                  "kind": "quote",
+                  "provider_record_id": "missing-bid-mark",
+                  "quality_flags": [],
+                  "source": "synthetic-sip-option"
+                },
+                "raw_ref": "synthetic://p18/missing-bid-mark",
+                "receive_sequence": 1,
+                "simulated_received_at": "2026-09-04T14:05:00Z",
+                "stream_id": "missing-bid-mark",
+                "supersedes_record_id": null
+              },
+              "raw_body": {
+                "ask": "5.10",
+                "ask_at": "2026-09-04T14:04:58+00:00",
+                "ask_size": 9,
+                "bid": null,
+                "bid_at": "2026-09-04T14:05:00Z",
+                "bid_size": null
+              }
+            },
+            "position_id": "position-1",
+            "provider_record_id": "holding-report",
+            "quantity": "1",
+            "quantity_unit": "contracts",
+            "raw_ref": "synthetic://p12c/holding",
+            "source": "fixture-holdings"
+          }
+        ],
+        "holdings_completeness": "complete",
+        "ledger_revision": "ledger-missing-bid",
+        "open_orders": [],
+        "orders_completeness": "complete",
+        "provider_record_id": "report-missing-bid",
+        "reconciled_at": "2026-09-04T14:05:00Z",
+        "reconciled_ledger_revision": "ledger-missing-bid",
+        "reconciliation_id": "reconcile-missing-bid",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "-1",
+        "session_start_equity": "100000",
+        "source": "fixture-account-ledger",
+        "virtual_cash": "99499",
+        "virtual_equity": "100000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "99499"
+      },
+      "raw_hash": "dc32c4c14c2b43c66e169d18eec9e25f632e7f4fc4a1ebb334a7ac114f30956d",
+      "record_id": "missing-bid-account"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "434",
+          "underlying": "SPY"
+        },
+        "event_id": "event-disconnected-mark",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-04T14:05:00Z",
+          "event_at": "2026-09-04T14:05:00Z",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "disconnected-mark",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://p18/disconnected-mark",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:05:00Z",
+        "stream_id": "disconnected-mark",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "disconnected-mark",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-04T14:04:58+00:00",
+        "ask_size": 9,
+        "bid": "4.90",
+        "bid_at": "2026-09-04T14:05:00Z",
+        "bid_size": 7
+      },
+      "raw_hash": "7d36016868dad96e6488a7f72d8d005322486c2aacff5c70a3a6f3f9586405e5",
+      "record_id": "disconnected-mark"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-disconnected-account",
+        "metadata": null,
+        "raw_ref": "synthetic://p18/disconnected-account",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:05:00Z",
+        "stream_id": "disconnected-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "disconnected-account",
+      "raw_body": {
+        "account_id": "exit-account",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T14:05:00Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T14:05:00Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "disconnected",
+        "currency": "USD",
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [
+          {
+            "asset_kind": "option",
+            "basis_debit": "500",
+            "contract": {
+              "deliverable_id": "standard-spy-100",
+              "expiry": "2026-09-18",
+              "multiplier": 100,
+              "right": "call",
+              "strike": "434",
+              "underlying": "SPY"
+            },
+            "entry_client_order_id": "entry-1",
+            "entry_filled_at": "2026-09-04T14:05:00Z",
+            "estimated_remaining_close_cost": "1",
+            "instrument_ref": "opaque-K",
+            "mark_quote": {
+              "envelope": {
+                "contract": {
+                  "deliverable_id": "standard-spy-100",
+                  "expiry": "2026-09-18",
+                  "multiplier": 100,
+                  "right": "call",
+                  "strike": "434",
+                  "underlying": "SPY"
+                },
+                "event_id": "event-disconnected-mark",
+                "metadata": {
+                  "availability_basis": "measured",
+                  "availability_evidence_ref": "synthetic://capture/option-provider-1",
+                  "available_at": "2026-09-04T14:05:00Z",
+                  "event_at": "2026-09-04T14:05:00Z",
+                  "feed_class": "realtime",
+                  "fidelity": "genuine",
+                  "interval_end": null,
+                  "interval_start": null,
+                  "is_fill_forward": false,
+                  "kind": "quote",
+                  "provider_record_id": "disconnected-mark",
+                  "quality_flags": [],
+                  "source": "synthetic-sip-option"
+                },
+                "raw_ref": "synthetic://p18/disconnected-mark",
+                "receive_sequence": 1,
+                "simulated_received_at": "2026-09-04T14:05:00Z",
+                "stream_id": "disconnected-mark",
+                "supersedes_record_id": null
+              },
+              "raw_body": {
+                "ask": "5.10",
+                "ask_at": "2026-09-04T14:04:58+00:00",
+                "ask_size": 9,
+                "bid": "4.90",
+                "bid_at": "2026-09-04T14:05:00Z",
+                "bid_size": 7
+              }
+            },
+            "position_id": "position-1",
+            "provider_record_id": "holding-report",
+            "quantity": "1",
+            "quantity_unit": "contracts",
+            "raw_ref": "synthetic://p12c/holding",
+            "source": "fixture-holdings"
+          }
+        ],
+        "holdings_completeness": "complete",
+        "ledger_revision": "ledger-disconnected",
+        "open_orders": [],
+        "orders_completeness": "complete",
+        "provider_record_id": "report-disconnected",
+        "reconciled_at": "2026-09-04T14:05:00Z",
+        "reconciled_ledger_revision": "ledger-disconnected",
+        "reconciliation_id": "reconcile-disconnected",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "-1",
+        "session_start_equity": "100000",
+        "source": "fixture-account-ledger",
+        "virtual_cash": "99499",
+        "virtual_equity": "100000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "99499"
+      },
+      "raw_hash": "a1c2b1ab42c357d0318849e9a62b527d1425b24e98d133afa7f65f189cc99b33",
+      "record_id": "disconnected-account"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "434",
+          "underlying": "SPY"
+        },
+        "event_id": "event-stale-account-mark",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-04T14:05:00Z",
+          "event_at": "2026-09-04T14:05:00Z",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "stale-account-mark",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://p18/stale-account-mark",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:05:00Z",
+        "stream_id": "stale-account-mark",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "stale-account-mark",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-04T14:04:58+00:00",
+        "ask_size": 9,
+        "bid": "4.90",
+        "bid_at": "2026-09-04T14:05:00Z",
+        "bid_size": 7
+      },
+      "raw_hash": "7d36016868dad96e6488a7f72d8d005322486c2aacff5c70a3a6f3f9586405e5",
+      "record_id": "stale-account-mark"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-stale-account-account",
+        "metadata": null,
+        "raw_ref": "synthetic://p18/stale-account-account",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:05:00Z",
+        "stream_id": "stale-account-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "stale-account-account",
+      "raw_body": {
+        "account_id": "exit-account",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T14:04:50Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T14:05:00Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "connected",
+        "currency": "USD",
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [
+          {
+            "asset_kind": "option",
+            "basis_debit": "500",
+            "contract": {
+              "deliverable_id": "standard-spy-100",
+              "expiry": "2026-09-18",
+              "multiplier": 100,
+              "right": "call",
+              "strike": "434",
+              "underlying": "SPY"
+            },
+            "entry_client_order_id": "entry-1",
+            "entry_filled_at": "2026-09-04T14:05:00Z",
+            "estimated_remaining_close_cost": "1",
+            "instrument_ref": "opaque-K",
+            "mark_quote": {
+              "envelope": {
+                "contract": {
+                  "deliverable_id": "standard-spy-100",
+                  "expiry": "2026-09-18",
+                  "multiplier": 100,
+                  "right": "call",
+                  "strike": "434",
+                  "underlying": "SPY"
+                },
+                "event_id": "event-stale-account-mark",
+                "metadata": {
+                  "availability_basis": "measured",
+                  "availability_evidence_ref": "synthetic://capture/option-provider-1",
+                  "available_at": "2026-09-04T14:05:00Z",
+                  "event_at": "2026-09-04T14:05:00Z",
+                  "feed_class": "realtime",
+                  "fidelity": "genuine",
+                  "interval_end": null,
+                  "interval_start": null,
+                  "is_fill_forward": false,
+                  "kind": "quote",
+                  "provider_record_id": "stale-account-mark",
+                  "quality_flags": [],
+                  "source": "synthetic-sip-option"
+                },
+                "raw_ref": "synthetic://p18/stale-account-mark",
+                "receive_sequence": 1,
+                "simulated_received_at": "2026-09-04T14:05:00Z",
+                "stream_id": "stale-account-mark",
+                "supersedes_record_id": null
+              },
+              "raw_body": {
+                "ask": "5.10",
+                "ask_at": "2026-09-04T14:04:58+00:00",
+                "ask_size": 9,
+                "bid": "4.90",
+                "bid_at": "2026-09-04T14:05:00Z",
+                "bid_size": 7
+              }
+            },
+            "position_id": "position-1",
+            "provider_record_id": "holding-report",
+            "quantity": "1",
+            "quantity_unit": "contracts",
+            "raw_ref": "synthetic://p12c/holding",
+            "source": "fixture-holdings"
+          }
+        ],
+        "holdings_completeness": "complete",
+        "ledger_revision": "ledger-stale-account",
+        "open_orders": [],
+        "orders_completeness": "complete",
+        "provider_record_id": "report-stale-account",
+        "reconciled_at": "2026-09-04T14:05:00Z",
+        "reconciled_ledger_revision": "ledger-stale-account",
+        "reconciliation_id": "reconcile-stale-account",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "-1",
+        "session_start_equity": "100000",
+        "source": "fixture-account-ledger",
+        "virtual_cash": "99499",
+        "virtual_equity": "100000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "99499"
+      },
+      "raw_hash": "a7b94844b46411637394a195a8526a6ff5ad66e7c09820666ce929ff1c09a8c4",
+      "record_id": "stale-account-account"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "434",
+          "underlying": "SPY"
+        },
+        "event_id": "event-daily-loss-mark",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-04T14:05:00Z",
+          "event_at": "2026-09-04T14:05:00Z",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "daily-loss-mark",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://p18/daily-loss-mark",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:05:00Z",
+        "stream_id": "daily-loss-mark",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "daily-loss-mark",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-04T14:04:58+00:00",
+        "ask_size": 9,
+        "bid": "4.90",
+        "bid_at": "2026-09-04T14:05:00Z",
+        "bid_size": 7
+      },
+      "raw_hash": "7d36016868dad96e6488a7f72d8d005322486c2aacff5c70a3a6f3f9586405e5",
+      "record_id": "daily-loss-mark"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-daily-loss-account",
+        "metadata": null,
+        "raw_ref": "synthetic://p18/daily-loss-account",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:05:00Z",
+        "stream_id": "daily-loss-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "daily-loss-account",
+      "raw_body": {
+        "account_id": "exit-account",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T14:05:00Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T14:05:00Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "connected",
+        "currency": "USD",
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [
+          {
+            "asset_kind": "option",
+            "basis_debit": "500",
+            "contract": {
+              "deliverable_id": "standard-spy-100",
+              "expiry": "2026-09-18",
+              "multiplier": 100,
+              "right": "call",
+              "strike": "434",
+              "underlying": "SPY"
+            },
+            "entry_client_order_id": "entry-1",
+            "entry_filled_at": "2026-09-04T14:05:00Z",
+            "estimated_remaining_close_cost": "1",
+            "instrument_ref": "opaque-K",
+            "mark_quote": {
+              "envelope": {
+                "contract": {
+                  "deliverable_id": "standard-spy-100",
+                  "expiry": "2026-09-18",
+                  "multiplier": 100,
+                  "right": "call",
+                  "strike": "434",
+                  "underlying": "SPY"
+                },
+                "event_id": "event-daily-loss-mark",
+                "metadata": {
+                  "availability_basis": "measured",
+                  "availability_evidence_ref": "synthetic://capture/option-provider-1",
+                  "available_at": "2026-09-04T14:05:00Z",
+                  "event_at": "2026-09-04T14:05:00Z",
+                  "feed_class": "realtime",
+                  "fidelity": "genuine",
+                  "interval_end": null,
+                  "interval_start": null,
+                  "is_fill_forward": false,
+                  "kind": "quote",
+                  "provider_record_id": "daily-loss-mark",
+                  "quality_flags": [],
+                  "source": "synthetic-sip-option"
+                },
+                "raw_ref": "synthetic://p18/daily-loss-mark",
+                "receive_sequence": 1,
+                "simulated_received_at": "2026-09-04T14:05:00Z",
+                "stream_id": "daily-loss-mark",
+                "supersedes_record_id": null
+              },
+              "raw_body": {
+                "ask": "5.10",
+                "ask_at": "2026-09-04T14:04:58+00:00",
+                "ask_size": 9,
+                "bid": "4.90",
+                "bid_at": "2026-09-04T14:05:00Z",
+                "bid_size": 7
+              }
+            },
+            "position_id": "position-1",
+            "provider_record_id": "holding-report",
+            "quantity": "1",
+            "quantity_unit": "contracts",
+            "raw_ref": "synthetic://p12c/holding",
+            "source": "fixture-holdings"
+          }
+        ],
+        "holdings_completeness": "complete",
+        "ledger_revision": "ledger-daily-loss",
+        "open_orders": [],
+        "orders_completeness": "complete",
+        "provider_record_id": "report-daily-loss",
+        "reconciled_at": "2026-09-04T14:05:00Z",
+        "reconciled_ledger_revision": "ledger-daily-loss",
+        "reconciliation_id": "reconcile-daily-loss",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "-1000",
+        "session_start_equity": "100000",
+        "source": "fixture-account-ledger",
+        "virtual_cash": "99499",
+        "virtual_equity": "99000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "99499"
+      },
+      "raw_hash": "2c71a1c7468789187d94e15137553d7693d89d8c820a74e576db4092fb99e87b",
+      "record_id": "daily-loss-account"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "434",
+          "underlying": "SPY"
+        },
+        "event_id": "event-empty-but-entry-mark",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-04T14:05:00Z",
+          "event_at": "2026-09-04T14:05:00Z",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "empty-but-entry-mark",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://p18/empty-but-entry-mark",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:05:00Z",
+        "stream_id": "empty-but-entry-mark",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "empty-but-entry-mark",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-04T14:04:58+00:00",
+        "ask_size": 9,
+        "bid": "4.90",
+        "bid_at": "2026-09-04T14:05:00Z",
+        "bid_size": 7
+      },
+      "raw_hash": "7d36016868dad96e6488a7f72d8d005322486c2aacff5c70a3a6f3f9586405e5",
+      "record_id": "empty-but-entry-mark"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-empty-but-entry-account",
+        "metadata": null,
+        "raw_ref": "synthetic://p18/empty-but-entry-account",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T14:05:00Z",
+        "stream_id": "empty-but-entry-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "empty-but-entry-account",
+      "raw_body": {
+        "account_id": "exit-account",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T14:05:00Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T14:05:00Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "connected",
+        "currency": "USD",
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [],
+        "holdings_completeness": "complete",
+        "ledger_revision": "ledger-empty-but-entry",
+        "open_orders": [
+          {
+            "client_order_id": "exit-client-1",
+            "contract": {
+              "deliverable_id": "standard-spy-100",
+              "expiry": "2026-09-18",
+              "multiplier": 100,
+              "right": "call",
+              "strike": "434",
+              "underlying": "SPY"
+            },
+            "cumulative_filled_quantity": "0",
+            "execution_uncertain": false,
+            "instrument_ref": "opaque-K",
+            "order_ref": "exit-1",
+            "provider_record_id": "exit-order-1",
+            "raw_ref": "synthetic://p18/exit-order-1",
+            "remaining_quantity": "1",
+            "reserved_cash": "0",
+            "role": "entry",
+            "side": "buy",
+            "source": "fixture-orders",
+            "status": "open"
+          }
+        ],
+        "orders_completeness": "complete",
+        "provider_record_id": "report-empty-but-entry",
+        "reconciled_at": "2026-09-04T14:05:00Z",
+        "reconciled_ledger_revision": "ledger-empty-but-entry",
+        "reconciliation_id": "reconcile-empty-but-entry",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "-1",
+        "session_start_equity": "100000",
+        "source": "fixture-account-ledger",
+        "virtual_cash": "99499",
+        "virtual_equity": "100000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "99499"
+      },
+      "raw_hash": "d2a18eeb08158d1045b03738c1fd11c13e5d79ccb5eaebf30bea6e008206c457",
+      "record_id": "empty-but-entry-account"
+    },
+    {
+      "envelope": {
+        "contract": {
+          "deliverable_id": "standard-spy-100",
+          "expiry": "2026-09-18",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "434",
+          "underlying": "SPY"
+        },
+        "event_id": "event-empty-entry-deadline-mark",
+        "metadata": {
+          "availability_basis": "measured",
+          "availability_evidence_ref": "synthetic://capture/option-provider-1",
+          "available_at": "2026-09-04T19:40:00Z",
+          "event_at": "2026-09-04T19:40:00Z",
+          "feed_class": "realtime",
+          "fidelity": "genuine",
+          "interval_end": null,
+          "interval_start": null,
+          "is_fill_forward": false,
+          "kind": "quote",
+          "provider_record_id": "empty-entry-deadline-mark",
+          "quality_flags": [],
+          "source": "synthetic-sip-option"
+        },
+        "raw_ref": "synthetic://p18/empty-entry-deadline-mark",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T19:40:00Z",
+        "stream_id": "empty-entry-deadline-mark",
+        "supersedes_record_id": null
+      },
+      "kind": "option_quote",
+      "profile_id": "empty-entry-deadline-mark",
+      "raw_body": {
+        "ask": "5.10",
+        "ask_at": "2026-09-04T14:04:58+00:00",
+        "ask_size": 9,
+        "bid": "4.90",
+        "bid_at": "2026-09-04T19:40:00Z",
+        "bid_size": 7
+      },
+      "raw_hash": "b07cbf38880819eef03083f971cce428dfd72b3d7f67d74f64e0815e45d9f94c",
+      "record_id": "empty-entry-deadline-mark"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-empty-entry-deadline-account",
+        "metadata": null,
+        "raw_ref": "synthetic://p18/empty-entry-deadline-account",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T19:40:00Z",
+        "stream_id": "empty-entry-deadline-account",
+        "supersedes_record_id": null
+      },
+      "kind": "account_snapshot",
+      "profile_id": "empty-entry-deadline-account",
+      "raw_body": {
+        "account_id": "exit-account",
+        "applicable_round_trip_fees": "1",
+        "as_of": "2026-09-04T19:40:00Z",
+        "availability_basis": "measured",
+        "available_at": "2026-09-04T19:40:00Z",
+        "broker_available_cash": "100000",
+        "broker_nonmargin_buying_power": "100000",
+        "broker_settled_cash": "100000",
+        "connection": "connected",
+        "currency": "USD",
+        "halt_checkpoint_ref": "halt-1",
+        "high_water_mark": "100000",
+        "holdings": [],
+        "holdings_completeness": "complete",
+        "ledger_revision": "ledger-empty-entry-deadline",
+        "open_orders": [
+          {
+            "client_order_id": "exit-client-1",
+            "contract": {
+              "deliverable_id": "standard-spy-100",
+              "expiry": "2026-09-18",
+              "multiplier": 100,
+              "right": "call",
+              "strike": "434",
+              "underlying": "SPY"
+            },
+            "cumulative_filled_quantity": "0",
+            "execution_uncertain": false,
+            "instrument_ref": "opaque-K",
+            "order_ref": "exit-1",
+            "provider_record_id": "exit-order-1",
+            "raw_ref": "synthetic://p18/exit-order-1",
+            "remaining_quantity": "1",
+            "reserved_cash": "0",
+            "role": "entry",
+            "side": "buy",
+            "source": "fixture-orders",
+            "status": "open"
+          }
+        ],
+        "orders_completeness": "complete",
+        "provider_record_id": "report-empty-entry-deadline",
+        "reconciled_at": "2026-09-04T19:40:00Z",
+        "reconciled_ledger_revision": "ledger-empty-entry-deadline",
+        "reconciliation_id": "reconcile-empty-entry-deadline",
+        "reported_marked_pnl": "0",
+        "risk_state_revision": "risk-1",
+        "session_date": "2026-09-04",
+        "session_realized_pnl": "-1",
+        "session_start_equity": "100000",
+        "source": "fixture-account-ledger",
+        "virtual_cash": "99499",
+        "virtual_equity": "100000",
+        "virtual_reserved_cash": "0",
+        "virtual_settled_cash": "99499"
+      },
+      "raw_hash": "06d3b54878daa36445547c434aa99894a5a53853413d5f6077ba5467a2d6fbd5",
+      "record_id": "empty-entry-deadline-account"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-wrong-day-session",
+        "metadata": null,
+        "raw_ref": "synthetic://p18/wrong-day-session",
+        "receive_sequence": 1,
+        "simulated_received_at": "2026-09-04T13:00:00Z",
+        "stream_id": "wrong-day-session",
+        "supersedes_record_id": null
+      },
+      "kind": "exchange_session",
+      "profile_id": "wrong-day-session",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-09-03T13:00:00Z",
+        "calendar": "XNYS",
+        "closes_at": "2026-09-03T20:00:00Z",
+        "fidelity": "genuine",
+        "kind": "regular",
+        "opens_at": "2026-09-03T13:30:00Z",
+        "provider_record_id": "wrong-day-session",
+        "session_date": "2026-09-03",
+        "source": "fixture-calendar",
+        "source_version": "1"
+      },
+      "raw_hash": "4b63620d41fe3dda41119100543d2fb9b123add7c9d34a26bc584c621623983e",
+      "record_id": "wrong-day-session"
+    }
+  ],
+  "modeled_source_profiles": [
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": "genuine",
+      "kind": "exchange_session",
+      "profile_id": "session",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "fixture-calendar",
+      "stream_id": "session",
+      "units": {}
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": "genuine",
+      "kind": "instrument_tradability",
+      "profile_id": "good-instrument_tradability",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "fixture-instrument",
+      "stream_id": "good-instrument_tradability",
+      "units": {}
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "good-option_quote",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "good-option_quote",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "horizon-before-mark",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "horizon-before-mark",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "account_snapshot",
+      "profile_id": "horizon-before-account",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "fixture-account-ledger",
+      "stream_id": "horizon-before-account",
+      "units": {
+        "applicable_round_trip_fees": "USD_optional_total_round_trip_estimate",
+        "basis_debit": "USD_total_remaining_entry_premium_excluding_posted_fees",
+        "broker_available_cash": "USD_already_net_of_broker_holds",
+        "broker_nonmargin_buying_power": "USD_nonmargin_already_net_of_broker_holds",
+        "broker_settled_cash": "USD_settled_cash",
+        "estimated_remaining_close_cost": "USD_unpaid_remaining_cost",
+        "money": "USD",
+        "quantity": "holding_quantity_unit",
+        "session_realized_pnl": "USD_including_all_posted_fees",
+        "virtual_cash": "USD_after_posted_premiums_proceeds_fees",
+        "virtual_reserved_cash": "USD_aggregate_unspent_hold",
+        "virtual_settled_cash": "USD_before_virtual_reservations"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "horizon-at-mark",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "horizon-at-mark",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "account_snapshot",
+      "profile_id": "horizon-at-account",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "fixture-account-ledger",
+      "stream_id": "horizon-at-account",
+      "units": {
+        "applicable_round_trip_fees": "USD_optional_total_round_trip_estimate",
+        "basis_debit": "USD_total_remaining_entry_premium_excluding_posted_fees",
+        "broker_available_cash": "USD_already_net_of_broker_holds",
+        "broker_nonmargin_buying_power": "USD_nonmargin_already_net_of_broker_holds",
+        "broker_settled_cash": "USD_settled_cash",
+        "estimated_remaining_close_cost": "USD_unpaid_remaining_cost",
+        "money": "USD",
+        "quantity": "holding_quantity_unit",
+        "session_realized_pnl": "USD_including_all_posted_fees",
+        "virtual_cash": "USD_after_posted_premiums_proceeds_fees",
+        "virtual_reserved_cash": "USD_aggregate_unspent_hold",
+        "virtual_settled_cash": "USD_before_virtual_reservations"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "liquidation-before-mark",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "liquidation-before-mark",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "account_snapshot",
+      "profile_id": "liquidation-before-account",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "fixture-account-ledger",
+      "stream_id": "liquidation-before-account",
+      "units": {
+        "applicable_round_trip_fees": "USD_optional_total_round_trip_estimate",
+        "basis_debit": "USD_total_remaining_entry_premium_excluding_posted_fees",
+        "broker_available_cash": "USD_already_net_of_broker_holds",
+        "broker_nonmargin_buying_power": "USD_nonmargin_already_net_of_broker_holds",
+        "broker_settled_cash": "USD_settled_cash",
+        "estimated_remaining_close_cost": "USD_unpaid_remaining_cost",
+        "money": "USD",
+        "quantity": "holding_quantity_unit",
+        "session_realized_pnl": "USD_including_all_posted_fees",
+        "virtual_cash": "USD_after_posted_premiums_proceeds_fees",
+        "virtual_reserved_cash": "USD_aggregate_unspent_hold",
+        "virtual_settled_cash": "USD_before_virtual_reservations"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "liquidation-at-mark",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "liquidation-at-mark",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "account_snapshot",
+      "profile_id": "liquidation-at-account",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "fixture-account-ledger",
+      "stream_id": "liquidation-at-account",
+      "units": {
+        "applicable_round_trip_fees": "USD_optional_total_round_trip_estimate",
+        "basis_debit": "USD_total_remaining_entry_premium_excluding_posted_fees",
+        "broker_available_cash": "USD_already_net_of_broker_holds",
+        "broker_nonmargin_buying_power": "USD_nonmargin_already_net_of_broker_holds",
+        "broker_settled_cash": "USD_settled_cash",
+        "estimated_remaining_close_cost": "USD_unpaid_remaining_cost",
+        "money": "USD",
+        "quantity": "holding_quantity_unit",
+        "session_realized_pnl": "USD_including_all_posted_fees",
+        "virtual_cash": "USD_after_posted_premiums_proceeds_fees",
+        "virtual_reserved_cash": "USD_aggregate_unspent_hold",
+        "virtual_settled_cash": "USD_before_virtual_reservations"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "escalation-at-mark",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "escalation-at-mark",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "account_snapshot",
+      "profile_id": "escalation-at-account",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "fixture-account-ledger",
+      "stream_id": "escalation-at-account",
+      "units": {
+        "applicable_round_trip_fees": "USD_optional_total_round_trip_estimate",
+        "basis_debit": "USD_total_remaining_entry_premium_excluding_posted_fees",
+        "broker_available_cash": "USD_already_net_of_broker_holds",
+        "broker_nonmargin_buying_power": "USD_nonmargin_already_net_of_broker_holds",
+        "broker_settled_cash": "USD_settled_cash",
+        "estimated_remaining_close_cost": "USD_unpaid_remaining_cost",
+        "money": "USD",
+        "quantity": "holding_quantity_unit",
+        "session_realized_pnl": "USD_including_all_posted_fees",
+        "virtual_cash": "USD_after_posted_premiums_proceeds_fees",
+        "virtual_reserved_cash": "USD_aggregate_unspent_hold",
+        "virtual_settled_cash": "USD_before_virtual_reservations"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "deadline-at-mark",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "deadline-at-mark",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "account_snapshot",
+      "profile_id": "deadline-at-account",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "fixture-account-ledger",
+      "stream_id": "deadline-at-account",
+      "units": {
+        "applicable_round_trip_fees": "USD_optional_total_round_trip_estimate",
+        "basis_debit": "USD_total_remaining_entry_premium_excluding_posted_fees",
+        "broker_available_cash": "USD_already_net_of_broker_holds",
+        "broker_nonmargin_buying_power": "USD_nonmargin_already_net_of_broker_holds",
+        "broker_settled_cash": "USD_settled_cash",
+        "estimated_remaining_close_cost": "USD_unpaid_remaining_cost",
+        "money": "USD",
+        "quantity": "holding_quantity_unit",
+        "session_realized_pnl": "USD_including_all_posted_fees",
+        "virtual_cash": "USD_after_posted_premiums_proceeds_fees",
+        "virtual_reserved_cash": "USD_aggregate_unspent_hold",
+        "virtual_settled_cash": "USD_before_virtual_reservations"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "early-at-mark",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "early-at-mark",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "account_snapshot",
+      "profile_id": "early-at-account",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "fixture-account-ledger",
+      "stream_id": "early-at-account",
+      "units": {
+        "applicable_round_trip_fees": "USD_optional_total_round_trip_estimate",
+        "basis_debit": "USD_total_remaining_entry_premium_excluding_posted_fees",
+        "broker_available_cash": "USD_already_net_of_broker_holds",
+        "broker_nonmargin_buying_power": "USD_nonmargin_already_net_of_broker_holds",
+        "broker_settled_cash": "USD_settled_cash",
+        "estimated_remaining_close_cost": "USD_unpaid_remaining_cost",
+        "money": "USD",
+        "quantity": "holding_quantity_unit",
+        "session_realized_pnl": "USD_including_all_posted_fees",
+        "virtual_cash": "USD_after_posted_premiums_proceeds_fees",
+        "virtual_reserved_cash": "USD_aggregate_unspent_hold",
+        "virtual_settled_cash": "USD_before_virtual_reservations"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": "genuine",
+      "kind": "exchange_session",
+      "profile_id": "early-session",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "fixture-calendar",
+      "stream_id": "early-session",
+      "units": {}
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": "genuine",
+      "kind": "instrument_tradability",
+      "profile_id": "early-instrument",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "fixture-instrument",
+      "stream_id": "early-instrument",
+      "units": {}
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "pending-deadline-mark",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "pending-deadline-mark",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "account_snapshot",
+      "profile_id": "pending-deadline-account",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "fixture-account-ledger",
+      "stream_id": "pending-deadline-account",
+      "units": {
+        "applicable_round_trip_fees": "USD_optional_total_round_trip_estimate",
+        "basis_debit": "USD_total_remaining_entry_premium_excluding_posted_fees",
+        "broker_available_cash": "USD_already_net_of_broker_holds",
+        "broker_nonmargin_buying_power": "USD_nonmargin_already_net_of_broker_holds",
+        "broker_settled_cash": "USD_settled_cash",
+        "estimated_remaining_close_cost": "USD_unpaid_remaining_cost",
+        "money": "USD",
+        "quantity": "holding_quantity_unit",
+        "session_realized_pnl": "USD_including_all_posted_fees",
+        "virtual_cash": "USD_after_posted_premiums_proceeds_fees",
+        "virtual_reserved_cash": "USD_aggregate_unspent_hold",
+        "virtual_settled_cash": "USD_before_virtual_reservations"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "pending-horizon-mark",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "pending-horizon-mark",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "account_snapshot",
+      "profile_id": "pending-horizon-account",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "fixture-account-ledger",
+      "stream_id": "pending-horizon-account",
+      "units": {
+        "applicable_round_trip_fees": "USD_optional_total_round_trip_estimate",
+        "basis_debit": "USD_total_remaining_entry_premium_excluding_posted_fees",
+        "broker_available_cash": "USD_already_net_of_broker_holds",
+        "broker_nonmargin_buying_power": "USD_nonmargin_already_net_of_broker_holds",
+        "broker_settled_cash": "USD_settled_cash",
+        "estimated_remaining_close_cost": "USD_unpaid_remaining_cost",
+        "money": "USD",
+        "quantity": "holding_quantity_unit",
+        "session_realized_pnl": "USD_including_all_posted_fees",
+        "virtual_cash": "USD_after_posted_premiums_proceeds_fees",
+        "virtual_reserved_cash": "USD_aggregate_unspent_hold",
+        "virtual_settled_cash": "USD_before_virtual_reservations"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "unknown-fill-mark",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "unknown-fill-mark",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "account_snapshot",
+      "profile_id": "unknown-fill-account",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "fixture-account-ledger",
+      "stream_id": "unknown-fill-account",
+      "units": {
+        "applicable_round_trip_fees": "USD_optional_total_round_trip_estimate",
+        "basis_debit": "USD_total_remaining_entry_premium_excluding_posted_fees",
+        "broker_available_cash": "USD_already_net_of_broker_holds",
+        "broker_nonmargin_buying_power": "USD_nonmargin_already_net_of_broker_holds",
+        "broker_settled_cash": "USD_settled_cash",
+        "estimated_remaining_close_cost": "USD_unpaid_remaining_cost",
+        "money": "USD",
+        "quantity": "holding_quantity_unit",
+        "session_realized_pnl": "USD_including_all_posted_fees",
+        "virtual_cash": "USD_after_posted_premiums_proceeds_fees",
+        "virtual_reserved_cash": "USD_aggregate_unspent_hold",
+        "virtual_settled_cash": "USD_before_virtual_reservations"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "prior-session-mark",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "prior-session-mark",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "account_snapshot",
+      "profile_id": "prior-session-account",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "fixture-account-ledger",
+      "stream_id": "prior-session-account",
+      "units": {
+        "applicable_round_trip_fees": "USD_optional_total_round_trip_estimate",
+        "basis_debit": "USD_total_remaining_entry_premium_excluding_posted_fees",
+        "broker_available_cash": "USD_already_net_of_broker_holds",
+        "broker_nonmargin_buying_power": "USD_nonmargin_already_net_of_broker_holds",
+        "broker_settled_cash": "USD_settled_cash",
+        "estimated_remaining_close_cost": "USD_unpaid_remaining_cost",
+        "money": "USD",
+        "quantity": "holding_quantity_unit",
+        "session_realized_pnl": "USD_including_all_posted_fees",
+        "virtual_cash": "USD_after_posted_premiums_proceeds_fees",
+        "virtual_reserved_cash": "USD_aggregate_unspent_hold",
+        "virtual_settled_cash": "USD_before_virtual_reservations"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "prior-local-day-mark",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "prior-local-day-mark",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "account_snapshot",
+      "profile_id": "prior-local-day-account",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "fixture-account-ledger",
+      "stream_id": "prior-local-day-account",
+      "units": {
+        "applicable_round_trip_fees": "USD_optional_total_round_trip_estimate",
+        "basis_debit": "USD_total_remaining_entry_premium_excluding_posted_fees",
+        "broker_available_cash": "USD_already_net_of_broker_holds",
+        "broker_nonmargin_buying_power": "USD_nonmargin_already_net_of_broker_holds",
+        "broker_settled_cash": "USD_settled_cash",
+        "estimated_remaining_close_cost": "USD_unpaid_remaining_cost",
+        "money": "USD",
+        "quantity": "holding_quantity_unit",
+        "session_realized_pnl": "USD_including_all_posted_fees",
+        "virtual_cash": "USD_after_posted_premiums_proceeds_fees",
+        "virtual_reserved_cash": "USD_aggregate_unspent_hold",
+        "virtual_settled_cash": "USD_before_virtual_reservations"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "quantity-two-mark",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "quantity-two-mark",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "account_snapshot",
+      "profile_id": "quantity-two-account",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "fixture-account-ledger",
+      "stream_id": "quantity-two-account",
+      "units": {
+        "applicable_round_trip_fees": "USD_optional_total_round_trip_estimate",
+        "basis_debit": "USD_total_remaining_entry_premium_excluding_posted_fees",
+        "broker_available_cash": "USD_already_net_of_broker_holds",
+        "broker_nonmargin_buying_power": "USD_nonmargin_already_net_of_broker_holds",
+        "broker_settled_cash": "USD_settled_cash",
+        "estimated_remaining_close_cost": "USD_unpaid_remaining_cost",
+        "money": "USD",
+        "quantity": "holding_quantity_unit",
+        "session_realized_pnl": "USD_including_all_posted_fees",
+        "virtual_cash": "USD_after_posted_premiums_proceeds_fees",
+        "virtual_reserved_cash": "USD_aggregate_unspent_hold",
+        "virtual_settled_cash": "USD_before_virtual_reservations"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "quantity-unknown-mark",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "quantity-unknown-mark",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "account_snapshot",
+      "profile_id": "quantity-unknown-account",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "fixture-account-ledger",
+      "stream_id": "quantity-unknown-account",
+      "units": {
+        "applicable_round_trip_fees": "USD_optional_total_round_trip_estimate",
+        "basis_debit": "USD_total_remaining_entry_premium_excluding_posted_fees",
+        "broker_available_cash": "USD_already_net_of_broker_holds",
+        "broker_nonmargin_buying_power": "USD_nonmargin_already_net_of_broker_holds",
+        "broker_settled_cash": "USD_settled_cash",
+        "estimated_remaining_close_cost": "USD_unpaid_remaining_cost",
+        "money": "USD",
+        "quantity": "holding_quantity_unit",
+        "session_realized_pnl": "USD_including_all_posted_fees",
+        "virtual_cash": "USD_after_posted_premiums_proceeds_fees",
+        "virtual_reserved_cash": "USD_aggregate_unspent_hold",
+        "virtual_settled_cash": "USD_before_virtual_reservations"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "stale-bid-mark",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "stale-bid-mark",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "account_snapshot",
+      "profile_id": "stale-bid-account",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "fixture-account-ledger",
+      "stream_id": "stale-bid-account",
+      "units": {
+        "applicable_round_trip_fees": "USD_optional_total_round_trip_estimate",
+        "basis_debit": "USD_total_remaining_entry_premium_excluding_posted_fees",
+        "broker_available_cash": "USD_already_net_of_broker_holds",
+        "broker_nonmargin_buying_power": "USD_nonmargin_already_net_of_broker_holds",
+        "broker_settled_cash": "USD_settled_cash",
+        "estimated_remaining_close_cost": "USD_unpaid_remaining_cost",
+        "money": "USD",
+        "quantity": "holding_quantity_unit",
+        "session_realized_pnl": "USD_including_all_posted_fees",
+        "virtual_cash": "USD_after_posted_premiums_proceeds_fees",
+        "virtual_reserved_cash": "USD_aggregate_unspent_hold",
+        "virtual_settled_cash": "USD_before_virtual_reservations"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "missing-bid-mark",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "missing-bid-mark",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "account_snapshot",
+      "profile_id": "missing-bid-account",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "fixture-account-ledger",
+      "stream_id": "missing-bid-account",
+      "units": {
+        "applicable_round_trip_fees": "USD_optional_total_round_trip_estimate",
+        "basis_debit": "USD_total_remaining_entry_premium_excluding_posted_fees",
+        "broker_available_cash": "USD_already_net_of_broker_holds",
+        "broker_nonmargin_buying_power": "USD_nonmargin_already_net_of_broker_holds",
+        "broker_settled_cash": "USD_settled_cash",
+        "estimated_remaining_close_cost": "USD_unpaid_remaining_cost",
+        "money": "USD",
+        "quantity": "holding_quantity_unit",
+        "session_realized_pnl": "USD_including_all_posted_fees",
+        "virtual_cash": "USD_after_posted_premiums_proceeds_fees",
+        "virtual_reserved_cash": "USD_aggregate_unspent_hold",
+        "virtual_settled_cash": "USD_before_virtual_reservations"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "disconnected-mark",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "disconnected-mark",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "account_snapshot",
+      "profile_id": "disconnected-account",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "fixture-account-ledger",
+      "stream_id": "disconnected-account",
+      "units": {
+        "applicable_round_trip_fees": "USD_optional_total_round_trip_estimate",
+        "basis_debit": "USD_total_remaining_entry_premium_excluding_posted_fees",
+        "broker_available_cash": "USD_already_net_of_broker_holds",
+        "broker_nonmargin_buying_power": "USD_nonmargin_already_net_of_broker_holds",
+        "broker_settled_cash": "USD_settled_cash",
+        "estimated_remaining_close_cost": "USD_unpaid_remaining_cost",
+        "money": "USD",
+        "quantity": "holding_quantity_unit",
+        "session_realized_pnl": "USD_including_all_posted_fees",
+        "virtual_cash": "USD_after_posted_premiums_proceeds_fees",
+        "virtual_reserved_cash": "USD_aggregate_unspent_hold",
+        "virtual_settled_cash": "USD_before_virtual_reservations"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "stale-account-mark",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "stale-account-mark",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "account_snapshot",
+      "profile_id": "stale-account-account",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "fixture-account-ledger",
+      "stream_id": "stale-account-account",
+      "units": {
+        "applicable_round_trip_fees": "USD_optional_total_round_trip_estimate",
+        "basis_debit": "USD_total_remaining_entry_premium_excluding_posted_fees",
+        "broker_available_cash": "USD_already_net_of_broker_holds",
+        "broker_nonmargin_buying_power": "USD_nonmargin_already_net_of_broker_holds",
+        "broker_settled_cash": "USD_settled_cash",
+        "estimated_remaining_close_cost": "USD_unpaid_remaining_cost",
+        "money": "USD",
+        "quantity": "holding_quantity_unit",
+        "session_realized_pnl": "USD_including_all_posted_fees",
+        "virtual_cash": "USD_after_posted_premiums_proceeds_fees",
+        "virtual_reserved_cash": "USD_aggregate_unspent_hold",
+        "virtual_settled_cash": "USD_before_virtual_reservations"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "daily-loss-mark",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "daily-loss-mark",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "account_snapshot",
+      "profile_id": "daily-loss-account",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "fixture-account-ledger",
+      "stream_id": "daily-loss-account",
+      "units": {
+        "applicable_round_trip_fees": "USD_optional_total_round_trip_estimate",
+        "basis_debit": "USD_total_remaining_entry_premium_excluding_posted_fees",
+        "broker_available_cash": "USD_already_net_of_broker_holds",
+        "broker_nonmargin_buying_power": "USD_nonmargin_already_net_of_broker_holds",
+        "broker_settled_cash": "USD_settled_cash",
+        "estimated_remaining_close_cost": "USD_unpaid_remaining_cost",
+        "money": "USD",
+        "quantity": "holding_quantity_unit",
+        "session_realized_pnl": "USD_including_all_posted_fees",
+        "virtual_cash": "USD_after_posted_premiums_proceeds_fees",
+        "virtual_reserved_cash": "USD_aggregate_unspent_hold",
+        "virtual_settled_cash": "USD_before_virtual_reservations"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "empty-but-entry-mark",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "empty-but-entry-mark",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "account_snapshot",
+      "profile_id": "empty-but-entry-account",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "fixture-account-ledger",
+      "stream_id": "empty-but-entry-account",
+      "units": {
+        "applicable_round_trip_fees": "USD_optional_total_round_trip_estimate",
+        "basis_debit": "USD_total_remaining_entry_premium_excluding_posted_fees",
+        "broker_available_cash": "USD_already_net_of_broker_holds",
+        "broker_nonmargin_buying_power": "USD_nonmargin_already_net_of_broker_holds",
+        "broker_settled_cash": "USD_settled_cash",
+        "estimated_remaining_close_cost": "USD_unpaid_remaining_cost",
+        "money": "USD",
+        "quantity": "holding_quantity_unit",
+        "session_realized_pnl": "USD_including_all_posted_fees",
+        "virtual_cash": "USD_after_posted_premiums_proceeds_fees",
+        "virtual_reserved_cash": "USD_aggregate_unspent_hold",
+        "virtual_settled_cash": "USD_before_virtual_reservations"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": "realtime",
+      "fidelity": "genuine",
+      "kind": "option_quote",
+      "profile_id": "empty-entry-deadline-mark",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "synthetic-sip-option",
+      "stream_id": "empty-entry-deadline-mark",
+      "units": {
+        "price": "option_premium_USD_per_share",
+        "size": "contracts"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "account_snapshot",
+      "profile_id": "empty-entry-deadline-account",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "fixture-account-ledger",
+      "stream_id": "empty-entry-deadline-account",
+      "units": {
+        "applicable_round_trip_fees": "USD_optional_total_round_trip_estimate",
+        "basis_debit": "USD_total_remaining_entry_premium_excluding_posted_fees",
+        "broker_available_cash": "USD_already_net_of_broker_holds",
+        "broker_nonmargin_buying_power": "USD_nonmargin_already_net_of_broker_holds",
+        "broker_settled_cash": "USD_settled_cash",
+        "estimated_remaining_close_cost": "USD_unpaid_remaining_cost",
+        "money": "USD",
+        "quantity": "holding_quantity_unit",
+        "session_realized_pnl": "USD_including_all_posted_fees",
+        "virtual_cash": "USD_after_posted_premiums_proceeds_fees",
+        "virtual_reserved_cash": "USD_aggregate_unspent_hold",
+        "virtual_settled_cash": "USD_before_virtual_reservations"
+      }
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": "genuine",
+      "kind": "exchange_session",
+      "profile_id": "wrong-day-session",
+      "record_identity_rule": "new_provider_record_id_per_update",
+      "source": "fixture-calendar",
+      "stream_id": "wrong-day-session",
+      "units": {}
+    }
+  ],
+  "normalization_version": 1,
+  "origin": "synthetic",
+  "permitted_use": "core_fixture",
+  "schema_version": 1
+}

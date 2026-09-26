@@ -1,0 +1,68 @@
+{
+  "assembled_at": "2026-09-26T06:40:04.024302+00:00",
+  "definitions": {
+    "coherence_protocol_ids": [],
+    "greek_method": {
+      "assumptions_id": "fixture-flat-rates-v1",
+      "method_id": "fixture-greek-values",
+      "method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+      "method_version": "1"
+    },
+    "tick_definition_ids": []
+  },
+  "fixture_id": "p18-exit-validation-v1",
+  "generator_id": "optionslab-bundle-validation-fixture-builder",
+  "generator_source_ref": "OptionsLab/tests/build_exit_fixture.py",
+  "generator_version": "1",
+  "members": [
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-cash-validation",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/cash-validation",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-26T06:40:04.024173+00:00",
+        "stream_id": "reports",
+        "supersedes_record_id": null
+      },
+      "kind": "bundle_validation",
+      "profile_id": "reports",
+      "raw_body": {
+        "calibration_partition_ref": null,
+        "calibration_record_ref": null,
+        "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+        "feature_schema_id": null,
+        "implementation_digest": "3a161c237932832de36f1d9aaa5bf1e6427e858ad3465c61402272cc8357a14d",
+        "method_id": "993b8c896d9d277c68c115e2a8ca110d884b3e32bd8ce41a20f13f224b84fc76",
+        "model_hash": "b240254407fd6f4e0fa223fd85c472f8726199f01d4e65ff43b309b7ff3d7b16",
+        "normalization_hash": null,
+        "performed_at": "2026-09-26T06:40:04.024173+00:00",
+        "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
+        "schema_version": 1,
+        "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
+        "transform_id": null,
+        "validation_id": "cash-validation"
+      },
+      "raw_hash": "fd3f7a1a098d98defcb75d2d706fa723e6574c1ce3741eae51d8d70d201f7547",
+      "record_id": "cash-validation"
+    }
+  ],
+  "modeled_source_profiles": [
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "bundle_validation",
+      "profile_id": "reports",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "optionslab-bundle-validation-fixture-builder",
+      "stream_id": "reports",
+      "units": {}
+    }
+  ],
+  "normalization_version": 1,
+  "origin": "synthetic",
+  "permitted_use": "core_fixture",
+  "schema_version": 1
+}
