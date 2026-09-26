@@ -66,6 +66,7 @@ from .calibration import (
     normalize_calibration_metadata,
     normalize_calibration_partition,
 )
+from .calibration_support import CalibrationAssessment, assess_calibration
 from .candidates import (
     CandidateAssessment,
     CandidateConsideration,
@@ -244,6 +245,8 @@ from .volume_normalization import (
 )
 
 __all__ = [
+    "CalibrationAssessment",
+    "assess_calibration",
     "CalibrationMetadata",
     "CalibrationMetadataValidation",
     "normalize_calibration_metadata",

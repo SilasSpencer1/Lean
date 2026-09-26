@@ -1,0 +1,2976 @@
+{
+  "assembled_at": "2026-09-26T01:27:09.909419+00:00",
+  "definitions": {
+    "coherence_protocol_ids": [],
+    "greek_method": {
+      "assumptions_id": "fixture-flat-rates-v1",
+      "method_id": "fixture-greek-values",
+      "method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+      "method_version": "1"
+    },
+    "tick_definition_ids": []
+  },
+  "fixture_id": "p14c2-bundle-v1",
+  "generator_id": "optionslab-bundle-fixture-builder",
+  "generator_source_ref": "OptionsLab/tests/build_calibration_support_fixture.py",
+  "generator_version": "1",
+  "members": [
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-fixed-c2",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/fixed-c2",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "model-bundle",
+        "supersedes_record_id": null
+      },
+      "kind": "model_bundle",
+      "profile_id": "model-bundle",
+      "raw_body": {
+        "manifest": {
+          "bundle_record_id": "fixed-c2",
+          "bundle_schema_version": 1,
+          "claimed_origin": "synthetic",
+          "claimed_permitted_use": "core_fixture",
+          "data_manifest_hashes": [
+            {
+              "fixture_id": "p14c-volume-training-v1",
+              "payload_sha256": "8bf6aa7abab0f9a919cbeba78ae1186b993a2452023ffd12c138baed964923b9",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-volume-normalization-v1",
+              "payload_sha256": "6d0f9842b9e771e9c146346ec85cf07f0b87aa11ed9dca34513d542c36c4ad18",
+              "role": "normalization"
+            },
+            {
+              "fixture_id": "p11-feature-vector-v1",
+              "payload_sha256": "8fffa246a2ec78d1f0b2450e794dab6791365022b1ea31cc00a9215cc7991c6a",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-calendar-v1",
+              "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-partition-v1",
+              "payload_sha256": "cddd2cf682ef8ba0cb49b9654e5dc885255d79eed8dc28d0f888565cee6f41bd",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "role": "calibration"
+            }
+          ],
+          "feature_binding": {
+            "coherence_protocol_ids": [
+              "fixture-joint-book-snapshot-v1",
+              "fixture-side-validity-overlap-v1"
+            ],
+            "delta_unit": "signed_option_price_per_underlying_price",
+            "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
+            "greek_assumptions_id": "fixture-flat-rates-v1",
+            "greek_method_id": "fixture-greek-values",
+            "greek_method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+            "greek_method_version": "1",
+            "input_normalization_version": 1,
+            "iv_unit": "annualized_volatility_fraction",
+            "normalization_hash": "0ac32703f4096994e82108bdd0be6b5388bdfe2d932b129f45bad861f093be5b",
+            "option_price_basis": "option_midpoint",
+            "source_profiles": [
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "bars"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-option_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-underlying_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-greek"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-proof"
+              }
+            ],
+            "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621",
+            "underlying_price_basis": "underlying_midpoint",
+            "volume_baseline_hash": "c116839b269a389b92166e49f9272a03336ec0715b7d280c2d6ff081ef1512e6",
+            "volume_definition_id": "synthetic-volume-v1"
+          },
+          "fixture_id": "p14c2-bundle-v1",
+          "model_format_id": "options_lab.fixed_by_right_json.v1",
+          "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
+          "model_id": "fixed-c2",
+          "model_kind": "fixture_fixed_by_right",
+          "policy_binding": {
+            "config_hash": "8ef0583fa6e6ec352140691e78b38172f1801b56be2e22f02423300b241542a8",
+            "contract_rule_id": "standard-unadjusted-100-spy-shares-v1",
+            "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+            "policy_hash": "735503cf8fd690c7d4893893b49a74dbf6494eacb3d36119a5c849896dacc95b",
+            "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
+            "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+          },
+          "prediction_contract": {
+            "base_cost_profile": {
+              "base_execution_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+              "fee_charging_rule": "filled_round_trip_once_no_fill_zero_v1",
+              "filled_attempt_round_trip_fee": "1",
+              "profile_id": "fixture-base-cost",
+              "profile_version": 1,
+              "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+            },
+            "calibration_partition": null,
+            "calibration_record": {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "raw_hash": "1fc5041c5a14fb38624fb60f8b61f4a41eaba33a22b17fdc0da8114ef36615ee",
+              "record_id": "record"
+            },
+            "capital_basis_rule": "100_times_original_decision_ask_cap",
+            "fit_cutoff": "2026-08-31T22:00:00+00:00",
+            "last_label_available_at": "2026-08-28T14:14:00+00:00",
+            "model_membership": null,
+            "return_unit": "attempt_net_return_over_original_ask_capital",
+            "threshold_return": "0",
+            "training_feature_cutoff": "2026-05-05T13:40:00+00:00",
+            "tuning_membership": null,
+            "uncertainty_rule_id": "fixture_fixed_penalty_v1"
+          },
+          "provenance": {
+            "activated_at": null,
+            "activation_gap": null,
+            "availability_basis": "simulated",
+            "built_at": "2026-09-26T01:27:09.903144+00:00",
+            "evaluation_block": null,
+            "promoted_at": null,
+            "simulated_available_at": "2026-09-01T01:00:00+00:00",
+            "simulated_schedule": null
+          },
+          "runtime_binding": {
+            "exact_python_version": [
+              3,
+              11,
+              11,
+              "final",
+              0
+            ],
+            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
+            "python_implementation": "CPython",
+            "requires_python": ">=3.11,<3.12",
+            "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
+            "runtime_dependencies": []
+          },
+          "seed": null,
+          "validation_report": null
+        },
+        "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
+        "schema_version": 1
+      },
+      "raw_hash": "57f0b769466cb7ceae51d9f295abcc47bcf6314ca1b395d85205c28e9efb958c",
+      "record_id": "fixed-c2"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-late-status",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/late-status",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "model-bundle",
+        "supersedes_record_id": null
+      },
+      "kind": "model_bundle",
+      "profile_id": "model-bundle",
+      "raw_body": {
+        "manifest": {
+          "bundle_record_id": "late-status",
+          "bundle_schema_version": 1,
+          "claimed_origin": "synthetic",
+          "claimed_permitted_use": "core_fixture",
+          "data_manifest_hashes": [
+            {
+              "fixture_id": "p14c-volume-training-v1",
+              "payload_sha256": "8bf6aa7abab0f9a919cbeba78ae1186b993a2452023ffd12c138baed964923b9",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-volume-normalization-v1",
+              "payload_sha256": "6d0f9842b9e771e9c146346ec85cf07f0b87aa11ed9dca34513d542c36c4ad18",
+              "role": "normalization"
+            },
+            {
+              "fixture_id": "p11-feature-vector-v1",
+              "payload_sha256": "8fffa246a2ec78d1f0b2450e794dab6791365022b1ea31cc00a9215cc7991c6a",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-calendar-v1",
+              "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-partition-v1",
+              "payload_sha256": "cddd2cf682ef8ba0cb49b9654e5dc885255d79eed8dc28d0f888565cee6f41bd",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "role": "calibration"
+            }
+          ],
+          "feature_binding": {
+            "coherence_protocol_ids": [
+              "fixture-joint-book-snapshot-v1",
+              "fixture-side-validity-overlap-v1"
+            ],
+            "delta_unit": "signed_option_price_per_underlying_price",
+            "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
+            "greek_assumptions_id": "fixture-flat-rates-v1",
+            "greek_method_id": "fixture-greek-values",
+            "greek_method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+            "greek_method_version": "1",
+            "input_normalization_version": 1,
+            "iv_unit": "annualized_volatility_fraction",
+            "normalization_hash": "0ac32703f4096994e82108bdd0be6b5388bdfe2d932b129f45bad861f093be5b",
+            "option_price_basis": "option_midpoint",
+            "source_profiles": [
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "bars"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-option_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-underlying_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-greek"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-proof"
+              }
+            ],
+            "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621",
+            "underlying_price_basis": "underlying_midpoint",
+            "volume_baseline_hash": "c116839b269a389b92166e49f9272a03336ec0715b7d280c2d6ff081ef1512e6",
+            "volume_definition_id": "synthetic-volume-v1"
+          },
+          "fixture_id": "p14c2-bundle-v1",
+          "model_format_id": "options_lab.fixed_by_right_json.v1",
+          "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
+          "model_id": "late-status",
+          "model_kind": "fixture_fixed_by_right",
+          "policy_binding": {
+            "config_hash": "8ef0583fa6e6ec352140691e78b38172f1801b56be2e22f02423300b241542a8",
+            "contract_rule_id": "standard-unadjusted-100-spy-shares-v1",
+            "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+            "policy_hash": "735503cf8fd690c7d4893893b49a74dbf6494eacb3d36119a5c849896dacc95b",
+            "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
+            "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+          },
+          "prediction_contract": {
+            "base_cost_profile": {
+              "base_execution_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+              "fee_charging_rule": "filled_round_trip_once_no_fill_zero_v1",
+              "filled_attempt_round_trip_fee": "1",
+              "profile_id": "fixture-base-cost",
+              "profile_version": 1,
+              "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+            },
+            "calibration_partition": null,
+            "calibration_record": {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "raw_hash": "e451fd0980265d588462170754b435e5c2783b74b075c751d361b07a16c4a05d",
+              "record_id": "late-status"
+            },
+            "capital_basis_rule": "100_times_original_decision_ask_cap",
+            "fit_cutoff": "2026-08-31T22:00:00+00:00",
+            "last_label_available_at": "2026-08-28T14:14:00+00:00",
+            "model_membership": null,
+            "return_unit": "attempt_net_return_over_original_ask_capital",
+            "threshold_return": "0",
+            "training_feature_cutoff": "2026-05-05T13:40:00+00:00",
+            "tuning_membership": null,
+            "uncertainty_rule_id": "fixture_fixed_penalty_v1"
+          },
+          "provenance": {
+            "activated_at": null,
+            "activation_gap": null,
+            "availability_basis": "simulated",
+            "built_at": "2026-09-26T01:27:09.903144+00:00",
+            "evaluation_block": null,
+            "promoted_at": null,
+            "simulated_available_at": "2026-09-01T01:00:00+00:00",
+            "simulated_schedule": null
+          },
+          "runtime_binding": {
+            "exact_python_version": [
+              3,
+              11,
+              11,
+              "final",
+              0
+            ],
+            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
+            "python_implementation": "CPython",
+            "requires_python": ">=3.11,<3.12",
+            "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
+            "runtime_dependencies": []
+          },
+          "seed": null,
+          "validation_report": null
+        },
+        "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
+        "schema_version": 1
+      },
+      "raw_hash": "5bd5b71d4df969e233a9057d0bc3984827e00ef882c3184d4533dd1215b15be8",
+      "record_id": "late-status"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-cross-role-leak",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/cross-role-leak",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "model-bundle",
+        "supersedes_record_id": null
+      },
+      "kind": "model_bundle",
+      "profile_id": "model-bundle",
+      "raw_body": {
+        "manifest": {
+          "bundle_record_id": "cross-role-leak",
+          "bundle_schema_version": 1,
+          "claimed_origin": "synthetic",
+          "claimed_permitted_use": "core_fixture",
+          "data_manifest_hashes": [
+            {
+              "fixture_id": "p14c-volume-training-v1",
+              "payload_sha256": "8bf6aa7abab0f9a919cbeba78ae1186b993a2452023ffd12c138baed964923b9",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-volume-normalization-v1",
+              "payload_sha256": "6d0f9842b9e771e9c146346ec85cf07f0b87aa11ed9dca34513d542c36c4ad18",
+              "role": "normalization"
+            },
+            {
+              "fixture_id": "p11-feature-vector-v1",
+              "payload_sha256": "8fffa246a2ec78d1f0b2450e794dab6791365022b1ea31cc00a9215cc7991c6a",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-calendar-v1",
+              "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-partition-v1",
+              "payload_sha256": "cddd2cf682ef8ba0cb49b9654e5dc885255d79eed8dc28d0f888565cee6f41bd",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "role": "calibration"
+            }
+          ],
+          "feature_binding": {
+            "coherence_protocol_ids": [
+              "fixture-joint-book-snapshot-v1",
+              "fixture-side-validity-overlap-v1"
+            ],
+            "delta_unit": "signed_option_price_per_underlying_price",
+            "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
+            "greek_assumptions_id": "fixture-flat-rates-v1",
+            "greek_method_id": "fixture-greek-values",
+            "greek_method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+            "greek_method_version": "1",
+            "input_normalization_version": 1,
+            "iv_unit": "annualized_volatility_fraction",
+            "normalization_hash": "0ac32703f4096994e82108bdd0be6b5388bdfe2d932b129f45bad861f093be5b",
+            "option_price_basis": "option_midpoint",
+            "source_profiles": [
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "bars"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-option_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-underlying_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-greek"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-proof"
+              }
+            ],
+            "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621",
+            "underlying_price_basis": "underlying_midpoint",
+            "volume_baseline_hash": "c116839b269a389b92166e49f9272a03336ec0715b7d280c2d6ff081ef1512e6",
+            "volume_definition_id": "synthetic-volume-v1"
+          },
+          "fixture_id": "p14c2-bundle-v1",
+          "model_format_id": "options_lab.fixed_by_right_json.v1",
+          "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
+          "model_id": "cross-role-leak",
+          "model_kind": "fixture_fixed_by_right",
+          "policy_binding": {
+            "config_hash": "8ef0583fa6e6ec352140691e78b38172f1801b56be2e22f02423300b241542a8",
+            "contract_rule_id": "standard-unadjusted-100-spy-shares-v1",
+            "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+            "policy_hash": "735503cf8fd690c7d4893893b49a74dbf6494eacb3d36119a5c849896dacc95b",
+            "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
+            "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+          },
+          "prediction_contract": {
+            "base_cost_profile": {
+              "base_execution_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+              "fee_charging_rule": "filled_round_trip_once_no_fill_zero_v1",
+              "filled_attempt_round_trip_fee": "1",
+              "profile_id": "fixture-base-cost",
+              "profile_version": 1,
+              "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+            },
+            "calibration_partition": null,
+            "calibration_record": {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "raw_hash": "dbeebbf1a021c6a13ac74031e31998ea17770c52e5d202479e6cd7f968b44a93",
+              "record_id": "cross-role-leak"
+            },
+            "capital_basis_rule": "100_times_original_decision_ask_cap",
+            "fit_cutoff": "2026-08-31T22:00:00+00:00",
+            "last_label_available_at": "2026-08-28T14:14:00+00:00",
+            "model_membership": null,
+            "return_unit": "attempt_net_return_over_original_ask_capital",
+            "threshold_return": "0",
+            "training_feature_cutoff": "2026-05-05T13:40:00+00:00",
+            "tuning_membership": null,
+            "uncertainty_rule_id": "fixture_fixed_penalty_v1"
+          },
+          "provenance": {
+            "activated_at": null,
+            "activation_gap": null,
+            "availability_basis": "simulated",
+            "built_at": "2026-09-26T01:27:09.903144+00:00",
+            "evaluation_block": null,
+            "promoted_at": null,
+            "simulated_available_at": "2026-09-01T01:00:00+00:00",
+            "simulated_schedule": null
+          },
+          "runtime_binding": {
+            "exact_python_version": [
+              3,
+              11,
+              11,
+              "final",
+              0
+            ],
+            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
+            "python_implementation": "CPython",
+            "requires_python": ">=3.11,<3.12",
+            "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
+            "runtime_dependencies": []
+          },
+          "seed": null,
+          "validation_report": null
+        },
+        "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
+        "schema_version": 1
+      },
+      "raw_hash": "20bdbc74058fa1bc170cff6a3f3b6af4648981ec4057f5597dc64af89b9a520a",
+      "record_id": "cross-role-leak"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-late-odd-label",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/late-odd-label",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "model-bundle",
+        "supersedes_record_id": null
+      },
+      "kind": "model_bundle",
+      "profile_id": "model-bundle",
+      "raw_body": {
+        "manifest": {
+          "bundle_record_id": "late-odd-label",
+          "bundle_schema_version": 1,
+          "claimed_origin": "synthetic",
+          "claimed_permitted_use": "core_fixture",
+          "data_manifest_hashes": [
+            {
+              "fixture_id": "p14c-volume-training-v1",
+              "payload_sha256": "8bf6aa7abab0f9a919cbeba78ae1186b993a2452023ffd12c138baed964923b9",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-volume-normalization-v1",
+              "payload_sha256": "6d0f9842b9e771e9c146346ec85cf07f0b87aa11ed9dca34513d542c36c4ad18",
+              "role": "normalization"
+            },
+            {
+              "fixture_id": "p11-feature-vector-v1",
+              "payload_sha256": "8fffa246a2ec78d1f0b2450e794dab6791365022b1ea31cc00a9215cc7991c6a",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-calendar-v1",
+              "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-partition-v1",
+              "payload_sha256": "cddd2cf682ef8ba0cb49b9654e5dc885255d79eed8dc28d0f888565cee6f41bd",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "role": "calibration"
+            }
+          ],
+          "feature_binding": {
+            "coherence_protocol_ids": [
+              "fixture-joint-book-snapshot-v1",
+              "fixture-side-validity-overlap-v1"
+            ],
+            "delta_unit": "signed_option_price_per_underlying_price",
+            "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
+            "greek_assumptions_id": "fixture-flat-rates-v1",
+            "greek_method_id": "fixture-greek-values",
+            "greek_method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+            "greek_method_version": "1",
+            "input_normalization_version": 1,
+            "iv_unit": "annualized_volatility_fraction",
+            "normalization_hash": "0ac32703f4096994e82108bdd0be6b5388bdfe2d932b129f45bad861f093be5b",
+            "option_price_basis": "option_midpoint",
+            "source_profiles": [
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "bars"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-option_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-underlying_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-greek"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-proof"
+              }
+            ],
+            "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621",
+            "underlying_price_basis": "underlying_midpoint",
+            "volume_baseline_hash": "c116839b269a389b92166e49f9272a03336ec0715b7d280c2d6ff081ef1512e6",
+            "volume_definition_id": "synthetic-volume-v1"
+          },
+          "fixture_id": "p14c2-bundle-v1",
+          "model_format_id": "options_lab.fixed_by_right_json.v1",
+          "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
+          "model_id": "late-odd-label",
+          "model_kind": "fixture_fixed_by_right",
+          "policy_binding": {
+            "config_hash": "8ef0583fa6e6ec352140691e78b38172f1801b56be2e22f02423300b241542a8",
+            "contract_rule_id": "standard-unadjusted-100-spy-shares-v1",
+            "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+            "policy_hash": "735503cf8fd690c7d4893893b49a74dbf6494eacb3d36119a5c849896dacc95b",
+            "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
+            "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+          },
+          "prediction_contract": {
+            "base_cost_profile": {
+              "base_execution_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+              "fee_charging_rule": "filled_round_trip_once_no_fill_zero_v1",
+              "filled_attempt_round_trip_fee": "1",
+              "profile_id": "fixture-base-cost",
+              "profile_version": 1,
+              "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+            },
+            "calibration_partition": null,
+            "calibration_record": {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "raw_hash": "8b6b97e80d2c59db4a49bdcd3ec494dac4c7b7bd3e173c53fadc619b412289b7",
+              "record_id": "late-odd-label"
+            },
+            "capital_basis_rule": "100_times_original_decision_ask_cap",
+            "fit_cutoff": "2026-08-31T22:00:00+00:00",
+            "last_label_available_at": "2026-08-28T14:14:00+00:00",
+            "model_membership": null,
+            "return_unit": "attempt_net_return_over_original_ask_capital",
+            "threshold_return": "0",
+            "training_feature_cutoff": "2026-05-05T13:40:00+00:00",
+            "tuning_membership": null,
+            "uncertainty_rule_id": "fixture_fixed_penalty_v1"
+          },
+          "provenance": {
+            "activated_at": null,
+            "activation_gap": null,
+            "availability_basis": "simulated",
+            "built_at": "2026-09-26T01:27:09.903144+00:00",
+            "evaluation_block": null,
+            "promoted_at": null,
+            "simulated_available_at": "2026-09-01T01:00:00+00:00",
+            "simulated_schedule": null
+          },
+          "runtime_binding": {
+            "exact_python_version": [
+              3,
+              11,
+              11,
+              "final",
+              0
+            ],
+            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
+            "python_implementation": "CPython",
+            "requires_python": ">=3.11,<3.12",
+            "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
+            "runtime_dependencies": []
+          },
+          "seed": null,
+          "validation_report": null
+        },
+        "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
+        "schema_version": 1
+      },
+      "raw_hash": "e3ef15aa730ea94de1f5a1a1854b67533c6b7ccc28ff08531815b5be7d47c42c",
+      "record_id": "late-odd-label"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-forty-nine-call",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/forty-nine-call",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "model-bundle",
+        "supersedes_record_id": null
+      },
+      "kind": "model_bundle",
+      "profile_id": "model-bundle",
+      "raw_body": {
+        "manifest": {
+          "bundle_record_id": "forty-nine-call",
+          "bundle_schema_version": 1,
+          "claimed_origin": "synthetic",
+          "claimed_permitted_use": "core_fixture",
+          "data_manifest_hashes": [
+            {
+              "fixture_id": "p14c-volume-training-v1",
+              "payload_sha256": "8bf6aa7abab0f9a919cbeba78ae1186b993a2452023ffd12c138baed964923b9",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-volume-normalization-v1",
+              "payload_sha256": "6d0f9842b9e771e9c146346ec85cf07f0b87aa11ed9dca34513d542c36c4ad18",
+              "role": "normalization"
+            },
+            {
+              "fixture_id": "p11-feature-vector-v1",
+              "payload_sha256": "8fffa246a2ec78d1f0b2450e794dab6791365022b1ea31cc00a9215cc7991c6a",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-calendar-v1",
+              "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-partition-v1",
+              "payload_sha256": "cddd2cf682ef8ba0cb49b9654e5dc885255d79eed8dc28d0f888565cee6f41bd",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "role": "calibration"
+            }
+          ],
+          "feature_binding": {
+            "coherence_protocol_ids": [
+              "fixture-joint-book-snapshot-v1",
+              "fixture-side-validity-overlap-v1"
+            ],
+            "delta_unit": "signed_option_price_per_underlying_price",
+            "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
+            "greek_assumptions_id": "fixture-flat-rates-v1",
+            "greek_method_id": "fixture-greek-values",
+            "greek_method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+            "greek_method_version": "1",
+            "input_normalization_version": 1,
+            "iv_unit": "annualized_volatility_fraction",
+            "normalization_hash": "0ac32703f4096994e82108bdd0be6b5388bdfe2d932b129f45bad861f093be5b",
+            "option_price_basis": "option_midpoint",
+            "source_profiles": [
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "bars"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-option_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-underlying_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-greek"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-proof"
+              }
+            ],
+            "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621",
+            "underlying_price_basis": "underlying_midpoint",
+            "volume_baseline_hash": "c116839b269a389b92166e49f9272a03336ec0715b7d280c2d6ff081ef1512e6",
+            "volume_definition_id": "synthetic-volume-v1"
+          },
+          "fixture_id": "p14c2-bundle-v1",
+          "model_format_id": "options_lab.fixed_by_right_json.v1",
+          "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
+          "model_id": "forty-nine-call",
+          "model_kind": "fixture_fixed_by_right",
+          "policy_binding": {
+            "config_hash": "8ef0583fa6e6ec352140691e78b38172f1801b56be2e22f02423300b241542a8",
+            "contract_rule_id": "standard-unadjusted-100-spy-shares-v1",
+            "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+            "policy_hash": "735503cf8fd690c7d4893893b49a74dbf6494eacb3d36119a5c849896dacc95b",
+            "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
+            "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+          },
+          "prediction_contract": {
+            "base_cost_profile": {
+              "base_execution_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+              "fee_charging_rule": "filled_round_trip_once_no_fill_zero_v1",
+              "filled_attempt_round_trip_fee": "1",
+              "profile_id": "fixture-base-cost",
+              "profile_version": 1,
+              "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+            },
+            "calibration_partition": null,
+            "calibration_record": {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "raw_hash": "37dfd63e110630df668cce047336d5c5c09983a807873c326ba0852aceedc5eb",
+              "record_id": "forty-nine-call"
+            },
+            "capital_basis_rule": "100_times_original_decision_ask_cap",
+            "fit_cutoff": "2026-08-31T22:00:00+00:00",
+            "last_label_available_at": "2026-08-28T14:14:00+00:00",
+            "model_membership": null,
+            "return_unit": "attempt_net_return_over_original_ask_capital",
+            "threshold_return": "0",
+            "training_feature_cutoff": "2026-05-05T13:40:00+00:00",
+            "tuning_membership": null,
+            "uncertainty_rule_id": "fixture_fixed_penalty_v1"
+          },
+          "provenance": {
+            "activated_at": null,
+            "activation_gap": null,
+            "availability_basis": "simulated",
+            "built_at": "2026-09-26T01:27:09.903144+00:00",
+            "evaluation_block": null,
+            "promoted_at": null,
+            "simulated_available_at": "2026-09-01T01:00:00+00:00",
+            "simulated_schedule": null
+          },
+          "runtime_binding": {
+            "exact_python_version": [
+              3,
+              11,
+              11,
+              "final",
+              0
+            ],
+            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
+            "python_implementation": "CPython",
+            "requires_python": ">=3.11,<3.12",
+            "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
+            "runtime_dependencies": []
+          },
+          "seed": null,
+          "validation_report": null
+        },
+        "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
+        "schema_version": 1
+      },
+      "raw_hash": "b46ad7007ffadc204bfc4135c7b2cb52cba9234200171faf95e80b345236a287",
+      "record_id": "forty-nine-call"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-unsupported-pair",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/unsupported-pair",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "model-bundle",
+        "supersedes_record_id": null
+      },
+      "kind": "model_bundle",
+      "profile_id": "model-bundle",
+      "raw_body": {
+        "manifest": {
+          "bundle_record_id": "unsupported-pair",
+          "bundle_schema_version": 1,
+          "claimed_origin": "synthetic",
+          "claimed_permitted_use": "core_fixture",
+          "data_manifest_hashes": [
+            {
+              "fixture_id": "p14c-volume-training-v1",
+              "payload_sha256": "8bf6aa7abab0f9a919cbeba78ae1186b993a2452023ffd12c138baed964923b9",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-volume-normalization-v1",
+              "payload_sha256": "6d0f9842b9e771e9c146346ec85cf07f0b87aa11ed9dca34513d542c36c4ad18",
+              "role": "normalization"
+            },
+            {
+              "fixture_id": "p11-feature-vector-v1",
+              "payload_sha256": "8fffa246a2ec78d1f0b2450e794dab6791365022b1ea31cc00a9215cc7991c6a",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-calendar-v1",
+              "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-partition-v1",
+              "payload_sha256": "cddd2cf682ef8ba0cb49b9654e5dc885255d79eed8dc28d0f888565cee6f41bd",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "role": "calibration"
+            }
+          ],
+          "feature_binding": {
+            "coherence_protocol_ids": [
+              "fixture-joint-book-snapshot-v1",
+              "fixture-side-validity-overlap-v1"
+            ],
+            "delta_unit": "signed_option_price_per_underlying_price",
+            "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
+            "greek_assumptions_id": "fixture-flat-rates-v1",
+            "greek_method_id": "fixture-greek-values",
+            "greek_method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+            "greek_method_version": "1",
+            "input_normalization_version": 1,
+            "iv_unit": "annualized_volatility_fraction",
+            "normalization_hash": "0ac32703f4096994e82108bdd0be6b5388bdfe2d932b129f45bad861f093be5b",
+            "option_price_basis": "option_midpoint",
+            "source_profiles": [
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "bars"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-option_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-underlying_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-greek"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-proof"
+              }
+            ],
+            "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621",
+            "underlying_price_basis": "underlying_midpoint",
+            "volume_baseline_hash": "c116839b269a389b92166e49f9272a03336ec0715b7d280c2d6ff081ef1512e6",
+            "volume_definition_id": "synthetic-volume-v1"
+          },
+          "fixture_id": "p14c2-bundle-v1",
+          "model_format_id": "options_lab.fixed_by_right_json.v1",
+          "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
+          "model_id": "unsupported-pair",
+          "model_kind": "fixture_fixed_by_right",
+          "policy_binding": {
+            "config_hash": "8ef0583fa6e6ec352140691e78b38172f1801b56be2e22f02423300b241542a8",
+            "contract_rule_id": "standard-unadjusted-100-spy-shares-v1",
+            "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+            "policy_hash": "735503cf8fd690c7d4893893b49a74dbf6494eacb3d36119a5c849896dacc95b",
+            "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
+            "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+          },
+          "prediction_contract": {
+            "base_cost_profile": {
+              "base_execution_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+              "fee_charging_rule": "filled_round_trip_once_no_fill_zero_v1",
+              "filled_attempt_round_trip_fee": "1",
+              "profile_id": "fixture-base-cost",
+              "profile_version": 1,
+              "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+            },
+            "calibration_partition": null,
+            "calibration_record": {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "raw_hash": "d5a6c875c10b5153fefa12a312ea48acc5f1c6ba611606029fc93ceb2d45da77",
+              "record_id": "unsupported-pair"
+            },
+            "capital_basis_rule": "100_times_original_decision_ask_cap",
+            "fit_cutoff": "2026-08-31T22:00:00+00:00",
+            "last_label_available_at": "2026-08-28T14:14:00+00:00",
+            "model_membership": null,
+            "return_unit": "attempt_net_return_over_original_ask_capital",
+            "threshold_return": "0",
+            "training_feature_cutoff": "2026-05-05T13:40:00+00:00",
+            "tuning_membership": null,
+            "uncertainty_rule_id": "fixture_fixed_penalty_v1"
+          },
+          "provenance": {
+            "activated_at": null,
+            "activation_gap": null,
+            "availability_basis": "simulated",
+            "built_at": "2026-09-26T01:27:09.903144+00:00",
+            "evaluation_block": null,
+            "promoted_at": null,
+            "simulated_available_at": "2026-09-01T01:00:00+00:00",
+            "simulated_schedule": null
+          },
+          "runtime_binding": {
+            "exact_python_version": [
+              3,
+              11,
+              11,
+              "final",
+              0
+            ],
+            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
+            "python_implementation": "CPython",
+            "requires_python": ">=3.11,<3.12",
+            "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
+            "runtime_dependencies": []
+          },
+          "seed": null,
+          "validation_report": null
+        },
+        "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
+        "schema_version": 1
+      },
+      "raw_hash": "742d7879b92b50f9a1d1931ebed9ae9faaf83706bf071a01fa5bae7cd1d3f727",
+      "record_id": "unsupported-pair"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-late-tune-status",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/late-tune-status",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "model-bundle",
+        "supersedes_record_id": null
+      },
+      "kind": "model_bundle",
+      "profile_id": "model-bundle",
+      "raw_body": {
+        "manifest": {
+          "bundle_record_id": "late-tune-status",
+          "bundle_schema_version": 1,
+          "claimed_origin": "synthetic",
+          "claimed_permitted_use": "core_fixture",
+          "data_manifest_hashes": [
+            {
+              "fixture_id": "p14c-volume-training-v1",
+              "payload_sha256": "8bf6aa7abab0f9a919cbeba78ae1186b993a2452023ffd12c138baed964923b9",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-volume-normalization-v1",
+              "payload_sha256": "6d0f9842b9e771e9c146346ec85cf07f0b87aa11ed9dca34513d542c36c4ad18",
+              "role": "normalization"
+            },
+            {
+              "fixture_id": "p11-feature-vector-v1",
+              "payload_sha256": "8fffa246a2ec78d1f0b2450e794dab6791365022b1ea31cc00a9215cc7991c6a",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-calendar-v1",
+              "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-partition-v1",
+              "payload_sha256": "cddd2cf682ef8ba0cb49b9654e5dc885255d79eed8dc28d0f888565cee6f41bd",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-calendar-v1",
+              "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "tuning"
+            }
+          ],
+          "feature_binding": {
+            "coherence_protocol_ids": [
+              "fixture-joint-book-snapshot-v1",
+              "fixture-side-validity-overlap-v1"
+            ],
+            "delta_unit": "signed_option_price_per_underlying_price",
+            "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
+            "greek_assumptions_id": "fixture-flat-rates-v1",
+            "greek_method_id": "fixture-greek-values",
+            "greek_method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+            "greek_method_version": "1",
+            "input_normalization_version": 1,
+            "iv_unit": "annualized_volatility_fraction",
+            "normalization_hash": "0ac32703f4096994e82108bdd0be6b5388bdfe2d932b129f45bad861f093be5b",
+            "option_price_basis": "option_midpoint",
+            "source_profiles": [
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "bars"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-option_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-underlying_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-greek"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-proof"
+              }
+            ],
+            "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621",
+            "underlying_price_basis": "underlying_midpoint",
+            "volume_baseline_hash": "c116839b269a389b92166e49f9272a03336ec0715b7d280c2d6ff081ef1512e6",
+            "volume_definition_id": "synthetic-volume-v1"
+          },
+          "fixture_id": "p14c2-bundle-v1",
+          "model_format_id": "options_lab.fixed_by_right_json.v1",
+          "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
+          "model_id": "late-tune-status",
+          "model_kind": "fixture_fixed_by_right",
+          "policy_binding": {
+            "config_hash": "8ef0583fa6e6ec352140691e78b38172f1801b56be2e22f02423300b241542a8",
+            "contract_rule_id": "standard-unadjusted-100-spy-shares-v1",
+            "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+            "policy_hash": "735503cf8fd690c7d4893893b49a74dbf6494eacb3d36119a5c849896dacc95b",
+            "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
+            "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+          },
+          "prediction_contract": {
+            "base_cost_profile": {
+              "base_execution_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+              "fee_charging_rule": "filled_round_trip_once_no_fill_zero_v1",
+              "filled_attempt_round_trip_fee": "1",
+              "profile_id": "fixture-base-cost",
+              "profile_version": 1,
+              "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+            },
+            "calibration_partition": null,
+            "calibration_record": {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "raw_hash": "82333999b91a8dbbb9c133f25657b0fa5806d2eaa1cfe8e6318709504552e3e7",
+              "record_id": "late-tune-status"
+            },
+            "capital_basis_rule": "100_times_original_decision_ask_cap",
+            "fit_cutoff": "2026-08-31T22:00:00+00:00",
+            "last_label_available_at": "2026-08-28T14:14:00+00:00",
+            "model_membership": null,
+            "return_unit": "attempt_net_return_over_original_ask_capital",
+            "threshold_return": "0",
+            "training_feature_cutoff": "2026-05-05T13:40:00+00:00",
+            "tuning_membership": null,
+            "uncertainty_rule_id": "fixture_fixed_penalty_v1"
+          },
+          "provenance": {
+            "activated_at": null,
+            "activation_gap": null,
+            "availability_basis": "simulated",
+            "built_at": "2026-09-26T01:27:09.903144+00:00",
+            "evaluation_block": null,
+            "promoted_at": null,
+            "simulated_available_at": "2026-09-01T01:00:00+00:00",
+            "simulated_schedule": null
+          },
+          "runtime_binding": {
+            "exact_python_version": [
+              3,
+              11,
+              11,
+              "final",
+              0
+            ],
+            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
+            "python_implementation": "CPython",
+            "requires_python": ">=3.11,<3.12",
+            "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
+            "runtime_dependencies": []
+          },
+          "seed": null,
+          "validation_report": null
+        },
+        "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
+        "schema_version": 1
+      },
+      "raw_hash": "f4d5ae3ca0c9c48135bf3c59031d110d6426a99af42bd1b037c8111252cdf3e2",
+      "record_id": "late-tune-status"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-early-close",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/early-close",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "model-bundle",
+        "supersedes_record_id": null
+      },
+      "kind": "model_bundle",
+      "profile_id": "model-bundle",
+      "raw_body": {
+        "manifest": {
+          "bundle_record_id": "early-close",
+          "bundle_schema_version": 1,
+          "claimed_origin": "synthetic",
+          "claimed_permitted_use": "core_fixture",
+          "data_manifest_hashes": [
+            {
+              "fixture_id": "p14c-volume-training-v1",
+              "payload_sha256": "8bf6aa7abab0f9a919cbeba78ae1186b993a2452023ffd12c138baed964923b9",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-volume-normalization-v1",
+              "payload_sha256": "6d0f9842b9e771e9c146346ec85cf07f0b87aa11ed9dca34513d542c36c4ad18",
+              "role": "normalization"
+            },
+            {
+              "fixture_id": "p11-feature-vector-v1",
+              "payload_sha256": "8fffa246a2ec78d1f0b2450e794dab6791365022b1ea31cc00a9215cc7991c6a",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-calendar-v1",
+              "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-partition-v1",
+              "payload_sha256": "cddd2cf682ef8ba0cb49b9654e5dc885255d79eed8dc28d0f888565cee6f41bd",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "role": "calibration"
+            }
+          ],
+          "feature_binding": {
+            "coherence_protocol_ids": [
+              "fixture-joint-book-snapshot-v1",
+              "fixture-side-validity-overlap-v1"
+            ],
+            "delta_unit": "signed_option_price_per_underlying_price",
+            "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
+            "greek_assumptions_id": "fixture-flat-rates-v1",
+            "greek_method_id": "fixture-greek-values",
+            "greek_method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+            "greek_method_version": "1",
+            "input_normalization_version": 1,
+            "iv_unit": "annualized_volatility_fraction",
+            "normalization_hash": "0ac32703f4096994e82108bdd0be6b5388bdfe2d932b129f45bad861f093be5b",
+            "option_price_basis": "option_midpoint",
+            "source_profiles": [
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "bars"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-option_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-underlying_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-greek"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-proof"
+              }
+            ],
+            "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621",
+            "underlying_price_basis": "underlying_midpoint",
+            "volume_baseline_hash": "c116839b269a389b92166e49f9272a03336ec0715b7d280c2d6ff081ef1512e6",
+            "volume_definition_id": "synthetic-volume-v1"
+          },
+          "fixture_id": "p14c2-bundle-v1",
+          "model_format_id": "options_lab.fixed_by_right_json.v1",
+          "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
+          "model_id": "early-close",
+          "model_kind": "fixture_fixed_by_right",
+          "policy_binding": {
+            "config_hash": "8ef0583fa6e6ec352140691e78b38172f1801b56be2e22f02423300b241542a8",
+            "contract_rule_id": "standard-unadjusted-100-spy-shares-v1",
+            "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+            "policy_hash": "735503cf8fd690c7d4893893b49a74dbf6494eacb3d36119a5c849896dacc95b",
+            "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
+            "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+          },
+          "prediction_contract": {
+            "base_cost_profile": {
+              "base_execution_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+              "fee_charging_rule": "filled_round_trip_once_no_fill_zero_v1",
+              "filled_attempt_round_trip_fee": "1",
+              "profile_id": "fixture-base-cost",
+              "profile_version": 1,
+              "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+            },
+            "calibration_partition": null,
+            "calibration_record": {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "raw_hash": "f0ce06a1d8e0cc263ac17da5384a174f715dffd1d2896be6df3a20c2e3291600",
+              "record_id": "early-close"
+            },
+            "capital_basis_rule": "100_times_original_decision_ask_cap",
+            "fit_cutoff": "2026-08-31T22:00:00+00:00",
+            "last_label_available_at": "2026-08-28T14:14:00+00:00",
+            "model_membership": null,
+            "return_unit": "attempt_net_return_over_original_ask_capital",
+            "threshold_return": "0",
+            "training_feature_cutoff": "2026-05-05T13:40:00+00:00",
+            "tuning_membership": null,
+            "uncertainty_rule_id": "fixture_fixed_penalty_v1"
+          },
+          "provenance": {
+            "activated_at": null,
+            "activation_gap": null,
+            "availability_basis": "simulated",
+            "built_at": "2026-09-26T01:27:09.903144+00:00",
+            "evaluation_block": null,
+            "promoted_at": null,
+            "simulated_available_at": "2026-09-01T01:00:00+00:00",
+            "simulated_schedule": null
+          },
+          "runtime_binding": {
+            "exact_python_version": [
+              3,
+              11,
+              11,
+              "final",
+              0
+            ],
+            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
+            "python_implementation": "CPython",
+            "requires_python": ">=3.11,<3.12",
+            "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
+            "runtime_dependencies": []
+          },
+          "seed": null,
+          "validation_report": null
+        },
+        "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
+        "schema_version": 1
+      },
+      "raw_hash": "6759f55ae71c9ad191c77c5a99558ea9d48f170e7784c34819a6a9d755d5ecd3",
+      "record_id": "early-close"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-censored-partial",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/censored-partial",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "model-bundle",
+        "supersedes_record_id": null
+      },
+      "kind": "model_bundle",
+      "profile_id": "model-bundle",
+      "raw_body": {
+        "manifest": {
+          "bundle_record_id": "censored-partial",
+          "bundle_schema_version": 1,
+          "claimed_origin": "synthetic",
+          "claimed_permitted_use": "core_fixture",
+          "data_manifest_hashes": [
+            {
+              "fixture_id": "p14c-volume-training-v1",
+              "payload_sha256": "8bf6aa7abab0f9a919cbeba78ae1186b993a2452023ffd12c138baed964923b9",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-volume-normalization-v1",
+              "payload_sha256": "6d0f9842b9e771e9c146346ec85cf07f0b87aa11ed9dca34513d542c36c4ad18",
+              "role": "normalization"
+            },
+            {
+              "fixture_id": "p11-feature-vector-v1",
+              "payload_sha256": "8fffa246a2ec78d1f0b2450e794dab6791365022b1ea31cc00a9215cc7991c6a",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-calendar-v1",
+              "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-partition-v1",
+              "payload_sha256": "cddd2cf682ef8ba0cb49b9654e5dc885255d79eed8dc28d0f888565cee6f41bd",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "role": "calibration"
+            }
+          ],
+          "feature_binding": {
+            "coherence_protocol_ids": [
+              "fixture-joint-book-snapshot-v1",
+              "fixture-side-validity-overlap-v1"
+            ],
+            "delta_unit": "signed_option_price_per_underlying_price",
+            "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
+            "greek_assumptions_id": "fixture-flat-rates-v1",
+            "greek_method_id": "fixture-greek-values",
+            "greek_method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+            "greek_method_version": "1",
+            "input_normalization_version": 1,
+            "iv_unit": "annualized_volatility_fraction",
+            "normalization_hash": "0ac32703f4096994e82108bdd0be6b5388bdfe2d932b129f45bad861f093be5b",
+            "option_price_basis": "option_midpoint",
+            "source_profiles": [
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "bars"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-option_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-underlying_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-greek"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-proof"
+              }
+            ],
+            "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621",
+            "underlying_price_basis": "underlying_midpoint",
+            "volume_baseline_hash": "c116839b269a389b92166e49f9272a03336ec0715b7d280c2d6ff081ef1512e6",
+            "volume_definition_id": "synthetic-volume-v1"
+          },
+          "fixture_id": "p14c2-bundle-v1",
+          "model_format_id": "options_lab.fixed_by_right_json.v1",
+          "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
+          "model_id": "censored-partial",
+          "model_kind": "fixture_fixed_by_right",
+          "policy_binding": {
+            "config_hash": "8ef0583fa6e6ec352140691e78b38172f1801b56be2e22f02423300b241542a8",
+            "contract_rule_id": "standard-unadjusted-100-spy-shares-v1",
+            "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+            "policy_hash": "735503cf8fd690c7d4893893b49a74dbf6494eacb3d36119a5c849896dacc95b",
+            "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
+            "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+          },
+          "prediction_contract": {
+            "base_cost_profile": {
+              "base_execution_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+              "fee_charging_rule": "filled_round_trip_once_no_fill_zero_v1",
+              "filled_attempt_round_trip_fee": "1",
+              "profile_id": "fixture-base-cost",
+              "profile_version": 1,
+              "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+            },
+            "calibration_partition": null,
+            "calibration_record": {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "raw_hash": "1bdc898018f48fb5dcc12c0ff39600debada017df15ab8f66c1e9e1cac29230b",
+              "record_id": "censored-partial"
+            },
+            "capital_basis_rule": "100_times_original_decision_ask_cap",
+            "fit_cutoff": "2026-08-31T22:00:00+00:00",
+            "last_label_available_at": "2026-08-28T14:14:00+00:00",
+            "model_membership": null,
+            "return_unit": "attempt_net_return_over_original_ask_capital",
+            "threshold_return": "0",
+            "training_feature_cutoff": "2026-05-05T13:40:00+00:00",
+            "tuning_membership": null,
+            "uncertainty_rule_id": "fixture_fixed_penalty_v1"
+          },
+          "provenance": {
+            "activated_at": null,
+            "activation_gap": null,
+            "availability_basis": "simulated",
+            "built_at": "2026-09-26T01:27:09.903144+00:00",
+            "evaluation_block": null,
+            "promoted_at": null,
+            "simulated_available_at": "2026-09-01T01:00:00+00:00",
+            "simulated_schedule": null
+          },
+          "runtime_binding": {
+            "exact_python_version": [
+              3,
+              11,
+              11,
+              "final",
+              0
+            ],
+            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
+            "python_implementation": "CPython",
+            "requires_python": ">=3.11,<3.12",
+            "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
+            "runtime_dependencies": []
+          },
+          "seed": null,
+          "validation_report": null
+        },
+        "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
+        "schema_version": 1
+      },
+      "raw_hash": "0fb85c43e2dc5d4efe638a30079625b7e190fdfa2bc377fd683d675b02a41b38",
+      "record_id": "censored-partial"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-status-unknown",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/status-unknown",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "model-bundle",
+        "supersedes_record_id": null
+      },
+      "kind": "model_bundle",
+      "profile_id": "model-bundle",
+      "raw_body": {
+        "manifest": {
+          "bundle_record_id": "status-unknown",
+          "bundle_schema_version": 1,
+          "claimed_origin": "synthetic",
+          "claimed_permitted_use": "core_fixture",
+          "data_manifest_hashes": [
+            {
+              "fixture_id": "p14c-volume-training-v1",
+              "payload_sha256": "8bf6aa7abab0f9a919cbeba78ae1186b993a2452023ffd12c138baed964923b9",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-volume-normalization-v1",
+              "payload_sha256": "6d0f9842b9e771e9c146346ec85cf07f0b87aa11ed9dca34513d542c36c4ad18",
+              "role": "normalization"
+            },
+            {
+              "fixture_id": "p11-feature-vector-v1",
+              "payload_sha256": "8fffa246a2ec78d1f0b2450e794dab6791365022b1ea31cc00a9215cc7991c6a",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-calendar-v1",
+              "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-partition-v1",
+              "payload_sha256": "cddd2cf682ef8ba0cb49b9654e5dc885255d79eed8dc28d0f888565cee6f41bd",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "role": "calibration"
+            }
+          ],
+          "feature_binding": {
+            "coherence_protocol_ids": [
+              "fixture-joint-book-snapshot-v1",
+              "fixture-side-validity-overlap-v1"
+            ],
+            "delta_unit": "signed_option_price_per_underlying_price",
+            "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
+            "greek_assumptions_id": "fixture-flat-rates-v1",
+            "greek_method_id": "fixture-greek-values",
+            "greek_method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+            "greek_method_version": "1",
+            "input_normalization_version": 1,
+            "iv_unit": "annualized_volatility_fraction",
+            "normalization_hash": "0ac32703f4096994e82108bdd0be6b5388bdfe2d932b129f45bad861f093be5b",
+            "option_price_basis": "option_midpoint",
+            "source_profiles": [
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "bars"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-option_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-underlying_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-greek"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-proof"
+              }
+            ],
+            "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621",
+            "underlying_price_basis": "underlying_midpoint",
+            "volume_baseline_hash": "c116839b269a389b92166e49f9272a03336ec0715b7d280c2d6ff081ef1512e6",
+            "volume_definition_id": "synthetic-volume-v1"
+          },
+          "fixture_id": "p14c2-bundle-v1",
+          "model_format_id": "options_lab.fixed_by_right_json.v1",
+          "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
+          "model_id": "status-unknown",
+          "model_kind": "fixture_fixed_by_right",
+          "policy_binding": {
+            "config_hash": "8ef0583fa6e6ec352140691e78b38172f1801b56be2e22f02423300b241542a8",
+            "contract_rule_id": "standard-unadjusted-100-spy-shares-v1",
+            "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+            "policy_hash": "735503cf8fd690c7d4893893b49a74dbf6494eacb3d36119a5c849896dacc95b",
+            "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
+            "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+          },
+          "prediction_contract": {
+            "base_cost_profile": {
+              "base_execution_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+              "fee_charging_rule": "filled_round_trip_once_no_fill_zero_v1",
+              "filled_attempt_round_trip_fee": "1",
+              "profile_id": "fixture-base-cost",
+              "profile_version": 1,
+              "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+            },
+            "calibration_partition": null,
+            "calibration_record": {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "raw_hash": "1a97f9c12f3e7e1955cba8a7caa5a434ba32fff44f308b0f152aa0d49bf22e3d",
+              "record_id": "status-unknown"
+            },
+            "capital_basis_rule": "100_times_original_decision_ask_cap",
+            "fit_cutoff": "2026-08-31T22:00:00+00:00",
+            "last_label_available_at": "2026-08-28T14:14:00+00:00",
+            "model_membership": null,
+            "return_unit": "attempt_net_return_over_original_ask_capital",
+            "threshold_return": "0",
+            "training_feature_cutoff": "2026-05-05T13:40:00+00:00",
+            "tuning_membership": null,
+            "uncertainty_rule_id": "fixture_fixed_penalty_v1"
+          },
+          "provenance": {
+            "activated_at": null,
+            "activation_gap": null,
+            "availability_basis": "simulated",
+            "built_at": "2026-09-26T01:27:09.903144+00:00",
+            "evaluation_block": null,
+            "promoted_at": null,
+            "simulated_available_at": "2026-09-01T01:00:00+00:00",
+            "simulated_schedule": null
+          },
+          "runtime_binding": {
+            "exact_python_version": [
+              3,
+              11,
+              11,
+              "final",
+              0
+            ],
+            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
+            "python_implementation": "CPython",
+            "requires_python": ">=3.11,<3.12",
+            "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
+            "runtime_dependencies": []
+          },
+          "seed": null,
+          "validation_report": null
+        },
+        "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
+        "schema_version": 1
+      },
+      "raw_hash": "3725e94ae43ea76771216d3c6f2c9ce7afc446d70ad76e4fb54e68e772e3f914",
+      "record_id": "status-unknown"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-duplicate-sample",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/duplicate-sample",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "model-bundle",
+        "supersedes_record_id": null
+      },
+      "kind": "model_bundle",
+      "profile_id": "model-bundle",
+      "raw_body": {
+        "manifest": {
+          "bundle_record_id": "duplicate-sample",
+          "bundle_schema_version": 1,
+          "claimed_origin": "synthetic",
+          "claimed_permitted_use": "core_fixture",
+          "data_manifest_hashes": [
+            {
+              "fixture_id": "p14c-volume-training-v1",
+              "payload_sha256": "8bf6aa7abab0f9a919cbeba78ae1186b993a2452023ffd12c138baed964923b9",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-volume-normalization-v1",
+              "payload_sha256": "6d0f9842b9e771e9c146346ec85cf07f0b87aa11ed9dca34513d542c36c4ad18",
+              "role": "normalization"
+            },
+            {
+              "fixture_id": "p11-feature-vector-v1",
+              "payload_sha256": "8fffa246a2ec78d1f0b2450e794dab6791365022b1ea31cc00a9215cc7991c6a",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-calendar-v1",
+              "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-partition-v1",
+              "payload_sha256": "cddd2cf682ef8ba0cb49b9654e5dc885255d79eed8dc28d0f888565cee6f41bd",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "role": "calibration"
+            }
+          ],
+          "feature_binding": {
+            "coherence_protocol_ids": [
+              "fixture-joint-book-snapshot-v1",
+              "fixture-side-validity-overlap-v1"
+            ],
+            "delta_unit": "signed_option_price_per_underlying_price",
+            "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
+            "greek_assumptions_id": "fixture-flat-rates-v1",
+            "greek_method_id": "fixture-greek-values",
+            "greek_method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+            "greek_method_version": "1",
+            "input_normalization_version": 1,
+            "iv_unit": "annualized_volatility_fraction",
+            "normalization_hash": "0ac32703f4096994e82108bdd0be6b5388bdfe2d932b129f45bad861f093be5b",
+            "option_price_basis": "option_midpoint",
+            "source_profiles": [
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "bars"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-option_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-underlying_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-greek"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-proof"
+              }
+            ],
+            "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621",
+            "underlying_price_basis": "underlying_midpoint",
+            "volume_baseline_hash": "c116839b269a389b92166e49f9272a03336ec0715b7d280c2d6ff081ef1512e6",
+            "volume_definition_id": "synthetic-volume-v1"
+          },
+          "fixture_id": "p14c2-bundle-v1",
+          "model_format_id": "options_lab.fixed_by_right_json.v1",
+          "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
+          "model_id": "duplicate-sample",
+          "model_kind": "fixture_fixed_by_right",
+          "policy_binding": {
+            "config_hash": "8ef0583fa6e6ec352140691e78b38172f1801b56be2e22f02423300b241542a8",
+            "contract_rule_id": "standard-unadjusted-100-spy-shares-v1",
+            "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+            "policy_hash": "735503cf8fd690c7d4893893b49a74dbf6494eacb3d36119a5c849896dacc95b",
+            "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
+            "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+          },
+          "prediction_contract": {
+            "base_cost_profile": {
+              "base_execution_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+              "fee_charging_rule": "filled_round_trip_once_no_fill_zero_v1",
+              "filled_attempt_round_trip_fee": "1",
+              "profile_id": "fixture-base-cost",
+              "profile_version": 1,
+              "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+            },
+            "calibration_partition": null,
+            "calibration_record": {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "raw_hash": "4935b29f40acb256c4b2af446a29208824bb75973dd2e451cd0e9c33467fb1cb",
+              "record_id": "duplicate-sample"
+            },
+            "capital_basis_rule": "100_times_original_decision_ask_cap",
+            "fit_cutoff": "2026-08-31T22:00:00+00:00",
+            "last_label_available_at": "2026-08-28T14:14:00+00:00",
+            "model_membership": null,
+            "return_unit": "attempt_net_return_over_original_ask_capital",
+            "threshold_return": "0",
+            "training_feature_cutoff": "2026-05-05T13:40:00+00:00",
+            "tuning_membership": null,
+            "uncertainty_rule_id": "fixture_fixed_penalty_v1"
+          },
+          "provenance": {
+            "activated_at": null,
+            "activation_gap": null,
+            "availability_basis": "simulated",
+            "built_at": "2026-09-26T01:27:09.903144+00:00",
+            "evaluation_block": null,
+            "promoted_at": null,
+            "simulated_available_at": "2026-09-01T01:00:00+00:00",
+            "simulated_schedule": null
+          },
+          "runtime_binding": {
+            "exact_python_version": [
+              3,
+              11,
+              11,
+              "final",
+              0
+            ],
+            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
+            "python_implementation": "CPython",
+            "requires_python": ">=3.11,<3.12",
+            "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
+            "runtime_dependencies": []
+          },
+          "seed": null,
+          "validation_report": null
+        },
+        "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
+        "schema_version": 1
+      },
+      "raw_hash": "c1641e908fd9a1c14ba17e1b9dea1074dc41acae595b0ed0ddb46e12fbf4e585",
+      "record_id": "duplicate-sample"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-late-record",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/late-record",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "model-bundle",
+        "supersedes_record_id": null
+      },
+      "kind": "model_bundle",
+      "profile_id": "model-bundle",
+      "raw_body": {
+        "manifest": {
+          "bundle_record_id": "late-record",
+          "bundle_schema_version": 1,
+          "claimed_origin": "synthetic",
+          "claimed_permitted_use": "core_fixture",
+          "data_manifest_hashes": [
+            {
+              "fixture_id": "p14c-volume-training-v1",
+              "payload_sha256": "8bf6aa7abab0f9a919cbeba78ae1186b993a2452023ffd12c138baed964923b9",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-volume-normalization-v1",
+              "payload_sha256": "6d0f9842b9e771e9c146346ec85cf07f0b87aa11ed9dca34513d542c36c4ad18",
+              "role": "normalization"
+            },
+            {
+              "fixture_id": "p11-feature-vector-v1",
+              "payload_sha256": "8fffa246a2ec78d1f0b2450e794dab6791365022b1ea31cc00a9215cc7991c6a",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-calendar-v1",
+              "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-partition-v1",
+              "payload_sha256": "cddd2cf682ef8ba0cb49b9654e5dc885255d79eed8dc28d0f888565cee6f41bd",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "role": "calibration"
+            }
+          ],
+          "feature_binding": {
+            "coherence_protocol_ids": [
+              "fixture-joint-book-snapshot-v1",
+              "fixture-side-validity-overlap-v1"
+            ],
+            "delta_unit": "signed_option_price_per_underlying_price",
+            "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
+            "greek_assumptions_id": "fixture-flat-rates-v1",
+            "greek_method_id": "fixture-greek-values",
+            "greek_method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+            "greek_method_version": "1",
+            "input_normalization_version": 1,
+            "iv_unit": "annualized_volatility_fraction",
+            "normalization_hash": "0ac32703f4096994e82108bdd0be6b5388bdfe2d932b129f45bad861f093be5b",
+            "option_price_basis": "option_midpoint",
+            "source_profiles": [
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "bars"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-option_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-underlying_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-greek"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-proof"
+              }
+            ],
+            "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621",
+            "underlying_price_basis": "underlying_midpoint",
+            "volume_baseline_hash": "c116839b269a389b92166e49f9272a03336ec0715b7d280c2d6ff081ef1512e6",
+            "volume_definition_id": "synthetic-volume-v1"
+          },
+          "fixture_id": "p14c2-bundle-v1",
+          "model_format_id": "options_lab.fixed_by_right_json.v1",
+          "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
+          "model_id": "late-record",
+          "model_kind": "fixture_fixed_by_right",
+          "policy_binding": {
+            "config_hash": "8ef0583fa6e6ec352140691e78b38172f1801b56be2e22f02423300b241542a8",
+            "contract_rule_id": "standard-unadjusted-100-spy-shares-v1",
+            "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+            "policy_hash": "735503cf8fd690c7d4893893b49a74dbf6494eacb3d36119a5c849896dacc95b",
+            "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
+            "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+          },
+          "prediction_contract": {
+            "base_cost_profile": {
+              "base_execution_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+              "fee_charging_rule": "filled_round_trip_once_no_fill_zero_v1",
+              "filled_attempt_round_trip_fee": "1",
+              "profile_id": "fixture-base-cost",
+              "profile_version": 1,
+              "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+            },
+            "calibration_partition": null,
+            "calibration_record": {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "raw_hash": "ef08e6157441323d74ed3532e5f85c64320b39e4a6a8aa9449ffa200953c8efb",
+              "record_id": "late-record"
+            },
+            "capital_basis_rule": "100_times_original_decision_ask_cap",
+            "fit_cutoff": "2026-08-31T22:00:00+00:00",
+            "last_label_available_at": "2026-08-28T14:14:00+00:00",
+            "model_membership": null,
+            "return_unit": "attempt_net_return_over_original_ask_capital",
+            "threshold_return": "0",
+            "training_feature_cutoff": "2026-05-05T13:40:00+00:00",
+            "tuning_membership": null,
+            "uncertainty_rule_id": "fixture_fixed_penalty_v1"
+          },
+          "provenance": {
+            "activated_at": null,
+            "activation_gap": null,
+            "availability_basis": "simulated",
+            "built_at": "2026-09-26T01:27:09.903144+00:00",
+            "evaluation_block": null,
+            "promoted_at": null,
+            "simulated_available_at": "2026-09-01T01:00:00+00:00",
+            "simulated_schedule": null
+          },
+          "runtime_binding": {
+            "exact_python_version": [
+              3,
+              11,
+              11,
+              "final",
+              0
+            ],
+            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
+            "python_implementation": "CPython",
+            "requires_python": ">=3.11,<3.12",
+            "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
+            "runtime_dependencies": []
+          },
+          "seed": null,
+          "validation_report": null
+        },
+        "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
+        "schema_version": 1
+      },
+      "raw_hash": "cb667e73b4659ea3afa1b7298efce769127fbe04b6d7cf897a61be7fbbe9ceb8",
+      "record_id": "late-record"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-record-before-fit",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/record-before-fit",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "model-bundle",
+        "supersedes_record_id": null
+      },
+      "kind": "model_bundle",
+      "profile_id": "model-bundle",
+      "raw_body": {
+        "manifest": {
+          "bundle_record_id": "record-before-fit",
+          "bundle_schema_version": 1,
+          "claimed_origin": "synthetic",
+          "claimed_permitted_use": "core_fixture",
+          "data_manifest_hashes": [
+            {
+              "fixture_id": "p14c-volume-training-v1",
+              "payload_sha256": "8bf6aa7abab0f9a919cbeba78ae1186b993a2452023ffd12c138baed964923b9",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-volume-normalization-v1",
+              "payload_sha256": "6d0f9842b9e771e9c146346ec85cf07f0b87aa11ed9dca34513d542c36c4ad18",
+              "role": "normalization"
+            },
+            {
+              "fixture_id": "p11-feature-vector-v1",
+              "payload_sha256": "8fffa246a2ec78d1f0b2450e794dab6791365022b1ea31cc00a9215cc7991c6a",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-calendar-v1",
+              "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-partition-v1",
+              "payload_sha256": "cddd2cf682ef8ba0cb49b9654e5dc885255d79eed8dc28d0f888565cee6f41bd",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "role": "calibration"
+            }
+          ],
+          "feature_binding": {
+            "coherence_protocol_ids": [
+              "fixture-joint-book-snapshot-v1",
+              "fixture-side-validity-overlap-v1"
+            ],
+            "delta_unit": "signed_option_price_per_underlying_price",
+            "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
+            "greek_assumptions_id": "fixture-flat-rates-v1",
+            "greek_method_id": "fixture-greek-values",
+            "greek_method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+            "greek_method_version": "1",
+            "input_normalization_version": 1,
+            "iv_unit": "annualized_volatility_fraction",
+            "normalization_hash": "0ac32703f4096994e82108bdd0be6b5388bdfe2d932b129f45bad861f093be5b",
+            "option_price_basis": "option_midpoint",
+            "source_profiles": [
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "bars"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-option_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-underlying_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-greek"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-proof"
+              }
+            ],
+            "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621",
+            "underlying_price_basis": "underlying_midpoint",
+            "volume_baseline_hash": "c116839b269a389b92166e49f9272a03336ec0715b7d280c2d6ff081ef1512e6",
+            "volume_definition_id": "synthetic-volume-v1"
+          },
+          "fixture_id": "p14c2-bundle-v1",
+          "model_format_id": "options_lab.fixed_by_right_json.v1",
+          "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
+          "model_id": "record-before-fit",
+          "model_kind": "fixture_fixed_by_right",
+          "policy_binding": {
+            "config_hash": "8ef0583fa6e6ec352140691e78b38172f1801b56be2e22f02423300b241542a8",
+            "contract_rule_id": "standard-unadjusted-100-spy-shares-v1",
+            "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+            "policy_hash": "735503cf8fd690c7d4893893b49a74dbf6494eacb3d36119a5c849896dacc95b",
+            "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
+            "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+          },
+          "prediction_contract": {
+            "base_cost_profile": {
+              "base_execution_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+              "fee_charging_rule": "filled_round_trip_once_no_fill_zero_v1",
+              "filled_attempt_round_trip_fee": "1",
+              "profile_id": "fixture-base-cost",
+              "profile_version": 1,
+              "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+            },
+            "calibration_partition": null,
+            "calibration_record": {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "raw_hash": "4045413f3c36d8cd49616eee8a050272a0d423b45a1c55be6546a992c15edfe0",
+              "record_id": "record-before-fit"
+            },
+            "capital_basis_rule": "100_times_original_decision_ask_cap",
+            "fit_cutoff": "2026-08-31T22:00:00+00:00",
+            "last_label_available_at": "2026-08-28T14:14:00+00:00",
+            "model_membership": null,
+            "return_unit": "attempt_net_return_over_original_ask_capital",
+            "threshold_return": "0",
+            "training_feature_cutoff": "2026-05-05T13:40:00+00:00",
+            "tuning_membership": null,
+            "uncertainty_rule_id": "fixture_fixed_penalty_v1"
+          },
+          "provenance": {
+            "activated_at": null,
+            "activation_gap": null,
+            "availability_basis": "simulated",
+            "built_at": "2026-09-26T01:27:09.903144+00:00",
+            "evaluation_block": null,
+            "promoted_at": null,
+            "simulated_available_at": "2026-09-01T01:00:00+00:00",
+            "simulated_schedule": null
+          },
+          "runtime_binding": {
+            "exact_python_version": [
+              3,
+              11,
+              11,
+              "final",
+              0
+            ],
+            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
+            "python_implementation": "CPython",
+            "requires_python": ">=3.11,<3.12",
+            "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
+            "runtime_dependencies": []
+          },
+          "seed": null,
+          "validation_report": null
+        },
+        "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
+        "schema_version": 1
+      },
+      "raw_hash": "05e508790480af56d02bb926ea04757ebfa3345bacec5ec6918ef9f9cba80ab2",
+      "record_id": "record-before-fit"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-wrong-training-max",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/wrong-training-max",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "model-bundle",
+        "supersedes_record_id": null
+      },
+      "kind": "model_bundle",
+      "profile_id": "model-bundle",
+      "raw_body": {
+        "manifest": {
+          "bundle_record_id": "wrong-training-max",
+          "bundle_schema_version": 1,
+          "claimed_origin": "synthetic",
+          "claimed_permitted_use": "core_fixture",
+          "data_manifest_hashes": [
+            {
+              "fixture_id": "p14c-volume-training-v1",
+              "payload_sha256": "8bf6aa7abab0f9a919cbeba78ae1186b993a2452023ffd12c138baed964923b9",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-volume-normalization-v1",
+              "payload_sha256": "6d0f9842b9e771e9c146346ec85cf07f0b87aa11ed9dca34513d542c36c4ad18",
+              "role": "normalization"
+            },
+            {
+              "fixture_id": "p11-feature-vector-v1",
+              "payload_sha256": "8fffa246a2ec78d1f0b2450e794dab6791365022b1ea31cc00a9215cc7991c6a",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-calendar-v1",
+              "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-partition-v1",
+              "payload_sha256": "cddd2cf682ef8ba0cb49b9654e5dc885255d79eed8dc28d0f888565cee6f41bd",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "role": "calibration"
+            }
+          ],
+          "feature_binding": {
+            "coherence_protocol_ids": [
+              "fixture-joint-book-snapshot-v1",
+              "fixture-side-validity-overlap-v1"
+            ],
+            "delta_unit": "signed_option_price_per_underlying_price",
+            "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
+            "greek_assumptions_id": "fixture-flat-rates-v1",
+            "greek_method_id": "fixture-greek-values",
+            "greek_method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+            "greek_method_version": "1",
+            "input_normalization_version": 1,
+            "iv_unit": "annualized_volatility_fraction",
+            "normalization_hash": "0ac32703f4096994e82108bdd0be6b5388bdfe2d932b129f45bad861f093be5b",
+            "option_price_basis": "option_midpoint",
+            "source_profiles": [
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "bars"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-option_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-underlying_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-greek"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-proof"
+              }
+            ],
+            "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621",
+            "underlying_price_basis": "underlying_midpoint",
+            "volume_baseline_hash": "c116839b269a389b92166e49f9272a03336ec0715b7d280c2d6ff081ef1512e6",
+            "volume_definition_id": "synthetic-volume-v1"
+          },
+          "fixture_id": "p14c2-bundle-v1",
+          "model_format_id": "options_lab.fixed_by_right_json.v1",
+          "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
+          "model_id": "wrong-training-max",
+          "model_kind": "fixture_fixed_by_right",
+          "policy_binding": {
+            "config_hash": "8ef0583fa6e6ec352140691e78b38172f1801b56be2e22f02423300b241542a8",
+            "contract_rule_id": "standard-unadjusted-100-spy-shares-v1",
+            "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+            "policy_hash": "735503cf8fd690c7d4893893b49a74dbf6494eacb3d36119a5c849896dacc95b",
+            "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
+            "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+          },
+          "prediction_contract": {
+            "base_cost_profile": {
+              "base_execution_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+              "fee_charging_rule": "filled_round_trip_once_no_fill_zero_v1",
+              "filled_attempt_round_trip_fee": "1",
+              "profile_id": "fixture-base-cost",
+              "profile_version": 1,
+              "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+            },
+            "calibration_partition": null,
+            "calibration_record": {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "raw_hash": "1fc5041c5a14fb38624fb60f8b61f4a41eaba33a22b17fdc0da8114ef36615ee",
+              "record_id": "record"
+            },
+            "capital_basis_rule": "100_times_original_decision_ask_cap",
+            "fit_cutoff": "2026-08-31T22:00:00+00:00",
+            "last_label_available_at": "2026-08-28T14:14:00+00:00",
+            "model_membership": null,
+            "return_unit": "attempt_net_return_over_original_ask_capital",
+            "threshold_return": "0",
+            "training_feature_cutoff": "2026-05-05T13:39:00+00:00",
+            "tuning_membership": null,
+            "uncertainty_rule_id": "fixture_fixed_penalty_v1"
+          },
+          "provenance": {
+            "activated_at": null,
+            "activation_gap": null,
+            "availability_basis": "simulated",
+            "built_at": "2026-09-26T01:27:09.903144+00:00",
+            "evaluation_block": null,
+            "promoted_at": null,
+            "simulated_available_at": "2026-09-01T01:00:00+00:00",
+            "simulated_schedule": null
+          },
+          "runtime_binding": {
+            "exact_python_version": [
+              3,
+              11,
+              11,
+              "final",
+              0
+            ],
+            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
+            "python_implementation": "CPython",
+            "requires_python": ">=3.11,<3.12",
+            "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
+            "runtime_dependencies": []
+          },
+          "seed": null,
+          "validation_report": null
+        },
+        "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
+        "schema_version": 1
+      },
+      "raw_hash": "2b998858d506410a981082ccc44908ea5fbacc523af521080ca8f459c626b76d",
+      "record_id": "wrong-training-max"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-wrong-label-max",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/wrong-label-max",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "model-bundle",
+        "supersedes_record_id": null
+      },
+      "kind": "model_bundle",
+      "profile_id": "model-bundle",
+      "raw_body": {
+        "manifest": {
+          "bundle_record_id": "wrong-label-max",
+          "bundle_schema_version": 1,
+          "claimed_origin": "synthetic",
+          "claimed_permitted_use": "core_fixture",
+          "data_manifest_hashes": [
+            {
+              "fixture_id": "p14c-volume-training-v1",
+              "payload_sha256": "8bf6aa7abab0f9a919cbeba78ae1186b993a2452023ffd12c138baed964923b9",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-volume-normalization-v1",
+              "payload_sha256": "6d0f9842b9e771e9c146346ec85cf07f0b87aa11ed9dca34513d542c36c4ad18",
+              "role": "normalization"
+            },
+            {
+              "fixture_id": "p11-feature-vector-v1",
+              "payload_sha256": "8fffa246a2ec78d1f0b2450e794dab6791365022b1ea31cc00a9215cc7991c6a",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "6f2c06166f2f44e4cc3f5e343ce720ecf6e500575441b1df3c561e8f57308b5e",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "0940015ac315a6cfb820aa421b739a646d874c67fd6b1613723e8597026e5574",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-calendar-v1",
+              "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-partition-v1",
+              "payload_sha256": "cddd2cf682ef8ba0cb49b9654e5dc885255d79eed8dc28d0f888565cee6f41bd",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "4c9e27e0e80f446a4e982eb67f9832cb329ef3d9faf7e0da77c9b66592d1c7f5",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "role": "calibration"
+            }
+          ],
+          "feature_binding": {
+            "coherence_protocol_ids": [
+              "fixture-joint-book-snapshot-v1",
+              "fixture-side-validity-overlap-v1"
+            ],
+            "delta_unit": "signed_option_price_per_underlying_price",
+            "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
+            "greek_assumptions_id": "fixture-flat-rates-v1",
+            "greek_method_id": "fixture-greek-values",
+            "greek_method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+            "greek_method_version": "1",
+            "input_normalization_version": 1,
+            "iv_unit": "annualized_volatility_fraction",
+            "normalization_hash": "0ac32703f4096994e82108bdd0be6b5388bdfe2d932b129f45bad861f093be5b",
+            "option_price_basis": "option_midpoint",
+            "source_profiles": [
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "bars"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-option_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-underlying_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-greek"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-proof"
+              }
+            ],
+            "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621",
+            "underlying_price_basis": "underlying_midpoint",
+            "volume_baseline_hash": "c116839b269a389b92166e49f9272a03336ec0715b7d280c2d6ff081ef1512e6",
+            "volume_definition_id": "synthetic-volume-v1"
+          },
+          "fixture_id": "p14c2-bundle-v1",
+          "model_format_id": "options_lab.fixed_by_right_json.v1",
+          "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
+          "model_id": "wrong-label-max",
+          "model_kind": "fixture_fixed_by_right",
+          "policy_binding": {
+            "config_hash": "8ef0583fa6e6ec352140691e78b38172f1801b56be2e22f02423300b241542a8",
+            "contract_rule_id": "standard-unadjusted-100-spy-shares-v1",
+            "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+            "policy_hash": "735503cf8fd690c7d4893893b49a74dbf6494eacb3d36119a5c849896dacc95b",
+            "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
+            "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+          },
+          "prediction_contract": {
+            "base_cost_profile": {
+              "base_execution_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+              "fee_charging_rule": "filled_round_trip_once_no_fill_zero_v1",
+              "filled_attempt_round_trip_fee": "1",
+              "profile_id": "fixture-base-cost",
+              "profile_version": 1,
+              "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+            },
+            "calibration_partition": null,
+            "calibration_record": {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+              "raw_hash": "1fc5041c5a14fb38624fb60f8b61f4a41eaba33a22b17fdc0da8114ef36615ee",
+              "record_id": "record"
+            },
+            "capital_basis_rule": "100_times_original_decision_ask_cap",
+            "fit_cutoff": "2026-08-31T22:00:00+00:00",
+            "last_label_available_at": "2026-08-28T14:13:00+00:00",
+            "model_membership": null,
+            "return_unit": "attempt_net_return_over_original_ask_capital",
+            "threshold_return": "0",
+            "training_feature_cutoff": "2026-05-05T13:40:00+00:00",
+            "tuning_membership": null,
+            "uncertainty_rule_id": "fixture_fixed_penalty_v1"
+          },
+          "provenance": {
+            "activated_at": null,
+            "activation_gap": null,
+            "availability_basis": "simulated",
+            "built_at": "2026-09-26T01:27:09.903144+00:00",
+            "evaluation_block": null,
+            "promoted_at": null,
+            "simulated_available_at": "2026-09-01T01:00:00+00:00",
+            "simulated_schedule": null
+          },
+          "runtime_binding": {
+            "exact_python_version": [
+              3,
+              11,
+              11,
+              "final",
+              0
+            ],
+            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
+            "python_implementation": "CPython",
+            "requires_python": ">=3.11,<3.12",
+            "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
+            "runtime_dependencies": []
+          },
+          "seed": null,
+          "validation_report": null
+        },
+        "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
+        "schema_version": 1
+      },
+      "raw_hash": "c771e0cd0e04c972426690cc037a92524bbf835e052e5df8c35902b0433fa8d4",
+      "record_id": "wrong-label-max"
+    }
+  ],
+  "modeled_source_profiles": [
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "model_bundle",
+      "profile_id": "model-bundle",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "optionslab-bundle-fixture-builder",
+      "stream_id": "model-bundle",
+      "units": {}
+    }
+  ],
+  "normalization_version": 1,
+  "origin": "synthetic",
+  "permitted_use": "core_fixture",
+  "schema_version": 1
+}
