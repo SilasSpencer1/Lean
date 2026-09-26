@@ -191,6 +191,33 @@ def test_corrupted_retained_envelope_still_returns_safe_rejection():
     assert result.rejection.member is None
 
 
+def test_resolver_rejects_oversized_member_before_hash(monkeypatch):
+    """Every C and B caller reaches the shared byte bound before hashing."""
+    import hashlib
+    from options_lab import calibration_inputs
+    from options_lab.bundle_manifest_inputs import _reference
+
+    fixture = admitted("p14c2-calendar-v1")
+    member = next(m for m in fixture.members if m.record_id == "calendar")
+    ref = _reference(dict(fixture_id=fixture.fixture_id, payload_sha256=fixture.payload_sha256,
+        record_id=member.record_id, raw_hash=member.raw_hash), "calendar", False)
+    oversized = copy(member)
+    object.__setattr__(oversized, "raw_body_bytes", b"x" * (8 * 1024 * 1024 + 1))
+    changed = copy(fixture)
+    object.__setattr__(changed, "members", tuple(oversized if m.record_id == "calendar" else m
+                                                  for m in fixture.members))
+    real_sha256 = hashlib.sha256
+
+    def guarded_sha256(body):
+        assert len(body) <= 8 * 1024 * 1024, "hashed oversized body"
+        return real_sha256(body)
+
+    monkeypatch.setattr(calibration_inputs.hashlib, "sha256", guarded_sha256)
+    with pytest.raises(calibration_inputs._Failure) as error:
+        calibration_inputs._resolve(ref, {fixture.fixture_id: changed}, "calendar_descriptor")
+    assert error.value.args[1] == "resource_limit"
+
+
 def test_hostile_retained_member_tuple_rejects_without_equality():
     source, fixture = admitted("p14c-fit-sources-v1"), admitted("p14c-fit-membership-v1")
     body = next(m for m in fixture.members if m.record_id == "model").decode_raw_body()

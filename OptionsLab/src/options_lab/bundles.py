@@ -12,9 +12,12 @@ from .bundle_inputs import BundleInputRejection, ParsedModelData, _make, _shape,
 from .bundle_manifest_inputs import ModelBundleManifest, QualifiedProfile, _reference, normalize_bundle_manifest
 from .candidates import SELECTION_RULE_ID, _selection_definition_snapshot
 from .calibration_inputs import (CalibrationInputRejection, FitMembership,
-                                 _MAX_BODY, _retained_fixture_shape, normalize_fit_membership)
+                                 _MAX_BODY, _retained_fixture_shape, normalize_calendar_descriptor,
+                                 normalize_fit_membership)
 from .calibration import (CalibrationMetadata, CalibrationPartition, _normalization_shape,
                           normalize_calibration_metadata, normalize_calibration_partition)
+from .bundle_schedule import (ActivationGap, EvaluationBlock,
+                              normalize_activation_gap, normalize_evaluation_block)
 from .config import StrategyConfig, _snapshot_hash, config_hash, config_snapshot, policy_hash
 from .feature_math import NUMERIC_CONVENTION_ID, _numeric_snapshot
 from .feature_vector import FeatureSpec, EXACT_VWAP_SPEC, CLOSE_VOLUME_PROXY_SPEC
@@ -74,6 +77,8 @@ class VerifiedBundle:
     tuning_membership: FitMembership | None
     calibration_partition: CalibrationPartition | None
     calibration_metadata: CalibrationMetadata | None
+    activation_gap: ActivationGap | None
+    evaluation_block: EvaluationBlock | None
     origin: str = field(default="synthetic", init=False)
     fidelity_tier: int = field(default=0, init=False)
     permitted_use: str = field(default="core_fixture", init=False)
@@ -189,7 +194,7 @@ def _member(manifest, record_id, kind, raw_hash=None):
     _check(member is not None, "member", "unknown_member")
     _check(member.kind == kind, "member", "kind_mismatch")
     if kind in ("calibration_record", "calibration_partition", "model_membership",
-                "tuning_membership", "calendar_descriptor", "fit_sample"):
+                "tuning_membership", "calendar_descriptor", "fit_sample", "activation_gap", "evaluation_block"):
         _check(len(member.raw_body_bytes) <= _MAX_BODY, "member", "resource_limit")
     _check(hashlib.sha256(member.raw_body_bytes).hexdigest() == member.raw_hash,
            "member", "raw_hash_mismatch")
@@ -228,7 +233,7 @@ def _policy(manifest, config, runtime):
 
 
 def _declared_roots(manifest, roots, normalization):
-    """Resolve declared data roots and reject still unsupported references."""
+    """Resolve declared data roots and reject still unsupported validation reports."""
     used = set()
     for row in manifest.data_manifest_hashes:
         root = next((r for r in roots if r.fixture_id == row.fixture_id), None)
@@ -239,15 +244,84 @@ def _declared_roots(manifest, roots, normalization):
             _check((root.fixture_id, root.payload_sha256) == (owner.fixture_id, owner.payload_sha256),
                    "data_manifest_hashes", "role_mismatch")
         used.add(root.fixture_id)
-    refs = [("validation_report", manifest.validation_report),
-            ("provenance.evaluation_block", manifest.provenance.evaluation_block),
-            ("provenance.activation_gap", manifest.provenance.activation_gap)]
-    if manifest.provenance.simulated_schedule is not None:
-        refs.extend(("provenance.simulated_schedule." + name, getattr(manifest.provenance.simulated_schedule, name))
-                    for name in ("evaluation_block", "activation_gap"))
-    for path, ref in refs:
-        _check(ref is None, path, "unsupported_reference")
+    _check(manifest.validation_report is None, "validation_report", "unsupported_reference")
     return used
+
+
+def _schedule_calendar(ref, roots, kind):
+    """Read the schedule member's actual descriptor and all session source roots."""
+    owner = next((root for root in roots if root.fixture_id == ref.fixture_id), None)
+    _check(owner is not None, "provenance", "unknown_fixture")
+    _check(owner.payload_sha256 == ref.payload_sha256, "provenance", "payload_mismatch")
+    member = _member(owner, ref.record_id, kind, ref.raw_hash)
+    body = member.decode_raw_body()
+    _check(type(body) is dict, "provenance", "invalid_type")
+    calendar_ref = _reference(body.get("calendar_descriptor_ref"), "calendar_descriptor_ref", False)
+    calendar_root = next((root for root in roots if root.fixture_id == calendar_ref.fixture_id), None)
+    _check(calendar_root is not None, "calendar_descriptor_ref", "unknown_fixture")
+    _check(calendar_root.payload_sha256 == calendar_ref.payload_sha256,
+           "calendar_descriptor_ref", "payload_mismatch")
+    calendar_member = _member(calendar_root, calendar_ref.record_id, "calendar_descriptor", calendar_ref.raw_hash)
+    calendar_body = calendar_member.decode_raw_body()
+    _check(type(calendar_body) is dict and type(calendar_body.get("session_refs")) is list
+           and len(calendar_body["session_refs"]) <= 4096,
+           "calendar_descriptor_ref", "invalid_type")
+    needed = {row.get("fixture_id") for row in calendar_body["session_refs"]
+              if type(row) is dict and type(row.get("fixture_id")) is str}
+    sources = tuple(root for root in roots if root.fixture_id in needed and root.fixture_id != calendar_root.fixture_id)
+    result = normalize_calendar_descriptor(calendar_body, fixture=calendar_root,
+        record_id=calendar_member.record_id, upstream_fixtures=sources)
+    _check(result.value is not None, "calendar_descriptor_ref", "normalization_failed", result.rejection)
+    return owner, member, body, result.value
+
+
+def _schedule(manifest, roots, model, spec, normalization, partition, metadata):
+    """Bind direct and simulated refs to the same actual gap and block owners."""
+    direct, simulated = manifest.provenance, manifest.provenance.simulated_schedule
+    for name in ("activation_gap", "evaluation_block"):
+        claimed = getattr(direct, name)
+        nested = None if simulated is None else getattr(simulated, name)
+        _check(claimed is None or nested is None or claimed == nested,
+               "provenance." + name, "counterpart_mismatch")
+    gap_ref = direct.activation_gap or (None if simulated is None else simulated.activation_gap)
+    block_ref = direct.evaluation_block or (None if simulated is None else simulated.evaluation_block)
+    reached = set()
+    if gap_ref is None and block_ref is None:
+        return None, None, reached
+    _check(gap_ref is not None and block_ref is not None, "provenance", "missing_counterpart")
+    gap_root, gap_member, gap_body, gap_calendar = _schedule_calendar(gap_ref, roots, "activation_gap")
+    block_root, block_member, block_body, block_calendar = _schedule_calendar(block_ref, roots, "evaluation_block")
+    _check(gap_calendar.content_hash == block_calendar.content_hash
+           and gap_calendar.fixture.fixture_id == block_calendar.fixture.fixture_id
+           and gap_calendar.member.raw_body_bytes == block_calendar.member.raw_body_bytes,
+           "provenance", "calendar_mismatch")
+    if partition is not None:
+        _check(partition.calendar.content_hash == gap_calendar.content_hash
+               and partition.calendar.fixture.fixture_id == gap_calendar.fixture.fixture_id,
+               "provenance", "calendar_mismatch")
+    calendar_roots = (gap_calendar.fixture, *gap_calendar.upstream_fixtures)
+    gap_result = normalize_activation_gap(gap_body, fixture=gap_root,
+        record_id=gap_member.record_id, calendar=gap_calendar,
+        upstream_fixtures=tuple(root for root in calendar_roots if root.fixture_id != gap_root.fixture_id))
+    _check(gap_result.value is not None, "provenance.activation_gap", "normalization_failed", gap_result.rejection)
+    block_needed = {root.fixture_id for root in calendar_roots}
+    if normalization is not None:
+        block_needed.update((normalization.manifest.fixture_id, normalization.baseline.manifest.fixture_id))
+    if metadata is not None:
+        block_needed.add(metadata.fixture.fixture_id)
+        block_needed.update(root.fixture_id for root in metadata.upstream_fixtures)
+    block_roots = tuple(root for root in roots if root.fixture_id in block_needed
+                        and root.fixture_id != block_root.fixture_id)
+    block_result = normalize_evaluation_block(block_body, fixture=block_root,
+        record_id=block_member.record_id, calendar=block_calendar, model=model, spec=spec,
+        normalization=normalization, partition=partition, metadata=metadata,
+        upstream_fixtures=block_roots)
+    _check(block_result.value is not None, "provenance.evaluation_block", "normalization_failed",
+           block_result.rejection)
+    reached.update((gap_root.fixture_id, block_root.fixture_id))
+    reached.update(root.fixture_id for root in gap_result.value.upstream_fixtures)
+    reached.update(root.fixture_id for root in block_result.value.upstream_fixtures)
+    return gap_result.value, block_result.value, reached
 
 
 def _memberships(manifest, model, roots):
@@ -571,7 +645,10 @@ def verify_bundle(manifest: ModelBundleManifest, model_bytes: bytes, *, fixture:
                            for bucket in metadata.buckets),
                    "prediction_contract.calibration_record", "counterpart_mismatch")
         _roles(actual, normalization, model_membership, tuning_membership, partition, metadata)
+        gap, block, schedule_roots = _schedule(actual, roots, parsed.value, spec, normalization,
+                                                partition, metadata)
         used.update(traversed)
+        used.update(schedule_roots)
         if partition is not None:
             used.update(root.fixture_id for root in partition.upstream_fixtures)
         if normalization is not None:
@@ -585,6 +662,7 @@ def verify_bundle(manifest: ModelBundleManifest, model_bytes: bytes, *, fixture:
             upstream_fixtures=roots, supplied_upstream_fixtures=upstream_fixtures, source_profiles=profiles,
             model_membership=model_membership, tuning_membership=tuning_membership,
             calibration_partition=partition, calibration_metadata=metadata,
+            activation_gap=gap, evaluation_block=block,
             origin=fresh.origin, fidelity_tier=fresh.fidelity_tier, permitted_use=fresh.permitted_use,
             operational_allowed=fresh.operational_allowed, economic_allowed=fresh.economic_allowed)
     except _BundleFailure as failure:

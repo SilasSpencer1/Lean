@@ -1,5 +1,5 @@
 {
-  "assembled_at": "2026-09-26T01:27:05.881225+00:00",
+  "assembled_at": "2026-09-26T01:53:36.619882+00:00",
   "definitions": {
     "coherence_protocol_ids": [
       "fixture-joint-book-snapshot-v1",
@@ -59,7 +59,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T01:27:05.846026+00:00",
+            "built_at": "2026-09-26T01:53:36.576047+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-04T14:05:00+00:00",
@@ -73,7 +73,7 @@
               "final",
               0
             ],
-            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_digest": "57b3b3d1689e829c1730499cc34cf973cd0570dfd1a0fa8a9c470cd91900df11",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -86,7 +86,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.cash_json.v1\"}",
         "schema_version": 1
       },
-      "raw_hash": "fe84de62c0e0c909227d23aca75d073bca4baec29c78e893d7be254a0ebcda6e",
+      "raw_hash": "d41e96939ec049c7a707d22ae24f80a709fdb13c6dd22ac99a1f10b74abc4854",
       "record_id": "cash"
     },
     {
@@ -205,7 +205,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T01:27:05.846026+00:00",
+            "built_at": "2026-09-26T01:53:36.576047+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-04T14:05:00+00:00",
@@ -219,7 +219,7 @@
               "final",
               0
             ],
-            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_digest": "57b3b3d1689e829c1730499cc34cf973cd0570dfd1a0fa8a9c470cd91900df11",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -232,7 +232,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "99686ab77b0faab5873a084171f868818197626c3b79d2dee36c267fdb9249e6",
+      "raw_hash": "c605de3287291d4fc251c53ae823d9e721de183ebe41824f0de8856ac3ab5284",
       "record_id": "fixed"
     },
     {
@@ -274,7 +274,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T01:27:05.846026+00:00",
+            "built_at": "2026-09-26T01:53:36.576047+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-04T14:05:00+00:00",
@@ -288,7 +288,7 @@
               "final",
               0
             ],
-            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_digest": "57b3b3d1689e829c1730499cc34cf973cd0570dfd1a0fa8a9c470cd91900df11",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -301,7 +301,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.cash_json.v1\"}\n",
         "schema_version": 1
       },
-      "raw_hash": "8a6d5053ac92afe78735991857d9d52334670fdf24e41fbe922bf8b59a6bbe2a",
+      "raw_hash": "c2f83df616f642dcd164a4afb6434f97fe91d9c1bde666981566131e9a26cc5e",
       "record_id": "cash-whitespace"
     },
     {
@@ -343,7 +343,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T01:27:05.846026+00:00",
+            "built_at": "2026-09-26T01:53:36.576047+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-04T14:05:00+00:00",
@@ -370,7 +370,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.cash_json.v1\"}",
         "schema_version": 1
       },
-      "raw_hash": "a63cbf5b085e705bbef65adeb516d3167cdfb7c82cdcf0d0ae7ef113a8568290",
+      "raw_hash": "e3fae817ceea7fd2446e6319cbb6a6672c8450155db91408adab66237032db98",
       "record_id": "wrong-runtime"
     },
     {
@@ -412,7 +412,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T01:27:05.846026+00:00",
+            "built_at": "2026-09-26T01:53:36.576047+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-04T14:05:00+00:00",
@@ -426,7 +426,7 @@
               "final",
               0
             ],
-            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_digest": "57b3b3d1689e829c1730499cc34cf973cd0570dfd1a0fa8a9c470cd91900df11",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -439,7 +439,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.cash_json.v1\"}",
         "schema_version": 1
       },
-      "raw_hash": "10e67d6110eb4149c44b048af882a3c7ca57270e9a2df5d977aa3d7b727378b5",
+      "raw_hash": "f533ca56e83a9112933894e99b651505cddf5346f2ae505eb12c71212f0ca806",
       "record_id": "wrong-selection"
     },
     {
@@ -558,7 +558,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T01:27:05.846026+00:00",
+            "built_at": "2026-09-26T01:53:36.576047+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-04T14:05:00+00:00",
@@ -572,7 +572,7 @@
               "final",
               0
             ],
-            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_digest": "57b3b3d1689e829c1730499cc34cf973cd0570dfd1a0fa8a9c470cd91900df11",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -585,7 +585,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "1098fb1707951cef85e51813c0a8ea2545bca61e3eb016ca60083abbac225e32",
+      "raw_hash": "987bc468f1b9548d270c1598ccd823215e4c089853843ce6e1ff78492877b744",
       "record_id": "wrong-normalization"
     },
     {
@@ -704,7 +704,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T01:27:05.846026+00:00",
+            "built_at": "2026-09-26T01:53:36.576047+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-04T14:05:00+00:00",
@@ -718,7 +718,7 @@
               "final",
               0
             ],
-            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_digest": "57b3b3d1689e829c1730499cc34cf973cd0570dfd1a0fa8a9c470cd91900df11",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -731,7 +731,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "71e8d726e4c98eb8cc2b690d7755d9d93fc500c5f44271f005b4e15336335a09",
+      "raw_hash": "f7093b584e05d31da923403740e4f72e63f71311430d4bc62b548a6228f1e623",
       "record_id": "wrong-source"
     },
     {
@@ -850,7 +850,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T01:27:05.846026+00:00",
+            "built_at": "2026-09-26T01:53:36.576047+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-04T14:05:00+00:00",
@@ -864,7 +864,7 @@
               "final",
               0
             ],
-            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_digest": "57b3b3d1689e829c1730499cc34cf973cd0570dfd1a0fa8a9c470cd91900df11",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -877,7 +877,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "6c15a4f3d85f2bceb24a8911e30a5e5655ed7ed0eef42db771456fdc29f2d392",
+      "raw_hash": "86d6c50ce60ab83a91b29d35e200f92abd00623dbf68528e1835b597919ce7d1",
       "record_id": "missing-profile"
     },
     {
@@ -991,7 +991,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T01:27:05.846026+00:00",
+            "built_at": "2026-09-26T01:53:36.576047+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-04T14:05:00+00:00",
@@ -1005,7 +1005,7 @@
               "final",
               0
             ],
-            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_digest": "57b3b3d1689e829c1730499cc34cf973cd0570dfd1a0fa8a9c470cd91900df11",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -1018,7 +1018,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "1eef33372235ba90ad128b840b157062861c84ded60f3fb996a5eb973275461b",
+      "raw_hash": "828c3641626b06837fffb8c7e86cbedd3a046f82f253d380826cabf207d81681",
       "record_id": "undeclared-source"
     },
     {
@@ -1137,7 +1137,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T01:27:05.846026+00:00",
+            "built_at": "2026-09-26T01:53:36.576047+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-04T14:05:00+00:00",
@@ -1151,7 +1151,7 @@
               "final",
               0
             ],
-            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_digest": "57b3b3d1689e829c1730499cc34cf973cd0570dfd1a0fa8a9c470cd91900df11",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -1169,7 +1169,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "1ef6fdf1824d779308163944b4cd000e8cca69f8bbb8369a0607f1d4fe8769a3",
+      "raw_hash": "50ca48e07529bfea6b2116daefb9121a26d8215fb0cae5666e8aa7ebce822552",
       "record_id": "future-reference"
     },
     {
@@ -1211,7 +1211,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-27T01:27:05.846026+00:00",
+            "built_at": "2026-09-27T01:53:36.576047+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-04T14:05:00+00:00",
@@ -1225,7 +1225,7 @@
               "final",
               0
             ],
-            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_digest": "57b3b3d1689e829c1730499cc34cf973cd0570dfd1a0fa8a9c470cd91900df11",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -1238,7 +1238,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.cash_json.v1\"}",
         "schema_version": 1
       },
-      "raw_hash": "8368cdfefd7d0ae452f9b84fb4c7e7e3bd7e5cfa9aa4ede953a351940b517399",
+      "raw_hash": "64ca85ce66fd9cb51272f58ee5fff43c52a51f2abac3d2527babf3f9639be695",
       "record_id": "built-after-assembly"
     },
     {
@@ -1280,7 +1280,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T01:27:05.846026+00:00",
+            "built_at": "2026-09-26T01:53:36.576047+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-04T14:05:00+00:00",
@@ -1294,7 +1294,7 @@
               "final",
               0
             ],
-            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_digest": "57b3b3d1689e829c1730499cc34cf973cd0570dfd1a0fa8a9c470cd91900df11",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -1307,7 +1307,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.cash_json.v1\"}",
         "schema_version": 1
       },
-      "raw_hash": "576050f01241c3ae124010f4ebc62d1a48ae68210234f1547547cb3ef997d982",
+      "raw_hash": "a08ef8698bcce8867f908fb969a1a53930389b3e7581c5270af643f209999080",
       "record_id": "superseded"
     },
     {
@@ -1349,7 +1349,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T01:27:05.846026+00:00",
+            "built_at": "2026-09-26T01:53:36.576047+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-04T14:05:00+00:00",
@@ -1363,7 +1363,7 @@
               "final",
               0
             ],
-            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_digest": "57b3b3d1689e829c1730499cc34cf973cd0570dfd1a0fa8a9c470cd91900df11",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -1376,7 +1376,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.cash_json.v1\"}",
         "schema_version": 1
       },
-      "raw_hash": "d1f6f7ad14b77d26be07788e1de9deb21209cc6aa04d490cb4d62b26cf8dd068",
+      "raw_hash": "8377200b748432868767cf87b6687856851dada5affebbeb62ae7053b3dea140",
       "record_id": "wrong-profile"
     },
     {
@@ -1474,7 +1474,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T01:27:05.846026+00:00",
+            "built_at": "2026-09-26T01:53:36.576047+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-04T14:05:00+00:00",
@@ -1488,7 +1488,7 @@
               "final",
               0
             ],
-            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_digest": "57b3b3d1689e829c1730499cc34cf973cd0570dfd1a0fa8a9c470cd91900df11",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -1501,7 +1501,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "12728d5de8ba64f459d61c974bcd317227c6c4f6dd46304abb06817888745fa8",
+      "raw_hash": "02c6f376c5b565061c9609e1b5e9da9d68bd5ed7b6c998f4bffba7667e0da07b",
       "record_id": "empty-profiles"
     },
     {
@@ -1610,7 +1610,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T01:27:05.846026+00:00",
+            "built_at": "2026-09-26T01:53:36.576047+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-04T14:05:00+00:00",
@@ -1624,7 +1624,7 @@
               "final",
               0
             ],
-            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_digest": "57b3b3d1689e829c1730499cc34cf973cd0570dfd1a0fa8a9c470cd91900df11",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -1637,7 +1637,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "42868ac23e994526567afbc9bd4374bc57a87e29f069fb026130b821e09aa5a9",
+      "raw_hash": "b213144c2938f96577b17287343228f894692303f693f08671829f230b3225f0",
       "record_id": "implicit-only"
     },
     {
@@ -1679,7 +1679,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T01:27:05.846026+00:00",
+            "built_at": "2026-09-26T01:53:36.576047+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-04T14:05:00+00:00",
@@ -1693,7 +1693,7 @@
               "final",
               0
             ],
-            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_digest": "57b3b3d1689e829c1730499cc34cf973cd0570dfd1a0fa8a9c470cd91900df11",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -1706,7 +1706,7 @@
         "model_utf8": false,
         "schema_version": 1
       },
-      "raw_hash": "7f9a3847d9c4a04c7d5f8d046d637e5aa1a85afd7ca09730c1f33b569e859331",
+      "raw_hash": "9003c5ee1710607238e04d8e60db04ee86c00cf456d7cf11411807bea82dd70b",
       "record_id": "bad-model-type"
     },
     {
@@ -1748,7 +1748,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T01:27:05.846026+00:00",
+            "built_at": "2026-09-26T01:53:36.576047+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-04T14:05:00+00:00",
@@ -1762,7 +1762,7 @@
               "final",
               0
             ],
-            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_digest": "57b3b3d1689e829c1730499cc34cf973cd0570dfd1a0fa8a9c470cd91900df11",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -1775,7 +1775,7 @@
         "model_utf8": "\ud800",
         "schema_version": 1
       },
-      "raw_hash": "c60f9a11987ba7e407e33d77e5e280ef5e0d82ad6da4d8570d147fea9599ea50",
+      "raw_hash": "c724321a709f6944008d2a3c1df70baa589559c53fd0e63c1ee5db68361ce488",
       "record_id": "surrogate-model"
     },
     {
@@ -1817,7 +1817,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T01:27:05.846026+00:00",
+            "built_at": "2026-09-26T01:53:36.576047+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-04T14:05:00+00:00",
@@ -1831,7 +1831,7 @@
               "final",
               0
             ],
-            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_digest": "57b3b3d1689e829c1730499cc34cf973cd0570dfd1a0fa8a9c470cd91900df11",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -1844,7 +1844,7 @@
         "model_utf8": "{",
         "schema_version": 1
       },
-      "raw_hash": "9405d4135b9bb09ecdf8b320d88c28893207b07b7aea3a6b4feb85703c266584",
+      "raw_hash": "34afaa2ade751e613aabfdb0abd5dfcb5b0f0449d5f2b7889ce596f212c353f6",
       "record_id": "malformed-model"
     },
     {
@@ -1886,7 +1886,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T01:27:05.846026+00:00",
+            "built_at": "2026-09-26T01:53:36.576047+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-04T14:05:00+00:00",
@@ -1900,7 +1900,7 @@
               "final",
               0
             ],
-            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
+            "implementation_digest": "57b3b3d1689e829c1730499cc34cf973cd0570dfd1a0fa8a9c470cd91900df11",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -1913,7 +1913,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "907bf720b7e6f8c1eb8b519a9bb2b3ca187a8f7ff963294c3d424830ec30b9df",
+      "raw_hash": "3aef476226ce2713ad10d0abe9b5e7d2ebd78aeca1ea9f3769cec44d6913fc01",
       "record_id": "model-kind-mismatch"
     }
   ],

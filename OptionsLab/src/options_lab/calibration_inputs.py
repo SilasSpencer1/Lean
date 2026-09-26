@@ -1,9 +1,10 @@
 """Admit finite calendar and fit membership content from actual fixture members."""
 
-from dataclasses import dataclass
-from datetime import date, datetime, timedelta, timezone
+from dataclasses import dataclass, fields
+from datetime import date, datetime, time, timedelta, timezone
 from decimal import Decimal
 import hashlib
+from zoneinfo import ZoneInfo
 
 from ._input_parsing import _InvalidInput, _fail, _parse_contract_id, _parse_date
 from ._validation import _require_nonempty_string
@@ -29,6 +30,46 @@ _MEMBERSHIP_FIELDS = ("schema_version", "membership_id", "sample_refs")
 _TIME_FIELDS = ("feature_available_at", "information_start", "information_end", "label_available_at", "available_at")
 _MAX_BODY = 8 * 1024 * 1024
 _MAX_ROOTS = 32 * 1024 * 1024
+
+
+def _matches_retained(old: object, fresh: object, seen: set[tuple[int, int]], depth: int = 0) -> bool:
+    """Compare complete retained facts only to exact freshly rederived owner types.
+
+    :param    old:    Claimed prior owner or leaf.
+    :param    fresh:  Reverified owner or leaf defining the trusted type.
+    :param    seen:   Pairs already compared in this immutable graph.
+    :param    depth:  Current bounded structural depth.
+    :returns:         Whether complete retained and fresh values agree safely.
+    """
+    if depth > 32 or type(old) is not type(fresh):
+        return False
+    cls = type(fresh)
+    if cls in (datetime, time) and (type(old.tzinfo) not in (type(None), timezone, ZoneInfo)
+                                    or type(fresh.tzinfo) not in (type(None), timezone, ZoneInfo)):
+        return False
+    if cls is Decimal:
+        return old.is_finite() and fresh.is_finite() and old == fresh
+    if cls in (str, bytes, int, bool, type(None), date, time, timedelta, datetime):
+        return old == fresh
+    if cls in (tuple, list):
+        return len(old) == len(fresh) and len(old) <= 4096 and all(
+            _matches_retained(a, b, seen, depth + 1) for a, b in zip(old, fresh))
+    if cls is dict:
+        return len(old) == len(fresh) and len(old) <= 4096 and all(
+            type(key) is str and key in fresh and _matches_retained(item, fresh[key], seen, depth + 1)
+            for key, item in old.items())
+    if not hasattr(cls, "__dataclass_fields__"):
+        return False
+    pair = (id(old), id(fresh))
+    if pair in seen:
+        return True
+    seen.add(pair)
+    try:
+        return all(_matches_retained(object.__getattribute__(old, field.name),
+                                     object.__getattribute__(fresh, field.name), seen, depth + 1)
+                   for field in fields(cls))
+    except AttributeError:
+        return False
 
 
 @dataclass(frozen=True, init=False)
@@ -378,9 +419,9 @@ def _resolve(ref, roots, kind):
     member = next((item for item in root.members if item.record_id == ref.record_id), None)
     _check(member is not None, "reference.record_id", "unknown_member")
     _check(member.kind == kind, "reference.record_id", "member_kind_mismatch")
+    _check(len(member.raw_body_bytes) <= _MAX_BODY, "reference.raw_body", "resource_limit")
     _check(member.raw_hash == ref.raw_hash and hashlib.sha256(member.raw_body_bytes).hexdigest() == ref.raw_hash,
            "reference.raw_hash", "raw_hash_mismatch")
-    _check(len(member.raw_body_bytes) <= _MAX_BODY, "reference.raw_body", "resource_limit")
     return root, member
 
 

@@ -1,7 +1,7 @@
 """Assess actual synthetic calibration mechanics from a fresh verified bundle."""
 
-from dataclasses import dataclass, fields, replace
-from datetime import date, datetime, time, timedelta, timezone
+from dataclasses import dataclass, replace
+from datetime import datetime, timezone
 from decimal import Decimal
 from zoneinfo import ZoneInfo
 
@@ -10,7 +10,7 @@ from .bundle_inputs import _make
 from .bundle_manifest_inputs import normalize_bundle_manifest
 from .bundles import VerifiedBundle, verify_bundle
 from .calibration import CalibrationBucket, CalibrationMetadata, _normalization_shape
-from .calibration_inputs import CalibrationMember, _retained_fixture_shape
+from .calibration_inputs import CalibrationMember, _matches_retained, _retained_fixture_shape
 from .config import ExecutionPolicy, StrategyConfig
 from .feature_vector import EXACT_VWAP_SPEC, CLOSE_VOLUME_PROXY_SPEC
 from .runtime import measure_runtime
@@ -55,44 +55,6 @@ class CalibrationAssessment:
         :raises TypeError: Always; use assess_calibration.
         """
         raise TypeError("CalibrationAssessment values come from assess_calibration")
-
-
-def _matches_retained(old: object, fresh: object, seen: set[tuple[int, int]], depth: int = 0) -> bool:
-    """Compare retained leaves only against exact freshly verified owner types.
-
-    :param    old:    Claimed prior owner or leaf.
-    :param    fresh:  Reverified owner or leaf defining the exact trusted type.
-    :param    seen:   Pairs already compared in this immutable graph.
-    :param    depth:  Current bounded structural depth.
-    :returns:         Whether complete retained and fresh values agree safely.
-    """
-    if depth > 32 or type(old) is not type(fresh):
-        return False
-    cls = type(fresh)
-    if cls in (datetime, time) and (type(old.tzinfo) not in (type(None), timezone, ZoneInfo)
-                                    or type(fresh.tzinfo) not in (type(None), timezone, ZoneInfo)):
-        return False
-    if cls in (str, bytes, int, bool, type(None), Decimal, date, time, timedelta, datetime):
-        return old == fresh
-    if cls in (tuple, list):
-        return len(old) == len(fresh) and len(old) <= 4096 and all(
-            _matches_retained(a, b, seen, depth + 1) for a, b in zip(old, fresh))
-    if cls is dict:
-        return len(old) == len(fresh) and len(old) <= 4096 and all(
-            type(key) is str and key in fresh and _matches_retained(item, fresh[key], seen, depth + 1)
-            for key, item in old.items())
-    if not hasattr(cls, "__dataclass_fields__"):
-        return False
-    pair = (id(old), id(fresh))
-    if pair in seen:
-        return True
-    seen.add(pair)
-    try:
-        return all(_matches_retained(object.__getattribute__(old, field.name),
-                                     object.__getattribute__(fresh, field.name), seen, depth + 1)
-                   for field in fields(cls))
-    except AttributeError:
-        return False
 
 
 def _result(bucket_id: str, *, bundle: VerifiedBundle | None = None,

@@ -1,0 +1,652 @@
+{
+  "assembled_at": "2026-09-26T01:45:27.580064+00:00",
+  "definitions": {
+    "coherence_protocol_ids": [],
+    "greek_method": {
+      "assumptions_id": "fixture-flat-rates-v1",
+      "method_id": "fixture-greek-values",
+      "method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+      "method_version": "1"
+    },
+    "tick_definition_ids": []
+  },
+  "fixture_id": "p14b-schedule-v1",
+  "generator_id": "optionslab-bundle-schedule-fixture-builder",
+  "generator_source_ref": "OptionsLab/tests/build_bundle_schedule_fixture.py",
+  "generator_version": "1",
+  "members": [
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-gap",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/gap",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "gaps",
+        "supersedes_record_id": null
+      },
+      "kind": "activation_gap",
+      "profile_id": "gaps",
+      "raw_body": {
+        "available_at": "2026-09-01T01:00:00Z",
+        "calendar_descriptor_ref": {
+          "fixture_id": "p14c2-calendar-v1",
+          "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+          "raw_hash": "44ffb7c6408cb7679ad2a79ed899a027dbdec1b17983bd4597349a67e8ba3778",
+          "record_id": "calendar"
+        },
+        "gap_id": "august-september-2026",
+        "next_session": "2026-09-01",
+        "previous_session": "2026-08-31",
+        "schema_version": 1
+      },
+      "raw_hash": "74794954eef09e8c70e1efb48e3659001410efb69bde072704066d9f668a2cfa",
+      "record_id": "gap"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-holiday-gap",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/holiday-gap",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "gaps",
+        "supersedes_record_id": null
+      },
+      "kind": "activation_gap",
+      "profile_id": "gaps",
+      "raw_body": {
+        "available_at": "2026-09-01T01:00:00Z",
+        "calendar_descriptor_ref": {
+          "fixture_id": "p14c2-calendar-v1",
+          "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+          "raw_hash": "44ffb7c6408cb7679ad2a79ed899a027dbdec1b17983bd4597349a67e8ba3778",
+          "record_id": "calendar"
+        },
+        "gap_id": "labor-day-2026",
+        "next_session": "2026-09-08",
+        "previous_session": "2026-09-04",
+        "schema_version": 1
+      },
+      "raw_hash": "75357264dde5312c3988a0ba4916d2482a38fab8ef7d756d49e2f2bb53879b2b",
+      "record_id": "holiday-gap"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-nonadjacent",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/nonadjacent",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "gaps",
+        "supersedes_record_id": null
+      },
+      "kind": "activation_gap",
+      "profile_id": "gaps",
+      "raw_body": {
+        "available_at": "2026-09-01T01:00:00Z",
+        "calendar_descriptor_ref": {
+          "fixture_id": "p14c2-calendar-v1",
+          "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+          "raw_hash": "44ffb7c6408cb7679ad2a79ed899a027dbdec1b17983bd4597349a67e8ba3778",
+          "record_id": "calendar"
+        },
+        "gap_id": "nonadjacent",
+        "next_session": "2026-09-01",
+        "previous_session": "2026-08-28",
+        "schema_version": 1
+      },
+      "raw_hash": "e599a4f8a941598a0bd9b9fd532435212fe4f2a57d67f3c47ffe8166eac892b1",
+      "record_id": "nonadjacent"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-unknown-gap",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/unknown-gap",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "gaps",
+        "supersedes_record_id": null
+      },
+      "kind": "activation_gap",
+      "profile_id": "gaps",
+      "raw_body": {
+        "available_at": null,
+        "calendar_descriptor_ref": {
+          "fixture_id": "p14c2-calendar-v1",
+          "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+          "raw_hash": "44ffb7c6408cb7679ad2a79ed899a027dbdec1b17983bd4597349a67e8ba3778",
+          "record_id": "calendar"
+        },
+        "gap_id": "unknown-availability",
+        "next_session": "2026-09-01",
+        "previous_session": "2026-08-31",
+        "schema_version": 1
+      },
+      "raw_hash": "7094d0e7bacc659de0f686fd1f88b16c820d16ba2a829e7b1b18a312183537c2",
+      "record_id": "unknown-gap"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-early-close",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/early-close",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "gaps",
+        "supersedes_record_id": null
+      },
+      "kind": "activation_gap",
+      "profile_id": "gaps",
+      "raw_body": {
+        "available_at": "2026-09-01T01:00:00Z",
+        "calendar_descriptor_ref": {
+          "fixture_id": "p14c2-calendar-v1",
+          "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+          "raw_hash": "28056dc0fd497c0ad030bb42635430277cdb5a8173c107b759eb23a373663635",
+          "record_id": "early-close"
+        },
+        "gap_id": "early-close",
+        "next_session": "2026-08-04",
+        "previous_session": "2026-08-03",
+        "schema_version": 1
+      },
+      "raw_hash": "b549bc528f5a6fc54e57f45518a189b3a2847f0d7907626424cb6e6a29c90af9",
+      "record_id": "early-close"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-block",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/block",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "blocks",
+        "supersedes_record_id": null
+      },
+      "kind": "evaluation_block",
+      "profile_id": "blocks",
+      "raw_body": {
+        "available_at": "2026-09-01T01:00:00Z",
+        "block_id": "september-2026",
+        "bucket_rule_id": "b01c7f31329793dd351917161e15e99c9b208cd91aeea2a74996465651ed1e72",
+        "calendar_descriptor_ref": {
+          "fixture_id": "p14c2-calendar-v1",
+          "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+          "raw_hash": "44ffb7c6408cb7679ad2a79ed899a027dbdec1b17983bd4597349a67e8ba3778",
+          "record_id": "calendar"
+        },
+        "calibration_partition_ref": {
+          "fixture_id": "p14c2-partition-v1",
+          "payload_sha256": "cddd2cf682ef8ba0cb49b9654e5dc885255d79eed8dc28d0f888565cee6f41bd",
+          "raw_hash": "152faa967a33c716d9d1ba9bb24c7ebf45a9d45e732846c1af969062229df816",
+          "record_id": "partition"
+        },
+        "calibration_record_ref": {
+          "fixture_id": "p14c2-record-v1",
+          "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+          "raw_hash": "1fc5041c5a14fb38624fb60f8b61f4a41eaba33a22b17fdc0da8114ef36615ee",
+          "record_id": "record"
+        },
+        "ends_at": "2026-10-01T04:00:00Z",
+        "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
+        "frozen_threshold_return": "0",
+        "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
+        "normalization_hash": "0ac32703f4096994e82108bdd0be6b5388bdfe2d932b129f45bad861f093be5b",
+        "schema_version": 1,
+        "starts_at": "2026-09-01T04:00:00Z",
+        "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621"
+      },
+      "raw_hash": "51ab71ebd6ebeb95c9aa4f36911eb4fad4010990450082590dd261a772f5db3d",
+      "record_id": "block"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-wrong-model",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/wrong-model",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "blocks",
+        "supersedes_record_id": null
+      },
+      "kind": "evaluation_block",
+      "profile_id": "blocks",
+      "raw_body": {
+        "available_at": "2026-09-01T01:00:00Z",
+        "block_id": "september-2026",
+        "bucket_rule_id": "b01c7f31329793dd351917161e15e99c9b208cd91aeea2a74996465651ed1e72",
+        "calendar_descriptor_ref": {
+          "fixture_id": "p14c2-calendar-v1",
+          "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+          "raw_hash": "44ffb7c6408cb7679ad2a79ed899a027dbdec1b17983bd4597349a67e8ba3778",
+          "record_id": "calendar"
+        },
+        "calibration_partition_ref": {
+          "fixture_id": "p14c2-partition-v1",
+          "payload_sha256": "cddd2cf682ef8ba0cb49b9654e5dc885255d79eed8dc28d0f888565cee6f41bd",
+          "raw_hash": "152faa967a33c716d9d1ba9bb24c7ebf45a9d45e732846c1af969062229df816",
+          "record_id": "partition"
+        },
+        "calibration_record_ref": {
+          "fixture_id": "p14c2-record-v1",
+          "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+          "raw_hash": "1fc5041c5a14fb38624fb60f8b61f4a41eaba33a22b17fdc0da8114ef36615ee",
+          "record_id": "record"
+        },
+        "ends_at": "2026-10-01T04:00:00Z",
+        "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
+        "frozen_threshold_return": "0",
+        "model_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "normalization_hash": "0ac32703f4096994e82108bdd0be6b5388bdfe2d932b129f45bad861f093be5b",
+        "schema_version": 1,
+        "starts_at": "2026-09-01T04:00:00Z",
+        "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621"
+      },
+      "raw_hash": "e2dcb7c8aad88521d78b69fd169aab5a0ec6234256fd22f94e8c3d7741d1ba53",
+      "record_id": "wrong-model"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-wrong-interval",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/wrong-interval",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "blocks",
+        "supersedes_record_id": null
+      },
+      "kind": "evaluation_block",
+      "profile_id": "blocks",
+      "raw_body": {
+        "available_at": "2026-09-01T01:00:00Z",
+        "block_id": "september-2026",
+        "bucket_rule_id": "b01c7f31329793dd351917161e15e99c9b208cd91aeea2a74996465651ed1e72",
+        "calendar_descriptor_ref": {
+          "fixture_id": "p14c2-calendar-v1",
+          "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+          "raw_hash": "44ffb7c6408cb7679ad2a79ed899a027dbdec1b17983bd4597349a67e8ba3778",
+          "record_id": "calendar"
+        },
+        "calibration_partition_ref": {
+          "fixture_id": "p14c2-partition-v1",
+          "payload_sha256": "cddd2cf682ef8ba0cb49b9654e5dc885255d79eed8dc28d0f888565cee6f41bd",
+          "raw_hash": "152faa967a33c716d9d1ba9bb24c7ebf45a9d45e732846c1af969062229df816",
+          "record_id": "partition"
+        },
+        "calibration_record_ref": {
+          "fixture_id": "p14c2-record-v1",
+          "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+          "raw_hash": "1fc5041c5a14fb38624fb60f8b61f4a41eaba33a22b17fdc0da8114ef36615ee",
+          "record_id": "record"
+        },
+        "ends_at": "2026-10-02T04:00:00Z",
+        "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
+        "frozen_threshold_return": "0",
+        "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
+        "normalization_hash": "0ac32703f4096994e82108bdd0be6b5388bdfe2d932b129f45bad861f093be5b",
+        "schema_version": 1,
+        "starts_at": "2026-09-01T04:00:00Z",
+        "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621"
+      },
+      "raw_hash": "796f100c203bd8b50e3756a484e0e2e50076fce52b4919f56cbe71ddcfc967fe",
+      "record_id": "wrong-interval"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-wrong-schema",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/wrong-schema",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "blocks",
+        "supersedes_record_id": null
+      },
+      "kind": "evaluation_block",
+      "profile_id": "blocks",
+      "raw_body": {
+        "available_at": "2026-09-01T01:00:00Z",
+        "block_id": "september-2026",
+        "bucket_rule_id": "b01c7f31329793dd351917161e15e99c9b208cd91aeea2a74996465651ed1e72",
+        "calendar_descriptor_ref": {
+          "fixture_id": "p14c2-calendar-v1",
+          "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+          "raw_hash": "44ffb7c6408cb7679ad2a79ed899a027dbdec1b17983bd4597349a67e8ba3778",
+          "record_id": "calendar"
+        },
+        "calibration_partition_ref": {
+          "fixture_id": "p14c2-partition-v1",
+          "payload_sha256": "cddd2cf682ef8ba0cb49b9654e5dc885255d79eed8dc28d0f888565cee6f41bd",
+          "raw_hash": "152faa967a33c716d9d1ba9bb24c7ebf45a9d45e732846c1af969062229df816",
+          "record_id": "partition"
+        },
+        "calibration_record_ref": {
+          "fixture_id": "p14c2-record-v1",
+          "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+          "raw_hash": "1fc5041c5a14fb38624fb60f8b61f4a41eaba33a22b17fdc0da8114ef36615ee",
+          "record_id": "record"
+        },
+        "ends_at": "2026-10-01T04:00:00Z",
+        "feature_schema_id": "0000000000000000000000000000000000000000000000000000000000000000",
+        "frozen_threshold_return": "0",
+        "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
+        "normalization_hash": "0ac32703f4096994e82108bdd0be6b5388bdfe2d932b129f45bad861f093be5b",
+        "schema_version": 1,
+        "starts_at": "2026-09-01T04:00:00Z",
+        "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621"
+      },
+      "raw_hash": "0201af2095c413276a36b1e7a7b6bb54e27d195b59a1fa7e65a48b5757c001f2",
+      "record_id": "wrong-schema"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-wrong-normalization",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/wrong-normalization",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "blocks",
+        "supersedes_record_id": null
+      },
+      "kind": "evaluation_block",
+      "profile_id": "blocks",
+      "raw_body": {
+        "available_at": "2026-09-01T01:00:00Z",
+        "block_id": "september-2026",
+        "bucket_rule_id": "b01c7f31329793dd351917161e15e99c9b208cd91aeea2a74996465651ed1e72",
+        "calendar_descriptor_ref": {
+          "fixture_id": "p14c2-calendar-v1",
+          "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+          "raw_hash": "44ffb7c6408cb7679ad2a79ed899a027dbdec1b17983bd4597349a67e8ba3778",
+          "record_id": "calendar"
+        },
+        "calibration_partition_ref": {
+          "fixture_id": "p14c2-partition-v1",
+          "payload_sha256": "cddd2cf682ef8ba0cb49b9654e5dc885255d79eed8dc28d0f888565cee6f41bd",
+          "raw_hash": "152faa967a33c716d9d1ba9bb24c7ebf45a9d45e732846c1af969062229df816",
+          "record_id": "partition"
+        },
+        "calibration_record_ref": {
+          "fixture_id": "p14c2-record-v1",
+          "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+          "raw_hash": "1fc5041c5a14fb38624fb60f8b61f4a41eaba33a22b17fdc0da8114ef36615ee",
+          "record_id": "record"
+        },
+        "ends_at": "2026-10-01T04:00:00Z",
+        "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
+        "frozen_threshold_return": "0",
+        "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
+        "normalization_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "schema_version": 1,
+        "starts_at": "2026-09-01T04:00:00Z",
+        "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621"
+      },
+      "raw_hash": "76994a5caa84e9a5d14ff1fdfe1918fec55fc877de89658c8ef491de772d5e75",
+      "record_id": "wrong-normalization"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-wrong-threshold",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/wrong-threshold",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "blocks",
+        "supersedes_record_id": null
+      },
+      "kind": "evaluation_block",
+      "profile_id": "blocks",
+      "raw_body": {
+        "available_at": "2026-09-01T01:00:00Z",
+        "block_id": "september-2026",
+        "bucket_rule_id": "b01c7f31329793dd351917161e15e99c9b208cd91aeea2a74996465651ed1e72",
+        "calendar_descriptor_ref": {
+          "fixture_id": "p14c2-calendar-v1",
+          "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+          "raw_hash": "44ffb7c6408cb7679ad2a79ed899a027dbdec1b17983bd4597349a67e8ba3778",
+          "record_id": "calendar"
+        },
+        "calibration_partition_ref": {
+          "fixture_id": "p14c2-partition-v1",
+          "payload_sha256": "cddd2cf682ef8ba0cb49b9654e5dc885255d79eed8dc28d0f888565cee6f41bd",
+          "raw_hash": "152faa967a33c716d9d1ba9bb24c7ebf45a9d45e732846c1af969062229df816",
+          "record_id": "partition"
+        },
+        "calibration_record_ref": {
+          "fixture_id": "p14c2-record-v1",
+          "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+          "raw_hash": "1fc5041c5a14fb38624fb60f8b61f4a41eaba33a22b17fdc0da8114ef36615ee",
+          "record_id": "record"
+        },
+        "ends_at": "2026-10-01T04:00:00Z",
+        "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
+        "frozen_threshold_return": "0.01",
+        "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
+        "normalization_hash": "0ac32703f4096994e82108bdd0be6b5388bdfe2d932b129f45bad861f093be5b",
+        "schema_version": 1,
+        "starts_at": "2026-09-01T04:00:00Z",
+        "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621"
+      },
+      "raw_hash": "355be5b0d1b4f7c85f04edb1063e3d5a1f8f176285e34f9b80c2f67a38cb0448",
+      "record_id": "wrong-threshold"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-wrong-bucket-rule",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/wrong-bucket-rule",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "blocks",
+        "supersedes_record_id": null
+      },
+      "kind": "evaluation_block",
+      "profile_id": "blocks",
+      "raw_body": {
+        "available_at": "2026-09-01T01:00:00Z",
+        "block_id": "september-2026",
+        "bucket_rule_id": "0000000000000000000000000000000000000000000000000000000000000000",
+        "calendar_descriptor_ref": {
+          "fixture_id": "p14c2-calendar-v1",
+          "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+          "raw_hash": "44ffb7c6408cb7679ad2a79ed899a027dbdec1b17983bd4597349a67e8ba3778",
+          "record_id": "calendar"
+        },
+        "calibration_partition_ref": {
+          "fixture_id": "p14c2-partition-v1",
+          "payload_sha256": "cddd2cf682ef8ba0cb49b9654e5dc885255d79eed8dc28d0f888565cee6f41bd",
+          "raw_hash": "152faa967a33c716d9d1ba9bb24c7ebf45a9d45e732846c1af969062229df816",
+          "record_id": "partition"
+        },
+        "calibration_record_ref": {
+          "fixture_id": "p14c2-record-v1",
+          "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+          "raw_hash": "1fc5041c5a14fb38624fb60f8b61f4a41eaba33a22b17fdc0da8114ef36615ee",
+          "record_id": "record"
+        },
+        "ends_at": "2026-10-01T04:00:00Z",
+        "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
+        "frozen_threshold_return": "0",
+        "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
+        "normalization_hash": "0ac32703f4096994e82108bdd0be6b5388bdfe2d932b129f45bad861f093be5b",
+        "schema_version": 1,
+        "starts_at": "2026-09-01T04:00:00Z",
+        "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621"
+      },
+      "raw_hash": "75cfa4015fdfc446386184aa778d678bc5ec4f98db19aba2a40d816513327de7",
+      "record_id": "wrong-bucket-rule"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-wrong-calendar",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/wrong-calendar",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "blocks",
+        "supersedes_record_id": null
+      },
+      "kind": "evaluation_block",
+      "profile_id": "blocks",
+      "raw_body": {
+        "available_at": "2026-09-01T01:00:00Z",
+        "block_id": "september-2026",
+        "bucket_rule_id": "b01c7f31329793dd351917161e15e99c9b208cd91aeea2a74996465651ed1e72",
+        "calendar_descriptor_ref": {
+          "fixture_id": "p14c2-calendar-v1",
+          "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+          "raw_hash": "28056dc0fd497c0ad030bb42635430277cdb5a8173c107b759eb23a373663635",
+          "record_id": "early-close"
+        },
+        "calibration_partition_ref": {
+          "fixture_id": "p14c2-partition-v1",
+          "payload_sha256": "cddd2cf682ef8ba0cb49b9654e5dc885255d79eed8dc28d0f888565cee6f41bd",
+          "raw_hash": "152faa967a33c716d9d1ba9bb24c7ebf45a9d45e732846c1af969062229df816",
+          "record_id": "partition"
+        },
+        "calibration_record_ref": {
+          "fixture_id": "p14c2-record-v1",
+          "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+          "raw_hash": "1fc5041c5a14fb38624fb60f8b61f4a41eaba33a22b17fdc0da8114ef36615ee",
+          "record_id": "record"
+        },
+        "ends_at": "2026-10-01T04:00:00Z",
+        "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
+        "frozen_threshold_return": "0",
+        "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
+        "normalization_hash": "0ac32703f4096994e82108bdd0be6b5388bdfe2d932b129f45bad861f093be5b",
+        "schema_version": 1,
+        "starts_at": "2026-09-01T04:00:00Z",
+        "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621"
+      },
+      "raw_hash": "19ebc9d0c685ff2f8caa1060dac407168ec5801bab36763ead637022bfd2eb89",
+      "record_id": "wrong-calendar"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-wrong-record-ref",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/wrong-record-ref",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "blocks",
+        "supersedes_record_id": null
+      },
+      "kind": "evaluation_block",
+      "profile_id": "blocks",
+      "raw_body": {
+        "available_at": "2026-09-01T01:00:00Z",
+        "block_id": "september-2026",
+        "bucket_rule_id": "b01c7f31329793dd351917161e15e99c9b208cd91aeea2a74996465651ed1e72",
+        "calendar_descriptor_ref": {
+          "fixture_id": "p14c2-calendar-v1",
+          "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+          "raw_hash": "44ffb7c6408cb7679ad2a79ed899a027dbdec1b17983bd4597349a67e8ba3778",
+          "record_id": "calendar"
+        },
+        "calibration_partition_ref": {
+          "fixture_id": "p14c2-partition-v1",
+          "payload_sha256": "cddd2cf682ef8ba0cb49b9654e5dc885255d79eed8dc28d0f888565cee6f41bd",
+          "raw_hash": "152faa967a33c716d9d1ba9bb24c7ebf45a9d45e732846c1af969062229df816",
+          "record_id": "partition"
+        },
+        "calibration_record_ref": {
+          "fixture_id": "p14c2-record-v1",
+          "payload_sha256": "be2f9096b5cc4327dc779f64839096ce3ed6ba754ddbd0d7290e724aac88aa3e",
+          "raw_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+          "record_id": "record"
+        },
+        "ends_at": "2026-10-01T04:00:00Z",
+        "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
+        "frozen_threshold_return": "0",
+        "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
+        "normalization_hash": "0ac32703f4096994e82108bdd0be6b5388bdfe2d932b129f45bad861f093be5b",
+        "schema_version": 1,
+        "starts_at": "2026-09-01T04:00:00Z",
+        "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621"
+      },
+      "raw_hash": "69e134c6b283585f564592a071b6266fdeb10e6ae841aedf01501946ab6d1b75",
+      "record_id": "wrong-record-ref"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-cash-block",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/cash-block",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "blocks",
+        "supersedes_record_id": null
+      },
+      "kind": "evaluation_block",
+      "profile_id": "blocks",
+      "raw_body": {
+        "available_at": "2026-09-01T01:00:00Z",
+        "block_id": "cash-september-2026",
+        "bucket_rule_id": null,
+        "calendar_descriptor_ref": {
+          "fixture_id": "p14c2-calendar-v1",
+          "payload_sha256": "b1dbcb3746f6cc1f74cb23e609fc886b0be0dcafc7472f3ed51c454c2c1f3bdb",
+          "raw_hash": "44ffb7c6408cb7679ad2a79ed899a027dbdec1b17983bd4597349a67e8ba3778",
+          "record_id": "calendar"
+        },
+        "calibration_partition_ref": null,
+        "calibration_record_ref": null,
+        "ends_at": "2026-10-01T04:00:00Z",
+        "feature_schema_id": null,
+        "frozen_threshold_return": null,
+        "model_hash": null,
+        "normalization_hash": null,
+        "schema_version": 1,
+        "starts_at": "2026-09-01T04:00:00Z",
+        "transform_id": null
+      },
+      "raw_hash": "972881a28701d41ebf56b2403fb391f945d1e38e8a68587929b20468f76d1082",
+      "record_id": "cash-block"
+    }
+  ],
+  "modeled_source_profiles": [
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "activation_gap",
+      "profile_id": "gaps",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "optionslab-bundle-schedule-fixture-builder",
+      "stream_id": "gaps",
+      "units": {}
+    },
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "evaluation_block",
+      "profile_id": "blocks",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "optionslab-bundle-schedule-fixture-builder",
+      "stream_id": "blocks",
+      "units": {}
+    }
+  ],
+  "normalization_version": 1,
+  "origin": "synthetic",
+  "permitted_use": "core_fixture",
+  "schema_version": 1
+}
