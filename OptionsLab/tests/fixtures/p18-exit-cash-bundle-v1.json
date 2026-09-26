@@ -1,5 +1,5 @@
 {
-  "assembled_at": "2026-09-26T07:35:43.630256+00:00",
+  "assembled_at": "2026-09-26T17:53:12.136978+00:00",
   "definitions": {
     "coherence_protocol_ids": [],
     "greek_method": {
@@ -47,12 +47,12 @@
             },
             {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "30eb116556ce79b0e7206a017439a27e888c09f26307606aa26a25abe64f78aa",
+              "payload_sha256": "58c2a29a6b1a23d1ba98ae2845f0bd5343100bcbf1537ef172c34db078e34c97",
               "role": "source"
             },
             {
               "fixture_id": "p14b1b-assembly-v1",
-              "payload_sha256": "bc1b9b3430f1834a0808daf3aa1c191494a24821fa5792bfc6cb35c80b9a5740",
+              "payload_sha256": "594ead152796e1bd0d92f02c1ebb99aadd48b5a3cc847b7dc4ac8e783240c681",
               "role": "source"
             },
             {
@@ -67,7 +67,7 @@
             },
             {
               "fixture_id": "p18-exit-validation-v1",
-              "payload_sha256": "7b26beaceec42f48072a8a039935ed3d3e64dc577a28dcf7f60a73e12016b07d",
+              "payload_sha256": "2e51361e2ebba79f98981f48933da0b792d7864a571fedaff0d3dc2a22249f5a",
               "role": "source"
             }
           ],
@@ -90,15 +90,15 @@
             "activated_at": null,
             "activation_gap": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "30eb116556ce79b0e7206a017439a27e888c09f26307606aa26a25abe64f78aa",
+              "payload_sha256": "58c2a29a6b1a23d1ba98ae2845f0bd5343100bcbf1537ef172c34db078e34c97",
               "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
               "record_id": "gap"
             },
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T07:35:43.629919+00:00",
+            "built_at": "2026-09-26T17:53:12.136656+00:00",
             "evaluation_block": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "30eb116556ce79b0e7206a017439a27e888c09f26307606aa26a25abe64f78aa",
+              "payload_sha256": "58c2a29a6b1a23d1ba98ae2845f0bd5343100bcbf1537ef172c34db078e34c97",
               "raw_hash": "320af4d041b8248d24964db81cf64c203f096b98d33066a6b37e449871f5f36c",
               "record_id": "cash-block"
             },
@@ -107,14 +107,14 @@
             "simulated_schedule": {
               "activation_gap": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "30eb116556ce79b0e7206a017439a27e888c09f26307606aa26a25abe64f78aa",
+                "payload_sha256": "58c2a29a6b1a23d1ba98ae2845f0bd5343100bcbf1537ef172c34db078e34c97",
                 "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
                 "record_id": "gap"
               },
               "deployment_delay_us": null,
               "evaluation_block": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "30eb116556ce79b0e7206a017439a27e888c09f26307606aa26a25abe64f78aa",
+                "payload_sha256": "58c2a29a6b1a23d1ba98ae2845f0bd5343100bcbf1537ef172c34db078e34c97",
                 "raw_hash": "320af4d041b8248d24964db81cf64c203f096b98d33066a6b37e449871f5f36c",
                 "record_id": "cash-block"
               },
@@ -133,7 +133,7 @@
               "final",
               0
             ],
-            "implementation_digest": "6adce7165428db23c8c49971e113740935b8889cd85ee7ad91e8898e35f04814",
+            "implementation_digest": "ede14dfe382c6102fe5b366efdbc474dfbc8827d59609778e1538744ad13d6e0",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -143,15 +143,15 @@
           "seed": null,
           "validation_report": {
             "fixture_id": "p18-exit-validation-v1",
-            "payload_sha256": "7b26beaceec42f48072a8a039935ed3d3e64dc577a28dcf7f60a73e12016b07d",
-            "raw_hash": "17ba38a4dd6c8313b1861c2870b733fbd8f971615a1181e7a55bb3609ca1a1f7",
+            "payload_sha256": "2e51361e2ebba79f98981f48933da0b792d7864a571fedaff0d3dc2a22249f5a",
+            "raw_hash": "84eddd51c506de3962004c23b7148aee043bb3f0e31088d9390555fdbf37bf67",
             "record_id": "cash-validation"
           }
         },
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.cash_json.v1\"}",
         "schema_version": 1
       },
-      "raw_hash": "6ca84a184033d8e58fdf770711e5fb42720205a17f05922485d9a6cc2ca06be1",
+      "raw_hash": "e3c90187c6f6e28cc36ea64f1007d4f640dee6f4a34f702f15dbc7ecaa66eba3",
       "record_id": "cash"
     }
   ],
