@@ -67,6 +67,14 @@ from .calibration import (
     normalize_calibration_partition,
 )
 from .calibration_support import CalibrationAssessment, assess_calibration
+from .bundle_schedule import (
+    ActivationGap,
+    ActivationGapValidation,
+    EvaluationBlock,
+    EvaluationBlockValidation,
+    normalize_activation_gap,
+    normalize_evaluation_block,
+)
 from .candidates import (
     CandidateAssessment,
     CandidateConsideration,
@@ -247,6 +255,12 @@ from .volume_normalization import (
 __all__ = [
     "CalibrationAssessment",
     "assess_calibration",
+    "ActivationGap",
+    "ActivationGapValidation",
+    "EvaluationBlock",
+    "EvaluationBlockValidation",
+    "normalize_activation_gap",
+    "normalize_evaluation_block",
     "CalibrationMetadata",
     "CalibrationMetadataValidation",
     "normalize_calibration_metadata",
