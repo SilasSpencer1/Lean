@@ -1,5 +1,5 @@
 {
-  "assembled_at": "2026-09-26T00:58:55.513391+00:00",
+  "assembled_at": "2026-09-26T01:27:09.557918+00:00",
   "definitions": {
     "coherence_protocol_ids": [],
     "greek_method": {
@@ -176,7 +176,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T00:58:55.511676+00:00",
+            "built_at": "2026-09-26T01:27:09.555855+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-30T22:00:00+00:00",
@@ -190,7 +190,7 @@
               "final",
               0
             ],
-            "implementation_digest": "6c7db4cea585022257d1f20f96c677f8b6b9ddb4e9f2d967841b3ee661de117b",
+            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -203,7 +203,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "525a0be7a7cde1d82c22a628b1e9f91e38c64c513f4c1a78bac3c2277905ba3f",
+      "raw_hash": "acc49aac46f6b3fe75bc1741a1d1c69ab263895d1f0902c088db7b2854bdf586",
       "record_id": "fixed-partition"
     },
     {
@@ -367,7 +367,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T00:58:55.511676+00:00",
+            "built_at": "2026-09-26T01:27:09.555855+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-30T22:00:00+00:00",
@@ -381,7 +381,7 @@
               "final",
               0
             ],
-            "implementation_digest": "6c7db4cea585022257d1f20f96c677f8b6b9ddb4e9f2d967841b3ee661de117b",
+            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -394,7 +394,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "7e1ab1bf6fa83565e7b3693a13529bd4967c6a4e2ef518eb5a5cf4b4a255a1ac",
+      "raw_hash": "ba9737edd984040177a48ccb796439290ba0aa134872510a2776286bc4264a12",
       "record_id": "mismatched-direct"
     },
     {
@@ -558,7 +558,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T00:58:55.511676+00:00",
+            "built_at": "2026-09-26T01:27:09.555855+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-30T22:00:00+00:00",
@@ -572,7 +572,7 @@
               "final",
               0
             ],
-            "implementation_digest": "6c7db4cea585022257d1f20f96c677f8b6b9ddb4e9f2d967841b3ee661de117b",
+            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -585,7 +585,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "e702b82a69f3dfcc22ae2fc225aac7b944b5ad2bae3642578a290c88805fa208",
+      "raw_hash": "32f757aff7215029f03d9fdeff2175a088a47cff0bdfca605e80cb6e21855699",
       "record_id": "over-population"
     },
     {
@@ -749,7 +749,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T00:58:55.511676+00:00",
+            "built_at": "2026-09-26T01:27:09.555855+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-30T22:00:00+00:00",
@@ -763,7 +763,7 @@
               "final",
               0
             ],
-            "implementation_digest": "6c7db4cea585022257d1f20f96c677f8b6b9ddb4e9f2d967841b3ee661de117b",
+            "implementation_digest": "82848bd9271db85e30d182059355b31c07ffc3ee7a46090d94fa988148199bd8",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -776,7 +776,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "ef8946c66dbf652266a9c4bd3a14aeca58c26e29af9e330c7a5e30b4434c1da0",
+      "raw_hash": "63e2a66fed450e812ea81727443233bd8b7f11f33db96d45ababa38010cb865b",
       "record_id": "mismatched-threshold"
     }
   ],
