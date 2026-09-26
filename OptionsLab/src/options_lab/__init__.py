@@ -72,6 +72,14 @@ from .bundle_activation import ActivationSelection, choose_bundle_activation
 from .decision import Forecast, ScoredCandidate, DecisionResult, FixedJsonPredictor
 from .entry_intent import TradeIntent, derive_trade_intent
 from .exits import ExitEvidence, ExitInstruction, observe_exit_inputs, evaluate_exit
+from .lifecycle import (
+    LifecycleState,
+    LifecycleResult,
+    LifecycleAdvanceError,
+    CompletedEntry,
+    start_lifecycle,
+    reduce_order,
+)
 from .order_inputs import (
     OrderUpdate,
     OrderInputValidation,
@@ -291,6 +299,12 @@ from .volume_normalization import (
 )
 
 __all__ = [
+    "LifecycleState",
+    "LifecycleResult",
+    "LifecycleAdvanceError",
+    "CompletedEntry",
+    "start_lifecycle",
+    "reduce_order",
     "OrderUpdate",
     "OrderInputValidation",
     "OrderInputRejection",
