@@ -1,5 +1,5 @@
 {
-  "assembled_at": "2026-09-26T05:16:14.801589+00:00",
+  "assembled_at": "2026-09-26T06:00:17.385021+00:00",
   "definitions": {
     "coherence_protocol_ids": [],
     "greek_method": {
@@ -82,7 +82,7 @@
             },
             {
               "fixture_id": "p14c2-partition-v1",
-              "payload_sha256": "ed02e416037e3e68f4614b08379508b1a2189dc4266d90aecaec777d3f5344d8",
+              "payload_sha256": "329934258cb94ec3e5c76d139e907a387e12a00a202949cee8f5e76962466afb",
               "role": "calibration"
             },
             {
@@ -92,7 +92,7 @@
             },
             {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
               "role": "calibration"
             }
           ],
@@ -163,8 +163,8 @@
             "calibration_partition": null,
             "calibration_record": {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
-              "raw_hash": "3dd710c9b5a21f393e09d6824d80c34a42713d6d314ef5a36eb4d23280be3103",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
+              "raw_hash": "de5a432fbf3b19c10d9ae36ceb66f84e1ac3d32e4be30d1d257fc87af0814e5b",
               "record_id": "record"
             },
             "capital_basis_rule": "100_times_original_decision_ask_cap",
@@ -181,7 +181,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T05:16:14.795525+00:00",
+            "built_at": "2026-09-26T06:00:17.378936+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-01T01:00:00+00:00",
@@ -195,7 +195,7 @@
               "final",
               0
             ],
-            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
+            "implementation_digest": "49d108be58da982991c5bdab8434a939908696bb6ea06379a18c168e95e5af7b",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -208,7 +208,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "aeb2249644736c55e09518e5204cde7579c10586ee61699685599f00eadc9641",
+      "raw_hash": "9a00ecc097a232e87c8c138096a44df761f7fa1e60bf2d0cb7bc71eedcc26478",
       "record_id": "fixed-c2"
     },
     {
@@ -278,7 +278,7 @@
             },
             {
               "fixture_id": "p14c2-partition-v1",
-              "payload_sha256": "ed02e416037e3e68f4614b08379508b1a2189dc4266d90aecaec777d3f5344d8",
+              "payload_sha256": "329934258cb94ec3e5c76d139e907a387e12a00a202949cee8f5e76962466afb",
               "role": "calibration"
             },
             {
@@ -288,7 +288,7 @@
             },
             {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
               "role": "calibration"
             }
           ],
@@ -359,8 +359,8 @@
             "calibration_partition": null,
             "calibration_record": {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
-              "raw_hash": "e4ed9107f7d576be24ef4f09b5f5373898f67ef063792b977e65199a0af6b8d2",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
+              "raw_hash": "0231049c9f0624ae3b177e5427105e361e8cda71503bd537b823080b33138c88",
               "record_id": "late-status"
             },
             "capital_basis_rule": "100_times_original_decision_ask_cap",
@@ -377,7 +377,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T05:16:14.795525+00:00",
+            "built_at": "2026-09-26T06:00:17.378936+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-01T01:00:00+00:00",
@@ -391,7 +391,7 @@
               "final",
               0
             ],
-            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
+            "implementation_digest": "49d108be58da982991c5bdab8434a939908696bb6ea06379a18c168e95e5af7b",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -404,7 +404,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "e9adb7febb6b9be780a8bfc682ba6705a675b713a6178857b3d72ad87a8ff527",
+      "raw_hash": "71cb85502a4b6b0d1bb3f39fbdefdb80d2e365be403cf9ecca99b4ce2d934f2e",
       "record_id": "late-status"
     },
     {
@@ -474,7 +474,7 @@
             },
             {
               "fixture_id": "p14c2-partition-v1",
-              "payload_sha256": "ed02e416037e3e68f4614b08379508b1a2189dc4266d90aecaec777d3f5344d8",
+              "payload_sha256": "329934258cb94ec3e5c76d139e907a387e12a00a202949cee8f5e76962466afb",
               "role": "calibration"
             },
             {
@@ -484,7 +484,7 @@
             },
             {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
               "role": "calibration"
             }
           ],
@@ -555,8 +555,8 @@
             "calibration_partition": null,
             "calibration_record": {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
-              "raw_hash": "98b6084393fa1bad0d8699479c62b437ffbcf739348dff52b4202fe010017fd7",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
+              "raw_hash": "5a2bb78e8fc377268570261a979e85251c8dc31a9a9941e8a75c103014a0f682",
               "record_id": "cross-role-leak"
             },
             "capital_basis_rule": "100_times_original_decision_ask_cap",
@@ -573,7 +573,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T05:16:14.795525+00:00",
+            "built_at": "2026-09-26T06:00:17.378936+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-01T01:00:00+00:00",
@@ -587,7 +587,7 @@
               "final",
               0
             ],
-            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
+            "implementation_digest": "49d108be58da982991c5bdab8434a939908696bb6ea06379a18c168e95e5af7b",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -600,7 +600,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "59060eb76921ce788cf8d701c1e863c2c41e8264dcae4f458d2419d926d07c56",
+      "raw_hash": "89db61dc0f51847aa17106c74779cf64b7dd7c80da3cd7481d4c6a1bb9e9f858",
       "record_id": "cross-role-leak"
     },
     {
@@ -670,7 +670,7 @@
             },
             {
               "fixture_id": "p14c2-partition-v1",
-              "payload_sha256": "ed02e416037e3e68f4614b08379508b1a2189dc4266d90aecaec777d3f5344d8",
+              "payload_sha256": "329934258cb94ec3e5c76d139e907a387e12a00a202949cee8f5e76962466afb",
               "role": "calibration"
             },
             {
@@ -680,7 +680,7 @@
             },
             {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
               "role": "calibration"
             }
           ],
@@ -751,8 +751,8 @@
             "calibration_partition": null,
             "calibration_record": {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
-              "raw_hash": "a5f0d1d716ca06fee4357a1386b007227a92f22e9c01edc94083bfcca69d9b43",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
+              "raw_hash": "59a07cec4b49beff8fb51bd41ec89c275049735fc925232bd572144dc8633df3",
               "record_id": "late-odd-label"
             },
             "capital_basis_rule": "100_times_original_decision_ask_cap",
@@ -769,7 +769,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T05:16:14.795525+00:00",
+            "built_at": "2026-09-26T06:00:17.378936+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-01T01:00:00+00:00",
@@ -783,7 +783,7 @@
               "final",
               0
             ],
-            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
+            "implementation_digest": "49d108be58da982991c5bdab8434a939908696bb6ea06379a18c168e95e5af7b",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -796,7 +796,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "dbe19ffa271f6c0fd09beed5c43e97366c1d970d15787eeb7ff572f757981ba5",
+      "raw_hash": "095c6506899aebbaa959945c938e3c10078cca56ca61c8ed8f5f7198da96318f",
       "record_id": "late-odd-label"
     },
     {
@@ -866,7 +866,7 @@
             },
             {
               "fixture_id": "p14c2-partition-v1",
-              "payload_sha256": "ed02e416037e3e68f4614b08379508b1a2189dc4266d90aecaec777d3f5344d8",
+              "payload_sha256": "329934258cb94ec3e5c76d139e907a387e12a00a202949cee8f5e76962466afb",
               "role": "calibration"
             },
             {
@@ -876,7 +876,7 @@
             },
             {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
               "role": "calibration"
             }
           ],
@@ -947,8 +947,8 @@
             "calibration_partition": null,
             "calibration_record": {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
-              "raw_hash": "f10d38c439df679332daaa8e33df0d84b1283543cbb9163cd8a8d1b7a198ccec",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
+              "raw_hash": "f445b771a6f5de1df8c508fc245be6df92b6859e8713396d1714a7f0ee40a522",
               "record_id": "forty-nine-call"
             },
             "capital_basis_rule": "100_times_original_decision_ask_cap",
@@ -965,7 +965,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T05:16:14.795525+00:00",
+            "built_at": "2026-09-26T06:00:17.378936+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-01T01:00:00+00:00",
@@ -979,7 +979,7 @@
               "final",
               0
             ],
-            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
+            "implementation_digest": "49d108be58da982991c5bdab8434a939908696bb6ea06379a18c168e95e5af7b",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -992,7 +992,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "e36d6913c0ccace4e1d268ae62738da68bbe832eb2c052b93a6ad4cf88eaf80a",
+      "raw_hash": "d5b44a64ee064b58cd6360bc280a6699e9bf7c6d3b058b72bd7cde5da8ea71fc",
       "record_id": "forty-nine-call"
     },
     {
@@ -1062,7 +1062,7 @@
             },
             {
               "fixture_id": "p14c2-partition-v1",
-              "payload_sha256": "ed02e416037e3e68f4614b08379508b1a2189dc4266d90aecaec777d3f5344d8",
+              "payload_sha256": "329934258cb94ec3e5c76d139e907a387e12a00a202949cee8f5e76962466afb",
               "role": "calibration"
             },
             {
@@ -1072,7 +1072,7 @@
             },
             {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
               "role": "calibration"
             }
           ],
@@ -1143,8 +1143,8 @@
             "calibration_partition": null,
             "calibration_record": {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
-              "raw_hash": "5348b0167d947f2f9e8c21d50eb6089c3dbc346724d373933a36dfc88d69f790",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
+              "raw_hash": "5e477449f6ad979449b5433b7a377ca2e51d5019b67d64610b8574d2b1d7c168",
               "record_id": "unsupported-pair"
             },
             "capital_basis_rule": "100_times_original_decision_ask_cap",
@@ -1161,7 +1161,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T05:16:14.795525+00:00",
+            "built_at": "2026-09-26T06:00:17.378936+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-01T01:00:00+00:00",
@@ -1175,7 +1175,7 @@
               "final",
               0
             ],
-            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
+            "implementation_digest": "49d108be58da982991c5bdab8434a939908696bb6ea06379a18c168e95e5af7b",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -1188,7 +1188,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "9e0f72428dcef44a5c95124881a15d717235d3c6b9ee70dd13d6f95e5454d1e0",
+      "raw_hash": "1c6a067230882371e9030df2cdaf4b282c9f197dcdb700de0ef14ae8b586f29d",
       "record_id": "unsupported-pair"
     },
     {
@@ -1248,7 +1248,7 @@
             },
             {
               "fixture_id": "p14c2-partition-v1",
-              "payload_sha256": "ed02e416037e3e68f4614b08379508b1a2189dc4266d90aecaec777d3f5344d8",
+              "payload_sha256": "329934258cb94ec3e5c76d139e907a387e12a00a202949cee8f5e76962466afb",
               "role": "calibration"
             },
             {
@@ -1258,7 +1258,7 @@
             },
             {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
               "role": "calibration"
             },
             {
@@ -1339,8 +1339,8 @@
             "calibration_partition": null,
             "calibration_record": {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
-              "raw_hash": "cd41e8c935559fa90aa63a89149340038054b4fbbdfece973bd7b726cea09d64",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
+              "raw_hash": "176b79bb5827d444ff32cdeadd2c8f88e9257bf96fd9a2e39a63dbc972ef6ba7",
               "record_id": "late-tune-status"
             },
             "capital_basis_rule": "100_times_original_decision_ask_cap",
@@ -1357,7 +1357,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T05:16:14.795525+00:00",
+            "built_at": "2026-09-26T06:00:17.378936+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-01T01:00:00+00:00",
@@ -1371,7 +1371,7 @@
               "final",
               0
             ],
-            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
+            "implementation_digest": "49d108be58da982991c5bdab8434a939908696bb6ea06379a18c168e95e5af7b",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -1384,7 +1384,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "c9ee3545850fa4e2214cb84daa34ad1d4666ef9a57afce6c4e0c3d5b75c44972",
+      "raw_hash": "aafda63b70a083c2278d6d776f1f31beb7c70c12eb1c61595a7500f122eda261",
       "record_id": "late-tune-status"
     },
     {
@@ -1454,7 +1454,7 @@
             },
             {
               "fixture_id": "p14c2-partition-v1",
-              "payload_sha256": "ed02e416037e3e68f4614b08379508b1a2189dc4266d90aecaec777d3f5344d8",
+              "payload_sha256": "329934258cb94ec3e5c76d139e907a387e12a00a202949cee8f5e76962466afb",
               "role": "calibration"
             },
             {
@@ -1464,7 +1464,7 @@
             },
             {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
               "role": "calibration"
             }
           ],
@@ -1535,8 +1535,8 @@
             "calibration_partition": null,
             "calibration_record": {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
-              "raw_hash": "3f24a45ceaa9a848ad8b41bbf31139a037ec8164576ef3885eceadc8bf1c8387",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
+              "raw_hash": "88f22ad2f1d93e7df50788d23ccfbc9883bea3e3a5773a873ae062feee82f563",
               "record_id": "early-close"
             },
             "capital_basis_rule": "100_times_original_decision_ask_cap",
@@ -1553,7 +1553,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T05:16:14.795525+00:00",
+            "built_at": "2026-09-26T06:00:17.378936+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-01T01:00:00+00:00",
@@ -1567,7 +1567,7 @@
               "final",
               0
             ],
-            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
+            "implementation_digest": "49d108be58da982991c5bdab8434a939908696bb6ea06379a18c168e95e5af7b",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -1580,7 +1580,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "9c11588128fbc93053712211dc4aa2b9f37ee2cb4aa6edcbb1676d0c825487ef",
+      "raw_hash": "4a203886ccaee4c0416355f7952a4956b01f5d62be1fc841150136d11d0c744b",
       "record_id": "early-close"
     },
     {
@@ -1650,7 +1650,7 @@
             },
             {
               "fixture_id": "p14c2-partition-v1",
-              "payload_sha256": "ed02e416037e3e68f4614b08379508b1a2189dc4266d90aecaec777d3f5344d8",
+              "payload_sha256": "329934258cb94ec3e5c76d139e907a387e12a00a202949cee8f5e76962466afb",
               "role": "calibration"
             },
             {
@@ -1660,7 +1660,7 @@
             },
             {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
               "role": "calibration"
             }
           ],
@@ -1731,8 +1731,8 @@
             "calibration_partition": null,
             "calibration_record": {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
-              "raw_hash": "9b8df995fda19c5903589a9aba017b7bd5f109a143707f43e67e077d9277c13a",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
+              "raw_hash": "17c1668b945cbd5432fe6748c9ccd129482b34407d6245d3d6ee74d7c140972e",
               "record_id": "censored-partial"
             },
             "capital_basis_rule": "100_times_original_decision_ask_cap",
@@ -1749,7 +1749,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T05:16:14.795525+00:00",
+            "built_at": "2026-09-26T06:00:17.378936+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-01T01:00:00+00:00",
@@ -1763,7 +1763,7 @@
               "final",
               0
             ],
-            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
+            "implementation_digest": "49d108be58da982991c5bdab8434a939908696bb6ea06379a18c168e95e5af7b",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -1776,7 +1776,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "ef229df9a272765bcd61ea87dc745b7963811f6bd73ba8fa684aaf1f60935e8a",
+      "raw_hash": "9b4321b09bb005bc48f312d334a3a99aa674d77107abab15f69439fd642315aa",
       "record_id": "censored-partial"
     },
     {
@@ -1846,7 +1846,7 @@
             },
             {
               "fixture_id": "p14c2-partition-v1",
-              "payload_sha256": "ed02e416037e3e68f4614b08379508b1a2189dc4266d90aecaec777d3f5344d8",
+              "payload_sha256": "329934258cb94ec3e5c76d139e907a387e12a00a202949cee8f5e76962466afb",
               "role": "calibration"
             },
             {
@@ -1856,7 +1856,7 @@
             },
             {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
               "role": "calibration"
             }
           ],
@@ -1927,8 +1927,8 @@
             "calibration_partition": null,
             "calibration_record": {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
-              "raw_hash": "ba1e6c0619fb9b95ec998d128b01fa9621890781aa47ece46289480860ceddc4",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
+              "raw_hash": "49bc56b5e988033f09c6c259e1f5530898dba42617ebeb77697b7987b812c3e7",
               "record_id": "status-unknown"
             },
             "capital_basis_rule": "100_times_original_decision_ask_cap",
@@ -1945,7 +1945,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T05:16:14.795525+00:00",
+            "built_at": "2026-09-26T06:00:17.378936+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-01T01:00:00+00:00",
@@ -1959,7 +1959,7 @@
               "final",
               0
             ],
-            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
+            "implementation_digest": "49d108be58da982991c5bdab8434a939908696bb6ea06379a18c168e95e5af7b",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -1972,7 +1972,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "aa49b8f4a881609b258521f6f129c823295d3126c2d178cfc60a33b5fcf48efe",
+      "raw_hash": "72420ba9265983cc19172e389bab38cbea6dfc9920720ed83ab882919ebb363a",
       "record_id": "status-unknown"
     },
     {
@@ -2042,7 +2042,7 @@
             },
             {
               "fixture_id": "p14c2-partition-v1",
-              "payload_sha256": "ed02e416037e3e68f4614b08379508b1a2189dc4266d90aecaec777d3f5344d8",
+              "payload_sha256": "329934258cb94ec3e5c76d139e907a387e12a00a202949cee8f5e76962466afb",
               "role": "calibration"
             },
             {
@@ -2052,7 +2052,7 @@
             },
             {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
               "role": "calibration"
             }
           ],
@@ -2123,8 +2123,8 @@
             "calibration_partition": null,
             "calibration_record": {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
-              "raw_hash": "b3b2988b274ff733d8297e213a4bcdc9f7b347c71273e5d9ccb6f3dc61685248",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
+              "raw_hash": "353f21b093b122d15f6673fe08d376ae13feabc65f19981e04bfc075f52c3127",
               "record_id": "duplicate-sample"
             },
             "capital_basis_rule": "100_times_original_decision_ask_cap",
@@ -2141,7 +2141,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T05:16:14.795525+00:00",
+            "built_at": "2026-09-26T06:00:17.378936+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-01T01:00:00+00:00",
@@ -2155,7 +2155,7 @@
               "final",
               0
             ],
-            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
+            "implementation_digest": "49d108be58da982991c5bdab8434a939908696bb6ea06379a18c168e95e5af7b",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -2168,7 +2168,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "339c0bdfd5abe5064a7b9569c598c6168a9bf097498a1f636b8f0ca26444412f",
+      "raw_hash": "7ae5b3e49cc75f69c6f7d23995f6b80d6f56ab40dcc8903428668ebf0420618d",
       "record_id": "duplicate-sample"
     },
     {
@@ -2238,7 +2238,7 @@
             },
             {
               "fixture_id": "p14c2-partition-v1",
-              "payload_sha256": "ed02e416037e3e68f4614b08379508b1a2189dc4266d90aecaec777d3f5344d8",
+              "payload_sha256": "329934258cb94ec3e5c76d139e907a387e12a00a202949cee8f5e76962466afb",
               "role": "calibration"
             },
             {
@@ -2248,7 +2248,7 @@
             },
             {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
               "role": "calibration"
             }
           ],
@@ -2319,8 +2319,8 @@
             "calibration_partition": null,
             "calibration_record": {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
-              "raw_hash": "502d6fbb72a76c24c113c9fe1a611048063e4b720e0240d3b0906f942b309e0d",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
+              "raw_hash": "624fd6b0d9a67c0ccfa38659a35c66885507b3cdb5ee60d25f174336a3c90e7a",
               "record_id": "late-record"
             },
             "capital_basis_rule": "100_times_original_decision_ask_cap",
@@ -2337,7 +2337,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T05:16:14.795525+00:00",
+            "built_at": "2026-09-26T06:00:17.378936+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-01T01:00:00+00:00",
@@ -2351,7 +2351,7 @@
               "final",
               0
             ],
-            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
+            "implementation_digest": "49d108be58da982991c5bdab8434a939908696bb6ea06379a18c168e95e5af7b",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -2364,7 +2364,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "9525b897e34e1da70923fafdf03348fbfa421f8b12090f5d3ee56de9561638d3",
+      "raw_hash": "9e4ad6a1604224dd89f8a43bdece6d1a6ad1791d4a8de6a0b9bfbfb3c6667f35",
       "record_id": "late-record"
     },
     {
@@ -2434,7 +2434,7 @@
             },
             {
               "fixture_id": "p14c2-partition-v1",
-              "payload_sha256": "ed02e416037e3e68f4614b08379508b1a2189dc4266d90aecaec777d3f5344d8",
+              "payload_sha256": "329934258cb94ec3e5c76d139e907a387e12a00a202949cee8f5e76962466afb",
               "role": "calibration"
             },
             {
@@ -2444,7 +2444,7 @@
             },
             {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
               "role": "calibration"
             }
           ],
@@ -2515,8 +2515,8 @@
             "calibration_partition": null,
             "calibration_record": {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
-              "raw_hash": "4e3b73a0c23338423a2445f7466a0175ad69897191e9678c2d3f50b46d9db1f5",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
+              "raw_hash": "e20e5f60c194d0353a2645503f1914bc800b598f2770fdef18145d13dd0a5d14",
               "record_id": "record-before-fit"
             },
             "capital_basis_rule": "100_times_original_decision_ask_cap",
@@ -2533,7 +2533,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T05:16:14.795525+00:00",
+            "built_at": "2026-09-26T06:00:17.378936+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-01T01:00:00+00:00",
@@ -2547,7 +2547,7 @@
               "final",
               0
             ],
-            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
+            "implementation_digest": "49d108be58da982991c5bdab8434a939908696bb6ea06379a18c168e95e5af7b",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -2560,7 +2560,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "16cbb5a8744ef3698762d165dd540cc68ccb97dcc6103ab2745493b54eb39e0a",
+      "raw_hash": "c2cf89811cbe81f4a8923555944de96c9428183003d6773427e2c5e35d66521c",
       "record_id": "record-before-fit"
     },
     {
@@ -2630,7 +2630,7 @@
             },
             {
               "fixture_id": "p14c2-partition-v1",
-              "payload_sha256": "ed02e416037e3e68f4614b08379508b1a2189dc4266d90aecaec777d3f5344d8",
+              "payload_sha256": "329934258cb94ec3e5c76d139e907a387e12a00a202949cee8f5e76962466afb",
               "role": "calibration"
             },
             {
@@ -2640,7 +2640,7 @@
             },
             {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
               "role": "calibration"
             }
           ],
@@ -2711,8 +2711,8 @@
             "calibration_partition": null,
             "calibration_record": {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
-              "raw_hash": "3dd710c9b5a21f393e09d6824d80c34a42713d6d314ef5a36eb4d23280be3103",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
+              "raw_hash": "de5a432fbf3b19c10d9ae36ceb66f84e1ac3d32e4be30d1d257fc87af0814e5b",
               "record_id": "record"
             },
             "capital_basis_rule": "100_times_original_decision_ask_cap",
@@ -2729,7 +2729,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T05:16:14.795525+00:00",
+            "built_at": "2026-09-26T06:00:17.378936+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-01T01:00:00+00:00",
@@ -2743,7 +2743,7 @@
               "final",
               0
             ],
-            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
+            "implementation_digest": "49d108be58da982991c5bdab8434a939908696bb6ea06379a18c168e95e5af7b",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -2756,7 +2756,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "0c7b0dd6f46b821471247e16f55a122ef2d19442cafb7a930cbb21d7c02b1723",
+      "raw_hash": "2703414a5b2b38d132b6ef002b54d0b332e1f19c9286c446998145a07f9e91a4",
       "record_id": "wrong-training-max"
     },
     {
@@ -2826,7 +2826,7 @@
             },
             {
               "fixture_id": "p14c2-partition-v1",
-              "payload_sha256": "ed02e416037e3e68f4614b08379508b1a2189dc4266d90aecaec777d3f5344d8",
+              "payload_sha256": "329934258cb94ec3e5c76d139e907a387e12a00a202949cee8f5e76962466afb",
               "role": "calibration"
             },
             {
@@ -2836,7 +2836,7 @@
             },
             {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
               "role": "calibration"
             }
           ],
@@ -2907,8 +2907,8 @@
             "calibration_partition": null,
             "calibration_record": {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
-              "raw_hash": "3dd710c9b5a21f393e09d6824d80c34a42713d6d314ef5a36eb4d23280be3103",
+              "payload_sha256": "04b40b420275c07c192ea12048fb0cbbb3082b77201b45f1246aaca57893b92f",
+              "raw_hash": "de5a432fbf3b19c10d9ae36ceb66f84e1ac3d32e4be30d1d257fc87af0814e5b",
               "record_id": "record"
             },
             "capital_basis_rule": "100_times_original_decision_ask_cap",
@@ -2925,7 +2925,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T05:16:14.795525+00:00",
+            "built_at": "2026-09-26T06:00:17.378936+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-01T01:00:00+00:00",
@@ -2939,7 +2939,7 @@
               "final",
               0
             ],
-            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
+            "implementation_digest": "49d108be58da982991c5bdab8434a939908696bb6ea06379a18c168e95e5af7b",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -2952,7 +2952,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "250b93563bc6cb4e195eb6dd6cb4718f00f2805b057d7479944d233e7ad1a31b",
+      "raw_hash": "49872bf485ee3110d0b71a3e28d834c78d0fbe509bf00021e79e41ec57a8ab1c",
       "record_id": "wrong-label-max"
     }
   ],
