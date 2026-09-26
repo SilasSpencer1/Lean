@@ -1,0 +1,1006 @@
+{
+  "assembled_at": "2026-09-26T03:23:32.664955+00:00",
+  "definitions": {
+    "coherence_protocol_ids": [],
+    "greek_method": {
+      "assumptions_id": "fixture-flat-rates-v1",
+      "method_id": "fixture-greek-values",
+      "method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+      "method_version": "1"
+    },
+    "tick_definition_ids": []
+  },
+  "fixture_id": "p14d-bundle-v1",
+  "generator_id": "optionslab-bundle-fixture-builder",
+  "generator_source_ref": "OptionsLab/tests/build_bundle_activation_fixture.py",
+  "generator_version": "1",
+  "members": [
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-cash-renamed",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/cash-renamed",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "model-bundle",
+        "supersedes_record_id": null
+      },
+      "kind": "model_bundle",
+      "profile_id": "model-bundle",
+      "raw_body": {
+        "manifest": {
+          "bundle_record_id": "cash-renamed",
+          "bundle_schema_version": 1,
+          "claimed_origin": "synthetic",
+          "claimed_permitted_use": "core_fixture",
+          "data_manifest_hashes": [
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "a5e7e2271cadb00353343102e7271f218730e1ee061b04e85e2676e1913b9566",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-calendar-v1",
+              "payload_sha256": "c79b4d4d1c4651154c7c0b3e11922dc87a070f6eb17477f4fc7cb86d78afa51e",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14b-schedule-v1",
+              "payload_sha256": "dab772063dcbd1f02cc35bc923607644bc0fc235398e563bd1e51d18d22c4ccc",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14b1b-assembly-v1",
+              "payload_sha256": "bc54fa0c96bff7433b85d12f118f0df7435fc8a434a3c59b875cf1a10be69a57",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p11-feature-vector-v1",
+              "payload_sha256": "8fffa246a2ec78d1f0b2450e794dab6791365022b1ea31cc00a9215cc7991c6a",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14d-aug-context-v1",
+              "payload_sha256": "1381dad3e5a870d5dfbd89cea1431a96ab1f965640ff44c6a2c112c5ffbba091",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14d-schedule-v1",
+              "payload_sha256": "e91204950d53e8e33d7a5513a0166169ab405ca849077bff60bbfe0060e65151",
+              "role": "source"
+            }
+          ],
+          "feature_binding": null,
+          "fixture_id": "p14d-bundle-v1",
+          "model_format_id": "options_lab.cash_json.v1",
+          "model_hash": "b240254407fd6f4e0fa223fd85c472f8726199f01d4e65ff43b309b7ff3d7b16",
+          "model_id": "cash-renamed",
+          "model_kind": "cash",
+          "policy_binding": {
+            "config_hash": "8ef0583fa6e6ec352140691e78b38172f1801b56be2e22f02423300b241542a8",
+            "contract_rule_id": "standard-unadjusted-100-spy-shares-v1",
+            "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+            "policy_hash": "735503cf8fd690c7d4893893b49a74dbf6494eacb3d36119a5c849896dacc95b",
+            "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
+            "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+          },
+          "prediction_contract": null,
+          "provenance": {
+            "activated_at": null,
+            "activation_gap": {
+              "fixture_id": "p14b-schedule-v1",
+              "payload_sha256": "dab772063dcbd1f02cc35bc923607644bc0fc235398e563bd1e51d18d22c4ccc",
+              "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
+              "record_id": "gap"
+            },
+            "availability_basis": "simulated",
+            "built_at": "2026-09-26T03:23:32.643054+00:00",
+            "evaluation_block": {
+              "fixture_id": "p14d-schedule-v1",
+              "payload_sha256": "e91204950d53e8e33d7a5513a0166169ab405ca849077bff60bbfe0060e65151",
+              "raw_hash": "767fa5d505b6105d1211ca935846bc445cef42b06715f5ec6e153701f7cd4661",
+              "record_id": "renamed-september"
+            },
+            "promoted_at": null,
+            "simulated_available_at": "2026-09-01T01:00:00+00:00",
+            "simulated_schedule": {
+              "activation_gap": {
+                "fixture_id": "p14b-schedule-v1",
+                "payload_sha256": "dab772063dcbd1f02cc35bc923607644bc0fc235398e563bd1e51d18d22c4ccc",
+                "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
+                "record_id": "gap"
+              },
+              "deployment_delay_us": null,
+              "evaluation_block": {
+                "fixture_id": "p14d-schedule-v1",
+                "payload_sha256": "e91204950d53e8e33d7a5513a0166169ab405ca849077bff60bbfe0060e65151",
+                "raw_hash": "767fa5d505b6105d1211ca935846bc445cef42b06715f5ec6e153701f7cd4661",
+                "record_id": "renamed-september"
+              },
+              "fit_cutoff": null,
+              "fit_delay_us": null,
+              "schedule_id": "cash-renamed",
+              "simulated_available_at": "2026-09-01T01:00:00+00:00",
+              "version": 1
+            }
+          },
+          "runtime_binding": {
+            "exact_python_version": [
+              3,
+              11,
+              11,
+              "final",
+              0
+            ],
+            "implementation_digest": "9efa2d4f3a0c8e33798da71f9c8453368276271aedb25148e05effe28438c7a2",
+            "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
+            "python_implementation": "CPython",
+            "requires_python": ">=3.11,<3.12",
+            "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
+            "runtime_dependencies": []
+          },
+          "seed": null,
+          "validation_report": {
+            "fixture_id": "p14b1b-assembly-v1",
+            "payload_sha256": "bc54fa0c96bff7433b85d12f118f0df7435fc8a434a3c59b875cf1a10be69a57",
+            "raw_hash": "c7b33d50797267b0163e897c188fa996625ac9467ee8f283666fa3508d36d61c",
+            "record_id": "cash-validation"
+          }
+        },
+        "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.cash_json.v1\"}",
+        "schema_version": 1
+      },
+      "raw_hash": "e8fbde63001cd8b9543e51c141898a9068b2f9c1f3cf7aa2cabaec234b0093ee",
+      "record_id": "cash-renamed"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-cash-at-close",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/cash-at-close",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-08-31T20:00:00Z",
+        "stream_id": "model-bundle",
+        "supersedes_record_id": null
+      },
+      "kind": "model_bundle",
+      "profile_id": "model-bundle",
+      "raw_body": {
+        "manifest": {
+          "bundle_record_id": "cash-at-close",
+          "bundle_schema_version": 1,
+          "claimed_origin": "synthetic",
+          "claimed_permitted_use": "core_fixture",
+          "data_manifest_hashes": [
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "a5e7e2271cadb00353343102e7271f218730e1ee061b04e85e2676e1913b9566",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-calendar-v1",
+              "payload_sha256": "c79b4d4d1c4651154c7c0b3e11922dc87a070f6eb17477f4fc7cb86d78afa51e",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14b-schedule-v1",
+              "payload_sha256": "dab772063dcbd1f02cc35bc923607644bc0fc235398e563bd1e51d18d22c4ccc",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14b1b-assembly-v1",
+              "payload_sha256": "bc54fa0c96bff7433b85d12f118f0df7435fc8a434a3c59b875cf1a10be69a57",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p11-feature-vector-v1",
+              "payload_sha256": "8fffa246a2ec78d1f0b2450e794dab6791365022b1ea31cc00a9215cc7991c6a",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14d-aug-context-v1",
+              "payload_sha256": "1381dad3e5a870d5dfbd89cea1431a96ab1f965640ff44c6a2c112c5ffbba091",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14d-schedule-v1",
+              "payload_sha256": "e91204950d53e8e33d7a5513a0166169ab405ca849077bff60bbfe0060e65151",
+              "role": "source"
+            }
+          ],
+          "feature_binding": null,
+          "fixture_id": "p14d-bundle-v1",
+          "model_format_id": "options_lab.cash_json.v1",
+          "model_hash": "b240254407fd6f4e0fa223fd85c472f8726199f01d4e65ff43b309b7ff3d7b16",
+          "model_id": "cash-at-close",
+          "model_kind": "cash",
+          "policy_binding": {
+            "config_hash": "8ef0583fa6e6ec352140691e78b38172f1801b56be2e22f02423300b241542a8",
+            "contract_rule_id": "standard-unadjusted-100-spy-shares-v1",
+            "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+            "policy_hash": "735503cf8fd690c7d4893893b49a74dbf6494eacb3d36119a5c849896dacc95b",
+            "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
+            "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+          },
+          "prediction_contract": null,
+          "provenance": {
+            "activated_at": null,
+            "activation_gap": {
+              "fixture_id": "p14d-schedule-v1",
+              "payload_sha256": "e91204950d53e8e33d7a5513a0166169ab405ca849077bff60bbfe0060e65151",
+              "raw_hash": "4bb9ccea5415562ae180b09f5511b93e69d3797b229ced9cf6bc353a433b98ba",
+              "record_id": "close-gap"
+            },
+            "availability_basis": "simulated",
+            "built_at": "2026-09-26T03:23:32.646863+00:00",
+            "evaluation_block": {
+              "fixture_id": "p14d-schedule-v1",
+              "payload_sha256": "e91204950d53e8e33d7a5513a0166169ab405ca849077bff60bbfe0060e65151",
+              "raw_hash": "748beb892b107e8a39b0b106696056bb23d3b6d54df481267de3f9ef17014311",
+              "record_id": "close-block"
+            },
+            "promoted_at": null,
+            "simulated_available_at": "2026-08-31T20:00:00+00:00",
+            "simulated_schedule": {
+              "activation_gap": {
+                "fixture_id": "p14d-schedule-v1",
+                "payload_sha256": "e91204950d53e8e33d7a5513a0166169ab405ca849077bff60bbfe0060e65151",
+                "raw_hash": "4bb9ccea5415562ae180b09f5511b93e69d3797b229ced9cf6bc353a433b98ba",
+                "record_id": "close-gap"
+              },
+              "deployment_delay_us": null,
+              "evaluation_block": {
+                "fixture_id": "p14d-schedule-v1",
+                "payload_sha256": "e91204950d53e8e33d7a5513a0166169ab405ca849077bff60bbfe0060e65151",
+                "raw_hash": "748beb892b107e8a39b0b106696056bb23d3b6d54df481267de3f9ef17014311",
+                "record_id": "close-block"
+              },
+              "fit_cutoff": null,
+              "fit_delay_us": null,
+              "schedule_id": "cash-at-close",
+              "simulated_available_at": "2026-08-31T20:00:00+00:00",
+              "version": 1
+            }
+          },
+          "runtime_binding": {
+            "exact_python_version": [
+              3,
+              11,
+              11,
+              "final",
+              0
+            ],
+            "implementation_digest": "9efa2d4f3a0c8e33798da71f9c8453368276271aedb25148e05effe28438c7a2",
+            "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
+            "python_implementation": "CPython",
+            "requires_python": ">=3.11,<3.12",
+            "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
+            "runtime_dependencies": []
+          },
+          "seed": null,
+          "validation_report": {
+            "fixture_id": "p14b1b-assembly-v1",
+            "payload_sha256": "bc54fa0c96bff7433b85d12f118f0df7435fc8a434a3c59b875cf1a10be69a57",
+            "raw_hash": "c7b33d50797267b0163e897c188fa996625ac9467ee8f283666fa3508d36d61c",
+            "record_id": "cash-validation"
+          }
+        },
+        "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.cash_json.v1\"}",
+        "schema_version": 1
+      },
+      "raw_hash": "2f9bfc7c6d1f2ea7ce8a4fe0e8bd10b67bc1bbbad9146321b5993fc08ae188fc",
+      "record_id": "cash-at-close"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-cash-later-gap",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/cash-later-gap",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T21:00:00Z",
+        "stream_id": "model-bundle",
+        "supersedes_record_id": null
+      },
+      "kind": "model_bundle",
+      "profile_id": "model-bundle",
+      "raw_body": {
+        "manifest": {
+          "bundle_record_id": "cash-later-gap",
+          "bundle_schema_version": 1,
+          "claimed_origin": "synthetic",
+          "claimed_permitted_use": "core_fixture",
+          "data_manifest_hashes": [
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "a5e7e2271cadb00353343102e7271f218730e1ee061b04e85e2676e1913b9566",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-calendar-v1",
+              "payload_sha256": "c79b4d4d1c4651154c7c0b3e11922dc87a070f6eb17477f4fc7cb86d78afa51e",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14b-schedule-v1",
+              "payload_sha256": "dab772063dcbd1f02cc35bc923607644bc0fc235398e563bd1e51d18d22c4ccc",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14b1b-assembly-v1",
+              "payload_sha256": "bc54fa0c96bff7433b85d12f118f0df7435fc8a434a3c59b875cf1a10be69a57",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p11-feature-vector-v1",
+              "payload_sha256": "8fffa246a2ec78d1f0b2450e794dab6791365022b1ea31cc00a9215cc7991c6a",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14d-schedule-v1",
+              "payload_sha256": "e91204950d53e8e33d7a5513a0166169ab405ca849077bff60bbfe0060e65151",
+              "role": "source"
+            }
+          ],
+          "feature_binding": null,
+          "fixture_id": "p14d-bundle-v1",
+          "model_format_id": "options_lab.cash_json.v1",
+          "model_hash": "b240254407fd6f4e0fa223fd85c472f8726199f01d4e65ff43b309b7ff3d7b16",
+          "model_id": "cash-later-gap",
+          "model_kind": "cash",
+          "policy_binding": {
+            "config_hash": "8ef0583fa6e6ec352140691e78b38172f1801b56be2e22f02423300b241542a8",
+            "contract_rule_id": "standard-unadjusted-100-spy-shares-v1",
+            "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+            "policy_hash": "735503cf8fd690c7d4893893b49a74dbf6494eacb3d36119a5c849896dacc95b",
+            "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
+            "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+          },
+          "prediction_contract": null,
+          "provenance": {
+            "activated_at": null,
+            "activation_gap": {
+              "fixture_id": "p14b-schedule-v1",
+              "payload_sha256": "dab772063dcbd1f02cc35bc923607644bc0fc235398e563bd1e51d18d22c4ccc",
+              "raw_hash": "18552d4db77cf92825f530a971d5f82e772ce8402577195dbbf8927f8f3f1595",
+              "record_id": "holiday-gap"
+            },
+            "availability_basis": "simulated",
+            "built_at": "2026-09-26T03:23:32.650769+00:00",
+            "evaluation_block": {
+              "fixture_id": "p14d-schedule-v1",
+              "payload_sha256": "e91204950d53e8e33d7a5513a0166169ab405ca849077bff60bbfe0060e65151",
+              "raw_hash": "767fa5d505b6105d1211ca935846bc445cef42b06715f5ec6e153701f7cd4661",
+              "record_id": "renamed-september"
+            },
+            "promoted_at": null,
+            "simulated_available_at": "2026-09-04T21:00:00+00:00",
+            "simulated_schedule": {
+              "activation_gap": {
+                "fixture_id": "p14b-schedule-v1",
+                "payload_sha256": "dab772063dcbd1f02cc35bc923607644bc0fc235398e563bd1e51d18d22c4ccc",
+                "raw_hash": "18552d4db77cf92825f530a971d5f82e772ce8402577195dbbf8927f8f3f1595",
+                "record_id": "holiday-gap"
+              },
+              "deployment_delay_us": null,
+              "evaluation_block": {
+                "fixture_id": "p14d-schedule-v1",
+                "payload_sha256": "e91204950d53e8e33d7a5513a0166169ab405ca849077bff60bbfe0060e65151",
+                "raw_hash": "767fa5d505b6105d1211ca935846bc445cef42b06715f5ec6e153701f7cd4661",
+                "record_id": "renamed-september"
+              },
+              "fit_cutoff": null,
+              "fit_delay_us": null,
+              "schedule_id": "cash-later-gap",
+              "simulated_available_at": "2026-09-04T21:00:00+00:00",
+              "version": 1
+            }
+          },
+          "runtime_binding": {
+            "exact_python_version": [
+              3,
+              11,
+              11,
+              "final",
+              0
+            ],
+            "implementation_digest": "9efa2d4f3a0c8e33798da71f9c8453368276271aedb25148e05effe28438c7a2",
+            "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
+            "python_implementation": "CPython",
+            "requires_python": ">=3.11,<3.12",
+            "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
+            "runtime_dependencies": []
+          },
+          "seed": null,
+          "validation_report": {
+            "fixture_id": "p14b1b-assembly-v1",
+            "payload_sha256": "bc54fa0c96bff7433b85d12f118f0df7435fc8a434a3c59b875cf1a10be69a57",
+            "raw_hash": "c7b33d50797267b0163e897c188fa996625ac9467ee8f283666fa3508d36d61c",
+            "record_id": "cash-validation"
+          }
+        },
+        "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.cash_json.v1\"}",
+        "schema_version": 1
+      },
+      "raw_hash": "43715045bdc602a0bb71423a818a83e53ceda425b19933b0e2b822df4c1b00b7",
+      "record_id": "cash-later-gap"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-cash-calendar-renamed",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/cash-calendar-renamed",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "model-bundle",
+        "supersedes_record_id": null
+      },
+      "kind": "model_bundle",
+      "profile_id": "model-bundle",
+      "raw_body": {
+        "manifest": {
+          "bundle_record_id": "cash-calendar-renamed",
+          "bundle_schema_version": 1,
+          "claimed_origin": "synthetic",
+          "claimed_permitted_use": "core_fixture",
+          "data_manifest_hashes": [
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "a5e7e2271cadb00353343102e7271f218730e1ee061b04e85e2676e1913b9566",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-calendar-v1",
+              "payload_sha256": "c79b4d4d1c4651154c7c0b3e11922dc87a070f6eb17477f4fc7cb86d78afa51e",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14b-schedule-v1",
+              "payload_sha256": "dab772063dcbd1f02cc35bc923607644bc0fc235398e563bd1e51d18d22c4ccc",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14b1b-assembly-v1",
+              "payload_sha256": "bc54fa0c96bff7433b85d12f118f0df7435fc8a434a3c59b875cf1a10be69a57",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p11-feature-vector-v1",
+              "payload_sha256": "8fffa246a2ec78d1f0b2450e794dab6791365022b1ea31cc00a9215cc7991c6a",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14d-aug-context-v1",
+              "payload_sha256": "1381dad3e5a870d5dfbd89cea1431a96ab1f965640ff44c6a2c112c5ffbba091",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14d-sep-calendar-v1",
+              "payload_sha256": "9f376c83daf2a70ae1b427f387f246c753a60c8dd653d2b2eeec6b2ee63f2568",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14d-schedule-v1",
+              "payload_sha256": "e91204950d53e8e33d7a5513a0166169ab405ca849077bff60bbfe0060e65151",
+              "role": "source"
+            }
+          ],
+          "feature_binding": null,
+          "fixture_id": "p14d-bundle-v1",
+          "model_format_id": "options_lab.cash_json.v1",
+          "model_hash": "b240254407fd6f4e0fa223fd85c472f8726199f01d4e65ff43b309b7ff3d7b16",
+          "model_id": "cash-calendar-renamed",
+          "model_kind": "cash",
+          "policy_binding": {
+            "config_hash": "8ef0583fa6e6ec352140691e78b38172f1801b56be2e22f02423300b241542a8",
+            "contract_rule_id": "standard-unadjusted-100-spy-shares-v1",
+            "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+            "policy_hash": "735503cf8fd690c7d4893893b49a74dbf6494eacb3d36119a5c849896dacc95b",
+            "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
+            "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+          },
+          "prediction_contract": null,
+          "provenance": {
+            "activated_at": null,
+            "activation_gap": {
+              "fixture_id": "p14d-schedule-v1",
+              "payload_sha256": "e91204950d53e8e33d7a5513a0166169ab405ca849077bff60bbfe0060e65151",
+              "raw_hash": "4a2aa8644de714bdf0ebbd1609276d6efc373f9ba019ec1fc49741c7367689cb",
+              "record_id": "renamed-calendar-gap"
+            },
+            "availability_basis": "simulated",
+            "built_at": "2026-09-26T03:23:32.655137+00:00",
+            "evaluation_block": {
+              "fixture_id": "p14d-schedule-v1",
+              "payload_sha256": "e91204950d53e8e33d7a5513a0166169ab405ca849077bff60bbfe0060e65151",
+              "raw_hash": "f4c64958c3f97e0aaee046f47849e55c7908737d2d72e15ff669b90e84004b99",
+              "record_id": "renamed-calendar-september"
+            },
+            "promoted_at": null,
+            "simulated_available_at": "2026-09-01T01:00:00+00:00",
+            "simulated_schedule": {
+              "activation_gap": {
+                "fixture_id": "p14d-schedule-v1",
+                "payload_sha256": "e91204950d53e8e33d7a5513a0166169ab405ca849077bff60bbfe0060e65151",
+                "raw_hash": "4a2aa8644de714bdf0ebbd1609276d6efc373f9ba019ec1fc49741c7367689cb",
+                "record_id": "renamed-calendar-gap"
+              },
+              "deployment_delay_us": null,
+              "evaluation_block": {
+                "fixture_id": "p14d-schedule-v1",
+                "payload_sha256": "e91204950d53e8e33d7a5513a0166169ab405ca849077bff60bbfe0060e65151",
+                "raw_hash": "f4c64958c3f97e0aaee046f47849e55c7908737d2d72e15ff669b90e84004b99",
+                "record_id": "renamed-calendar-september"
+              },
+              "fit_cutoff": null,
+              "fit_delay_us": null,
+              "schedule_id": "cash-calendar-renamed",
+              "simulated_available_at": "2026-09-01T01:00:00+00:00",
+              "version": 1
+            }
+          },
+          "runtime_binding": {
+            "exact_python_version": [
+              3,
+              11,
+              11,
+              "final",
+              0
+            ],
+            "implementation_digest": "9efa2d4f3a0c8e33798da71f9c8453368276271aedb25148e05effe28438c7a2",
+            "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
+            "python_implementation": "CPython",
+            "requires_python": ">=3.11,<3.12",
+            "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
+            "runtime_dependencies": []
+          },
+          "seed": null,
+          "validation_report": {
+            "fixture_id": "p14b1b-assembly-v1",
+            "payload_sha256": "bc54fa0c96bff7433b85d12f118f0df7435fc8a434a3c59b875cf1a10be69a57",
+            "raw_hash": "c7b33d50797267b0163e897c188fa996625ac9467ee8f283666fa3508d36d61c",
+            "record_id": "cash-validation"
+          }
+        },
+        "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.cash_json.v1\"}",
+        "schema_version": 1
+      },
+      "raw_hash": "4b9b40b73572f82eb838c9251b4d667f3a574035dbe018268c330ac0d4a50f03",
+      "record_id": "cash-calendar-renamed"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-cash-october",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/cash-october",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-10-01T01:00:00Z",
+        "stream_id": "model-bundle",
+        "supersedes_record_id": null
+      },
+      "kind": "model_bundle",
+      "profile_id": "model-bundle",
+      "raw_body": {
+        "manifest": {
+          "bundle_record_id": "cash-october",
+          "bundle_schema_version": 1,
+          "claimed_origin": "synthetic",
+          "claimed_permitted_use": "core_fixture",
+          "data_manifest_hashes": [
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "a5e7e2271cadb00353343102e7271f218730e1ee061b04e85e2676e1913b9566",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-calendar-v1",
+              "payload_sha256": "c79b4d4d1c4651154c7c0b3e11922dc87a070f6eb17477f4fc7cb86d78afa51e",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14b-schedule-v1",
+              "payload_sha256": "dab772063dcbd1f02cc35bc923607644bc0fc235398e563bd1e51d18d22c4ccc",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14b1b-assembly-v1",
+              "payload_sha256": "bc54fa0c96bff7433b85d12f118f0df7435fc8a434a3c59b875cf1a10be69a57",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p11-feature-vector-v1",
+              "payload_sha256": "8fffa246a2ec78d1f0b2450e794dab6791365022b1ea31cc00a9215cc7991c6a",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14d-sep-context-v1",
+              "payload_sha256": "4ac3c84cf85be72db6f0e05109cb99d16a06b85bdad82534951d40899dd22549",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14d-oct-sources-v1",
+              "payload_sha256": "7343d9c0c02890cf86b73a6f335398704a1311f5a9b27b19cb84c4c4880cf66d",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14d-oct-calendar-v1",
+              "payload_sha256": "c863137510fcfc2d4e54fcda6afda5e973cd8e5234cf1475ac8d8fcc131b6772",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14d-schedule-v1",
+              "payload_sha256": "e91204950d53e8e33d7a5513a0166169ab405ca849077bff60bbfe0060e65151",
+              "role": "source"
+            }
+          ],
+          "feature_binding": null,
+          "fixture_id": "p14d-bundle-v1",
+          "model_format_id": "options_lab.cash_json.v1",
+          "model_hash": "b240254407fd6f4e0fa223fd85c472f8726199f01d4e65ff43b309b7ff3d7b16",
+          "model_id": "cash-october",
+          "model_kind": "cash",
+          "policy_binding": {
+            "config_hash": "8ef0583fa6e6ec352140691e78b38172f1801b56be2e22f02423300b241542a8",
+            "contract_rule_id": "standard-unadjusted-100-spy-shares-v1",
+            "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+            "policy_hash": "735503cf8fd690c7d4893893b49a74dbf6494eacb3d36119a5c849896dacc95b",
+            "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
+            "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+          },
+          "prediction_contract": null,
+          "provenance": {
+            "activated_at": null,
+            "activation_gap": {
+              "fixture_id": "p14d-schedule-v1",
+              "payload_sha256": "e91204950d53e8e33d7a5513a0166169ab405ca849077bff60bbfe0060e65151",
+              "raw_hash": "719aa7e261e88939618646596ec4e71931e394bf64b859b05cb56b9a50611dba",
+              "record_id": "october-gap"
+            },
+            "availability_basis": "simulated",
+            "built_at": "2026-09-26T03:23:32.660833+00:00",
+            "evaluation_block": {
+              "fixture_id": "p14d-schedule-v1",
+              "payload_sha256": "e91204950d53e8e33d7a5513a0166169ab405ca849077bff60bbfe0060e65151",
+              "raw_hash": "82a12ff1071e2c35bc430958bfe26d00946c023998278dd6733731ab267faad1",
+              "record_id": "october-block"
+            },
+            "promoted_at": null,
+            "simulated_available_at": "2026-10-01T01:00:00+00:00",
+            "simulated_schedule": {
+              "activation_gap": {
+                "fixture_id": "p14d-schedule-v1",
+                "payload_sha256": "e91204950d53e8e33d7a5513a0166169ab405ca849077bff60bbfe0060e65151",
+                "raw_hash": "719aa7e261e88939618646596ec4e71931e394bf64b859b05cb56b9a50611dba",
+                "record_id": "october-gap"
+              },
+              "deployment_delay_us": null,
+              "evaluation_block": {
+                "fixture_id": "p14d-schedule-v1",
+                "payload_sha256": "e91204950d53e8e33d7a5513a0166169ab405ca849077bff60bbfe0060e65151",
+                "raw_hash": "82a12ff1071e2c35bc430958bfe26d00946c023998278dd6733731ab267faad1",
+                "record_id": "october-block"
+              },
+              "fit_cutoff": null,
+              "fit_delay_us": null,
+              "schedule_id": "cash-october",
+              "simulated_available_at": "2026-10-01T01:00:00+00:00",
+              "version": 1
+            }
+          },
+          "runtime_binding": {
+            "exact_python_version": [
+              3,
+              11,
+              11,
+              "final",
+              0
+            ],
+            "implementation_digest": "9efa2d4f3a0c8e33798da71f9c8453368276271aedb25148e05effe28438c7a2",
+            "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
+            "python_implementation": "CPython",
+            "requires_python": ">=3.11,<3.12",
+            "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
+            "runtime_dependencies": []
+          },
+          "seed": null,
+          "validation_report": {
+            "fixture_id": "p14b1b-assembly-v1",
+            "payload_sha256": "bc54fa0c96bff7433b85d12f118f0df7435fc8a434a3c59b875cf1a10be69a57",
+            "raw_hash": "c7b33d50797267b0163e897c188fa996625ac9467ee8f283666fa3508d36d61c",
+            "record_id": "cash-validation"
+          }
+        },
+        "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.cash_json.v1\"}",
+        "schema_version": 1
+      },
+      "raw_hash": "67e1ec9c3bc9d8c9568a5e1d8625af2c381c68bb13ab211898d12764c1ee5778",
+      "record_id": "cash-october"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-fixed-september",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/fixed-september",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-01T01:00:00Z",
+        "stream_id": "model-bundle",
+        "supersedes_record_id": null
+      },
+      "kind": "model_bundle",
+      "profile_id": "model-bundle",
+      "raw_body": {
+        "manifest": {
+          "bundle_record_id": "fixed-september",
+          "bundle_schema_version": 1,
+          "claimed_origin": "synthetic",
+          "claimed_permitted_use": "core_fixture",
+          "data_manifest_hashes": [
+            {
+              "fixture_id": "p14c-volume-training-v1",
+              "payload_sha256": "a5669fcbdc27f29bf76650bf05b85e7d7b39af09c4697b983689e9e42fc61ca4",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-volume-normalization-v1",
+              "payload_sha256": "e213feae2788c2a158e38ed69dd1c614e361c50ff87bc7e1aebbc98a07a1f691",
+              "role": "normalization"
+            },
+            {
+              "fixture_id": "p11-feature-vector-v1",
+              "payload_sha256": "8fffa246a2ec78d1f0b2450e794dab6791365022b1ea31cc00a9215cc7991c6a",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "4364718cff9ca80beab58271e9363011bdb243272f3fcf0e7e3fc4a565d5610f",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-memberships-v1",
+              "payload_sha256": "4364718cff9ca80beab58271e9363011bdb243272f3fcf0e7e3fc4a565d5610f",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "254875c56ee5a6fc681dde0c0518d0299ef19a3b4f4f57376c1a50bbd8b72e97",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-partition-samples-v1",
+              "payload_sha256": "254875c56ee5a6fc681dde0c0518d0299ef19a3b4f4f57376c1a50bbd8b72e97",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "a5e7e2271cadb00353343102e7271f218730e1ee061b04e85e2676e1913b9566",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-calendar-v1",
+              "payload_sha256": "c79b4d4d1c4651154c7c0b3e11922dc87a070f6eb17477f4fc7cb86d78afa51e",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c2-partition-v1",
+              "payload_sha256": "b6465c0dc9dca8310fd5564d151872a06c380dd47b5917ab8b5a4ac421cad921",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-sources-v1",
+              "payload_sha256": "a5e7e2271cadb00353343102e7271f218730e1ee061b04e85e2676e1913b9566",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "917a192b3b8c7e4d3d77a7ad13e20dba32ed5787bc231d0815a4f98a2f9fe942",
+              "role": "calibration"
+            },
+            {
+              "fixture_id": "p14b-schedule-v1",
+              "payload_sha256": "dab772063dcbd1f02cc35bc923607644bc0fc235398e563bd1e51d18d22c4ccc",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14b1b-assembly-v1",
+              "payload_sha256": "bc54fa0c96bff7433b85d12f118f0df7435fc8a434a3c59b875cf1a10be69a57",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14d-aug-context-v1",
+              "payload_sha256": "1381dad3e5a870d5dfbd89cea1431a96ab1f965640ff44c6a2c112c5ffbba091",
+              "role": "source"
+            }
+          ],
+          "feature_binding": {
+            "coherence_protocol_ids": [
+              "fixture-joint-book-snapshot-v1",
+              "fixture-side-validity-overlap-v1"
+            ],
+            "delta_unit": "signed_option_price_per_underlying_price",
+            "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
+            "greek_assumptions_id": "fixture-flat-rates-v1",
+            "greek_method_id": "fixture-greek-values",
+            "greek_method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+            "greek_method_version": "1",
+            "input_normalization_version": 1,
+            "iv_unit": "annualized_volatility_fraction",
+            "normalization_hash": "5f96d88d4a0472619f8b321af3906af501ab9cde4821a81e84f0911955a72b2f",
+            "option_price_basis": "option_midpoint",
+            "source_profiles": [
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "bars"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-option_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-underlying_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-greek"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-proof"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "session"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-instrument_tradability"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-provider_contract_mapping"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-contract_reference"
+              },
+              {
+                "fixture_id": "p14d-aug-context-v1",
+                "profile_id": "gap-session"
+              }
+            ],
+            "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621",
+            "underlying_price_basis": "underlying_midpoint",
+            "volume_baseline_hash": "26d822a64282aaee073b31fc1bf57aaf98637725607a4afb700e874ac027c557",
+            "volume_definition_id": "synthetic-volume-v1"
+          },
+          "fixture_id": "p14d-bundle-v1",
+          "model_format_id": "options_lab.fixed_by_right_json.v1",
+          "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
+          "model_id": "fixed-september",
+          "model_kind": "fixture_fixed_by_right",
+          "policy_binding": {
+            "config_hash": "8ef0583fa6e6ec352140691e78b38172f1801b56be2e22f02423300b241542a8",
+            "contract_rule_id": "standard-unadjusted-100-spy-shares-v1",
+            "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+            "policy_hash": "735503cf8fd690c7d4893893b49a74dbf6494eacb3d36119a5c849896dacc95b",
+            "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
+            "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+          },
+          "prediction_contract": {
+            "base_cost_profile": {
+              "base_execution_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+              "fee_charging_rule": "filled_round_trip_once_no_fill_zero_v1",
+              "filled_attempt_round_trip_fee": "1",
+              "profile_id": "fixture-base-cost",
+              "profile_version": 1,
+              "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+            },
+            "calibration_partition": null,
+            "calibration_record": {
+              "fixture_id": "p14c2-record-v1",
+              "payload_sha256": "917a192b3b8c7e4d3d77a7ad13e20dba32ed5787bc231d0815a4f98a2f9fe942",
+              "raw_hash": "aaa40f8a07266af0e6467916dd29ea524ccbf8755f610e803b307f7148518cf9",
+              "record_id": "record"
+            },
+            "capital_basis_rule": "100_times_original_decision_ask_cap",
+            "fit_cutoff": "2026-08-31T22:00:00+00:00",
+            "last_label_available_at": "2026-08-28T14:14:00+00:00",
+            "model_membership": null,
+            "return_unit": "attempt_net_return_over_original_ask_capital",
+            "threshold_return": "0",
+            "training_feature_cutoff": "2026-05-05T13:40:00+00:00",
+            "tuning_membership": null,
+            "uncertainty_rule_id": "fixture_fixed_penalty_v1"
+          },
+          "provenance": {
+            "activated_at": null,
+            "activation_gap": {
+              "fixture_id": "p14b-schedule-v1",
+              "payload_sha256": "dab772063dcbd1f02cc35bc923607644bc0fc235398e563bd1e51d18d22c4ccc",
+              "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
+              "record_id": "gap"
+            },
+            "availability_basis": "simulated",
+            "built_at": "2026-09-26T03:23:32.664395+00:00",
+            "evaluation_block": {
+              "fixture_id": "p14b-schedule-v1",
+              "payload_sha256": "dab772063dcbd1f02cc35bc923607644bc0fc235398e563bd1e51d18d22c4ccc",
+              "raw_hash": "36f5f8c6169d72b9a53e47fe21dfacb5e8fb407ca8813984fd5624a27a8c095f",
+              "record_id": "block"
+            },
+            "promoted_at": null,
+            "simulated_available_at": "2026-09-01T01:00:00+00:00",
+            "simulated_schedule": {
+              "activation_gap": {
+                "fixture_id": "p14b-schedule-v1",
+                "payload_sha256": "dab772063dcbd1f02cc35bc923607644bc0fc235398e563bd1e51d18d22c4ccc",
+                "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
+                "record_id": "gap"
+              },
+              "deployment_delay_us": 0,
+              "evaluation_block": {
+                "fixture_id": "p14b-schedule-v1",
+                "payload_sha256": "dab772063dcbd1f02cc35bc923607644bc0fc235398e563bd1e51d18d22c4ccc",
+                "raw_hash": "36f5f8c6169d72b9a53e47fe21dfacb5e8fb407ca8813984fd5624a27a8c095f",
+                "record_id": "block"
+              },
+              "fit_cutoff": "2026-08-31T22:00:00+00:00",
+              "fit_delay_us": 10800000000,
+              "schedule_id": "september-2026",
+              "simulated_available_at": "2026-09-01T01:00:00+00:00",
+              "version": 1
+            }
+          },
+          "runtime_binding": {
+            "exact_python_version": [
+              3,
+              11,
+              11,
+              "final",
+              0
+            ],
+            "implementation_digest": "9efa2d4f3a0c8e33798da71f9c8453368276271aedb25148e05effe28438c7a2",
+            "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
+            "python_implementation": "CPython",
+            "requires_python": ">=3.11,<3.12",
+            "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
+            "runtime_dependencies": []
+          },
+          "seed": null,
+          "validation_report": {
+            "fixture_id": "p14b1b-assembly-v1",
+            "payload_sha256": "bc54fa0c96bff7433b85d12f118f0df7435fc8a434a3c59b875cf1a10be69a57",
+            "raw_hash": "fe3efdbc199dfba5725cba68d469c2eea9717aeb8115a26e770b68d8efd9cc9a",
+            "record_id": "fixed-validation"
+          }
+        },
+        "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
+        "schema_version": 1
+      },
+      "raw_hash": "04f28ab1cc57db2c8e5e657dd7041a656f07e2f581dccdf4fd681cd909d1230c",
+      "record_id": "fixed-september"
+    }
+  ],
+  "modeled_source_profiles": [
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "model_bundle",
+      "profile_id": "model-bundle",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "optionslab-bundle-fixture-builder",
+      "stream_id": "model-bundle",
+      "units": {}
+    }
+  ],
+  "normalization_version": 1,
+  "origin": "synthetic",
+  "permitted_use": "core_fixture",
+  "schema_version": 1
+}
