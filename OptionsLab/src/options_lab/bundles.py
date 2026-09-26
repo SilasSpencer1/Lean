@@ -12,7 +12,8 @@ from .bundle_inputs import BundleInputRejection, ParsedModelData, _make, _shape,
 from .bundle_manifest_inputs import ModelBundleManifest, QualifiedProfile, normalize_bundle_manifest
 from .candidates import SELECTION_RULE_ID, _selection_definition_snapshot
 from .calibration_inputs import (CalibrationInputRejection, FitMembership,
-                                 normalize_fit_membership)
+                                 _retained_fixture_shape, normalize_fit_membership)
+from .calibration import CalibrationPartition, _normalization_shape, normalize_calibration_partition
 from .config import StrategyConfig, _snapshot_hash, config_hash, config_snapshot, policy_hash
 from .feature_math import NUMERIC_CONVENTION_ID, _numeric_snapshot
 from .feature_vector import FeatureSpec, EXACT_VWAP_SPEC, CLOSE_VOLUME_PROXY_SPEC
@@ -70,6 +71,7 @@ class VerifiedBundle:
     source_profiles: tuple[BundleSourceProfile, ...]
     model_membership: FitMembership | None
     tuning_membership: FitMembership | None
+    calibration_partition: CalibrationPartition | None
     origin: str = field(default="synthetic", init=False)
     fidelity_tier: int = field(default=0, init=False)
     permitted_use: str = field(default="core_fixture", init=False)
@@ -137,11 +139,13 @@ def _check(condition, path, code="counterpart_mismatch", cause=None):
 def _authorities(fixture, normalization, explicit):
     """Bound distinct retained bytes before any payload or member decoding."""
     _check(len(explicit) <= 64, "upstream_fixtures", "resource_limit")
+    _check(_retained_fixture_shape(fixture), "fixtures", "retained_content_mismatch")
     implicit = () if normalization is None else (normalization.manifest, normalization.baseline.manifest)
     roots, identifiers, supplied_ids = {}, {}, set()
     total = len(fixture.payload_bytes)
     _check(total <= _MAX_PAYLOAD_BYTES, "fixtures", "resource_limit")
     for index, old in enumerate((*implicit, *explicit)):
+        _check(_retained_fixture_shape(old), "fixtures", "retained_content_mismatch")
         _check(type(old.payload_bytes) is bytes, "fixtures", "payload_mismatch")
         _check(old.payload_sha256 != fixture.payload_sha256, "upstream_fixtures", "containing_reference")
         _check(old.fixture_id != fixture.fixture_id, "upstream_fixtures", "conflicting_reference")
@@ -163,6 +167,7 @@ def _authorities(fixture, normalization, explicit):
 
 def _readmit(old):
     """Re-admit original bytes under the current catalog and compare content facts."""
+    _check(_retained_fixture_shape(old), "fixtures", "retained_content_mismatch")
     _check(hashlib.sha256(old.payload_bytes).hexdigest() == old.payload_sha256, "fixtures", "payload_mismatch")
     result = verify_fixture_bundle(old.fixture_id, old.payload_bytes, event_id=old.event_id,
                                    raw_ref=old.raw_ref, received_at=old.received_at)
@@ -233,8 +238,7 @@ def _declared_roots(manifest, roots, normalization):
             ("provenance.evaluation_block", manifest.provenance.evaluation_block),
             ("provenance.activation_gap", manifest.provenance.activation_gap)]
     if manifest.prediction_contract is not None:
-        refs.extend(("prediction_contract." + name, getattr(manifest.prediction_contract, name))
-                    for name in ("calibration_record", "calibration_partition"))
+        refs.append(("prediction_contract.calibration_record", manifest.prediction_contract.calibration_record))
     if manifest.provenance.simulated_schedule is not None:
         refs.extend(("provenance.simulated_schedule." + name, getattr(manifest.provenance.simulated_schedule, name))
                     for name in ("evaluation_block", "activation_gap"))
@@ -244,7 +248,7 @@ def _declared_roots(manifest, roots, normalization):
 
 
 def _memberships(manifest, model, roots):
-    """Traverse direct C references once and bind only their actual sample roots."""
+    """Preflight the joint population, then bind direct and nested actual owners."""
     prediction = manifest.prediction_contract
     claims = () if prediction is None else (("model", prediction.model_membership, "model_membership"),
                                                ("tuning", prediction.tuning_membership, "tuning_membership"))
@@ -259,8 +263,21 @@ def _memberships(manifest, model, roots):
         body = member.decode_raw_body()
         bodies.append((role, root, member, body))
         traversed.add(root.fixture_id)
+    partition_ref = None if prediction is None else prediction.calibration_partition
+    partition_body = None
+    if partition_ref is not None:
+        root = next((r for r in roots if r.fixture_id == partition_ref.fixture_id), None)
+        _check(root is not None, "prediction_contract.calibration_partition", "unknown_fixture")
+        _check(root.payload_sha256 == partition_ref.payload_sha256,
+               "prediction_contract.calibration_partition", "payload_mismatch")
+        partition_member = _member(root, partition_ref.record_id, "calibration_partition", partition_ref.raw_hash)
+        partition_body = partition_member.decode_raw_body()
+        _check(type(partition_body) is dict, "prediction_contract.calibration_partition", "invalid_type")
+        traversed.add(root.fixture_id)
     occurrences = sum(len(body["sample_refs"]) for _, _, _, body in bodies
                       if type(body.get("sample_refs")) is list)
+    if partition_body is not None and type(partition_body.get("calibration_sample_refs")) is list:
+        occurrences += len(partition_body["calibration_sample_refs"])
     _check(occurrences <= 4096, "prediction_contract", "resource_limit")
     for role, root, member, body in bodies:
         needed = {row.get("fixture_id") for row in body.get("sample_refs", ())
@@ -272,10 +289,10 @@ def _memberships(manifest, model, roots):
                "normalization_failed", result.rejection)
         selected[role] = result.value
         traversed.update(r.fixture_id for r in result.value.upstream_fixtures)
-    return selected.get("model"), selected.get("tuning"), traversed
+    return selected.get("model"), selected.get("tuning"), traversed, partition_body
 
 
-def _roles(manifest, normalization, model_membership, tuning_membership):
+def _roles(manifest, normalization, model_membership, tuning_membership, partition):
     """Limit each declared role to its actually traversed owner roots."""
     training = set() if normalization is None else {normalization.baseline.manifest.fixture_id}
     tuning = set()
@@ -283,15 +300,70 @@ def _roles(manifest, normalization, model_membership, tuning_membership):
         if owner is not None:
             allowed.add(owner.fixture.fixture_id)
             allowed.update(root.fixture_id for root in owner.upstream_fixtures)
+    calibration = set() if partition is None else {partition.fixture.fixture_id}
+    if partition is not None:
+        calibration.update(ref.fixture_id for ref in partition.calibration_sample_refs)
     allowed = dict(training=training, tuning=tuning, normalization=set() if normalization is None else
-                   {normalization.manifest.fixture_id}, calibration=set())
+                   {normalization.manifest.fixture_id}, calibration=calibration)
     for row in manifest.data_manifest_hashes:
         if row.role != "source":
             _check(row.fixture_id in allowed[row.role], "data_manifest_hashes", "role_mismatch")
 
 
+def _partition(manifest, body, roots, model, spec, normalization, model_membership, tuning_membership):
+    """Resolve all partition dependencies and compare direct claims to nested bytes."""
+    if body is None:
+        return None
+    prediction = manifest.prediction_contract
+    _check(model_membership is not None and tuning_membership is not None,
+           "prediction_contract.calibration_partition", "missing_membership")
+    ref = prediction.calibration_partition
+    owner = next(root for root in roots if root.fixture_id == ref.fixture_id)
+    needed = set()
+    for name in ("model_membership_ref", "tuning_membership_ref", "calendar_ref", "normalization_ref"):
+        row = body.get(name)
+        if type(row) is dict and type(row.get("fixture_id")) is str:
+            needed.add(row["fixture_id"])
+    tail_claims = body.get("calibration_sample_refs")
+    for row in tail_claims if type(tail_claims) is list else ():
+        if type(row) is dict and type(row.get("fixture_id")) is str:
+            needed.add(row["fixture_id"])
+    for name, kind in (("model_membership_ref", "model_membership"),
+                       ("tuning_membership_ref", "tuning_membership"),
+                       ("calendar_ref", "calendar_descriptor")):
+        claim = body.get(name)
+        if type(claim) is dict and type(claim.get("fixture_id")) is str:
+            root = next((r for r in roots if r.fixture_id == claim["fixture_id"]), None)
+            if root is not None:
+                member = _member(root, claim.get("record_id"), kind)
+                nested = member.decode_raw_body()
+                field = "session_refs" if kind == "calendar_descriptor" else "sample_refs"
+                if type(nested) is dict and type(nested.get(field)) is list:
+                    needed.update(row["fixture_id"] for row in nested[field]
+                                  if type(row) is dict and type(row.get("fixture_id")) is str)
+    needed.update((normalization.manifest.fixture_id, normalization.baseline.manifest.fixture_id))
+    supplied = tuple(root for root in roots if root.fixture_id in needed and root.fixture_id != owner.fixture_id)
+    member = _member(owner, ref.record_id, "calibration_partition", ref.raw_hash)
+    result = normalize_calibration_partition(member.decode_raw_body(), fixture=owner, record_id=member.record_id,
+        model=model, spec=spec, normalization=normalization, upstream_fixtures=supplied)
+    _check(result.value is not None, "prediction_contract.calibration_partition",
+           "normalization_failed", result.rejection)
+    value = result.value
+    _check(value.model_membership_ref == prediction.model_membership
+           and value.tuning_membership_ref == prediction.tuning_membership
+           and value.model_membership.fixture.payload_sha256 == model_membership.fixture.payload_sha256
+           and value.tuning_membership.fixture.payload_sha256 == tuning_membership.fixture.payload_sha256
+           and value.model_membership.member.raw_body_bytes == model_membership.member.raw_body_bytes
+           and value.tuning_membership.member.raw_body_bytes == tuning_membership.member.raw_body_bytes,
+           "prediction_contract.calibration_partition", "membership_mismatch")
+    _check(value.frozen_threshold_return == prediction.threshold_return,
+           "prediction_contract.calibration_partition", "threshold_mismatch")
+    return value
+
+
 def _normalization(old, roots):
     """Recompute the actual artifact at its retained availability through P10 only."""
+    _check(_normalization_shape(old), "normalization", "retained_content_mismatch")
     artifact = next(r for r in roots if r.fixture_id == old.manifest.fixture_id)
     training = next(r for r in roots if r.fixture_id == old.baseline.manifest.fixture_id)
     member = _member(artifact, old.record_id, "feature_normalization", old.raw_hash)
@@ -454,9 +526,13 @@ def verify_bundle(manifest: ModelBundleManifest, model_bytes: bytes, *, fixture:
         _check(actual.model_kind == "cash" or normalization is not None, "normalization", "normalization_missing")
         used = _declared_roots(actual, roots, normalization)
         normalization_result, profiles = _features(actual, spec, normalization, roots)
-        model_membership, tuning_membership, traversed = _memberships(actual, parsed.value, roots)
-        _roles(actual, normalization, model_membership, tuning_membership)
+        model_membership, tuning_membership, traversed, partition_body = _memberships(actual, parsed.value, roots)
+        partition = _partition(actual, partition_body, roots, parsed.value, spec, normalization,
+                               model_membership, tuning_membership)
+        _roles(actual, normalization, model_membership, tuning_membership, partition)
         used.update(traversed)
+        if partition is not None:
+            used.update(root.fixture_id for root in partition.upstream_fixtures)
         if normalization is not None:
             used.update((normalization.manifest.fixture_id, normalization.baseline.manifest.fixture_id))
         _check(all(r.fixture_id in used for r in upstream_fixtures), "upstream_fixtures", "unused_reference")
@@ -467,6 +543,7 @@ def verify_bundle(manifest: ModelBundleManifest, model_bytes: bytes, *, fixture:
             config=config, spec=spec, supplied_normalization=normalization, normalization_result=normalization_result,
             upstream_fixtures=roots, supplied_upstream_fixtures=upstream_fixtures, source_profiles=profiles,
             model_membership=model_membership, tuning_membership=tuning_membership,
+            calibration_partition=partition,
             origin=fresh.origin, fidelity_tier=fresh.fidelity_tier, permitted_use=fresh.permitted_use,
             operational_allowed=fresh.operational_allowed, economic_allowed=fresh.economic_allowed)
     except _BundleFailure as failure:
