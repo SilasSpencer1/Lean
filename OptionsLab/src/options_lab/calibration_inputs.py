@@ -7,9 +7,10 @@ import hashlib
 from zoneinfo import ZoneInfo
 
 from ._input_parsing import _InvalidInput, _fail, _parse_contract_id, _parse_date
-from ._validation import _require_nonempty_string
+from ._validation import _require_nonempty_string, _trusted_datetime
 from .account_inputs import _contract_snapshot
-from .admission import VerifiedFixtureManifest, VerifiedFixtureMember, _canonical_bytes, verify_fixture_bundle
+from .admission import (VerifiedFixtureManifest, VerifiedFixtureMember, _COHERENCE_PROTOCOLS,
+                        _TICK_DEFINITIONS, _canonical_bytes, verify_fixture_bundle)
 from .bar_inputs import _UnsupportedIdentity, _timestamp_string
 from .bundle_inputs import ParsedModelData, ModelDataRow, _identifier, _make, _shape, normalize_model_bytes
 from .bundle_manifest_inputs import ExternalReference, _list, _one, _reference, _timestamp
@@ -294,6 +295,20 @@ def _retained_fixture_shape(old):
     try:
         if type(old) is not VerifiedFixtureManifest:
             return False
+        if (type(old.members) is not tuple or len(old.members) > 4096
+                or type(old.coherence_protocol_ids) is not tuple
+                or len(old.coherence_protocol_ids) > len(_COHERENCE_PROTOCOLS)
+                or type(old.tick_definition_ids) is not tuple
+                or len(old.tick_definition_ids) > len(_TICK_DEFINITIONS)
+                or type(old.event_id) is not str or not old.event_id
+                or type(old.raw_ref) is not str or not old.raw_ref
+                or type(old.assembled_at) is not datetime
+                or type(old.received_at) is not datetime
+                or type(old.assembled_at.tzinfo) is not timezone
+                or type(old.received_at.tzinfo) is not timezone):
+            return False
+        _trusted_datetime("assembled_at", old.assembled_at)
+        _trusted_datetime("received_at", old.received_at)
         method = old.greek_method
         return (all(type(getattr(old, name)) is str for name in ("fixture_id", "payload_sha256",
                 "generator_id", "generator_version", "generator_source_ref", "event_id", "raw_ref",

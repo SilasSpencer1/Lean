@@ -119,6 +119,7 @@ from .context import (
     DecisionContext,
     build_decision_context,
 )
+from .context_recheck import ContextRecheck, recheck_decision_context
 from .context_inputs import (
     ContextInputRejection,
     ContextRequest,
@@ -346,6 +347,8 @@ __all__ = [
     "ConfigInputRejection",
     "ConfigValidation",
     "ContextBuildResult",
+    "ContextRecheck",
+    "recheck_decision_context",
     "ContextComponent",
     "ContextInputRejection",
     "ContextMemberRejection",

@@ -1,5 +1,5 @@
 {
-  "assembled_at": "2026-09-26T00:05:52.877740+00:00",
+  "assembled_at": "2026-09-26T02:40:06.825281+00:00",
   "definitions": {
     "coherence_protocol_ids": [],
     "greek_method": {
@@ -31,7 +31,7 @@
       "raw_body": {
         "availability_basis": "measured",
         "available_at": "2026-04-30T01:00:00Z",
-        "baseline_content_hash": "c116839b269a389b92166e49f9272a03336ec0715b7d280c2d6ff081ef1512e6",
+        "baseline_content_hash": "26d822a64282aaee073b31fc1bf57aaf98637725607a4afb700e874ac027c557",
         "baseline_snapshot": {
           "buckets": [
             {
@@ -68,7 +68,7 @@
           "normalization_id": "fed8079eea17c7dccc8495861bb09ade8bedebdeecf7a5efe536343f52dded94",
           "numeric_id": "ceca983e074c53d76d78aa9a446effe04b919b396942740b88102b5d3eb8cd2a",
           "partition": {
-            "input_manifest_hash": "8bf6aa7abab0f9a919cbeba78ae1186b993a2452023ffd12c138baed964923b9",
+            "input_manifest_hash": "a5669fcbdc27f29bf76650bf05b85e7d7b39af09c4697b983689e9e42fc61ca4",
             "input_manifest_id": "p14c-volume-training-v1",
             "partition_id": "training",
             "raw_hash": "16aee4a2f9522c1f56f55974d63b42e19233df9e18d0cb12478efd1f6e3ed3e9",
@@ -100,16 +100,16 @@
           },
           "record_kind": "options_lab.volume_baseline",
           "schema_version": 1,
-          "training_input_hash": "8fc4a73a81d8f6bc1c08197aeda103f846e50269a83420d0046c4afb690deb22",
+          "training_input_hash": "348d96b8e7246537e6aae76233f4101ea22122bacb0912dce34a2f85a240642b",
           "volume_definition_id": "synthetic-volume-v1"
         },
         "cutoff": "2026-04-30T00:00:00+00:00",
         "partition_record_id": "training",
         "schema_version": 1,
         "training_fixture_id": "p14c-volume-training-v1",
-        "training_payload_sha256": "8bf6aa7abab0f9a919cbeba78ae1186b993a2452023ffd12c138baed964923b9"
+        "training_payload_sha256": "a5669fcbdc27f29bf76650bf05b85e7d7b39af09c4697b983689e9e42fc61ca4"
       },
-      "raw_hash": "6fcd72e6dac33e3108e72cd03ea68a395b11a1429a76f5248325727e2637a98d",
+      "raw_hash": "948937be23ca517167ee43f1250f14865e291a2a4ab1ed2128dcddbbb199b2be",
       "record_id": "good"
     }
   ],
