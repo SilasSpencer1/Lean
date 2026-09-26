@@ -118,7 +118,7 @@ def test_actual_registered_cash_and_fixed_are_content_only(record):
     ("wrong-source", "feature_binding.source_profiles", "training_source_mismatch"),
     ("missing-profile", "feature_binding.source_profiles", "unknown_profile"),
     ("undeclared-source", "feature_binding.source_profiles", "undeclared_source"),
-    ("future-reference", "validation_report", "unsupported_reference"),
+    ("future-reference", "member", "kind_mismatch"),
     ("built-after-assembly", "provenance.built_at", "built_after_assembly"),
     ("superseded", "member", "artifact_not_immutable"),
     ("wrong-profile", "member", "profile_mismatch"),

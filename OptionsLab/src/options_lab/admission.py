@@ -24,7 +24,7 @@ FixtureKind = Literal[
     "volume_partition", "feature_normalization", "account_snapshot", "model_bundle",
     "option_quote", "underlying_quote", "greek_observation", "quote_coherence", "tick_rule",
     "exchange_session", "instrument_tradability", "provider_contract_mapping", "contract_reference", "underlying_bar",
-    "fit_sample", "calendar_descriptor", "model_membership", "tuning_membership", "calibration_partition", "calibration_record", "activation_gap", "evaluation_block",
+    "fit_sample", "calendar_descriptor", "model_membership", "tuning_membership", "calibration_partition", "calibration_record", "activation_gap", "evaluation_block", "bundle_validation",
 ]
 FixtureRejectionCode = Literal[
     "catalog_unavailable", "catalog_invalid", "catalog_resource_limit",
@@ -66,7 +66,7 @@ _KINDS = (
     "volume_partition", "feature_normalization", "account_snapshot", "model_bundle",
     "option_quote", "underlying_quote", "greek_observation", "quote_coherence", "tick_rule",
     "exchange_session", "instrument_tradability", "provider_contract_mapping", "contract_reference", "underlying_bar",
-    "fit_sample", "calendar_descriptor", "model_membership", "tuning_membership", "calibration_partition", "calibration_record", "activation_gap", "evaluation_block",
+    "fit_sample", "calendar_descriptor", "model_membership", "tuning_membership", "calibration_partition", "calibration_record", "activation_gap", "evaluation_block", "bundle_validation",
 )
 _TICK_DEFINITIONS = (("fixture-usd-premium-tick-v1", "1"),)
 _COHERENCE_PROTOCOLS = (
@@ -127,6 +127,7 @@ _UNITS = {
     "calibration_record": {},
     "activation_gap": {},
     "evaluation_block": {},
+    "bundle_validation": {},
 }
 
 
@@ -506,7 +507,7 @@ def _profiles(
             "new_evidence_id_per_update"
             if kind == "quote_coherence"
             else "provider_record_id_and_revision_id" if kind == "underlying_bar"
-            else "new_event_id_per_update" if kind in ("provider_contract_mapping", "volume_partition", "feature_normalization", "account_snapshot", "model_bundle", "fit_sample", "calendar_descriptor", "model_membership", "tuning_membership", "calibration_partition", "calibration_record", "activation_gap", "evaluation_block")
+            else "new_event_id_per_update" if kind in ("provider_contract_mapping", "volume_partition", "feature_normalization", "account_snapshot", "model_bundle", "fit_sample", "calendar_descriptor", "model_membership", "tuning_membership", "calibration_partition", "calibration_record", "activation_gap", "evaluation_block", "bundle_validation")
             else "new_provider_record_id_per_update"
         )
         for name, expected in (
@@ -637,7 +638,7 @@ def _envelope(
         "volume_partition", "feature_normalization", "account_snapshot", "model_bundle",
         "quote_coherence", "tick_rule", "exchange_session", "instrument_tradability",
         "provider_contract_mapping", "contract_reference",
-        "fit_sample", "calendar_descriptor", "model_membership", "tuning_membership", "calibration_partition", "calibration_record", "activation_gap", "evaluation_block",
+        "fit_sample", "calendar_descriptor", "model_membership", "tuning_membership", "calibration_partition", "calibration_record", "activation_gap", "evaluation_block", "bundle_validation",
     ):
         for name in ("contract", "metadata"):
             if envelope[name] is not None:
