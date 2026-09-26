@@ -33,6 +33,8 @@ def available(record):
     fixed = record.startswith("fixed-")
     names = ["p14c2-sources-v1", "p14c2-calendar-v1", "p14b-schedule-v1",
              "p14b1b-assembly-v1", "p11-feature-vector-v1"]
+    if record.startswith("cash-risk-"):
+        names.append("p16b-risk-state-v1")
     norm = None
     if fixed:
         names = ["p14c-partition-samples-v1", "p14c-partition-memberships-v1",

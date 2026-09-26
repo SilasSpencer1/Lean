@@ -40,15 +40,24 @@ def bundle() -> bytes:
                  ("cash-inconsistent", "cash-validation"),
                  ("cash-no-schedule", "cash-validation"),
                  ("cash-unknown-gap", "cash-validation"),
-                 ("cash-outside-gap", "cash-validation"))
+                 ("cash-outside-gap", "cash-validation"),
+                 ("cash-risk-corrupt", "cash-validation"),
+                 ("cash-risk-valid", "cash-validation"),
+                 ("cash-risk-other", "cash-validation"))
     for name, source in scenarios:
         old = next(member for member in prior.members if member.record_id == source).decode_raw_body()
         manifest = deepcopy(old["manifest"])
-        manifest.update(model_id=name, fixture_id=NAME, bundle_record_id=name,
+        manifest.update(model_id="cash-risk-path" if name in (
+            "cash-risk-corrupt", "cash-risk-valid") else name,
+            fixture_id=NAME, bundle_record_id=name,
                         runtime_binding=runtime_claim())
         if not any(row["fixture_id"] == market.fixture_id for row in manifest["data_manifest_hashes"]):
             manifest["data_manifest_hashes"].append(dict(role="source", fixture_id=market.fixture_id,
                                                          payload_sha256=market.payload_sha256))
+        if name.startswith("cash-risk-"):
+            account_source = admitted("p16b-risk-state-v1")
+            manifest["data_manifest_hashes"].append(dict(role="source", fixture_id=account_source.fixture_id,
+                                                          payload_sha256=account_source.payload_sha256))
         if name.startswith("fixed-"):
             binding = manifest["feature_binding"]
             if name == "fixed-empty-profiles":
@@ -69,7 +78,7 @@ def bundle() -> bytes:
                                                             profile_id=profile_id))
         provenance = manifest["provenance"]
         provenance["built_at"] = datetime.now(timezone.utc).isoformat()
-        if name != "cash-inconsistent":
+        if name not in ("cash-inconsistent", "cash-risk-corrupt"):
             provenance["simulated_available_at"] = "2026-09-01T01:00:00Z"
         if name.startswith("fixed-") and name != "fixed-bad-delay":
             provenance["simulated_schedule"].update(fit_delay_us=10800000000,

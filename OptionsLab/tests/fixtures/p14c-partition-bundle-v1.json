@@ -1,5 +1,5 @@
 {
-  "assembled_at": "2026-09-26T04:19:44.600021+00:00",
+  "assembled_at": "2026-09-26T04:58:57.972792+00:00",
   "definitions": {
     "coherence_protocol_ids": [],
     "greek_method": {
@@ -72,7 +72,7 @@
             },
             {
               "fixture_id": "p14c-partition-v1",
-              "payload_sha256": "8fa0891a87f5689179b891ca9e849d301d39f3d6caa74421dc48e247452cc523",
+              "payload_sha256": "7d21c5ee4dcf563f699f5d35163165e378804e4322f77d3c4ac8cf98ba2f59ca",
               "role": "calibration"
             },
             {
@@ -147,7 +147,7 @@
             },
             "calibration_partition": {
               "fixture_id": "p14c-partition-v1",
-              "payload_sha256": "8fa0891a87f5689179b891ca9e849d301d39f3d6caa74421dc48e247452cc523",
+              "payload_sha256": "7d21c5ee4dcf563f699f5d35163165e378804e4322f77d3c4ac8cf98ba2f59ca",
               "raw_hash": "34e7bd02300884ef0d581afed7a904beb9fc64a13aa735b66dc566617917ebc1",
               "record_id": "partition"
             },
@@ -176,7 +176,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T04:19:44.598238+00:00",
+            "built_at": "2026-09-26T04:58:57.970910+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-30T22:00:00+00:00",
@@ -190,7 +190,7 @@
               "final",
               0
             ],
-            "implementation_digest": "38e6ce76070c99028399f52c81a0f3cca382c92e8bbe93840fd71c3ff4d8e908",
+            "implementation_digest": "2d88236a6f39131e72e681c254d8e99295b872e5d2070288a24ca7799874e8c6",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -203,7 +203,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "2f1ca3c3be531f083a2c70b7fb1f7d603fad37d07342126008eebcbe45af0183",
+      "raw_hash": "70fb8eebbbc8eabf15b4e415e3b5ee222338e08f28c2f3a8daa918e5e054435f",
       "record_id": "fixed-partition"
     },
     {
@@ -263,7 +263,7 @@
             },
             {
               "fixture_id": "p14c-partition-v1",
-              "payload_sha256": "8fa0891a87f5689179b891ca9e849d301d39f3d6caa74421dc48e247452cc523",
+              "payload_sha256": "7d21c5ee4dcf563f699f5d35163165e378804e4322f77d3c4ac8cf98ba2f59ca",
               "role": "calibration"
             },
             {
@@ -338,7 +338,7 @@
             },
             "calibration_partition": {
               "fixture_id": "p14c-partition-v1",
-              "payload_sha256": "8fa0891a87f5689179b891ca9e849d301d39f3d6caa74421dc48e247452cc523",
+              "payload_sha256": "7d21c5ee4dcf563f699f5d35163165e378804e4322f77d3c4ac8cf98ba2f59ca",
               "raw_hash": "34e7bd02300884ef0d581afed7a904beb9fc64a13aa735b66dc566617917ebc1",
               "record_id": "partition"
             },
@@ -367,7 +367,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T04:19:44.598238+00:00",
+            "built_at": "2026-09-26T04:58:57.970910+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-30T22:00:00+00:00",
@@ -381,7 +381,7 @@
               "final",
               0
             ],
-            "implementation_digest": "38e6ce76070c99028399f52c81a0f3cca382c92e8bbe93840fd71c3ff4d8e908",
+            "implementation_digest": "2d88236a6f39131e72e681c254d8e99295b872e5d2070288a24ca7799874e8c6",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -394,7 +394,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "e47342f9cf82138b7a8b4f9a16be72567268dc14409e16f417695a8d4ededc51",
+      "raw_hash": "bfba988f1e507460e4e193218a8a9152dc2d871d3b85eec6d26c5658283615a9",
       "record_id": "mismatched-direct"
     },
     {
@@ -454,7 +454,7 @@
             },
             {
               "fixture_id": "p14c-partition-v1",
-              "payload_sha256": "8fa0891a87f5689179b891ca9e849d301d39f3d6caa74421dc48e247452cc523",
+              "payload_sha256": "7d21c5ee4dcf563f699f5d35163165e378804e4322f77d3c4ac8cf98ba2f59ca",
               "role": "calibration"
             },
             {
@@ -529,7 +529,7 @@
             },
             "calibration_partition": {
               "fixture_id": "p14c-partition-v1",
-              "payload_sha256": "8fa0891a87f5689179b891ca9e849d301d39f3d6caa74421dc48e247452cc523",
+              "payload_sha256": "7d21c5ee4dcf563f699f5d35163165e378804e4322f77d3c4ac8cf98ba2f59ca",
               "raw_hash": "8cec9808c402c9ddb8248d2c31f54e7fb55b9cdf4947fc5db1025a859c2d44b7",
               "record_id": "over-population"
             },
@@ -558,7 +558,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T04:19:44.598238+00:00",
+            "built_at": "2026-09-26T04:58:57.970910+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-30T22:00:00+00:00",
@@ -572,7 +572,7 @@
               "final",
               0
             ],
-            "implementation_digest": "38e6ce76070c99028399f52c81a0f3cca382c92e8bbe93840fd71c3ff4d8e908",
+            "implementation_digest": "2d88236a6f39131e72e681c254d8e99295b872e5d2070288a24ca7799874e8c6",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -585,7 +585,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "9464aab46cc9dd4666e4d212e11641e2414cce15780620ab6ef81ec05f289c2a",
+      "raw_hash": "72f21f1d16868c8e234b05497344cb4c47ae6578a91cf31d066109c80bd86c53",
       "record_id": "over-population"
     },
     {
@@ -645,7 +645,7 @@
             },
             {
               "fixture_id": "p14c-partition-v1",
-              "payload_sha256": "8fa0891a87f5689179b891ca9e849d301d39f3d6caa74421dc48e247452cc523",
+              "payload_sha256": "7d21c5ee4dcf563f699f5d35163165e378804e4322f77d3c4ac8cf98ba2f59ca",
               "role": "calibration"
             },
             {
@@ -720,7 +720,7 @@
             },
             "calibration_partition": {
               "fixture_id": "p14c-partition-v1",
-              "payload_sha256": "8fa0891a87f5689179b891ca9e849d301d39f3d6caa74421dc48e247452cc523",
+              "payload_sha256": "7d21c5ee4dcf563f699f5d35163165e378804e4322f77d3c4ac8cf98ba2f59ca",
               "raw_hash": "34e7bd02300884ef0d581afed7a904beb9fc64a13aa735b66dc566617917ebc1",
               "record_id": "partition"
             },
@@ -749,7 +749,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T04:19:44.598238+00:00",
+            "built_at": "2026-09-26T04:58:57.970910+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-30T22:00:00+00:00",
@@ -763,7 +763,7 @@
               "final",
               0
             ],
-            "implementation_digest": "38e6ce76070c99028399f52c81a0f3cca382c92e8bbe93840fd71c3ff4d8e908",
+            "implementation_digest": "2d88236a6f39131e72e681c254d8e99295b872e5d2070288a24ca7799874e8c6",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -776,7 +776,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "23f2ec471459b436d005591674b58d0ee14007a718189dc40b921f47e986bb1c",
+      "raw_hash": "0012e451fa3ed364c4b388b92497a42269bd45680ca2ec98cfb5997b10130d07",
       "record_id": "mismatched-threshold"
     }
   ],

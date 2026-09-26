@@ -70,6 +70,14 @@ from .calibration_support import CalibrationAssessment, assess_calibration
 from .bundle_availability import BundleAssessment, assess_bundle
 from .bundle_activation import ActivationSelection, choose_bundle_activation
 from .decision import Forecast, ScoredCandidate, DecisionResult, FixedJsonPredictor
+from .risk import (
+    HaltEntry,
+    HaltState,
+    RiskState,
+    RiskAdvanceError,
+    start_risk_state,
+    advance_risk_state,
+)
 from .risk_inputs import (
     RiskControlEvent,
     RiskControlValidation,
@@ -270,6 +278,12 @@ from .volume_normalization import (
 )
 
 __all__ = [
+    "HaltEntry",
+    "HaltState",
+    "RiskState",
+    "RiskAdvanceError",
+    "start_risk_state",
+    "advance_risk_state",
     "CalibrationAssessment",
     "assess_calibration",
     "BundleAssessment",
