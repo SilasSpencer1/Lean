@@ -69,6 +69,7 @@ from .calibration import (
 from .calibration_support import CalibrationAssessment, assess_calibration
 from .bundle_availability import BundleAssessment, assess_bundle
 from .bundle_activation import ActivationSelection, choose_bundle_activation
+from .decision import Forecast, ScoredCandidate, DecisionResult, FixedJsonPredictor
 from .bundle_schedule import (
     ActivationGap,
     ActivationGapValidation,
@@ -268,6 +269,10 @@ __all__ = [
     "assess_bundle",
     "ActivationSelection",
     "choose_bundle_activation",
+    "Forecast",
+    "ScoredCandidate",
+    "DecisionResult",
+    "FixedJsonPredictor",
     "ActivationGap",
     "ActivationGapValidation",
     "EvaluationBlock",
