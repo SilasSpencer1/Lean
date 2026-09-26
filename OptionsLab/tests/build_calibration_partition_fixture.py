@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 import sys
 
-from build_calibration_inputs_fixture import admitted, add, base, profile, reference, GENERATOR
+from build_calibration_inputs_fixture import admitted, add, base, profile, reference, runtime_claim, GENERATOR
 from build_fixture import _payload_bytes
 from options_lab.bundle_inputs import normalize_model_bytes
 from options_lab.bundle_manifest_inputs import normalize_bundle_manifest
@@ -186,6 +186,7 @@ def bundle():
         for name in (NAMES[0], NAMES[1], NAMES[2], "p14c-fit-sources-v1",
                      "p14c-fit-membership-v1", "p11-feature-vector-v1"))
     manifest.update(fixture_id=NAMES[3], bundle_record_id="fixed-partition", model_id="fixed-partition")
+    manifest["runtime_binding"] = runtime_claim()
     manifest["prediction_contract"].update(
         model_membership=reference(memberships, next(m for m in memberships.members if m.record_id == "model")),
         tuning_membership=reference(memberships, next(m for m in memberships.members if m.record_id == "tuning")),

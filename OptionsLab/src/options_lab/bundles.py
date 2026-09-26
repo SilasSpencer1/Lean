@@ -9,11 +9,12 @@ from .admission import (FixtureInputRejection, VerifiedFixtureManifest, Verified
                         _canonical_bytes, verify_fixture_bundle)
 from .bar_inputs import _UnsupportedIdentity
 from .bundle_inputs import BundleInputRejection, ParsedModelData, _make, _shape, normalize_model_bytes
-from .bundle_manifest_inputs import ModelBundleManifest, QualifiedProfile, normalize_bundle_manifest
+from .bundle_manifest_inputs import ModelBundleManifest, QualifiedProfile, _reference, normalize_bundle_manifest
 from .candidates import SELECTION_RULE_ID, _selection_definition_snapshot
 from .calibration_inputs import (CalibrationInputRejection, FitMembership,
-                                 _retained_fixture_shape, normalize_fit_membership)
-from .calibration import CalibrationPartition, _normalization_shape, normalize_calibration_partition
+                                 _MAX_BODY, _retained_fixture_shape, normalize_fit_membership)
+from .calibration import (CalibrationMetadata, CalibrationPartition, _normalization_shape,
+                          normalize_calibration_metadata, normalize_calibration_partition)
 from .config import StrategyConfig, _snapshot_hash, config_hash, config_snapshot, policy_hash
 from .feature_math import NUMERIC_CONVENTION_ID, _numeric_snapshot
 from .feature_vector import FeatureSpec, EXACT_VWAP_SPEC, CLOSE_VOLUME_PROXY_SPEC
@@ -72,6 +73,7 @@ class VerifiedBundle:
     model_membership: FitMembership | None
     tuning_membership: FitMembership | None
     calibration_partition: CalibrationPartition | None
+    calibration_metadata: CalibrationMetadata | None
     origin: str = field(default="synthetic", init=False)
     fidelity_tier: int = field(default=0, init=False)
     permitted_use: str = field(default="core_fixture", init=False)
@@ -186,6 +188,9 @@ def _member(manifest, record_id, kind, raw_hash=None):
     member = next((m for m in manifest.members if m.record_id == record_id), None)
     _check(member is not None, "member", "unknown_member")
     _check(member.kind == kind, "member", "kind_mismatch")
+    if kind in ("calibration_record", "calibration_partition", "model_membership",
+                "tuning_membership", "calendar_descriptor", "fit_sample"):
+        _check(len(member.raw_body_bytes) <= _MAX_BODY, "member", "resource_limit")
     _check(hashlib.sha256(member.raw_body_bytes).hexdigest() == member.raw_hash,
            "member", "raw_hash_mismatch")
     _check(raw_hash is None or member.raw_hash == raw_hash, "member", "raw_hash_mismatch")
@@ -237,8 +242,6 @@ def _declared_roots(manifest, roots, normalization):
     refs = [("validation_report", manifest.validation_report),
             ("provenance.evaluation_block", manifest.provenance.evaluation_block),
             ("provenance.activation_gap", manifest.provenance.activation_gap)]
-    if manifest.prediction_contract is not None:
-        refs.append(("prediction_contract.calibration_record", manifest.prediction_contract.calibration_record))
     if manifest.provenance.simulated_schedule is not None:
         refs.extend(("provenance.simulated_schedule." + name, getattr(manifest.provenance.simulated_schedule, name))
                     for name in ("evaluation_block", "activation_gap"))
@@ -250,20 +253,27 @@ def _declared_roots(manifest, roots, normalization):
 def _memberships(manifest, model, roots):
     """Preflight the joint population, then bind direct and nested actual owners."""
     prediction = manifest.prediction_contract
-    claims = () if prediction is None else (("model", prediction.model_membership, "model_membership"),
-                                               ("tuning", prediction.tuning_membership, "tuning_membership"))
-    selected, bodies, traversed = {}, [], set()
-    for role, ref, kind in claims:
-        if ref is None:
-            continue
-        root = next((r for r in roots if r.fixture_id == ref.fixture_id), None)
-        _check(root is not None, "prediction_contract." + role + "_membership", "unknown_fixture")
-        _check(root.payload_sha256 == ref.payload_sha256, "prediction_contract." + role + "_membership", "payload_mismatch")
-        member = _member(root, ref.record_id, kind, ref.raw_hash)
-        body = member.decode_raw_body()
-        bodies.append((role, root, member, body))
-        traversed.add(root.fixture_id)
-    partition_ref = None if prediction is None else prediction.calibration_partition
+    record_ref = None if prediction is None else prediction.calibration_record
+    record_owner = record_member = None
+    if record_ref is not None:
+        record_owner = next((r for r in roots if r.fixture_id == record_ref.fixture_id), None)
+        _check(record_owner is not None, "prediction_contract.calibration_record", "unknown_fixture")
+        _check(record_owner.payload_sha256 == record_ref.payload_sha256,
+               "prediction_contract.calibration_record", "payload_mismatch")
+        record_member = _member(record_owner, record_ref.record_id, "calibration_record", record_ref.raw_hash)
+        record_body = record_member.decode_raw_body()
+        _check(type(record_body) is dict, "prediction_contract.calibration_record", "invalid_type")
+        traversed = {record_owner.fixture_id}
+        nested_ref = record_body.get("partition_ref")
+        _check(type(nested_ref) is dict, "prediction_contract.calibration_record", "invalid_type")
+        nested_ref = _reference(nested_ref, "prediction_contract.calibration_record.partition_ref", False)
+        if prediction.calibration_partition is not None:
+            _check(nested_ref == prediction.calibration_partition,
+                   "prediction_contract.calibration_partition", "counterpart_mismatch")
+    else:
+        record_body = nested_ref = None
+        traversed = set()
+    partition_ref = None if prediction is None else prediction.calibration_partition or nested_ref
     partition_body = None
     if partition_ref is not None:
         root = next((r for r in roots if r.fixture_id == partition_ref.fixture_id), None)
@@ -273,6 +283,21 @@ def _memberships(manifest, model, roots):
         partition_member = _member(root, partition_ref.record_id, "calibration_partition", partition_ref.raw_hash)
         partition_body = partition_member.decode_raw_body()
         _check(type(partition_body) is dict, "prediction_contract.calibration_partition", "invalid_type")
+        traversed.add(root.fixture_id)
+    claims = () if prediction is None else tuple((role, getattr(prediction, role + "_membership") or
+        (_reference(partition_body[role + "_membership_ref"], role + "_membership_ref", False)
+         if partition_body is not None and role + "_membership_ref" in partition_body else None),
+        role + "_membership") for role in ("model", "tuning"))
+    selected, bodies = {}, []
+    for role, ref, kind in claims:
+        if ref is None:
+            continue
+        root = next((r for r in roots if r.fixture_id == ref.fixture_id), None)
+        _check(root is not None, "prediction_contract." + role + "_membership", "unknown_fixture")
+        _check(root.payload_sha256 == ref.payload_sha256, "prediction_contract." + role + "_membership", "payload_mismatch")
+        member = _member(root, ref.record_id, kind, ref.raw_hash)
+        body = member.decode_raw_body()
+        bodies.append((role, root, member, body))
         traversed.add(root.fixture_id)
     occurrences = sum(len(body["sample_refs"]) for _, _, _, body in bodies
                       if type(body.get("sample_refs")) is list)
@@ -289,10 +314,10 @@ def _memberships(manifest, model, roots):
                "normalization_failed", result.rejection)
         selected[role] = result.value
         traversed.update(r.fixture_id for r in result.value.upstream_fixtures)
-    return selected.get("model"), selected.get("tuning"), traversed, partition_body
+    return selected.get("model"), selected.get("tuning"), traversed, partition_body, partition_ref, record_owner, record_member
 
 
-def _roles(manifest, normalization, model_membership, tuning_membership, partition):
+def _roles(manifest, normalization, model_membership, tuning_membership, partition, metadata):
     """Limit each declared role to its actually traversed owner roots."""
     training = set() if normalization is None else {normalization.baseline.manifest.fixture_id}
     tuning = set()
@@ -303,6 +328,8 @@ def _roles(manifest, normalization, model_membership, tuning_membership, partiti
     calibration = set() if partition is None else {partition.fixture.fixture_id}
     if partition is not None:
         calibration.update(ref.fixture_id for ref in partition.calibration_sample_refs)
+    if metadata is not None:
+        calibration.add(metadata.fixture.fixture_id)
     allowed = dict(training=training, tuning=tuning, normalization=set() if normalization is None else
                    {normalization.manifest.fixture_id}, calibration=calibration)
     for row in manifest.data_manifest_hashes:
@@ -310,14 +337,13 @@ def _roles(manifest, normalization, model_membership, tuning_membership, partiti
             _check(row.fixture_id in allowed[row.role], "data_manifest_hashes", "role_mismatch")
 
 
-def _partition(manifest, body, roots, model, spec, normalization, model_membership, tuning_membership):
+def _partition(manifest, body, ref, roots, model, spec, normalization, model_membership, tuning_membership):
     """Resolve all partition dependencies and compare direct claims to nested bytes."""
     if body is None:
         return None
     prediction = manifest.prediction_contract
     _check(model_membership is not None and tuning_membership is not None,
            "prediction_contract.calibration_partition", "missing_membership")
-    ref = prediction.calibration_partition
     owner = next(root for root in roots if root.fixture_id == ref.fixture_id)
     needed = set()
     for name in ("model_membership_ref", "tuning_membership_ref", "calendar_ref", "normalization_ref"):
@@ -349,8 +375,8 @@ def _partition(manifest, body, roots, model, spec, normalization, model_membersh
     _check(result.value is not None, "prediction_contract.calibration_partition",
            "normalization_failed", result.rejection)
     value = result.value
-    _check(value.model_membership_ref == prediction.model_membership
-           and value.tuning_membership_ref == prediction.tuning_membership
+    _check((prediction.model_membership is None or value.model_membership_ref == prediction.model_membership)
+           and (prediction.tuning_membership is None or value.tuning_membership_ref == prediction.tuning_membership)
            and value.model_membership.fixture.payload_sha256 == model_membership.fixture.payload_sha256
            and value.tuning_membership.fixture.payload_sha256 == tuning_membership.fixture.payload_sha256
            and value.model_membership.member.raw_body_bytes == model_membership.member.raw_body_bytes
@@ -526,10 +552,25 @@ def verify_bundle(manifest: ModelBundleManifest, model_bytes: bytes, *, fixture:
         _check(actual.model_kind == "cash" or normalization is not None, "normalization", "normalization_missing")
         used = _declared_roots(actual, roots, normalization)
         normalization_result, profiles = _features(actual, spec, normalization, roots)
-        model_membership, tuning_membership, traversed, partition_body = _memberships(actual, parsed.value, roots)
-        partition = _partition(actual, partition_body, roots, parsed.value, spec, normalization,
+        model_membership, tuning_membership, traversed, partition_body, partition_ref, record_owner, record_member = _memberships(actual, parsed.value, roots)
+        partition = _partition(actual, partition_body, partition_ref, roots, parsed.value, spec, normalization,
                                model_membership, tuning_membership)
-        _roles(actual, normalization, model_membership, tuning_membership, partition)
+        metadata = None
+        if record_member is not None:
+            supplied = (partition.fixture, *partition.upstream_fixtures)
+            result = normalize_calibration_metadata(record_member.decode_raw_body(), fixture=record_owner,
+                record_id=record_member.record_id, model=parsed.value, spec=spec,
+                normalization=normalization, upstream_fixtures=tuple(root for root in supplied
+                    if root.fixture_id != record_owner.fixture_id))
+            _check(result.value is not None, "prediction_contract.calibration_record",
+                   "normalization_failed", result.rejection)
+            metadata = result.value
+            _check(metadata.partition_ref == partition_ref and metadata.partition.member.raw_body_bytes == partition.member.raw_body_bytes
+                   and metadata.frozen_threshold_return == actual.prediction_contract.threshold_return
+                   and all(bucket.uncertainty_method_id == actual.prediction_contract.uncertainty_rule_id
+                           for bucket in metadata.buckets),
+                   "prediction_contract.calibration_record", "counterpart_mismatch")
+        _roles(actual, normalization, model_membership, tuning_membership, partition, metadata)
         used.update(traversed)
         if partition is not None:
             used.update(root.fixture_id for root in partition.upstream_fixtures)
@@ -543,7 +584,7 @@ def verify_bundle(manifest: ModelBundleManifest, model_bytes: bytes, *, fixture:
             config=config, spec=spec, supplied_normalization=normalization, normalization_result=normalization_result,
             upstream_fixtures=roots, supplied_upstream_fixtures=upstream_fixtures, source_profiles=profiles,
             model_membership=model_membership, tuning_membership=tuning_membership,
-            calibration_partition=partition,
+            calibration_partition=partition, calibration_metadata=metadata,
             origin=fresh.origin, fidelity_tier=fresh.fidelity_tier, permitted_use=fresh.permitted_use,
             operational_allowed=fresh.operational_allowed, economic_allowed=fresh.economic_allowed)
     except _BundleFailure as failure:

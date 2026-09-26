@@ -13,6 +13,7 @@ from options_lab.bundle_manifest_inputs import normalize_bundle_manifest
 from options_lab.volume_inputs import normalize_volume_partition, _declared_inputs
 from options_lab.volume import fit_volume_baseline
 from options_lab.volume_normalization import normalize_feature_normalization
+from options_lab.runtime import measure_runtime
 
 
 FOLDER = Path(__file__).parent / "fixtures"
@@ -27,6 +28,21 @@ APRIL = ("01", "02", "06", "07", "08", "09", "10", "13", "14", "15", "16", "17",
 FIT_START, FIT_END = date(2026, 5, 4), date(2026, 9, 30)
 HOLIDAYS = {date(2026, 5, 25), date(2026, 6, 19), date(2026, 7, 3), date(2026, 9, 7)}
 SIMULATED = "2026-09-30T22:00:00Z"
+
+
+def runtime_claim():
+    """Read the current code and environment identity for runtime-bound bundle fixtures.
+
+    :returns: Exact manifest runtime claim.
+    :raises AssertionError: If the actual runtime cannot be measured.
+    """
+    runtime = measure_runtime().value
+    assert runtime is not None
+    claim = {name: getattr(runtime, name) for name in ("implementation_scheme", "implementation_digest",
+        "python_implementation", "exact_python_version", "requires_python", "runtime_dependencies",
+        "runtime_contract_digest")}
+    claim.update(exact_python_version=list(runtime.exact_python_version), runtime_dependencies=[])
+    return claim
 
 
 def profile(kind, source, stream, *, units=None):

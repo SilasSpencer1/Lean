@@ -9,7 +9,7 @@ from ._input_parsing import _InvalidInput, _parse_date
 from .admission import VerifiedFixtureManifest, _canonical_bytes
 from .bar_inputs import _timestamp_string, _UnsupportedIdentity
 from .bundle_inputs import ModelDataRow, ParsedModelData, _decimal, _identifier, _make, _shape, normalize_model_bytes
-from .bundle_manifest_inputs import ExternalReference, _one, _reference, _timestamp
+from .bundle_manifest_inputs import ExternalReference, _list, _one, _reference, _timestamp
 from .calibration_inputs import (CalendarDescriptor, FitMembership, CalibrationMember, _Failure, _body,
     _body_size, _check, _own_member, _receipt, _refs, _rejected, _resolve, _roots, _sample,
     _trusted, _MAX_BODY, normalize_calendar_descriptor, normalize_fit_membership)
@@ -372,3 +372,197 @@ def normalize_calibration_partition(raw: object, *, fixture: VerifiedFixtureMani
     except (_InvalidInput, _Failure, _UnsupportedIdentity, MemoryError, RecursionError) as failure:
         return _rejected(CalibrationPartitionValidation, "calibration_partition", fixture, reached, failure)
     return _make(CalibrationPartitionValidation, value=value, rejection=None)
+
+
+_METADATA_FIELDS = ("schema_version", "calibration_id", "partition_ref", "model_hash",
+    "frozen_threshold_return", "bucket_rule_id", "available_at", "buckets")
+_BUCKET_FIELDS = ("bucket_id", "member_refs", "two_session_blocks", "penalty",
+    "uncertainty_method_id", "modeled_estimator_status")
+_ESTIMATOR_STATUSES = ("finite_nondegenerate", "degenerate", "nonfinite", "unknown", "not_performed")
+_FIXED_METHOD = "fixture_fixed_penalty_v1"
+
+
+@dataclass(frozen=True, init=False)
+class CalibrationBucket:
+    """This class represents one actual assigned tail population and declared fixed penalty."""
+
+    bucket_id: str
+    member_refs: tuple[ExternalReference, ...]
+    two_session_blocks: tuple[tuple[date, date], ...]
+    penalty: Decimal | None
+    uncertainty_method_id: str
+    modeled_estimator_status: str
+    statistical_status: str
+    statistical_readiness: bool
+
+    def __init__(self) -> None:
+        """Block caller-selected bucket evidence.
+
+        :returns: None.
+        :raises TypeError: Always; use normalize_calibration_metadata.
+        """
+        raise TypeError("CalibrationBucket values come from normalization")
+
+    def snapshot(self) -> dict[str, object]:
+        """Return every declared bucket fact and the separate actual statistical state.
+
+        :returns: A fresh bucket snapshot.
+        """
+        return dict(bucket_id=self.bucket_id, member_refs=[ref.snapshot() for ref in self.member_refs],
+            two_session_blocks=[[day.isoformat() for day in pair] for pair in self.two_session_blocks],
+            penalty=None if self.penalty is None else str(self.penalty),
+            uncertainty_method_id=self.uncertainty_method_id,
+            modeled_estimator_status=self.modeled_estimator_status,
+            statistical_status=self.statistical_status, statistical_readiness=self.statistical_readiness)
+
+
+@dataclass(frozen=True, init=False)
+class CalibrationMetadata:
+    """This class represents one actual registered calibration record and its resolved partition."""
+
+    calibration_id: str
+    partition_ref: ExternalReference
+    model_hash: str
+    frozen_threshold_return: Decimal | None
+    bucket_rule_id: str
+    available_at: datetime
+    buckets: tuple[CalibrationBucket, ...]
+    partition: CalibrationPartition
+    fixture: VerifiedFixtureManifest
+    member: object
+    upstream_fixtures: tuple[VerifiedFixtureManifest, ...]
+    statistical_status: str
+    statistical_readiness: bool
+    content_hash: str
+
+    def __init__(self) -> None:
+        """Block caller-selected record evidence.
+
+        :returns: None.
+        :raises TypeError: Always; use normalize_calibration_metadata.
+        """
+        raise TypeError("CalibrationMetadata values come from normalization")
+
+    def snapshot(self) -> dict[str, object]:
+        """Return all normalized facts, including the resolved partition, without this containing root.
+
+        :returns: A fresh source-bound record snapshot.
+        """
+        return dict(record_kind="options_lab.calibration_record", schema_version=1,
+            calibration_id=self.calibration_id, partition_ref=self.partition_ref.snapshot(),
+            model_hash=self.model_hash,
+            frozen_threshold_return=None if self.frozen_threshold_return is None else str(self.frozen_threshold_return),
+            bucket_rule_id=self.bucket_rule_id, available_at=_timestamp_string(self.available_at),
+            buckets=[bucket.snapshot() for bucket in self.buckets], partition=self.partition.snapshot(),
+            statistical_status=self.statistical_status, statistical_readiness=self.statistical_readiness)
+
+
+@dataclass(frozen=True, init=False)
+class CalibrationMetadataValidation:
+    """This class represents an admitted actual calibration record or a safe rejection."""
+
+    value: CalibrationMetadata | None
+    rejection: object | None
+
+    def __init__(self) -> None:
+        """Block caller-selected outcomes.
+
+        :returns: None.
+        :raises TypeError: Always; use normalize_calibration_metadata.
+        """
+        raise TypeError("CalibrationMetadataValidation values come from normalization")
+
+
+def normalize_calibration_metadata(raw: object, *, fixture: VerifiedFixtureManifest, record_id: str,
+                                   model: ParsedModelData, spec: FeatureSpec,
+                                   normalization: FeatureNormalization,
+                                   upstream_fixtures: tuple[VerifiedFixtureManifest, ...] = ()) -> CalibrationMetadataValidation:
+    """Resolve an actual registered record through the complete partition owner.
+
+    :param    raw:                Exact untrusted calibration record body.
+    :param    fixture:            Actual containing P08 root.
+    :param    record_id:          Trusted containing record identifier.
+    :param    model:              Inspected original fixed model bytes.
+    :param    spec:               Actual code-owned feature definition.
+    :param    normalization:      Actual P10 artifact and training owner.
+    :param    upstream_fixtures:  Referenced actual partition and source roots.
+    :returns:                     Exclusive immutable metadata or safe reached rejection.
+    :raises   TypeError:         If a trusted owner has an unexpected exact type.
+    :raises   ValueError:        If the trusted record identifier is empty.
+    """
+    _trusted(fixture, record_id, upstream_fixtures)
+    if type(model) is not ParsedModelData or type(spec) is not FeatureSpec or type(normalization) is not FeatureNormalization:
+        raise TypeError("model, spec and normalization require exact A1, feature and P10 owners")
+    reached = None
+    try:
+        _check(_normalization_shape(normalization), "normalization", "retained_content_mismatch")
+        _shape(raw, "$", _METADATA_FIELDS)
+        _one(raw["schema_version"], "schema_version")
+        calibration_id = _identifier(raw["calibration_id"], "calibration_id")
+        partition_ref = _reference(raw["partition_ref"], "partition_ref", False)
+        model_hash = _identifier(raw["model_hash"], "model_hash")
+        bucket_rule_id = _identifier(raw["bucket_rule_id"], "bucket_rule_id")
+        threshold = None if raw["frozen_threshold_return"] is None else _decimal(raw["frozen_threshold_return"], "frozen_threshold_return")
+        available_at = _timestamp(raw["available_at"], "available_at")
+        declarations = _list(raw["buckets"], "buckets", 2)
+        parsed = []
+        count = 0
+        for index, item in enumerate(declarations):
+            path = f"buckets.{index}"
+            _shape(item, path, _BUCKET_FIELDS)
+            bucket_id = _identifier(item["bucket_id"], path + ".bucket_id")
+            refs = _refs(item["member_refs"], path + ".member_refs", 4096)
+            count += len(refs)
+            _check(count <= 4096, "buckets.member_refs", "resource_limit")
+            blocks = []
+            for j, pair in enumerate(_list(item["two_session_blocks"], path + ".two_session_blocks", 2048)):
+                _check(type(pair) is list and len(pair) == 2, path + f".two_session_blocks.{j}", "invalid_shape")
+                blocks.append(tuple(_parse_date(day, path + f".two_session_blocks.{j}") for day in pair))
+            penalty = None if item["penalty"] is None else _decimal(item["penalty"], path + ".penalty")
+            _check(penalty is None or penalty >= 0, path + ".penalty", "invalid_value")
+            method = _identifier(item["uncertainty_method_id"], path + ".uncertainty_method_id")
+            status = _identifier(item["modeled_estimator_status"], path + ".modeled_estimator_status")
+            _check(method == _FIXED_METHOD and status in _ESTIMATOR_STATUSES,
+                   path, "unsupported_claim")
+            parsed.append((bucket_id, refs, tuple(blocks), penalty, method, status))
+        _check(_body_size(raw) <= _MAX_BODY, "$", "resource_limit")
+        roots = _roots(fixture, upstream_fixtures)
+        own = _own_member(roots[fixture.fixture_id], record_id, ("calibration_record",))
+        reached = own
+        _body(raw, own)
+        partition_root, partition_member = _resolve(partition_ref, roots, "calibration_partition")
+        supplied = tuple(root for root in roots.values()
+                         if root.fixture_id not in (fixture.fixture_id, partition_root.fixture_id))
+        result = normalize_calibration_partition(partition_member.decode_raw_body(), fixture=partition_root,
+            record_id=partition_member.record_id, model=model, spec=spec,
+            normalization=normalization, upstream_fixtures=supplied)
+        _check(result.value is not None, "partition_ref", "normalization_failed", result.rejection)
+        partition = result.value
+        _check(model_hash == model.model_hash == partition.model_hash
+               and bucket_rule_id == BUCKET_RULE_ID == partition.bucket_rule_id
+               and threshold == partition.frozen_threshold_return,
+               "binding", "counterpart_mismatch")
+        expected_ids = tuple(row.calibration_bucket for row in model.rows)
+        _check(len(expected_ids) == len(set(expected_ids)) == len(parsed) == 2,
+               "buckets", "bucket_mismatch")
+        complete = tuple(pair for pair in partition.session_pairs if len(pair) == 2)
+        buckets = []
+        for bucket_id, refs, blocks, penalty, method, status in parsed:
+            _check(bucket_id in expected_ids and bucket_id not in {b.bucket_id for b in buckets},
+                   "buckets.bucket_id", "bucket_mismatch")
+            expected = tuple(ref for ref, member in zip(partition.calibration_sample_refs, partition.calibration_members)
+                             if member.bucket_id == bucket_id)
+            _check(refs == expected and blocks == complete, "buckets", "population_mismatch")
+            buckets.append(_make(CalibrationBucket, bucket_id=bucket_id, member_refs=refs,
+                two_session_blocks=blocks, penalty=penalty, uncertainty_method_id=method,
+                modeled_estimator_status=status, statistical_status="not_performed", statistical_readiness=False))
+        value = _make(CalibrationMetadata, calibration_id=calibration_id, partition_ref=partition_ref,
+            model_hash=model_hash, frozen_threshold_return=threshold, bucket_rule_id=bucket_rule_id,
+            available_at=available_at, buckets=tuple(buckets), partition=partition,
+            fixture=roots[fixture.fixture_id], member=own,
+            upstream_fixtures=tuple(root for root in roots.values() if root.fixture_id != fixture.fixture_id),
+            statistical_status="not_performed", statistical_readiness=False, content_hash="")
+        object.__setattr__(value, "content_hash", _snapshot_hash(value.snapshot()))
+    except (_InvalidInput, _Failure, _UnsupportedIdentity, MemoryError, RecursionError) as failure:
+        return _rejected(CalibrationMetadataValidation, "calibration_metadata", fixture, reached, failure)
+    return _make(CalibrationMetadataValidation, value=value, rejection=None)
