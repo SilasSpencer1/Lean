@@ -71,6 +71,7 @@ from .bundle_availability import BundleAssessment, assess_bundle
 from .bundle_activation import ActivationSelection, choose_bundle_activation
 from .decision import Forecast, ScoredCandidate, DecisionResult, FixedJsonPredictor
 from .entry_intent import TradeIntent, derive_trade_intent
+from .exits import ExitEvidence, ExitInstruction, observe_exit_inputs, evaluate_exit
 from .risk import (
     HaltEntry,
     HaltState,
@@ -282,6 +283,10 @@ from .volume_normalization import (
 )
 
 __all__ = [
+    "ExitEvidence",
+    "ExitInstruction",
+    "observe_exit_inputs",
+    "evaluate_exit",
     "TradeIntent",
     "derive_trade_intent",
     "HaltEntry",

@@ -1,5 +1,5 @@
 {
-  "assembled_at": "2026-09-26T06:02:00.207953+00:00",
+  "assembled_at": "2026-09-26T06:40:03.853105+00:00",
   "definitions": {
     "coherence_protocol_ids": [],
     "greek_method": {
@@ -87,27 +87,27 @@
             },
             {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "dff51ebb39ed71a17e139bccab4de33acd2a605d35a9e62e24f1b9b3f42845f3",
+              "payload_sha256": "95bb1da6d6a1b526bddc3ed9052176005dcb1a74648dc5969a9475269ce6f1bf",
               "role": "source"
             },
             {
               "fixture_id": "p15-decision-partition-v1",
-              "payload_sha256": "c0684da6075f772d150592d262c4c6943617c4787c7f0132214a5f4a10dd9694",
+              "payload_sha256": "a612d6c51feab615b2a70b3b28422d646bfd9e86b39843a3bf8f06e98d3bc7e7",
               "role": "calibration"
             },
             {
               "fixture_id": "p15-decision-record-v1",
-              "payload_sha256": "35d01b89508a49e14795991740051088c0782dc41e8fbba488374173b8500fa9",
+              "payload_sha256": "b07d1f6fe4484e4d5f9307650be38823ec99504a6591729896b78570a1112163",
               "role": "calibration"
             },
             {
               "fixture_id": "p15-decision-report-v1",
-              "payload_sha256": "7332c8b040d93906dc170d98ed8c58ce32febbcd1403d618aa6afd7b51b7de8a",
+              "payload_sha256": "da032a43601491ab68eddc9dbe0034249a1f022df5b043a744efe195ce067356",
               "role": "source"
             },
             {
               "fixture_id": "p15-decision-schedule-v1",
-              "payload_sha256": "6c4082d5688e0118c462623c7a65d441faed87ceda63eab5089fb0796ce37d81",
+              "payload_sha256": "0f036ee04cf5f2171b1a6ee2d5d5e847826f06fd1b2f0f9159fe0e75678ab70d",
               "role": "source"
             },
             {
@@ -395,8 +395,8 @@
             "calibration_partition": null,
             "calibration_record": {
               "fixture_id": "p15-decision-record-v1",
-              "payload_sha256": "35d01b89508a49e14795991740051088c0782dc41e8fbba488374173b8500fa9",
-              "raw_hash": "8b23f9ff90a0c419b9ccdfd2277a39954d1ade82ef1c3ed5f7f094c079aea7b6",
+              "payload_sha256": "b07d1f6fe4484e4d5f9307650be38823ec99504a6591729896b78570a1112163",
+              "raw_hash": "525f4d859551f9581aceb47cb53b868a96895ed7484479477ba4651307ddaff9",
               "record_id": "call"
             },
             "capital_basis_rule": "100_times_original_decision_ask_cap",
@@ -413,16 +413,16 @@
             "activated_at": null,
             "activation_gap": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "dff51ebb39ed71a17e139bccab4de33acd2a605d35a9e62e24f1b9b3f42845f3",
+              "payload_sha256": "95bb1da6d6a1b526bddc3ed9052176005dcb1a74648dc5969a9475269ce6f1bf",
               "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
               "record_id": "gap"
             },
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T06:02:00.206607+00:00",
+            "built_at": "2026-09-26T06:40:03.851972+00:00",
             "evaluation_block": {
               "fixture_id": "p15-decision-schedule-v1",
-              "payload_sha256": "6c4082d5688e0118c462623c7a65d441faed87ceda63eab5089fb0796ce37d81",
-              "raw_hash": "b7d6d4e8bfc6b148490bec431119d0b70ba50d04a61db115f58a52a523d04473",
+              "payload_sha256": "0f036ee04cf5f2171b1a6ee2d5d5e847826f06fd1b2f0f9159fe0e75678ab70d",
+              "raw_hash": "cd91c0a8497e5f9508a7625736a480ee68ddf68c8d4643830b37478c8fd52b21",
               "record_id": "call"
             },
             "promoted_at": null,
@@ -430,15 +430,15 @@
             "simulated_schedule": {
               "activation_gap": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "dff51ebb39ed71a17e139bccab4de33acd2a605d35a9e62e24f1b9b3f42845f3",
+                "payload_sha256": "95bb1da6d6a1b526bddc3ed9052176005dcb1a74648dc5969a9475269ce6f1bf",
                 "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
                 "record_id": "gap"
               },
               "deployment_delay_us": 0,
               "evaluation_block": {
                 "fixture_id": "p15-decision-schedule-v1",
-                "payload_sha256": "6c4082d5688e0118c462623c7a65d441faed87ceda63eab5089fb0796ce37d81",
-                "raw_hash": "b7d6d4e8bfc6b148490bec431119d0b70ba50d04a61db115f58a52a523d04473",
+                "payload_sha256": "0f036ee04cf5f2171b1a6ee2d5d5e847826f06fd1b2f0f9159fe0e75678ab70d",
+                "raw_hash": "cd91c0a8497e5f9508a7625736a480ee68ddf68c8d4643830b37478c8fd52b21",
                 "record_id": "call"
               },
               "fit_cutoff": "2026-08-31T22:00:00+00:00",
@@ -456,7 +456,7 @@
               "final",
               0
             ],
-            "implementation_digest": "49d108be58da982991c5bdab8434a939908696bb6ea06379a18c168e95e5af7b",
+            "implementation_digest": "3a161c237932832de36f1d9aaa5bf1e6427e858ad3465c61402272cc8357a14d",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -466,15 +466,15 @@
           "seed": null,
           "validation_report": {
             "fixture_id": "p15-decision-report-v1",
-            "payload_sha256": "7332c8b040d93906dc170d98ed8c58ce32febbcd1403d618aa6afd7b51b7de8a",
-            "raw_hash": "221f6a778f0f1cc43b53c94e774d3ac7575c8c23c6a2a54bb824ba935502e961",
+            "payload_sha256": "da032a43601491ab68eddc9dbe0034249a1f022df5b043a744efe195ce067356",
+            "raw_hash": "4dc7fda4942220136a9ade158c7725efe0f4b741a78077d267e551126f3737e6",
             "record_id": "call"
           }
         },
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.08\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"0.04\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "46ce3800e4677e7b6a03ed5eccd42379859e087b27c0f9da609a8df4e84286b8",
+      "raw_hash": "741d3e743ddcd1c72d5298d7d0beb66bf44ba3fe9026c6080480768e9db07e3e",
       "record_id": "call"
     }
   ],
