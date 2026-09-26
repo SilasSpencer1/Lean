@@ -1,5 +1,5 @@
 {
-  "assembled_at": "2026-09-26T02:40:10.207388+00:00",
+  "assembled_at": "2026-09-26T03:05:55.176057+00:00",
   "definitions": {
     "coherence_protocol_ids": [],
     "greek_method": {
@@ -22,7 +22,7 @@
         "metadata": null,
         "raw_ref": "synthetic://calibration/cash-validation",
         "receive_sequence": null,
-        "simulated_received_at": "2026-09-26T02:40:10.123459+00:00",
+        "simulated_received_at": "2026-09-26T03:05:55.099810+00:00",
         "stream_id": "reports",
         "supersedes_record_id": null
       },
@@ -33,18 +33,18 @@
         "calibration_record_ref": null,
         "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
         "feature_schema_id": null,
-        "implementation_digest": "88f0a6bdee750a6a140c81dbadb77f9e25ad16e44be0041689f29216e3cabe9c",
+        "implementation_digest": "f5de6c618f2afd4509e53db3bb21e5cc1bee326520bdc4cdba59a2e01e1d9e6a",
         "method_id": "993b8c896d9d277c68c115e2a8ca110d884b3e32bd8ce41a20f13f224b84fc76",
         "model_hash": "b240254407fd6f4e0fa223fd85c472f8726199f01d4e65ff43b309b7ff3d7b16",
         "normalization_hash": null,
-        "performed_at": "2026-09-26T02:40:10.123459+00:00",
+        "performed_at": "2026-09-26T03:05:55.099810+00:00",
         "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
         "schema_version": 1,
         "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
         "transform_id": null,
         "validation_id": "cash-validation"
       },
-      "raw_hash": "6f72c13b18b604bb848a3ddaa75e3a03140ce8f5e43cb161cfa3f040f5fe2215",
+      "raw_hash": "231025a88e40f1df8943cb7f37f52d3860cfdc72b0c48212218c04d9a522693e",
       "record_id": "cash-validation"
     },
     {
@@ -54,7 +54,7 @@
         "metadata": null,
         "raw_ref": "synthetic://calibration/fixed-validation",
         "receive_sequence": null,
-        "simulated_received_at": "2026-09-26T02:40:10.206985+00:00",
+        "simulated_received_at": "2026-09-26T03:05:55.175714+00:00",
         "stream_id": "reports",
         "supersedes_record_id": null
       },
@@ -75,18 +75,18 @@
         },
         "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
         "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
-        "implementation_digest": "88f0a6bdee750a6a140c81dbadb77f9e25ad16e44be0041689f29216e3cabe9c",
+        "implementation_digest": "f5de6c618f2afd4509e53db3bb21e5cc1bee326520bdc4cdba59a2e01e1d9e6a",
         "method_id": "993b8c896d9d277c68c115e2a8ca110d884b3e32bd8ce41a20f13f224b84fc76",
         "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
         "normalization_hash": "5f96d88d4a0472619f8b321af3906af501ab9cde4821a81e84f0911955a72b2f",
-        "performed_at": "2026-09-26T02:40:10.206985+00:00",
+        "performed_at": "2026-09-26T03:05:55.175714+00:00",
         "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
         "schema_version": 1,
         "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
         "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621",
         "validation_id": "fixed-validation"
       },
-      "raw_hash": "8508c432a33bcd455f71f38c67727ba4b34ce5b8fda2b10a63aee523f49036a4",
+      "raw_hash": "bde9cbb2d0d2abccd76105310278f3c293c0914b767bbe762493c3ac5d4cbdbf",
       "record_id": "fixed-validation"
     },
     {
@@ -96,7 +96,7 @@
         "metadata": null,
         "raw_ref": "synthetic://calibration/bad-method",
         "receive_sequence": null,
-        "simulated_received_at": "2026-09-26T02:40:10.123459+00:00",
+        "simulated_received_at": "2026-09-26T03:05:55.099810+00:00",
         "stream_id": "reports",
         "supersedes_record_id": null
       },
@@ -107,18 +107,18 @@
         "calibration_record_ref": null,
         "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
         "feature_schema_id": null,
-        "implementation_digest": "88f0a6bdee750a6a140c81dbadb77f9e25ad16e44be0041689f29216e3cabe9c",
+        "implementation_digest": "f5de6c618f2afd4509e53db3bb21e5cc1bee326520bdc4cdba59a2e01e1d9e6a",
         "method_id": "0000000000000000000000000000000000000000000000000000000000000000",
         "model_hash": "b240254407fd6f4e0fa223fd85c472f8726199f01d4e65ff43b309b7ff3d7b16",
         "normalization_hash": null,
-        "performed_at": "2026-09-26T02:40:10.123459+00:00",
+        "performed_at": "2026-09-26T03:05:55.099810+00:00",
         "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
         "schema_version": 1,
         "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
         "transform_id": null,
         "validation_id": "bad-method"
       },
-      "raw_hash": "aef11e35f4e04040792a4fc4a53063dcf6cc5559880842b3d2d8c5dfb576434a",
+      "raw_hash": "5cdb399e6dd2eef7fe11e28e16b5caa1333213707e63c139696df48e05eb66d0",
       "record_id": "bad-method"
     },
     {
@@ -128,7 +128,7 @@
         "metadata": null,
         "raw_ref": "synthetic://calibration/bad-binding",
         "receive_sequence": null,
-        "simulated_received_at": "2026-09-26T02:40:10.123459+00:00",
+        "simulated_received_at": "2026-09-26T03:05:55.099810+00:00",
         "stream_id": "reports",
         "supersedes_record_id": null
       },
@@ -139,18 +139,18 @@
         "calibration_record_ref": null,
         "execution_policy_hash": "0000000000000000000000000000000000000000000000000000000000000000",
         "feature_schema_id": null,
-        "implementation_digest": "88f0a6bdee750a6a140c81dbadb77f9e25ad16e44be0041689f29216e3cabe9c",
+        "implementation_digest": "f5de6c618f2afd4509e53db3bb21e5cc1bee326520bdc4cdba59a2e01e1d9e6a",
         "method_id": "993b8c896d9d277c68c115e2a8ca110d884b3e32bd8ce41a20f13f224b84fc76",
         "model_hash": "b240254407fd6f4e0fa223fd85c472f8726199f01d4e65ff43b309b7ff3d7b16",
         "normalization_hash": null,
-        "performed_at": "2026-09-26T02:40:10.123459+00:00",
+        "performed_at": "2026-09-26T03:05:55.099810+00:00",
         "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
         "schema_version": 1,
         "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
         "transform_id": null,
         "validation_id": "bad-binding"
       },
-      "raw_hash": "bc0524cd92f1734e94b9dbbcdf90bbf9fc4e4b664b5e1c26acfe7db5d09f6ab2",
+      "raw_hash": "a91ab5b54d372c834b860b001ad98944b4138d0f0bc71e920c0914674315c05a",
       "record_id": "bad-binding"
     },
     {
@@ -160,7 +160,7 @@
         "metadata": null,
         "raw_ref": "synthetic://calibration/bad-model",
         "receive_sequence": null,
-        "simulated_received_at": "2026-09-26T02:40:10.123459+00:00",
+        "simulated_received_at": "2026-09-26T03:05:55.099810+00:00",
         "stream_id": "reports",
         "supersedes_record_id": null
       },
@@ -171,18 +171,18 @@
         "calibration_record_ref": null,
         "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
         "feature_schema_id": null,
-        "implementation_digest": "88f0a6bdee750a6a140c81dbadb77f9e25ad16e44be0041689f29216e3cabe9c",
+        "implementation_digest": "f5de6c618f2afd4509e53db3bb21e5cc1bee326520bdc4cdba59a2e01e1d9e6a",
         "method_id": "993b8c896d9d277c68c115e2a8ca110d884b3e32bd8ce41a20f13f224b84fc76",
         "model_hash": "0000000000000000000000000000000000000000000000000000000000000000",
         "normalization_hash": null,
-        "performed_at": "2026-09-26T02:40:10.123459+00:00",
+        "performed_at": "2026-09-26T03:05:55.099810+00:00",
         "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
         "schema_version": 1,
         "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
         "transform_id": null,
         "validation_id": "bad-model"
       },
-      "raw_hash": "ed97fe4e1686cfbadfd016c18be4494aee8ad10e10d4213063fb208d6186029f",
+      "raw_hash": "ce8bc17e23484dcae0ba74cc47290cf306dc04774004d64c8aca124cd922a109",
       "record_id": "bad-model"
     },
     {
@@ -192,7 +192,7 @@
         "metadata": null,
         "raw_ref": "synthetic://calibration/late-validation",
         "receive_sequence": null,
-        "simulated_received_at": "2026-09-26T02:40:10.123459+00:00",
+        "simulated_received_at": "2026-09-26T03:05:55.099810+00:00",
         "stream_id": "reports",
         "supersedes_record_id": null
       },
@@ -203,18 +203,18 @@
         "calibration_record_ref": null,
         "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
         "feature_schema_id": null,
-        "implementation_digest": "88f0a6bdee750a6a140c81dbadb77f9e25ad16e44be0041689f29216e3cabe9c",
+        "implementation_digest": "f5de6c618f2afd4509e53db3bb21e5cc1bee326520bdc4cdba59a2e01e1d9e6a",
         "method_id": "993b8c896d9d277c68c115e2a8ca110d884b3e32bd8ce41a20f13f224b84fc76",
         "model_hash": "b240254407fd6f4e0fa223fd85c472f8726199f01d4e65ff43b309b7ff3d7b16",
         "normalization_hash": null,
-        "performed_at": "2026-09-27T02:40:10.207338+00:00",
+        "performed_at": "2026-09-27T03:05:55.176006+00:00",
         "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
         "schema_version": 1,
         "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
         "transform_id": null,
         "validation_id": "late-validation"
       },
-      "raw_hash": "4ef07b16063e370f14dfc2dce6f1be832e95ccaae5448cd0ee210763e2979be7",
+      "raw_hash": "0815b109756d23b934cca250becf01b81713639dd9dd569c2a38a0ee716f86f4",
       "record_id": "late-validation"
     }
   ],

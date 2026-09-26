@@ -1,5 +1,5 @@
 {
-  "assembled_at": "2026-09-26T02:40:08.436112+00:00",
+  "assembled_at": "2026-09-26T03:05:54.266750+00:00",
   "definitions": {
     "coherence_protocol_ids": [],
     "greek_method": {
@@ -171,7 +171,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T02:40:08.423557+00:00",
+            "built_at": "2026-09-26T03:05:54.255436+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-30T22:00:00+00:00",
@@ -185,7 +185,7 @@
               "final",
               0
             ],
-            "implementation_digest": "88f0a6bdee750a6a140c81dbadb77f9e25ad16e44be0041689f29216e3cabe9c",
+            "implementation_digest": "f5de6c618f2afd4509e53db3bb21e5cc1bee326520bdc4cdba59a2e01e1d9e6a",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -198,7 +198,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "9f1a02840005fb3e1295c51512e85ee62c5269884b462bb3d7524b66ee2f0731",
+      "raw_hash": "954946be2c84d1a091aadc8d9caac54b545bef39fdd22e32456877b3e22de243",
       "record_id": "fixed-metadata"
     },
     {
@@ -372,7 +372,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T02:40:08.423557+00:00",
+            "built_at": "2026-09-26T03:05:54.255436+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-30T22:00:00+00:00",
@@ -386,7 +386,7 @@
               "final",
               0
             ],
-            "implementation_digest": "88f0a6bdee750a6a140c81dbadb77f9e25ad16e44be0041689f29216e3cabe9c",
+            "implementation_digest": "f5de6c618f2afd4509e53db3bb21e5cc1bee326520bdc4cdba59a2e01e1d9e6a",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -399,7 +399,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "4253c37a8586c655d8b9a2c460849f32b2b3215b08daf65c580552c7eefc4ffe",
+      "raw_hash": "18bcc837d8bb1d81d4123bcfcf8b0086ff8479e3ac9831045f7bf976accdd10d",
       "record_id": "fixed-direct"
     },
     {
@@ -563,7 +563,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T02:40:08.423557+00:00",
+            "built_at": "2026-09-26T03:05:54.255436+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-30T22:00:00+00:00",
@@ -577,7 +577,7 @@
               "final",
               0
             ],
-            "implementation_digest": "88f0a6bdee750a6a140c81dbadb77f9e25ad16e44be0041689f29216e3cabe9c",
+            "implementation_digest": "f5de6c618f2afd4509e53db3bb21e5cc1bee326520bdc4cdba59a2e01e1d9e6a",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -590,7 +590,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "12de41a9e52f4d5da7649616aafef9780df7537b57ee6be7fcb48f4279122927",
+      "raw_hash": "87c1883074b95d05cc70002bd12e40b2ec8da96e2efa7b2cb77856b39121648c",
       "record_id": "wrong-direct-partition"
     },
     {
@@ -754,7 +754,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T02:40:08.423557+00:00",
+            "built_at": "2026-09-26T03:05:54.255436+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-30T22:00:00+00:00",
@@ -768,7 +768,7 @@
               "final",
               0
             ],
-            "implementation_digest": "88f0a6bdee750a6a140c81dbadb77f9e25ad16e44be0041689f29216e3cabe9c",
+            "implementation_digest": "f5de6c618f2afd4509e53db3bb21e5cc1bee326520bdc4cdba59a2e01e1d9e6a",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -781,7 +781,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "e4a9def1fb7bb51dde0ea08e08c41a71ca399b3fa0201cc0fdcad9f4eea7e27b",
+      "raw_hash": "8915459699b4c06986063fb3ddb6d9c4fdb02863c9990ccb66c831de75b64a8c",
       "record_id": "wrong-direct-membership"
     },
     {
@@ -940,7 +940,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T02:40:08.423557+00:00",
+            "built_at": "2026-09-26T03:05:54.255436+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-30T22:00:00+00:00",
@@ -954,7 +954,7 @@
               "final",
               0
             ],
-            "implementation_digest": "88f0a6bdee750a6a140c81dbadb77f9e25ad16e44be0041689f29216e3cabe9c",
+            "implementation_digest": "f5de6c618f2afd4509e53db3bb21e5cc1bee326520bdc4cdba59a2e01e1d9e6a",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -967,7 +967,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "158a5ded2c94a05dc43f6faea9532cf1f963ef71d679ca25bea0e3f55d5f81f4",
+      "raw_hash": "69294c1b0168197ba16cbb9c7fa8b6b927add41b27f6bf238b6281a17da8b748",
       "record_id": "wrong-threshold"
     },
     {
@@ -1126,7 +1126,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T02:40:08.423557+00:00",
+            "built_at": "2026-09-26T03:05:54.255436+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-30T22:00:00+00:00",
@@ -1140,7 +1140,7 @@
               "final",
               0
             ],
-            "implementation_digest": "88f0a6bdee750a6a140c81dbadb77f9e25ad16e44be0041689f29216e3cabe9c",
+            "implementation_digest": "f5de6c618f2afd4509e53db3bb21e5cc1bee326520bdc4cdba59a2e01e1d9e6a",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -1153,7 +1153,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "ab39e3ae6e3a3b635e79bbb796252fe5d8fbbe0ed212ce0110dde454adeae534",
+      "raw_hash": "bb69cb12ed65ff700beb6dcdd0e86e52f6f86b2f56de9d3a6ab0c4155ac364b1",
       "record_id": "wrong-method"
     }
   ],

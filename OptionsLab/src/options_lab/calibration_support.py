@@ -1,20 +1,15 @@
 """Assess actual synthetic calibration mechanics from a fresh verified bundle."""
 
-from dataclasses import dataclass, replace
+from dataclasses import dataclass
 from datetime import datetime, timezone
 from decimal import Decimal
 from zoneinfo import ZoneInfo
 
-from .admission import VerifiedFixtureManifest, VerifiedFixtureMember, verify_fixture_bundle
 from .bundle_inputs import _make
-from .bundle_manifest_inputs import normalize_bundle_manifest
-from .bundles import VerifiedBundle, verify_bundle
-from .calibration import CalibrationBucket, CalibrationMetadata, _normalization_shape
-from .calibration_inputs import CalibrationMember, _matches_retained, _retained_fixture_shape
-from .config import ExecutionPolicy, StrategyConfig
-from .feature_vector import EXACT_VWAP_SPEC, CLOSE_VOLUME_PROXY_SPEC
-from .runtime import measure_runtime
-from .volume_normalization import FeatureNormalization
+from .bundle_recheck import _fresh_bundle
+from .bundles import VerifiedBundle
+from .calibration import CalibrationBucket, CalibrationMetadata
+from .calibration_inputs import CalibrationMember
 
 
 @dataclass(frozen=True, init=False)
@@ -119,55 +114,20 @@ def assess_calibration(bundle: VerifiedBundle, bucket_id: str, *, now: datetime)
         raise ValueError("bucket_id must be nonempty")
     if type(now.tzinfo) not in (timezone, ZoneInfo):
         raise ValueError("now must have a standard aware timezone")
-    try:
-        fixture, member, upstream, normalization, spec = (bundle.original_fixture, bundle.member,
-            bundle.supplied_upstream_fixtures, bundle.supplied_normalization, bundle.spec)
-        if (type(fixture) is not VerifiedFixtureManifest
-                or type(member) is not VerifiedFixtureMember
-                or type(member.record_id) is not str
-                or type(upstream) is not tuple
-                or any(type(root) is not VerifiedFixtureManifest for root in upstream)
-                or type(bundle.config) is not StrategyConfig
-                or type(bundle.config.execution) is not ExecutionPolicy
-                or not (spec is None or spec is EXACT_VWAP_SPEC or spec is CLOSE_VOLUME_PROXY_SPEC)
-                or (normalization is not None and type(normalization) is not FeatureNormalization)):
-            raise TypeError("bundle must retain exact A0/A2/C input owners")
-        if (not _retained_fixture_shape(fixture)
-                or any(not _retained_fixture_shape(root) for root in upstream)
-                or (normalization is not None and not _normalization_shape(normalization))):
-            return _result(bucket_id, reasons=["retained_content_mismatch"])
-        config = replace(bundle.config, execution=replace(bundle.config.execution))
-    except AttributeError:
-        return _result(bucket_id, reasons=["retained_content_mismatch"])
-    root = verify_fixture_bundle(fixture.fixture_id, fixture.payload_bytes,
-        event_id=fixture.event_id, raw_ref=fixture.raw_ref,
-        received_at=fixture.received_at)
-    if root.value is None:
-        return _result(bucket_id, reasons=["fresh_bundle_rejected"], rejection=root.rejection)
-    fresh_member = next((item for item in root.value.members if item.record_id == member.record_id), None)
-    if fresh_member is None or fresh_member.kind != "model_bundle":
-        return _result(bucket_id, reasons=["fresh_bundle_rejected"])
-    body = fresh_member.decode_raw_body()
-    if type(body) is not dict or type(body.get("model_utf8")) is not str:
-        return _result(bucket_id, reasons=["fresh_bundle_rejected"])
-    receipt = dict(event_id=root.value.event_id, raw_ref=root.value.raw_ref, received_at=root.value.received_at)
-    inspected = normalize_bundle_manifest(body.get("manifest"), **receipt)
-    runtime = measure_runtime()
-    if inspected.value is None or runtime.value is None:
-        return _result(bucket_id, reasons=["fresh_bundle_rejected"],
-                       rejection=inspected.rejection if inspected.value is None else runtime.rejection)
-    try:
-        model_bytes = body["model_utf8"].encode("utf-8")
-    except UnicodeEncodeError:
-        return _result(bucket_id, reasons=["fresh_bundle_rejected"])
-    checked = verify_bundle(inspected.value, model_bytes,
-        fixture=fixture, spec=spec, normalization=normalization, config=config,
-        runtime=runtime.value, upstream_fixtures=upstream)
-    if checked.value is None:
-        return _result(bucket_id, reasons=["fresh_bundle_rejected"], rejection=checked.rejection)
-    fresh = checked.value
-    if not _matches_retained(bundle, fresh, set()):
-        return _result(bucket_id, bundle=fresh, reasons=["retained_content_mismatch"])
+    fresh, failure, rejection = _fresh_bundle(bundle)
+    if failure is not None:
+        return _result(bucket_id, bundle=fresh, reasons=[failure], rejection=rejection)
+    return _assess_fresh_calibration(fresh, bucket_id, now)
+
+
+def _assess_fresh_calibration(fresh: VerifiedBundle, bucket_id: str, now: datetime) -> CalibrationAssessment:
+    """Assess one C2 bucket after the shared fresh A0/A2 proof.
+
+    :param fresh: Freshly reverified bundle.
+    :param bucket_id: Actual requested model bucket.
+    :param now: Actual decision instant.
+    :returns: Causal calibration support and all reached evidence.
+    """
     if fresh.model.model_kind == "cash":
         return _result(bucket_id, bundle=fresh, reasons=["calibration_not_applicable"])
     metadata = fresh.calibration_metadata
