@@ -1,0 +1,184 @@
+{
+  "assembled_at": "2026-09-26T07:00:56.672563+00:00",
+  "definitions": {
+    "coherence_protocol_ids": [],
+    "greek_method": {
+      "assumptions_id": "fixture-flat-rates-v1",
+      "method_id": "fixture-greek-values",
+      "method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+      "method_version": "1"
+    },
+    "tick_definition_ids": []
+  },
+  "fixture_id": "p19-order-update-v1",
+  "generator_id": "optionslab-order-fixture-builder",
+  "generator_source_ref": "OptionsLab/tests/build_order_fixture.py",
+  "generator_version": "1",
+  "members": [
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-fill-1",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/fill-1",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:00Z",
+        "stream_id": "alpaca-orders",
+        "supersedes_record_id": null
+      },
+      "kind": "order_update",
+      "profile_id": "alpaca-orders",
+      "raw_body": {
+        "account_id": "acct-1",
+        "available_at": "2026-09-04T14:05:00Z",
+        "broker_order_id": "broker-1",
+        "client_order_id": "client-1",
+        "contract": {
+          "deliverable_id": "SPY-100",
+          "expiry": "2026-09-04",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "500",
+          "underlying": "SPY"
+        },
+        "cumulative_fees_usd": null,
+        "cumulative_fill_notional_usd": "510",
+        "decision_id": "decision-1",
+        "event_at": "2026-09-04T14:05:00Z",
+        "pending": false,
+        "provider_event_id": "provider-fill-1",
+        "provider_sequence": 1,
+        "quantity_basis": "cumulative",
+        "raw_filled_quantity": "1",
+        "replaced_by_broker_order_id": null,
+        "replaced_by_client_order_id": null,
+        "replaces_broker_order_id": null,
+        "replaces_client_order_id": null,
+        "role": "buy_entry",
+        "schema_version": 1,
+        "source": "alpaca",
+        "status": "filled",
+        "terminal": true
+      },
+      "raw_hash": "ec8eaf3eb163768ce82504fabd7a17232b63ab06dfd6245274b4b9bdcd74cc0f",
+      "record_id": "fill-1"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-malformed-1",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/malformed-1",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:00Z",
+        "stream_id": "alpaca-orders",
+        "supersedes_record_id": null
+      },
+      "kind": "order_update",
+      "profile_id": "alpaca-orders",
+      "raw_body": {
+        "account_id": "acct-1",
+        "available_at": "2026-09-04T14:05:00Z",
+        "broker_order_id": "broker-1",
+        "client_order_id": "client-1",
+        "contract": {
+          "deliverable_id": "SPY-100",
+          "expiry": "2026-09-04",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "500",
+          "underlying": "SPY"
+        },
+        "cumulative_fees_usd": null,
+        "cumulative_fill_notional_usd": "510",
+        "decision_id": "decision-1",
+        "event_at": "2026-09-04T14:05:00Z",
+        "pending": false,
+        "provider_event_id": "provider-malformed-1",
+        "provider_sequence": 1,
+        "quantity_basis": "cumulative",
+        "raw_filled_quantity": "NaN",
+        "replaced_by_broker_order_id": null,
+        "replaced_by_client_order_id": null,
+        "replaces_broker_order_id": null,
+        "replaces_client_order_id": null,
+        "role": "buy_entry",
+        "schema_version": 1,
+        "source": "alpaca",
+        "status": "filled",
+        "terminal": true
+      },
+      "raw_hash": "986dc8052e64279ad71a5489f500347d247a10f25a88f22a0339febeed003401",
+      "record_id": "malformed-1"
+    },
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-profile-mismatch-1",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/profile-mismatch-1",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-04T14:05:00Z",
+        "stream_id": "alpaca-orders",
+        "supersedes_record_id": null
+      },
+      "kind": "order_update",
+      "profile_id": "alpaca-orders",
+      "raw_body": {
+        "account_id": "acct-1",
+        "available_at": "2026-09-04T14:05:00Z",
+        "broker_order_id": "broker-1",
+        "client_order_id": "client-1",
+        "contract": {
+          "deliverable_id": "SPY-100",
+          "expiry": "2026-09-04",
+          "multiplier": 100,
+          "right": "call",
+          "strike": "500",
+          "underlying": "SPY"
+        },
+        "cumulative_fees_usd": null,
+        "cumulative_fill_notional_usd": "510",
+        "decision_id": "decision-1",
+        "event_at": "2026-09-04T14:05:00Z",
+        "pending": false,
+        "provider_event_id": "provider-mismatch-1",
+        "provider_sequence": 1,
+        "quantity_basis": "cumulative",
+        "raw_filled_quantity": "1",
+        "replaced_by_broker_order_id": null,
+        "replaced_by_client_order_id": null,
+        "replaces_broker_order_id": null,
+        "replaces_client_order_id": null,
+        "role": "buy_entry",
+        "schema_version": 1,
+        "source": "lean",
+        "status": "filled",
+        "terminal": true
+      },
+      "raw_hash": "d26001f76f757a71fb3449a042ff823d03da766ed3873ea01c69a7d8677a4034",
+      "record_id": "profile-mismatch-1"
+    }
+  ],
+  "modeled_source_profiles": [
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "order_update",
+      "profile_id": "alpaca-orders",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "alpaca",
+      "stream_id": "alpaca-orders",
+      "units": {
+        "cumulative_fees": "USD_total_cumulative",
+        "cumulative_fill_notional": "USD_total_cumulative",
+        "quantity": "contracts"
+      }
+    }
+  ],
+  "normalization_version": 1,
+  "origin": "synthetic",
+  "permitted_use": "core_fixture",
+  "schema_version": 1
+}
