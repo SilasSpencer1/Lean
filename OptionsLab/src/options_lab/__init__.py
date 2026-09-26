@@ -59,8 +59,11 @@ from .calibration_inputs import (
 )
 from .calibration import (
     BUCKET_RULE_ID,
+    CalibrationMetadata,
+    CalibrationMetadataValidation,
     CalibrationPartition,
     CalibrationPartitionValidation,
+    normalize_calibration_metadata,
     normalize_calibration_partition,
 )
 from .candidates import (
@@ -241,6 +244,9 @@ from .volume_normalization import (
 )
 
 __all__ = [
+    "CalibrationMetadata",
+    "CalibrationMetadataValidation",
+    "normalize_calibration_metadata",
     "BUCKET_RULE_ID",
     "CalibrationPartition",
     "CalibrationPartitionValidation",
