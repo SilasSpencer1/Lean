@@ -1,0 +1,212 @@
+{
+  "assembled_at": "2026-09-26T00:18:17.565696+00:00",
+  "definitions": {
+    "coherence_protocol_ids": [],
+    "greek_method": {
+      "assumptions_id": "fixture-flat-rates-v1",
+      "method_id": "fixture-greek-values",
+      "method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+      "method_version": "1"
+    },
+    "tick_definition_ids": []
+  },
+  "fixture_id": "p14c-membership-bundle-v1",
+  "generator_id": "optionslab-bundle-fixture-builder",
+  "generator_source_ref": "OptionsLab/tests/build_calibration_inputs_fixture.py",
+  "generator_version": "1",
+  "members": [
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-fixed-membership",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/fixed-membership",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-09-30T22:00:00Z",
+        "stream_id": "model-bundle",
+        "supersedes_record_id": null
+      },
+      "kind": "model_bundle",
+      "profile_id": "model-bundle",
+      "raw_body": {
+        "manifest": {
+          "bundle_record_id": "fixed-membership",
+          "bundle_schema_version": 1,
+          "claimed_origin": "synthetic",
+          "claimed_permitted_use": "core_fixture",
+          "data_manifest_hashes": [
+            {
+              "fixture_id": "p14c-volume-training-v1",
+              "payload_sha256": "8bf6aa7abab0f9a919cbeba78ae1186b993a2452023ffd12c138baed964923b9",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-volume-normalization-v1",
+              "payload_sha256": "6d0f9842b9e771e9c146346ec85cf07f0b87aa11ed9dca34513d542c36c4ad18",
+              "role": "normalization"
+            },
+            {
+              "fixture_id": "p11-feature-vector-v1",
+              "payload_sha256": "8fffa246a2ec78d1f0b2450e794dab6791365022b1ea31cc00a9215cc7991c6a",
+              "role": "source"
+            },
+            {
+              "fixture_id": "p14c-fit-membership-v1",
+              "payload_sha256": "afa7f7cfda6bbac4f01d6f7f044b50635cf34bb2b3a052a193a5b6f3e918a406",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-fit-sources-v1",
+              "payload_sha256": "efd2831c4a2cf58cdd880194abde6858599bdab4d396f71d80698b136489a16b",
+              "role": "training"
+            },
+            {
+              "fixture_id": "p14c-fit-membership-v1",
+              "payload_sha256": "afa7f7cfda6bbac4f01d6f7f044b50635cf34bb2b3a052a193a5b6f3e918a406",
+              "role": "tuning"
+            },
+            {
+              "fixture_id": "p14c-fit-sources-v1",
+              "payload_sha256": "efd2831c4a2cf58cdd880194abde6858599bdab4d396f71d80698b136489a16b",
+              "role": "tuning"
+            }
+          ],
+          "feature_binding": {
+            "coherence_protocol_ids": [
+              "fixture-joint-book-snapshot-v1",
+              "fixture-side-validity-overlap-v1"
+            ],
+            "delta_unit": "signed_option_price_per_underlying_price",
+            "feature_schema_id": "58e034c1265ed595c3df8c6ce2911ad778577d52caaa4e0e853c2ed4ca391148",
+            "greek_assumptions_id": "fixture-flat-rates-v1",
+            "greek_method_id": "fixture-greek-values",
+            "greek_method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+            "greek_method_version": "1",
+            "input_normalization_version": 1,
+            "iv_unit": "annualized_volatility_fraction",
+            "normalization_hash": "0ac32703f4096994e82108bdd0be6b5388bdfe2d932b129f45bad861f093be5b",
+            "option_price_basis": "option_midpoint",
+            "source_profiles": [
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "bars"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-option_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-underlying_quote"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-greek"
+              },
+              {
+                "fixture_id": "p11-feature-vector-v1",
+                "profile_id": "good-proof"
+              }
+            ],
+            "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621",
+            "underlying_price_basis": "underlying_midpoint",
+            "volume_baseline_hash": "c116839b269a389b92166e49f9272a03336ec0715b7d280c2d6ff081ef1512e6",
+            "volume_definition_id": "synthetic-volume-v1"
+          },
+          "fixture_id": "p14c-membership-bundle-v1",
+          "model_format_id": "options_lab.fixed_by_right_json.v1",
+          "model_hash": "4c47fbac45be810c58f28fe2eda1450124a94fb5d26330dcae2003f550a3fbd6",
+          "model_id": "fixed-membership",
+          "model_kind": "fixture_fixed_by_right",
+          "policy_binding": {
+            "config_hash": "8ef0583fa6e6ec352140691e78b38172f1801b56be2e22f02423300b241542a8",
+            "contract_rule_id": "standard-unadjusted-100-spy-shares-v1",
+            "execution_policy_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+            "policy_hash": "735503cf8fd690c7d4893893b49a74dbf6494eacb3d36119a5c849896dacc95b",
+            "selection_rule_id": "d65726110930ef6b4478a7eb6c771fa4b695085a14aa9d65e548791aa8cab8c0",
+            "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+          },
+          "prediction_contract": {
+            "base_cost_profile": {
+              "base_execution_hash": "f17185f5ed400a5cb6247482a5a6e3020ea49d4e5cdde8540c22d365b1666d34",
+              "fee_charging_rule": "filled_round_trip_once_no_fill_zero_v1",
+              "filled_attempt_round_trip_fee": "1",
+              "profile_id": "fixture-base-cost",
+              "profile_version": 1,
+              "target_definition_id": "attempt-net-pnl-over-original-ask-capital-v1"
+            },
+            "calibration_partition": null,
+            "calibration_record": null,
+            "capital_basis_rule": "100_times_original_decision_ask_cap",
+            "fit_cutoff": null,
+            "last_label_available_at": null,
+            "model_membership": {
+              "fixture_id": "p14c-fit-membership-v1",
+              "payload_sha256": "afa7f7cfda6bbac4f01d6f7f044b50635cf34bb2b3a052a193a5b6f3e918a406",
+              "raw_hash": "c54645a42634ea591410513c0c8854a8b8fb97f344a78aba87b729aa98284494",
+              "record_id": "model"
+            },
+            "return_unit": "attempt_net_return_over_original_ask_capital",
+            "threshold_return": "0",
+            "training_feature_cutoff": null,
+            "tuning_membership": {
+              "fixture_id": "p14c-fit-membership-v1",
+              "payload_sha256": "afa7f7cfda6bbac4f01d6f7f044b50635cf34bb2b3a052a193a5b6f3e918a406",
+              "raw_hash": "9a919870fffe7c964488bde792169ef1f6f19cc5b8d526b44ae7eeccef2b72e3",
+              "record_id": "tuning"
+            },
+            "uncertainty_rule_id": null
+          },
+          "provenance": {
+            "activated_at": null,
+            "activation_gap": null,
+            "availability_basis": "simulated",
+            "built_at": "2026-09-26T00:18:17.564959+00:00",
+            "evaluation_block": null,
+            "promoted_at": null,
+            "simulated_available_at": "2026-09-30T22:00:00+00:00",
+            "simulated_schedule": null
+          },
+          "runtime_binding": {
+            "exact_python_version": [
+              3,
+              11,
+              11,
+              "final",
+              0
+            ],
+            "implementation_digest": "65806213c0ac5b9a453fe9fce6f66594509133c65616ebd193046353aa6b1c0e",
+            "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
+            "python_implementation": "CPython",
+            "requires_python": ">=3.11,<3.12",
+            "runtime_contract_digest": "1608d088e3fd388ab0f00d3eec9fe5042880c5ec92858b8be02985f74aec81c5",
+            "runtime_dependencies": []
+          },
+          "seed": null,
+          "validation_report": null
+        },
+        "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
+        "schema_version": 1
+      },
+      "raw_hash": "236e7bb56e63be678062896b726dbabe9c823bca8b299a918844b866c97b16f8",
+      "record_id": "fixed-membership"
+    }
+  ],
+  "modeled_source_profiles": [
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "model_bundle",
+      "profile_id": "model-bundle",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "optionslab-bundle-fixture-builder",
+      "stream_id": "model-bundle",
+      "units": {}
+    }
+  ],
+  "normalization_version": 1,
+  "origin": "synthetic",
+  "permitted_use": "core_fixture",
+  "schema_version": 1
+}

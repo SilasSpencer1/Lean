@@ -1,0 +1,135 @@
+{
+  "assembled_at": "2026-09-26T00:05:52.877740+00:00",
+  "definitions": {
+    "coherence_protocol_ids": [],
+    "greek_method": {
+      "assumptions_id": "fixture-flat-rates-v1",
+      "method_id": "fixture-greek-values",
+      "method_spec_hash": "747a21a53999afb37334e09c32fda75b5bd367ce067b19610ba83428bff944e9",
+      "method_version": "1"
+    },
+    "tick_definition_ids": []
+  },
+  "fixture_id": "p14c-volume-normalization-v1",
+  "generator_id": "optionslab-volume-normalization-fixture-builder",
+  "generator_source_ref": "OptionsLab/tests/build_calibration_inputs_fixture.py",
+  "generator_version": "1",
+  "members": [
+    {
+      "envelope": {
+        "contract": null,
+        "event_id": "event-good",
+        "metadata": null,
+        "raw_ref": "synthetic://calibration/good",
+        "receive_sequence": null,
+        "simulated_received_at": "2026-04-30T01:00:00Z",
+        "stream_id": "volume-normalization",
+        "supersedes_record_id": null
+      },
+      "kind": "feature_normalization",
+      "profile_id": "volume-normalization",
+      "raw_body": {
+        "availability_basis": "measured",
+        "available_at": "2026-04-30T01:00:00Z",
+        "baseline_content_hash": "c116839b269a389b92166e49f9272a03336ec0715b7d280c2d6ff081ef1512e6",
+        "baseline_snapshot": {
+          "buckets": [
+            {
+              "contributing_sessions": [
+                "2026-04-01",
+                "2026-04-02",
+                "2026-04-06",
+                "2026-04-07",
+                "2026-04-08",
+                "2026-04-09",
+                "2026-04-10",
+                "2026-04-13",
+                "2026-04-14",
+                "2026-04-15",
+                "2026-04-16",
+                "2026-04-17",
+                "2026-04-20",
+                "2026-04-21",
+                "2026-04-22",
+                "2026-04-23",
+                "2026-04-24",
+                "2026-04-27",
+                "2026-04-28",
+                "2026-04-29"
+              ],
+              "mean": "1000",
+              "minute_index": 35,
+              "population_stddev": "100",
+              "reasons": [],
+              "sample_count": 20
+            }
+          ],
+          "cutoff": "2026-04-30T00:00:00+00:00",
+          "normalization_id": "fed8079eea17c7dccc8495861bb09ade8bedebdeecf7a5efe536343f52dded94",
+          "numeric_id": "ceca983e074c53d76d78aa9a446effe04b919b396942740b88102b5d3eb8cd2a",
+          "partition": {
+            "input_manifest_hash": "8bf6aa7abab0f9a919cbeba78ae1186b993a2452023ffd12c138baed964923b9",
+            "input_manifest_id": "p14c-volume-training-v1",
+            "partition_id": "training",
+            "raw_hash": "16aee4a2f9522c1f56f55974d63b42e19233df9e18d0cb12478efd1f6e3ed3e9",
+            "record_id": "training",
+            "test_sessions": [],
+            "training_sessions": [
+              "2026-04-01",
+              "2026-04-02",
+              "2026-04-06",
+              "2026-04-07",
+              "2026-04-08",
+              "2026-04-09",
+              "2026-04-10",
+              "2026-04-13",
+              "2026-04-14",
+              "2026-04-15",
+              "2026-04-16",
+              "2026-04-17",
+              "2026-04-20",
+              "2026-04-21",
+              "2026-04-22",
+              "2026-04-23",
+              "2026-04-24",
+              "2026-04-27",
+              "2026-04-28",
+              "2026-04-29"
+            ],
+            "validation_sessions": []
+          },
+          "record_kind": "options_lab.volume_baseline",
+          "schema_version": 1,
+          "training_input_hash": "8fc4a73a81d8f6bc1c08197aeda103f846e50269a83420d0046c4afb690deb22",
+          "volume_definition_id": "synthetic-volume-v1"
+        },
+        "cutoff": "2026-04-30T00:00:00+00:00",
+        "partition_record_id": "training",
+        "schema_version": 1,
+        "training_fixture_id": "p14c-volume-training-v1",
+        "training_payload_sha256": "8bf6aa7abab0f9a919cbeba78ae1186b993a2452023ffd12c138baed964923b9"
+      },
+      "raw_hash": "6fcd72e6dac33e3108e72cd03ea68a395b11a1429a76f5248325727e2637a98d",
+      "record_id": "good"
+    }
+  ],
+  "modeled_source_profiles": [
+    {
+      "availability_basis": "measured",
+      "feed_class": null,
+      "fidelity": null,
+      "kind": "feature_normalization",
+      "profile_id": "volume-normalization",
+      "record_identity_rule": "new_event_id_per_update",
+      "source": "optionslab-volume-normalization-fixture-builder",
+      "stream_id": "volume-normalization",
+      "units": {
+        "volume": "shares"
+      }
+    }
+  ],
+  "normalization_version": 1,
+  "origin": "synthetic",
+  "permitted_use": "core_fixture",
+  "schema_version": 1
+}
