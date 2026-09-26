@@ -108,6 +108,25 @@ def test_missing_nested_retained_member_field_has_bounded_result():
     assert result.reasons == ("retained_content_mismatch",)
 
 
+@pytest.mark.parametrize("field", ("member", "supplied_upstream_fixtures", "config"))
+def test_wrong_nested_owner_type_is_bounded_for_shared_c2_recheck(field):
+    """C2 must share B2's bounded retained-owner preflight without hostile hooks."""
+    class Hostile:
+        def __getattribute__(self, name):
+            raise AssertionError("hostile attribute hook invoked")
+
+        def __eq__(self, other):
+            raise AssertionError("hostile equality hook invoked")
+
+    bundle = support_bundle_result().value
+    assert bundle is not None
+    altered = copy(bundle)
+    object.__setattr__(altered, field, (Hostile(),) if field == "supplied_upstream_fixtures" else Hostile())
+    result = assess_calibration(altered, "call", now=datetime(2026, 9, 1, 2, tzinfo=timezone.utc))
+    assert result.reasons == ("retained_content_mismatch",)
+    assert result.bundle is None and result.rejection is None
+
+
 def test_missing_nested_fixture_leaf_is_bounded_and_wrong_public_type_still_raises():
     bundle = support_bundle_result().value
     assert bundle is not None
