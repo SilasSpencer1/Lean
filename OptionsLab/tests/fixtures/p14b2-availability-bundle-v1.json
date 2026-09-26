@@ -1,5 +1,5 @@
 {
-  "assembled_at": "2026-09-26T04:59:00.196896+00:00",
+  "assembled_at": "2026-09-26T05:16:16.167984+00:00",
   "definitions": {
     "coherence_protocol_ids": [],
     "greek_method": {
@@ -82,7 +82,7 @@
             },
             {
               "fixture_id": "p14c2-partition-v1",
-              "payload_sha256": "8eff54e8237b47db55a46fe310e275e018aba2d9bf4c043a3891b38404d15911",
+              "payload_sha256": "ed02e416037e3e68f4614b08379508b1a2189dc4266d90aecaec777d3f5344d8",
               "role": "calibration"
             },
             {
@@ -92,17 +92,17 @@
             },
             {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "c8f7989e966f07ec9807ec42a5a0ff0a24f9e41a708b7d67e0e3c99b510795a2",
+              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
               "role": "calibration"
             },
             {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "role": "source"
             },
             {
               "fixture_id": "p14b1b-assembly-v1",
-              "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
+              "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
               "role": "source"
             }
           ],
@@ -189,8 +189,8 @@
             "calibration_partition": null,
             "calibration_record": {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "c8f7989e966f07ec9807ec42a5a0ff0a24f9e41a708b7d67e0e3c99b510795a2",
-              "raw_hash": "752130c37bd019af850c237b6958fe0ebf1a5362cc7345e698b43ba5276b1d9e",
+              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
+              "raw_hash": "3dd710c9b5a21f393e09d6824d80c34a42713d6d314ef5a36eb4d23280be3103",
               "record_id": "record"
             },
             "capital_basis_rule": "100_times_original_decision_ask_cap",
@@ -207,16 +207,16 @@
             "activated_at": null,
             "activation_gap": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
               "record_id": "gap"
             },
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T04:59:00.129432+00:00",
+            "built_at": "2026-09-26T05:16:16.100819+00:00",
             "evaluation_block": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
-              "raw_hash": "f4027641cdf18bf4cd140829820e16be92118a08193f4f32d01592db1296b49a",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
+              "raw_hash": "5e3fdc4ac97ff40797fbfae0a5766bf88962dba08fe9919ec7d87377798184c6",
               "record_id": "block"
             },
             "promoted_at": null,
@@ -224,15 +224,15 @@
             "simulated_schedule": {
               "activation_gap": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
                 "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
                 "record_id": "gap"
               },
               "deployment_delay_us": 0,
               "evaluation_block": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
-                "raw_hash": "f4027641cdf18bf4cd140829820e16be92118a08193f4f32d01592db1296b49a",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
+                "raw_hash": "5e3fdc4ac97ff40797fbfae0a5766bf88962dba08fe9919ec7d87377798184c6",
                 "record_id": "block"
               },
               "fit_cutoff": "2026-08-31T22:00:00+00:00",
@@ -250,7 +250,7 @@
               "final",
               0
             ],
-            "implementation_digest": "2d88236a6f39131e72e681c254d8e99295b872e5d2070288a24ca7799874e8c6",
+            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -260,15 +260,15 @@
           "seed": null,
           "validation_report": {
             "fixture_id": "p14b1b-assembly-v1",
-            "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
-            "raw_hash": "7e3bcd5c3bf75228ff717f8a6bfa438ad353a46a65d8a803f32db9034f06e883",
+            "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
+            "raw_hash": "04aef6498680db79ff2bf80038145d87764e96ccc5538022b369c58feeff4b22",
             "record_id": "fixed-validation"
           }
         },
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "44779b22edf5a9b58d621754a476d51a9874a56ffc09f95dc905d1b4a5751e48",
+      "raw_hash": "25034d4813263906a057a437fe42ac3e3790e56279aee1ef85be8bd7dfd13812",
       "record_id": "fixed-available"
     },
     {
@@ -303,12 +303,12 @@
             },
             {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "role": "source"
             },
             {
               "fixture_id": "p14b1b-assembly-v1",
-              "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
+              "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
               "role": "source"
             },
             {
@@ -336,15 +336,15 @@
             "activated_at": null,
             "activation_gap": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
               "record_id": "gap"
             },
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T04:59:00.133962+00:00",
+            "built_at": "2026-09-26T05:16:16.104718+00:00",
             "evaluation_block": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "raw_hash": "320af4d041b8248d24964db81cf64c203f096b98d33066a6b37e449871f5f36c",
               "record_id": "cash-block"
             },
@@ -353,14 +353,14 @@
             "simulated_schedule": {
               "activation_gap": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
                 "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
                 "record_id": "gap"
               },
               "deployment_delay_us": null,
               "evaluation_block": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
                 "raw_hash": "320af4d041b8248d24964db81cf64c203f096b98d33066a6b37e449871f5f36c",
                 "record_id": "cash-block"
               },
@@ -379,7 +379,7 @@
               "final",
               0
             ],
-            "implementation_digest": "2d88236a6f39131e72e681c254d8e99295b872e5d2070288a24ca7799874e8c6",
+            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -389,15 +389,15 @@
           "seed": null,
           "validation_report": {
             "fixture_id": "p14b1b-assembly-v1",
-            "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
-            "raw_hash": "46d14fb1fd896a97398dd7e07f69c1733ee9d7fb99306db3a789547948113df1",
+            "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
+            "raw_hash": "e37763f56f31757e79191cd5364a2fb33e94e0ccea3e5ce1c86e00ec221112e7",
             "record_id": "cash-validation"
           }
         },
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.cash_json.v1\"}",
         "schema_version": 1
       },
-      "raw_hash": "65f18ade2f2dbbc73f0630f7e8d90cfebbeb7f14d5f3380402ea93f58c2a0a62",
+      "raw_hash": "d32d885bb6256b66e0b45bc6853232abc6f0f595704fc999c43d566623ab2e80",
       "record_id": "cash-available"
     },
     {
@@ -467,7 +467,7 @@
             },
             {
               "fixture_id": "p14c2-partition-v1",
-              "payload_sha256": "8eff54e8237b47db55a46fe310e275e018aba2d9bf4c043a3891b38404d15911",
+              "payload_sha256": "ed02e416037e3e68f4614b08379508b1a2189dc4266d90aecaec777d3f5344d8",
               "role": "calibration"
             },
             {
@@ -477,17 +477,17 @@
             },
             {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "c8f7989e966f07ec9807ec42a5a0ff0a24f9e41a708b7d67e0e3c99b510795a2",
+              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
               "role": "calibration"
             },
             {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "role": "source"
             },
             {
               "fixture_id": "p14b1b-assembly-v1",
-              "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
+              "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
               "role": "source"
             }
           ],
@@ -542,8 +542,8 @@
             "calibration_partition": null,
             "calibration_record": {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "c8f7989e966f07ec9807ec42a5a0ff0a24f9e41a708b7d67e0e3c99b510795a2",
-              "raw_hash": "752130c37bd019af850c237b6958fe0ebf1a5362cc7345e698b43ba5276b1d9e",
+              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
+              "raw_hash": "3dd710c9b5a21f393e09d6824d80c34a42713d6d314ef5a36eb4d23280be3103",
               "record_id": "record"
             },
             "capital_basis_rule": "100_times_original_decision_ask_cap",
@@ -560,16 +560,16 @@
             "activated_at": null,
             "activation_gap": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
               "record_id": "gap"
             },
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T04:59:00.138170+00:00",
+            "built_at": "2026-09-26T05:16:16.108569+00:00",
             "evaluation_block": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
-              "raw_hash": "f4027641cdf18bf4cd140829820e16be92118a08193f4f32d01592db1296b49a",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
+              "raw_hash": "5e3fdc4ac97ff40797fbfae0a5766bf88962dba08fe9919ec7d87377798184c6",
               "record_id": "block"
             },
             "promoted_at": null,
@@ -577,15 +577,15 @@
             "simulated_schedule": {
               "activation_gap": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
                 "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
                 "record_id": "gap"
               },
               "deployment_delay_us": 0,
               "evaluation_block": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
-                "raw_hash": "f4027641cdf18bf4cd140829820e16be92118a08193f4f32d01592db1296b49a",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
+                "raw_hash": "5e3fdc4ac97ff40797fbfae0a5766bf88962dba08fe9919ec7d87377798184c6",
                 "record_id": "block"
               },
               "fit_cutoff": "2026-08-31T22:00:00+00:00",
@@ -603,7 +603,7 @@
               "final",
               0
             ],
-            "implementation_digest": "2d88236a6f39131e72e681c254d8e99295b872e5d2070288a24ca7799874e8c6",
+            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -613,15 +613,15 @@
           "seed": null,
           "validation_report": {
             "fixture_id": "p14b1b-assembly-v1",
-            "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
-            "raw_hash": "7e3bcd5c3bf75228ff717f8a6bfa438ad353a46a65d8a803f32db9034f06e883",
+            "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
+            "raw_hash": "04aef6498680db79ff2bf80038145d87764e96ccc5538022b369c58feeff4b22",
             "record_id": "fixed-validation"
           }
         },
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "2ab67e458933e01010a5e7b1817680190aa85100d29629b1b803cb403a1ef111",
+      "raw_hash": "206da227511248d561710bf74aebca0b63d85d0b9ad6c279f24ffb2f472abebc",
       "record_id": "fixed-training-only"
     },
     {
@@ -691,7 +691,7 @@
             },
             {
               "fixture_id": "p14c2-partition-v1",
-              "payload_sha256": "8eff54e8237b47db55a46fe310e275e018aba2d9bf4c043a3891b38404d15911",
+              "payload_sha256": "ed02e416037e3e68f4614b08379508b1a2189dc4266d90aecaec777d3f5344d8",
               "role": "calibration"
             },
             {
@@ -701,17 +701,17 @@
             },
             {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "c8f7989e966f07ec9807ec42a5a0ff0a24f9e41a708b7d67e0e3c99b510795a2",
+              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
               "role": "calibration"
             },
             {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "role": "source"
             },
             {
               "fixture_id": "p14b1b-assembly-v1",
-              "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
+              "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
               "role": "source"
             }
           ],
@@ -761,8 +761,8 @@
             "calibration_partition": null,
             "calibration_record": {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "c8f7989e966f07ec9807ec42a5a0ff0a24f9e41a708b7d67e0e3c99b510795a2",
-              "raw_hash": "752130c37bd019af850c237b6958fe0ebf1a5362cc7345e698b43ba5276b1d9e",
+              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
+              "raw_hash": "3dd710c9b5a21f393e09d6824d80c34a42713d6d314ef5a36eb4d23280be3103",
               "record_id": "record"
             },
             "capital_basis_rule": "100_times_original_decision_ask_cap",
@@ -779,16 +779,16 @@
             "activated_at": null,
             "activation_gap": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
               "record_id": "gap"
             },
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T04:59:00.143704+00:00",
+            "built_at": "2026-09-26T05:16:16.112719+00:00",
             "evaluation_block": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
-              "raw_hash": "f4027641cdf18bf4cd140829820e16be92118a08193f4f32d01592db1296b49a",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
+              "raw_hash": "5e3fdc4ac97ff40797fbfae0a5766bf88962dba08fe9919ec7d87377798184c6",
               "record_id": "block"
             },
             "promoted_at": null,
@@ -796,15 +796,15 @@
             "simulated_schedule": {
               "activation_gap": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
                 "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
                 "record_id": "gap"
               },
               "deployment_delay_us": 0,
               "evaluation_block": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
-                "raw_hash": "f4027641cdf18bf4cd140829820e16be92118a08193f4f32d01592db1296b49a",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
+                "raw_hash": "5e3fdc4ac97ff40797fbfae0a5766bf88962dba08fe9919ec7d87377798184c6",
                 "record_id": "block"
               },
               "fit_cutoff": "2026-08-31T22:00:00+00:00",
@@ -822,7 +822,7 @@
               "final",
               0
             ],
-            "implementation_digest": "2d88236a6f39131e72e681c254d8e99295b872e5d2070288a24ca7799874e8c6",
+            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -832,15 +832,15 @@
           "seed": null,
           "validation_report": {
             "fixture_id": "p14b1b-assembly-v1",
-            "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
-            "raw_hash": "7e3bcd5c3bf75228ff717f8a6bfa438ad353a46a65d8a803f32db9034f06e883",
+            "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
+            "raw_hash": "04aef6498680db79ff2bf80038145d87764e96ccc5538022b369c58feeff4b22",
             "record_id": "fixed-validation"
           }
         },
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "0cfe9b986301b8ad5082c0773ca246b8a1cac20234d5908934f8292a5c50b004",
+      "raw_hash": "5b847018d73d88ce5af3196b641efa292164e46c481bfa10c151f350a22f9f32",
       "record_id": "fixed-empty-profiles"
     },
     {
@@ -910,7 +910,7 @@
             },
             {
               "fixture_id": "p14c2-partition-v1",
-              "payload_sha256": "8eff54e8237b47db55a46fe310e275e018aba2d9bf4c043a3891b38404d15911",
+              "payload_sha256": "ed02e416037e3e68f4614b08379508b1a2189dc4266d90aecaec777d3f5344d8",
               "role": "calibration"
             },
             {
@@ -920,17 +920,17 @@
             },
             {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "c8f7989e966f07ec9807ec42a5a0ff0a24f9e41a708b7d67e0e3c99b510795a2",
+              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
               "role": "calibration"
             },
             {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "role": "source"
             },
             {
               "fixture_id": "p14b1b-assembly-v1",
-              "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
+              "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
               "role": "source"
             }
           ],
@@ -1013,8 +1013,8 @@
             "calibration_partition": null,
             "calibration_record": {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "c8f7989e966f07ec9807ec42a5a0ff0a24f9e41a708b7d67e0e3c99b510795a2",
-              "raw_hash": "752130c37bd019af850c237b6958fe0ebf1a5362cc7345e698b43ba5276b1d9e",
+              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
+              "raw_hash": "3dd710c9b5a21f393e09d6824d80c34a42713d6d314ef5a36eb4d23280be3103",
               "record_id": "record"
             },
             "capital_basis_rule": "100_times_original_decision_ask_cap",
@@ -1031,16 +1031,16 @@
             "activated_at": null,
             "activation_gap": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
               "record_id": "gap"
             },
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T04:59:00.148412+00:00",
+            "built_at": "2026-09-26T05:16:16.117554+00:00",
             "evaluation_block": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
-              "raw_hash": "f4027641cdf18bf4cd140829820e16be92118a08193f4f32d01592db1296b49a",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
+              "raw_hash": "5e3fdc4ac97ff40797fbfae0a5766bf88962dba08fe9919ec7d87377798184c6",
               "record_id": "block"
             },
             "promoted_at": null,
@@ -1048,15 +1048,15 @@
             "simulated_schedule": {
               "activation_gap": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
                 "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
                 "record_id": "gap"
               },
               "deployment_delay_us": 0,
               "evaluation_block": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
-                "raw_hash": "f4027641cdf18bf4cd140829820e16be92118a08193f4f32d01592db1296b49a",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
+                "raw_hash": "5e3fdc4ac97ff40797fbfae0a5766bf88962dba08fe9919ec7d87377798184c6",
                 "record_id": "block"
               },
               "fit_cutoff": "2026-08-31T22:00:00+00:00",
@@ -1074,7 +1074,7 @@
               "final",
               0
             ],
-            "implementation_digest": "2d88236a6f39131e72e681c254d8e99295b872e5d2070288a24ca7799874e8c6",
+            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -1084,15 +1084,15 @@
           "seed": null,
           "validation_report": {
             "fixture_id": "p14b1b-assembly-v1",
-            "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
-            "raw_hash": "7e3bcd5c3bf75228ff717f8a6bfa438ad353a46a65d8a803f32db9034f06e883",
+            "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
+            "raw_hash": "04aef6498680db79ff2bf80038145d87764e96ccc5538022b369c58feeff4b22",
             "record_id": "fixed-validation"
           }
         },
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "ef957762f5430993a74834acfba1d98a611fbdeacabbc6b8cbb4883b0df20fec",
+      "raw_hash": "c9e0feff0c4a0cdc2b10dd4446ac312aef73cebb9b2e3ba2128b0aa0feab13a3",
       "record_id": "fixed-no-bars"
     },
     {
@@ -1162,7 +1162,7 @@
             },
             {
               "fixture_id": "p14c2-partition-v1",
-              "payload_sha256": "8eff54e8237b47db55a46fe310e275e018aba2d9bf4c043a3891b38404d15911",
+              "payload_sha256": "ed02e416037e3e68f4614b08379508b1a2189dc4266d90aecaec777d3f5344d8",
               "role": "calibration"
             },
             {
@@ -1172,17 +1172,17 @@
             },
             {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "c8f7989e966f07ec9807ec42a5a0ff0a24f9e41a708b7d67e0e3c99b510795a2",
+              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
               "role": "calibration"
             },
             {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "role": "source"
             },
             {
               "fixture_id": "p14b1b-assembly-v1",
-              "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
+              "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
               "role": "source"
             }
           ],
@@ -1269,8 +1269,8 @@
             "calibration_partition": null,
             "calibration_record": {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "c8f7989e966f07ec9807ec42a5a0ff0a24f9e41a708b7d67e0e3c99b510795a2",
-              "raw_hash": "752130c37bd019af850c237b6958fe0ebf1a5362cc7345e698b43ba5276b1d9e",
+              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
+              "raw_hash": "3dd710c9b5a21f393e09d6824d80c34a42713d6d314ef5a36eb4d23280be3103",
               "record_id": "record"
             },
             "capital_basis_rule": "100_times_original_decision_ask_cap",
@@ -1287,16 +1287,16 @@
             "activated_at": null,
             "activation_gap": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
               "record_id": "gap"
             },
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T04:59:00.153228+00:00",
+            "built_at": "2026-09-26T05:16:16.122069+00:00",
             "evaluation_block": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
-              "raw_hash": "f4027641cdf18bf4cd140829820e16be92118a08193f4f32d01592db1296b49a",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
+              "raw_hash": "5e3fdc4ac97ff40797fbfae0a5766bf88962dba08fe9919ec7d87377798184c6",
               "record_id": "block"
             },
             "promoted_at": null,
@@ -1304,15 +1304,15 @@
             "simulated_schedule": {
               "activation_gap": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
                 "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
                 "record_id": "gap"
               },
               "deployment_delay_us": 10800000000,
               "evaluation_block": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
-                "raw_hash": "f4027641cdf18bf4cd140829820e16be92118a08193f4f32d01592db1296b49a",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
+                "raw_hash": "5e3fdc4ac97ff40797fbfae0a5766bf88962dba08fe9919ec7d87377798184c6",
                 "record_id": "block"
               },
               "fit_cutoff": "2026-08-31T22:00:00+00:00",
@@ -1330,7 +1330,7 @@
               "final",
               0
             ],
-            "implementation_digest": "2d88236a6f39131e72e681c254d8e99295b872e5d2070288a24ca7799874e8c6",
+            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -1340,15 +1340,15 @@
           "seed": null,
           "validation_report": {
             "fixture_id": "p14b1b-assembly-v1",
-            "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
-            "raw_hash": "7e3bcd5c3bf75228ff717f8a6bfa438ad353a46a65d8a803f32db9034f06e883",
+            "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
+            "raw_hash": "04aef6498680db79ff2bf80038145d87764e96ccc5538022b369c58feeff4b22",
             "record_id": "fixed-validation"
           }
         },
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "835782cb2d2b465e8da46e9f01cc0b130f8eb6e893e8b74ebcd8338430cfda65",
+      "raw_hash": "98310bf18b5d8291c1c1abdc03148348a0b3f928b5be1abc6883629c959a486c",
       "record_id": "fixed-bad-delay"
     },
     {
@@ -1418,7 +1418,7 @@
             },
             {
               "fixture_id": "p14c2-partition-v1",
-              "payload_sha256": "8eff54e8237b47db55a46fe310e275e018aba2d9bf4c043a3891b38404d15911",
+              "payload_sha256": "ed02e416037e3e68f4614b08379508b1a2189dc4266d90aecaec777d3f5344d8",
               "role": "calibration"
             },
             {
@@ -1428,17 +1428,17 @@
             },
             {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "c8f7989e966f07ec9807ec42a5a0ff0a24f9e41a708b7d67e0e3c99b510795a2",
+              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
               "role": "calibration"
             },
             {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "role": "source"
             },
             {
               "fixture_id": "p14b1b-assembly-v1",
-              "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
+              "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
               "role": "source"
             }
           ],
@@ -1525,8 +1525,8 @@
             "calibration_partition": null,
             "calibration_record": {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "c8f7989e966f07ec9807ec42a5a0ff0a24f9e41a708b7d67e0e3c99b510795a2",
-              "raw_hash": "752130c37bd019af850c237b6958fe0ebf1a5362cc7345e698b43ba5276b1d9e",
+              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
+              "raw_hash": "3dd710c9b5a21f393e09d6824d80c34a42713d6d314ef5a36eb4d23280be3103",
               "record_id": "record"
             },
             "capital_basis_rule": "100_times_original_decision_ask_cap",
@@ -1543,16 +1543,16 @@
             "activated_at": null,
             "activation_gap": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
               "record_id": "gap"
             },
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T04:59:00.157812+00:00",
+            "built_at": "2026-09-26T05:16:16.126993+00:00",
             "evaluation_block": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
-              "raw_hash": "f4027641cdf18bf4cd140829820e16be92118a08193f4f32d01592db1296b49a",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
+              "raw_hash": "5e3fdc4ac97ff40797fbfae0a5766bf88962dba08fe9919ec7d87377798184c6",
               "record_id": "block"
             },
             "promoted_at": null,
@@ -1560,15 +1560,15 @@
             "simulated_schedule": {
               "activation_gap": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
                 "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
                 "record_id": "gap"
               },
               "deployment_delay_us": 0,
               "evaluation_block": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
-                "raw_hash": "f4027641cdf18bf4cd140829820e16be92118a08193f4f32d01592db1296b49a",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
+                "raw_hash": "5e3fdc4ac97ff40797fbfae0a5766bf88962dba08fe9919ec7d87377798184c6",
                 "record_id": "block"
               },
               "fit_cutoff": "2026-08-31T22:00:00+00:00",
@@ -1586,7 +1586,7 @@
               "final",
               0
             ],
-            "implementation_digest": "2d88236a6f39131e72e681c254d8e99295b872e5d2070288a24ca7799874e8c6",
+            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -1596,15 +1596,15 @@
           "seed": null,
           "validation_report": {
             "fixture_id": "p14b1b-assembly-v1",
-            "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
-            "raw_hash": "7e3bcd5c3bf75228ff717f8a6bfa438ad353a46a65d8a803f32db9034f06e883",
+            "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
+            "raw_hash": "04aef6498680db79ff2bf80038145d87764e96ccc5538022b369c58feeff4b22",
             "record_id": "fixed-validation"
           }
         },
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "0fe9e6ed1dd7e5ca8bffb0c282249b0d7f37b042a74cdc85eb51efca1fe3f84f",
+      "raw_hash": "8c882337a1319080fd0681489987f1989570d1a962f4e34c59a17dd1b59fe911",
       "record_id": "fixed-overflow-delay"
     },
     {
@@ -1674,7 +1674,7 @@
             },
             {
               "fixture_id": "p14c2-partition-v1",
-              "payload_sha256": "8eff54e8237b47db55a46fe310e275e018aba2d9bf4c043a3891b38404d15911",
+              "payload_sha256": "ed02e416037e3e68f4614b08379508b1a2189dc4266d90aecaec777d3f5344d8",
               "role": "calibration"
             },
             {
@@ -1684,17 +1684,17 @@
             },
             {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "c8f7989e966f07ec9807ec42a5a0ff0a24f9e41a708b7d67e0e3c99b510795a2",
+              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
               "role": "calibration"
             },
             {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "role": "source"
             },
             {
               "fixture_id": "p14b1b-assembly-v1",
-              "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
+              "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
               "role": "source"
             }
           ],
@@ -1781,8 +1781,8 @@
             "calibration_partition": null,
             "calibration_record": {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "c8f7989e966f07ec9807ec42a5a0ff0a24f9e41a708b7d67e0e3c99b510795a2",
-              "raw_hash": "752130c37bd019af850c237b6958fe0ebf1a5362cc7345e698b43ba5276b1d9e",
+              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
+              "raw_hash": "3dd710c9b5a21f393e09d6824d80c34a42713d6d314ef5a36eb4d23280be3103",
               "record_id": "record"
             },
             "capital_basis_rule": "100_times_original_decision_ask_cap",
@@ -1799,16 +1799,16 @@
             "activated_at": null,
             "activation_gap": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
               "record_id": "gap"
             },
             "availability_basis": "actual",
-            "built_at": "2026-09-26T04:59:00.161595+00:00",
+            "built_at": "2026-09-26T05:16:16.131409+00:00",
             "evaluation_block": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
-              "raw_hash": "f4027641cdf18bf4cd140829820e16be92118a08193f4f32d01592db1296b49a",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
+              "raw_hash": "5e3fdc4ac97ff40797fbfae0a5766bf88962dba08fe9919ec7d87377798184c6",
               "record_id": "block"
             },
             "promoted_at": null,
@@ -1816,15 +1816,15 @@
             "simulated_schedule": {
               "activation_gap": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
                 "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
                 "record_id": "gap"
               },
               "deployment_delay_us": 0,
               "evaluation_block": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
-                "raw_hash": "f4027641cdf18bf4cd140829820e16be92118a08193f4f32d01592db1296b49a",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
+                "raw_hash": "5e3fdc4ac97ff40797fbfae0a5766bf88962dba08fe9919ec7d87377798184c6",
                 "record_id": "block"
               },
               "fit_cutoff": "2026-08-31T22:00:00+00:00",
@@ -1842,7 +1842,7 @@
               "final",
               0
             ],
-            "implementation_digest": "2d88236a6f39131e72e681c254d8e99295b872e5d2070288a24ca7799874e8c6",
+            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -1852,15 +1852,15 @@
           "seed": null,
           "validation_report": {
             "fixture_id": "p14b1b-assembly-v1",
-            "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
-            "raw_hash": "7e3bcd5c3bf75228ff717f8a6bfa438ad353a46a65d8a803f32db9034f06e883",
+            "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
+            "raw_hash": "04aef6498680db79ff2bf80038145d87764e96ccc5538022b369c58feeff4b22",
             "record_id": "fixed-validation"
           }
         },
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "ed4eddfb42f8f13a7c115a41388cab7d745740556c14016bdb88fc30b9c4f6db",
+      "raw_hash": "ba270386ec0d93681d7177f276f2ca9570402a06c1ad815e58687a54c97c4b82",
       "record_id": "fixed-actual-unknown"
     },
     {
@@ -1930,7 +1930,7 @@
             },
             {
               "fixture_id": "p14c2-partition-v1",
-              "payload_sha256": "8eff54e8237b47db55a46fe310e275e018aba2d9bf4c043a3891b38404d15911",
+              "payload_sha256": "ed02e416037e3e68f4614b08379508b1a2189dc4266d90aecaec777d3f5344d8",
               "role": "calibration"
             },
             {
@@ -1940,17 +1940,17 @@
             },
             {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "c8f7989e966f07ec9807ec42a5a0ff0a24f9e41a708b7d67e0e3c99b510795a2",
+              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
               "role": "calibration"
             },
             {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "role": "source"
             },
             {
               "fixture_id": "p14b1b-assembly-v1",
-              "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
+              "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
               "role": "source"
             }
           ],
@@ -2037,8 +2037,8 @@
             "calibration_partition": null,
             "calibration_record": {
               "fixture_id": "p14c2-record-v1",
-              "payload_sha256": "c8f7989e966f07ec9807ec42a5a0ff0a24f9e41a708b7d67e0e3c99b510795a2",
-              "raw_hash": "752130c37bd019af850c237b6958fe0ebf1a5362cc7345e698b43ba5276b1d9e",
+              "payload_sha256": "a2a3d202e8125fd6a86d0cc7e56826c9b0d204780b1c0e7fa2721755090eb70e",
+              "raw_hash": "3dd710c9b5a21f393e09d6824d80c34a42713d6d314ef5a36eb4d23280be3103",
               "record_id": "record"
             },
             "capital_basis_rule": "100_times_original_decision_ask_cap",
@@ -2055,32 +2055,32 @@
             "activated_at": "2026-09-01T01:00:00+00:00",
             "activation_gap": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
               "record_id": "gap"
             },
             "availability_basis": "actual",
-            "built_at": "2026-09-26T04:59:00.165243+00:00",
+            "built_at": "2026-09-26T05:16:16.135329+00:00",
             "evaluation_block": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
-              "raw_hash": "f4027641cdf18bf4cd140829820e16be92118a08193f4f32d01592db1296b49a",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
+              "raw_hash": "5e3fdc4ac97ff40797fbfae0a5766bf88962dba08fe9919ec7d87377798184c6",
               "record_id": "block"
             },
-            "promoted_at": "2026-09-26T04:59:00.165243+00:00",
+            "promoted_at": "2026-09-26T05:16:16.135329+00:00",
             "simulated_available_at": "2026-09-01T01:00:00+00:00",
             "simulated_schedule": {
               "activation_gap": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
                 "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
                 "record_id": "gap"
               },
               "deployment_delay_us": 0,
               "evaluation_block": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
-                "raw_hash": "f4027641cdf18bf4cd140829820e16be92118a08193f4f32d01592db1296b49a",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
+                "raw_hash": "5e3fdc4ac97ff40797fbfae0a5766bf88962dba08fe9919ec7d87377798184c6",
                 "record_id": "block"
               },
               "fit_cutoff": "2026-08-31T22:00:00+00:00",
@@ -2098,7 +2098,7 @@
               "final",
               0
             ],
-            "implementation_digest": "2d88236a6f39131e72e681c254d8e99295b872e5d2070288a24ca7799874e8c6",
+            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -2108,15 +2108,15 @@
           "seed": null,
           "validation_report": {
             "fixture_id": "p14b1b-assembly-v1",
-            "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
-            "raw_hash": "7e3bcd5c3bf75228ff717f8a6bfa438ad353a46a65d8a803f32db9034f06e883",
+            "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
+            "raw_hash": "04aef6498680db79ff2bf80038145d87764e96ccc5538022b369c58feeff4b22",
             "record_id": "fixed-validation"
           }
         },
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "54247516471eec581883c8b9cd76a2ea17861561442f083f061ec2d187e5dd3c",
+      "raw_hash": "66f3cd033f2670f72854b74a15ea5fece5cc9a68bb57d95c5182fb36385d4b35",
       "record_id": "fixed-actual-reversed"
     },
     {
@@ -2151,12 +2151,12 @@
             },
             {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "role": "source"
             },
             {
               "fixture_id": "p14b1b-assembly-v1",
-              "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
+              "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
               "role": "source"
             },
             {
@@ -2184,15 +2184,15 @@
             "activated_at": null,
             "activation_gap": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
               "record_id": "gap"
             },
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T04:59:00.169899+00:00",
+            "built_at": "2026-09-26T05:16:16.140230+00:00",
             "evaluation_block": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "raw_hash": "320af4d041b8248d24964db81cf64c203f096b98d33066a6b37e449871f5f36c",
               "record_id": "cash-block"
             },
@@ -2201,14 +2201,14 @@
             "simulated_schedule": {
               "activation_gap": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
                 "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
                 "record_id": "gap"
               },
               "deployment_delay_us": null,
               "evaluation_block": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
                 "raw_hash": "320af4d041b8248d24964db81cf64c203f096b98d33066a6b37e449871f5f36c",
                 "record_id": "cash-block"
               },
@@ -2227,7 +2227,7 @@
               "final",
               0
             ],
-            "implementation_digest": "2d88236a6f39131e72e681c254d8e99295b872e5d2070288a24ca7799874e8c6",
+            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -2237,15 +2237,15 @@
           "seed": null,
           "validation_report": {
             "fixture_id": "p14b1b-assembly-v1",
-            "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
-            "raw_hash": "46d14fb1fd896a97398dd7e07f69c1733ee9d7fb99306db3a789547948113df1",
+            "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
+            "raw_hash": "e37763f56f31757e79191cd5364a2fb33e94e0ccea3e5ce1c86e00ec221112e7",
             "record_id": "cash-validation"
           }
         },
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.cash_json.v1\"}",
         "schema_version": 1
       },
-      "raw_hash": "137bab2ed729508efb6a0fb53d7dffd5ed25df3c326402af49045f3521aa3c2a",
+      "raw_hash": "b0fd6e84c46c17e20236769f43156d1fadf7a9c139ab8eb5736810c424e49adb",
       "record_id": "cash-inconsistent"
     },
     {
@@ -2280,12 +2280,12 @@
             },
             {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "role": "source"
             },
             {
               "fixture_id": "p14b1b-assembly-v1",
-              "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
+              "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
               "role": "source"
             },
             {
@@ -2313,7 +2313,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T04:59:00.173766+00:00",
+            "built_at": "2026-09-26T05:16:16.144131+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-01T01:00:00+00:00",
@@ -2327,7 +2327,7 @@
               "final",
               0
             ],
-            "implementation_digest": "2d88236a6f39131e72e681c254d8e99295b872e5d2070288a24ca7799874e8c6",
+            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -2337,15 +2337,15 @@
           "seed": null,
           "validation_report": {
             "fixture_id": "p14b1b-assembly-v1",
-            "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
-            "raw_hash": "46d14fb1fd896a97398dd7e07f69c1733ee9d7fb99306db3a789547948113df1",
+            "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
+            "raw_hash": "e37763f56f31757e79191cd5364a2fb33e94e0ccea3e5ce1c86e00ec221112e7",
             "record_id": "cash-validation"
           }
         },
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.cash_json.v1\"}",
         "schema_version": 1
       },
-      "raw_hash": "c7106f4dc39fd2d7bffff0e28cfcad760384520834df1620375992a982161d38",
+      "raw_hash": "6907569ff44fd98bf62db7dd46c09be69109d988dece4a9dc7bb516676651ff5",
       "record_id": "cash-no-schedule"
     },
     {
@@ -2380,12 +2380,12 @@
             },
             {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "role": "source"
             },
             {
               "fixture_id": "p14b1b-assembly-v1",
-              "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
+              "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
               "role": "source"
             },
             {
@@ -2413,15 +2413,15 @@
             "activated_at": null,
             "activation_gap": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "raw_hash": "a1ac880dc9c85c506151a5a9c4568bd8b1e1f28f69d509342adc1c5f209006cc",
               "record_id": "unknown-gap"
             },
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T04:59:00.177265+00:00",
+            "built_at": "2026-09-26T05:16:16.148139+00:00",
             "evaluation_block": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "raw_hash": "320af4d041b8248d24964db81cf64c203f096b98d33066a6b37e449871f5f36c",
               "record_id": "cash-block"
             },
@@ -2430,14 +2430,14 @@
             "simulated_schedule": {
               "activation_gap": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
                 "raw_hash": "a1ac880dc9c85c506151a5a9c4568bd8b1e1f28f69d509342adc1c5f209006cc",
                 "record_id": "unknown-gap"
               },
               "deployment_delay_us": null,
               "evaluation_block": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
                 "raw_hash": "320af4d041b8248d24964db81cf64c203f096b98d33066a6b37e449871f5f36c",
                 "record_id": "cash-block"
               },
@@ -2456,7 +2456,7 @@
               "final",
               0
             ],
-            "implementation_digest": "2d88236a6f39131e72e681c254d8e99295b872e5d2070288a24ca7799874e8c6",
+            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -2466,15 +2466,15 @@
           "seed": null,
           "validation_report": {
             "fixture_id": "p14b1b-assembly-v1",
-            "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
-            "raw_hash": "46d14fb1fd896a97398dd7e07f69c1733ee9d7fb99306db3a789547948113df1",
+            "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
+            "raw_hash": "e37763f56f31757e79191cd5364a2fb33e94e0ccea3e5ce1c86e00ec221112e7",
             "record_id": "cash-validation"
           }
         },
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.cash_json.v1\"}",
         "schema_version": 1
       },
-      "raw_hash": "cc22d2327130311371bad17726570bcaf5b153dd87f268e2db8aa9f1b9cd669c",
+      "raw_hash": "f06c7dc98682a14ee949a4a291d5c191d7f3481b97214fa92234f7c08e02d5b4",
       "record_id": "cash-unknown-gap"
     },
     {
@@ -2509,12 +2509,12 @@
             },
             {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "role": "source"
             },
             {
               "fixture_id": "p14b1b-assembly-v1",
-              "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
+              "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
               "role": "source"
             },
             {
@@ -2542,15 +2542,15 @@
             "activated_at": null,
             "activation_gap": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
               "record_id": "gap"
             },
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T04:59:00.180917+00:00",
+            "built_at": "2026-09-26T05:16:16.152119+00:00",
             "evaluation_block": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "raw_hash": "320af4d041b8248d24964db81cf64c203f096b98d33066a6b37e449871f5f36c",
               "record_id": "cash-block"
             },
@@ -2559,14 +2559,14 @@
             "simulated_schedule": {
               "activation_gap": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
                 "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
                 "record_id": "gap"
               },
               "deployment_delay_us": null,
               "evaluation_block": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
                 "raw_hash": "320af4d041b8248d24964db81cf64c203f096b98d33066a6b37e449871f5f36c",
                 "record_id": "cash-block"
               },
@@ -2585,7 +2585,7 @@
               "final",
               0
             ],
-            "implementation_digest": "2d88236a6f39131e72e681c254d8e99295b872e5d2070288a24ca7799874e8c6",
+            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -2595,15 +2595,15 @@
           "seed": null,
           "validation_report": {
             "fixture_id": "p14b1b-assembly-v1",
-            "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
-            "raw_hash": "46d14fb1fd896a97398dd7e07f69c1733ee9d7fb99306db3a789547948113df1",
+            "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
+            "raw_hash": "e37763f56f31757e79191cd5364a2fb33e94e0ccea3e5ce1c86e00ec221112e7",
             "record_id": "cash-validation"
           }
         },
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.cash_json.v1\"}",
         "schema_version": 1
       },
-      "raw_hash": "9162a10100345aef2e483d5748c7c3a5dba5b1e2949125417f33c66b9139cc6a",
+      "raw_hash": "7ca5d933b8e9e371eb9f126fc3adc1ae00943d6451c026a4c877c3d699f0a770",
       "record_id": "cash-outside-gap"
     },
     {
@@ -2638,12 +2638,12 @@
             },
             {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "role": "source"
             },
             {
               "fixture_id": "p14b1b-assembly-v1",
-              "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
+              "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
               "role": "source"
             },
             {
@@ -2676,15 +2676,15 @@
             "activated_at": null,
             "activation_gap": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
               "record_id": "gap"
             },
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T04:59:00.187153+00:00",
+            "built_at": "2026-09-26T05:16:16.158080+00:00",
             "evaluation_block": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "raw_hash": "320af4d041b8248d24964db81cf64c203f096b98d33066a6b37e449871f5f36c",
               "record_id": "cash-block"
             },
@@ -2693,14 +2693,14 @@
             "simulated_schedule": {
               "activation_gap": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
                 "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
                 "record_id": "gap"
               },
               "deployment_delay_us": null,
               "evaluation_block": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
                 "raw_hash": "320af4d041b8248d24964db81cf64c203f096b98d33066a6b37e449871f5f36c",
                 "record_id": "cash-block"
               },
@@ -2719,7 +2719,7 @@
               "final",
               0
             ],
-            "implementation_digest": "2d88236a6f39131e72e681c254d8e99295b872e5d2070288a24ca7799874e8c6",
+            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -2729,15 +2729,15 @@
           "seed": null,
           "validation_report": {
             "fixture_id": "p14b1b-assembly-v1",
-            "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
-            "raw_hash": "46d14fb1fd896a97398dd7e07f69c1733ee9d7fb99306db3a789547948113df1",
+            "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
+            "raw_hash": "e37763f56f31757e79191cd5364a2fb33e94e0ccea3e5ce1c86e00ec221112e7",
             "record_id": "cash-validation"
           }
         },
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.cash_json.v1\"}",
         "schema_version": 1
       },
-      "raw_hash": "4da46b33d2a79495cd0984dc35c8b76f25b8a1f73a7995c07832543253049f7e",
+      "raw_hash": "f7d726aef62860dc5f8a7904e4041d60281f531995dc7ff3c67fc2cbb9485e98",
       "record_id": "cash-risk-corrupt"
     },
     {
@@ -2772,12 +2772,12 @@
             },
             {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "role": "source"
             },
             {
               "fixture_id": "p14b1b-assembly-v1",
-              "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
+              "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
               "role": "source"
             },
             {
@@ -2810,15 +2810,15 @@
             "activated_at": null,
             "activation_gap": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
               "record_id": "gap"
             },
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T04:59:00.192030+00:00",
+            "built_at": "2026-09-26T05:16:16.163157+00:00",
             "evaluation_block": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "raw_hash": "320af4d041b8248d24964db81cf64c203f096b98d33066a6b37e449871f5f36c",
               "record_id": "cash-block"
             },
@@ -2827,14 +2827,14 @@
             "simulated_schedule": {
               "activation_gap": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
                 "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
                 "record_id": "gap"
               },
               "deployment_delay_us": null,
               "evaluation_block": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
                 "raw_hash": "320af4d041b8248d24964db81cf64c203f096b98d33066a6b37e449871f5f36c",
                 "record_id": "cash-block"
               },
@@ -2853,7 +2853,7 @@
               "final",
               0
             ],
-            "implementation_digest": "2d88236a6f39131e72e681c254d8e99295b872e5d2070288a24ca7799874e8c6",
+            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -2863,15 +2863,15 @@
           "seed": null,
           "validation_report": {
             "fixture_id": "p14b1b-assembly-v1",
-            "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
-            "raw_hash": "46d14fb1fd896a97398dd7e07f69c1733ee9d7fb99306db3a789547948113df1",
+            "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
+            "raw_hash": "e37763f56f31757e79191cd5364a2fb33e94e0ccea3e5ce1c86e00ec221112e7",
             "record_id": "cash-validation"
           }
         },
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.cash_json.v1\"}",
         "schema_version": 1
       },
-      "raw_hash": "9547a88684ef3e1a5d44183320d36c1094a42005c365e7c3c3ba99179a64e751",
+      "raw_hash": "fbc0737dd4320336e84c0bbd806e757a7c0a20d8424d00952d41ef994549b421",
       "record_id": "cash-risk-valid"
     },
     {
@@ -2906,12 +2906,12 @@
             },
             {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "role": "source"
             },
             {
               "fixture_id": "p14b1b-assembly-v1",
-              "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
+              "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
               "role": "source"
             },
             {
@@ -2944,15 +2944,15 @@
             "activated_at": null,
             "activation_gap": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
               "record_id": "gap"
             },
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T04:59:00.196641+00:00",
+            "built_at": "2026-09-26T05:16:16.167749+00:00",
             "evaluation_block": {
               "fixture_id": "p14b-schedule-v1",
-              "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+              "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
               "raw_hash": "320af4d041b8248d24964db81cf64c203f096b98d33066a6b37e449871f5f36c",
               "record_id": "cash-block"
             },
@@ -2961,14 +2961,14 @@
             "simulated_schedule": {
               "activation_gap": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
                 "raw_hash": "f0ecdc8499635c3d08de3ed2fb61c03df2537337bae94eed98841a9ad093f75c",
                 "record_id": "gap"
               },
               "deployment_delay_us": null,
               "evaluation_block": {
                 "fixture_id": "p14b-schedule-v1",
-                "payload_sha256": "bc0c06eb2f4e066f17f8725957bc78290327553e62ad3b2de783d51b1fb6fbaf",
+                "payload_sha256": "09b0c569dded6470716946fea428dbcf835f45d372ed2f95e3a443fd655b7aa0",
                 "raw_hash": "320af4d041b8248d24964db81cf64c203f096b98d33066a6b37e449871f5f36c",
                 "record_id": "cash-block"
               },
@@ -2987,7 +2987,7 @@
               "final",
               0
             ],
-            "implementation_digest": "2d88236a6f39131e72e681c254d8e99295b872e5d2070288a24ca7799874e8c6",
+            "implementation_digest": "c7c2b16c019aa16f37a7cf3c4248f527c182ea01cdc86587bcbb1b4333780304",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -2997,15 +2997,15 @@
           "seed": null,
           "validation_report": {
             "fixture_id": "p14b1b-assembly-v1",
-            "payload_sha256": "07f36549b868b3714149455af0b98e19a558be14c0aae6644148b13ea4e2a8b8",
-            "raw_hash": "46d14fb1fd896a97398dd7e07f69c1733ee9d7fb99306db3a789547948113df1",
+            "payload_sha256": "9bb7141e33f923d5ff437016dee5ebe3e76325ed8e42d45481c7efc605947697",
+            "raw_hash": "e37763f56f31757e79191cd5364a2fb33e94e0ccea3e5ce1c86e00ec221112e7",
             "record_id": "cash-validation"
           }
         },
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.cash_json.v1\"}",
         "schema_version": 1
       },
-      "raw_hash": "1d2f5a6f35ec08c8b7bc0054a9c862463aa2585a94792cbb501ab01ac47acca8",
+      "raw_hash": "21f30c4dca0a86a14129e4568453c5d4077867485256ca52dfc9df6481e58720",
       "record_id": "cash-risk-other"
     }
   ],

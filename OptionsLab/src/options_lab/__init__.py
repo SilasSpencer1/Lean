@@ -70,6 +70,7 @@ from .calibration_support import CalibrationAssessment, assess_calibration
 from .bundle_availability import BundleAssessment, assess_bundle
 from .bundle_activation import ActivationSelection, choose_bundle_activation
 from .decision import Forecast, ScoredCandidate, DecisionResult, FixedJsonPredictor
+from .entry_intent import TradeIntent, derive_trade_intent
 from .risk import (
     HaltEntry,
     HaltState,
@@ -278,6 +279,8 @@ from .volume_normalization import (
 )
 
 __all__ = [
+    "TradeIntent",
+    "derive_trade_intent",
     "HaltEntry",
     "HaltState",
     "RiskState",
