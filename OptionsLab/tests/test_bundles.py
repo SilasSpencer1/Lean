@@ -111,6 +111,31 @@ def test_actual_registered_cash_and_fixed_are_content_only(record):
         assert json.loads(value.source_profiles[0].profile_bytes)["source"] == "fixture-volume-bars"
 
 
+@pytest.mark.parametrize("field,replacement", [
+    ("event_id", ""),
+    ("raw_ref", ""),
+    ("received_at", datetime(1, 1, 1, tzinfo=timezone(timedelta(hours=14)))),
+])
+def test_bundle_shared_retained_fixture_preflight_bounds_bad_receipts(field, replacement):
+    """A2 returns its owner rejection for malformed copied A0 receipts."""
+    fixture = admitted(FIXTURE_ID)
+    altered = copy(fixture)
+    object.__setattr__(altered, field, replacement)
+    result = verify("cash", fixture=altered)
+    assert result.value is None and result.rejection.code == "retained_content_mismatch"
+
+
+def test_bundle_shared_retained_fixture_preflight_bounds_member_collection():
+    """A2 rejects oversized copied member tuples before traversing them."""
+    fixture = admitted(FIXTURE_ID)
+    altered = copy(fixture)
+    object.__setattr__(altered, "members", altered.members * 300)
+    from options_lab.calibration_inputs import _retained_fixture_shape
+    assert not _retained_fixture_shape(altered)
+    result = verify("cash", fixture=altered)
+    assert result.value is None and result.rejection.code == "retained_content_mismatch"
+
+
 @pytest.mark.parametrize("record,field,code", [
     ("wrong-runtime", "runtime_binding.implementation_digest", "counterpart_mismatch"),
     ("wrong-selection", "policy_binding.selection_rule_id", "counterpart_mismatch"),

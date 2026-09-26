@@ -169,6 +169,8 @@ class DecisionContext:
 
     decision_id: str
     decision_at: datetime
+    request: ContextRequestValidation = field(compare=False)
+    previous_feature_state: FeatureState | None = field(compare=False)
     slot_key: str | None
     timing: EntryTimingAssessment
     manifest: VerifiedFixtureManifest | None
@@ -347,7 +349,7 @@ def build_decision_context(
     if request.value is not None:
         context = _context(
             request, manifest, config, rows, tuple(causal_rejections), chash, phash,
-            global_reasons, feature_state, prior_binding,
+            global_reasons, feature_state, prior_binding, previous_feature_state,
             tuple(c for c in components if c.disposition == "selected"),
             components,
         )
@@ -860,7 +862,7 @@ def _state_binding(state, rows):
     }
 
 
-def _context(request, manifest, config, rows, rejections, chash, phash, global_reasons, feature_state, prior_binding, selected_components, components):
+def _context(request, manifest, config, rows, rejections, chash, phash, global_reasons, feature_state, prior_binding, previous_feature_state, selected_components, components):
     """Project selected facts and bind actual causal commitments with owner identities."""
     header = request.value
     selected = [row.value for row in rows if row.disposition == "selected"]
@@ -960,6 +962,7 @@ def _context(request, manifest, config, rows, rejections, chash, phash, global_r
         digest = None
     return _freeze(
         DecisionContext, decision_id=header.decision_id, decision_at=header.decision_at,
+        request=request, previous_feature_state=previous_feature_state,
         slot_key=timing.slot_key, timing=timing, manifest=manifest, input_manifest_id=manifest_id,
         selected_components=selected_components, components=components,
         option_quotes=options, underlying_quotes=underlying, greeks=greeks,

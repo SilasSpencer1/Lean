@@ -1,5 +1,5 @@
 {
-  "assembled_at": "2026-09-26T02:11:51.391683+00:00",
+  "assembled_at": "2026-09-26T02:40:07.356655+00:00",
   "definitions": {
     "coherence_protocol_ids": [],
     "greek_method": {
@@ -37,12 +37,12 @@
           "data_manifest_hashes": [
             {
               "fixture_id": "p14c-volume-training-v1",
-              "payload_sha256": "8bf6aa7abab0f9a919cbeba78ae1186b993a2452023ffd12c138baed964923b9",
+              "payload_sha256": "a5669fcbdc27f29bf76650bf05b85e7d7b39af09c4697b983689e9e42fc61ca4",
               "role": "training"
             },
             {
               "fixture_id": "p14c-volume-normalization-v1",
-              "payload_sha256": "6d0f9842b9e771e9c146346ec85cf07f0b87aa11ed9dca34513d542c36c4ad18",
+              "payload_sha256": "e213feae2788c2a158e38ed69dd1c614e361c50ff87bc7e1aebbc98a07a1f691",
               "role": "normalization"
             },
             {
@@ -52,22 +52,22 @@
             },
             {
               "fixture_id": "p14c-fit-membership-v1",
-              "payload_sha256": "afa7f7cfda6bbac4f01d6f7f044b50635cf34bb2b3a052a193a5b6f3e918a406",
+              "payload_sha256": "be01c995ce241e78dfed475658fde4da90ef99963fa2398045dd20dd2e29739c",
               "role": "training"
             },
             {
               "fixture_id": "p14c-fit-sources-v1",
-              "payload_sha256": "efd2831c4a2cf58cdd880194abde6858599bdab4d396f71d80698b136489a16b",
+              "payload_sha256": "ca08854b26610b5d9fec3e2ac3e7bb0b217287029e5243801848361966cc0614",
               "role": "training"
             },
             {
               "fixture_id": "p14c-fit-membership-v1",
-              "payload_sha256": "afa7f7cfda6bbac4f01d6f7f044b50635cf34bb2b3a052a193a5b6f3e918a406",
+              "payload_sha256": "be01c995ce241e78dfed475658fde4da90ef99963fa2398045dd20dd2e29739c",
               "role": "tuning"
             },
             {
               "fixture_id": "p14c-fit-sources-v1",
-              "payload_sha256": "efd2831c4a2cf58cdd880194abde6858599bdab4d396f71d80698b136489a16b",
+              "payload_sha256": "ca08854b26610b5d9fec3e2ac3e7bb0b217287029e5243801848361966cc0614",
               "role": "tuning"
             }
           ],
@@ -84,7 +84,7 @@
             "greek_method_version": "1",
             "input_normalization_version": 1,
             "iv_unit": "annualized_volatility_fraction",
-            "normalization_hash": "0ac32703f4096994e82108bdd0be6b5388bdfe2d932b129f45bad861f093be5b",
+            "normalization_hash": "5f96d88d4a0472619f8b321af3906af501ab9cde4821a81e84f0911955a72b2f",
             "option_price_basis": "option_midpoint",
             "source_profiles": [
               {
@@ -110,7 +110,7 @@
             ],
             "transform_id": "d3efb679d3e29d9a56df62c42ed4a8ea6e87ece4485847ecdf7b580863e06621",
             "underlying_price_basis": "underlying_midpoint",
-            "volume_baseline_hash": "c116839b269a389b92166e49f9272a03336ec0715b7d280c2d6ff081ef1512e6",
+            "volume_baseline_hash": "26d822a64282aaee073b31fc1bf57aaf98637725607a4afb700e874ac027c557",
             "volume_definition_id": "synthetic-volume-v1"
           },
           "fixture_id": "p14c-membership-bundle-v1",
@@ -142,8 +142,8 @@
             "last_label_available_at": null,
             "model_membership": {
               "fixture_id": "p14c-fit-membership-v1",
-              "payload_sha256": "afa7f7cfda6bbac4f01d6f7f044b50635cf34bb2b3a052a193a5b6f3e918a406",
-              "raw_hash": "c54645a42634ea591410513c0c8854a8b8fb97f344a78aba87b729aa98284494",
+              "payload_sha256": "be01c995ce241e78dfed475658fde4da90ef99963fa2398045dd20dd2e29739c",
+              "raw_hash": "cae9446afbd37d7f56d56837693434e357fd4310cd0aeff309bfe57c7e12dd8d",
               "record_id": "model"
             },
             "return_unit": "attempt_net_return_over_original_ask_capital",
@@ -151,8 +151,8 @@
             "training_feature_cutoff": null,
             "tuning_membership": {
               "fixture_id": "p14c-fit-membership-v1",
-              "payload_sha256": "afa7f7cfda6bbac4f01d6f7f044b50635cf34bb2b3a052a193a5b6f3e918a406",
-              "raw_hash": "9a919870fffe7c964488bde792169ef1f6f19cc5b8d526b44ae7eeccef2b72e3",
+              "payload_sha256": "be01c995ce241e78dfed475658fde4da90ef99963fa2398045dd20dd2e29739c",
+              "raw_hash": "4cc1cb17b7113bfbcae4e939f49b8c7dd592f25614a51eba516de71430c5cc28",
               "record_id": "tuning"
             },
             "uncertainty_rule_id": null
@@ -161,7 +161,7 @@
             "activated_at": null,
             "activation_gap": null,
             "availability_basis": "simulated",
-            "built_at": "2026-09-26T02:11:51.390945+00:00",
+            "built_at": "2026-09-26T02:40:07.356181+00:00",
             "evaluation_block": null,
             "promoted_at": null,
             "simulated_available_at": "2026-09-30T22:00:00+00:00",
@@ -175,7 +175,7 @@
               "final",
               0
             ],
-            "implementation_digest": "7ce0898e3a068953fda0de92536680308cb5c36dd549227d68e0a04d870a603a",
+            "implementation_digest": "88f0a6bdee750a6a140c81dbadb77f9e25ad16e44be0041689f29216e3cabe9c",
             "implementation_scheme": "CORE_IMPLEMENTATION_BYTES_V1",
             "python_implementation": "CPython",
             "requires_python": ">=3.11,<3.12",
@@ -188,7 +188,7 @@
         "model_utf8": "{\"schema_version\":1,\"format_id\":\"options_lab.fixed_by_right_json.v1\",\"call\":{\"mean_attempt_return\":\"0.02\",\"calibration_bucket\":\"call\"},\"put\":{\"mean_attempt_return\":\"-0.01\",\"calibration_bucket\":\"put\"}}",
         "schema_version": 1
       },
-      "raw_hash": "23ed11fa3a19d72edccb0798043daba2f5d336060bb2f8ef752d2991b4f7e4e6",
+      "raw_hash": "fc6c78f5941680fe42fc73bee2ff996bd3ce7fabbf9d088d0813dfc45f838c52",
       "record_id": "fixed-membership"
     }
   ],
